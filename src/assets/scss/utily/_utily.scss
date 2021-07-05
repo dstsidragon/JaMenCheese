@@ -1,0 +1,121 @@
+/* 推擠 */
+.mt_navbar{
+    margin-top: 89px !important;
+    @include pc {
+      margin-top: 66px !important;
+    }
+}
+.mt_90{
+    margin-top: 90px;
+}
+.btn--center{
+  position: absolute;
+  top: 14%;
+  left: 50%;
+  margin-left: -44px;
+}
+.btn__enable--center{
+  position: absolute;
+  top: 23%;
+  left: 50%;
+  margin-left: -22px;
+}
+
+
+/* 區塊陰影 */
+.div_shadow
+{
+box-shadow: -8px -5px 25px #333333;
+-webkit-box-shadow: -8px -5px 25px #333333;
+-moz-box-shadow: -8px -5px 25px #333333;
+}
+
+/* 圓角 */
+.rounded-bottom-50{
+    border-radius: 0 0 0.5rem 0.5rem;
+    border-top: 0;
+}
+.rounded-top-50{
+    border-radius:  0.5rem 0.5rem 0 0;
+    border-bottom: 0;
+
+}
+
+/* 鼠標 */
+.cursor-point{
+    cursor:pointer;
+}
+/* 高度 */
+.h-40{
+    height: 80px;
+}
+/* 字體 */
+.ff-PottaOne{
+    font-family: 'Potta One', cursive;
+}
+.ff-KosugiMaru{
+    font-family: 'Kosugi Maru', sans-serif;
+}
+.ff-HachiMaruPop{
+    font-family: 'Hachi Maru Pop', cursive;
+}
+
+
+/* 文字輸入效果 */
+@keyframes typing {
+    from { width: 0 }
+  }
+  
+  @keyframes caret {
+    50% { border-color: transparent; }
+  }
+  
+  .css_wordInput {
+    width: 12em;
+    border-right: .05em solid;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 3s steps(12),
+      caret 1s steps(1) infinite;
+  }
+  
+  .css_wordInput_13 {
+    width: 13em;
+    border-right: .05em solid;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 3s steps(13),
+      caret 1s steps(1) infinite;
+  }
+  .css_wordInput_4 {
+    width: 5em;
+    border-right: .05em solid;
+    overflow: hidden;
+    white-space: nowrap;
+    animation: typing 3s steps(5),
+      caret 1s steps(1) infinite;
+  }
+  .w_100{
+    width: 100%;
+  }
+  .w_50{
+    width: 50%;
+  }
+
+  
+  // 顏色
+  .bg-veryGray{
+    background-color: #fdfdfd !important;
+  }
+
+  //圖片
+  .object-fit{
+    object-fit: cover;
+    // @media screen and (min-width:400px) { 
+    //   object-fit: cover;
+    // }
+  }
+  //圖片透明 文字不透明
+  .bg-img-transparent{
+    background:rgba(0,0,0,0.6 );
+  }
