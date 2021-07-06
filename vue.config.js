@@ -9,7 +9,7 @@ module.exports = {
     config.plugin('html')
       .tap((args) => {
         // eslint-disable-next-line no-param-reassign
-        args[0].title = 'JaMenCheese|勾起你心中的餓';
+        args[0].title = '呷面起士|勾起你心中的餓';
         return args;
       });
   },

@@ -40,16 +40,23 @@
            :message="alertMessage"
           :status="alertStatus" />
           <!-- Alert元件 end -->
+          <!-- 讀取畫面 start-->
+          <Loading :isVueLoading='isLoading' />
+          <!-- 讀取畫面 end -->
 </template>
 
 <script>
 // Alert元件
 import Alert from '@/components/Alert.vue';
+// 讀取畫面
+import Loading from '@/components/Loading.vue';
 
 export default {
   components: {
     // Alert元件
     Alert,
+    // 讀取畫面
+    Loading,
   },
   data() {
     return {
@@ -58,6 +65,8 @@ export default {
       // alert元件參數
       alertMessage: '',
       alertStatus: false,
+      // 讀取畫面
+      isLoading: false,
     };
   },
   methods: {
@@ -72,6 +81,8 @@ export default {
           if (res.data.success) {
             console.log(res.data);
 
+            // 關掉讀取畫面
+            this.isLoading = false;
             // alert 元件顯示
             this.alertMessage = res.data.message;
             this.alertStatus = true;
@@ -115,6 +126,7 @@ export default {
     // console.log(this.$route.params.id);
   },
   mounted() {
+    this.isLoading = true;
     // 取得產品資訊
     this.getProductData();
   },

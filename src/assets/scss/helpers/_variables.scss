@@ -319,6 +319,7 @@ $paragraph-margin-bottom:   1rem !default;
 $grid-breakpoints: (
   xs: 0,
   ssm: 360px,
+  smm: 512px,
   sm: 630px,
   md: 768px,
   lg: 992px,
@@ -337,6 +338,7 @@ $grid-breakpoints: (
 
 // scss-docs-start container-max-widths
 $container-max-widths: (
+  smm: 512px,
   sm: 540px,
   md: 720px,
   lg: 960px,
