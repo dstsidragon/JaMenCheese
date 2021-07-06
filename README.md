@@ -1,5 +1,6 @@
-
-
+#呷面起士
+GitHub: https://github.com/dstsidragon/JaMenCheese
+GitPages: https://dstsidragon.github.io/JaMenCheese/#/
 sh deploy.sh
 ## Project setup
 ```
@@ -25,15 +26,21 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 前台
+
 #首頁
+
 #navBar
 購物車小物件
 帳號  
 收藏
+
 #產品頁
-選單
-最愛
-收藏
+最愛收藏
+商品價格千分號
+
+#產品詳細頁
+返回
+
 #購物車
 
 

@@ -21,6 +21,10 @@
   margin-left: -22px;
 }
 
+// 鼠標
+.cursor-pointer{
+  cursor: pointer;
+}
 
 /* 區塊陰影 */
 .div_shadow
@@ -118,4 +122,30 @@ box-shadow: -8px -5px 25px #333333;
   //圖片透明 文字不透明
   .bg-img-transparent{
     background:rgba(0,0,0,0.6 );
+  }
+
+  // 圖片特效 縮放
+  .img--scale{
+    transform:scale(1,1);transition: all .5s ease-out;
+    &:hover{transform:scale(1.2,1.2);};
+  }
+
+  //標題
+  .titleEffect{
+    text-align: center;
+    span{
+       position: relative;
+       display: inline-block;
+       padding: 0 0.5em;
+      &:before,&:after{
+        position: absolute;
+       top: 50%;
+       content: '';
+       width: 1.5em;
+       height: 1px;
+       background-color: black;
+      }
+      &:before{left: 100%;}
+      &:after{right: 100%;}
+    }
   }

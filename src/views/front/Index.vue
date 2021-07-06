@@ -3,7 +3,7 @@
     <!-- <div class="banner"></div> -->
     <Swiper/>
     <kinesis-container class="banner__font bgc-transparent rounded text-primary
-     ff-HachiMaruPop p-sm-4">
+     ff-HachiMaruPop p-4">
               <kinesis-element :strength="15" class="banner__subtitle">
                 創意演繹極致口感
               </kinesis-element>
