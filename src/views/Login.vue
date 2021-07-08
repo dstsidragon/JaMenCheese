@@ -118,7 +118,7 @@ export default {
   data() {
     return {
       h1: '請先登入',
-      footer: '2021~∞ - 六角學院',
+      footer: '2021~∞ - 呷面起士',
       // 信箱
       username: '',
       // 密碼

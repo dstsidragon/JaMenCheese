@@ -1,38 +1,128 @@
 <template>
           <div class="mt_navbar">
-              <h2 class="text-center" >
-            商品詳細介紹
-          </h2>
-          <div class="card mb-3" >
+            <!-- 商品CARD start -->
+          <div class="mb-3 banner py-4">
+            <div class="container">
+              <div class="card" >
             <div class="row g-0">
-              <!-- <div class="col-md-4"
-              :style="`height:300px; background:center center no-repeat
-               url(${product.imageUrl});background-size: contain;`">
-              </div> -->
-                <img class="object-fit col-md-4" style="height:360px;weight:100%;"
-                :src="product.imageUrl" />
-              <div class="col-md-8">
-                <div class="card-body">
-                  <h3 class="card-title bg-primary text-white rounded">{{ product.title }}</h3>
-                  <p class="card-text">{{ product.description }}</p>
-                  <ul class="list-group list-group-flush">
-                    <li class="list-group-item" v-html="product.content"></li>
-                  </ul>
+              <!-- 熱賣商品輪播 -->
+              <div class="col-md-6">
+              <SwiperOneProductImg  :product="product"/>
+              </div>
+                <!-- <img class="object-fit col-md-4" style="height:360px;weight:100%;"
+                :src="product.imageUrl" /> -->
+              <div class="col-md-6 ">
+                <div class="card-body ">
+                  <!-- 標題 -->
+                  <h3 class="card-title bg-primary text-white rounded py-2 fz-3
+                  ">{{ product.title }}</h3>
+                  <!-- 商品描述 -->
+                  <p class="card-text text-start titleEffect--border-bottom-x
+                  d-flex justify-content-center">
+                    <span >{{ product.description }}</span></p>
+                  <br>
+                  <!-- 商品內容 -->
+                  <p class="card-text text-start fz-0 " >
+                    <span v-html="product.content"></span>
+                    </p>
+                    <!-- 金額 -->
                   <span class="row text-center">
-                    <span class="text-decoration-line-through col-6">
+                    <span class="text-decoration-line-through col-4">
                       原價
                       <em>{{ product.origin_price }}</em>
                       元
                     </span>
-                    <span class="text-danger col-6">
+                    <span class="text-danger col-8 fs-2">
                       特價
                       <em>{{ product.price }}</em>
                       元
                     </span>
                   </span>
+                  <!-- <div class="d-flex justify-content-around align-items-center">
+                    <span class="position-relative pe-38" >
+                    <input type="number" ref="inputNumber" class="product-input fz-3 text-center"
+                      v-model="num"
+                      oninput="if(value<0)value=0;if(value>999)value=999">
+                      <span>
+                    <button  class="btn  text-danger fz-1 btn_input--top"
+                     @click=" num ++ ">+</button>
+                    <button class="btn  text-danger fz-1 btn_input--bottom"
+                    @click=" num -- ">-</button>
+                      </span>
+                  </span>
+                  <button  class="btn btn-warning  fz-1  py-38"
+                     >加入購物車</button>
+                    <button class="btn btn-danger fz-1 py-38"
+                    @click=" num -- ">立即購買</button>
+                  </div> -->
+                  <div class="row justify-content-around">
+                    <span class="position-relative col-4" >
+                    <!-- input -->
+                    <input type="number" ref="inputNumber" class="product-input fz-3 text-center"
+                      v-model="num"
+                      oninput="if(value<0)value=0;if(value>999)value=999">
+                      <span>
+                    <button  class="btn  text-danger fz-1 btn_input--top"
+                     @click=" num ++ ">+</button>
+                    <button class="btn  text-danger fz-1 btn_input--bottom"
+                    @click=" num -- ">-</button>
+                      </span>
+                  </span>
+                    <button class="btn btn-primary col-6 "
+                    @click=" num -- ">立即購買</button>
+                  <button  class=" d-flex justify-content-center align-items-center   col-5 mt-2
+                  bg-white text-primary rounded border-primary border-1"
+                     >
+                     <span class="material-icons  fz-1 ">
+                      favorite_border
+                      </span>
+                    <span>加入收藏</span></button>
+                  <button  class="d-flex justify-content-center align-items-center fz-1 col-5 mt-2
+                  bg-white text-primary rounded border-primary border-1">
+                    <span class="material-icons  fz-1 ">
+                      shopping_cart
+                    </span>
+                     加入購物車</button>
+                  </div>
                 </div>
               </div>
             </div>
+          </div>
+            </div>
+          </div>
+            <!-- 商品CARD end -->
+          <div class="container">
+            <h3 class="titleEffect--border-bottom-bold">
+              <span>購物小叮嚀</span>
+              </h3>
+                <ul class="mt-3">
+                <li  class="titleEffect">
+                  <span> 取件方式 </span></li>
+                <li class="mt-1 fz-0 text-primary">門市取件</li>
+                <li class="mt-1 fz-0 text-primary">低溫宅配</li>
+              </ul>
+                <ul class="mt-3">
+                <li  class="titleEffect">
+                  <span> 付款方式 </span></li>
+                <li class="mt-1 fz-0 text-primary">門市付款</li>
+                <li class="mt-1 fz-0 text-primary">線上刷卡</li>
+                <li class="mt-1 fz-0 text-primary">轉帳或匯款</li>
+              </ul>
+                <ul class="mt-3">
+                <li  class="titleEffect">
+                  <span> 運送方式 </span></li>
+                <li class="mt-1 fz-0 text-primary">黑貓宅急便（低溫配送）</li>
+                <li class="mt-1 fz-0 text-primary">白貓宅急便（低溫配送）</li>
+              </ul>
+                <ul class="mt-3">
+                <li  class="titleEffect">
+                  <span> 退換貨方式 </span></li>
+                <li class="mt-1 fz-0 text-primary"> 門市現場訂購商品者不適用於7天鑑賞期，不接受退換貨機制</li>
+                <li class="mt-1 fz-0 text-primary"> 宅配運送過程如若碰撞造成損毀請當日撥打電話連繫客服，逾期恕不受理</li>
+                <li class="mt-1 fz-0 text-primary"> 如若遇到不可抗力之因素造成的延遲到貨，恕無法接受退貨</li>
+                <li class="mt-1 fz-0 text-primary"> 恕不接受因訂錯商品或商品已拆封之退換貨</li>
+                 <li class="mt-1 fz-0 text-primary"> 如超過13:00下訂，則於隔日製作</li>
+              </ul>
           </div>
           </div>
           <!-- Alert元件 start -->
@@ -50,6 +140,8 @@
 import Alert from '@/components/Alert.vue';
 // 讀取畫面
 import Loading from '@/components/Loading.vue';
+// 產品圖片輪播
+import SwiperOneProductImg from '@/components/SwiperOneProductImg.vue';
 
 export default {
   components: {
@@ -57,6 +149,8 @@ export default {
     Alert,
     // 讀取畫面
     Loading,
+    // 產品圖片輪播
+    SwiperOneProductImg,
   },
   data() {
     return {
@@ -67,6 +161,7 @@ export default {
       alertStatus: false,
       // 讀取畫面
       isLoading: false,
+      num: 1,
     };
   },
   methods: {
@@ -122,6 +217,15 @@ export default {
         });
     },
   },
+  watch: {
+    num() {
+      if (this.num < 0) {
+        this.num = 0;
+      } else if (this.num > 999) {
+        this.num = 999;
+      }
+    },
+  },
   created() {
     // console.log(this.$route.params.id);
   },
@@ -132,3 +236,55 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.banner{
+  background: url('https://images.unsplash.com/photo-1534621735346-1de48541fa12?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+}
+.product-input{
+  width: 76px;
+  height: 76px;
+    padding: 0;
+    border-radius: 5px 0 0 5px;
+    border-width: 1px;
+  #editing-view-port{
+    div{
+      height: 80px;
+    }
+  }
+}
+  //input
+  // 消除number預設樣式
+  input[type=number] {
+    -moz-appearance:textfield;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+    .btn_input--top{
+      position: absolute;
+      top: 0px;
+      border-left: 0;
+      border-radius: 0 5px 0 0;
+      border-color: black;
+    }
+    .btn_input--bottom{
+      position: absolute;
+      top: 38px;
+      border-left: 0;
+      border-top: 0;
+      border-radius: 0  0 5px 0;
+      border-color: black;
+      padding-top: .4375rem;
+    }
+    .pe-38{
+      padding-right:34px;
+    }
+    .py-38{
+      padding-top: 25px;
+      padding-bottom: 25px;
+    }
+</style>

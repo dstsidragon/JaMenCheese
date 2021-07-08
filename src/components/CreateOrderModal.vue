@@ -77,7 +77,7 @@
                 id="address"
                 ref="address"
                 name="地址"
-                type="tel"
+                type="text"
                 class="form-control"
                 :class="{ 'is-invalid': errors['地址'] }"
                 placeholder="請輸入 地址"

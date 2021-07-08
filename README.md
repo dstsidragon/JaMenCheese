@@ -37,9 +37,13 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 #產品頁
 最愛收藏
 商品價格千分號
+V熱賣商品
 
 #產品詳細頁
-返回
+加入收藏
+加入購物車
+立即購買
+你可能會喜歡
 
 #購物車
 

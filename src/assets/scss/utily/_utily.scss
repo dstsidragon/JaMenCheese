@@ -102,6 +102,9 @@ box-shadow: -8px -5px 25px #333333;
   .w_100{
     width: 100%;
   }
+  .w-80{
+    width: 80%;
+  }
   .w_50{
     width: 50%;
   }
@@ -110,6 +113,9 @@ box-shadow: -8px -5px 25px #333333;
   // 顏色
   .bg-veryGray{
     background-color: #fdfdfd !important;
+  }
+  .bg-lightPrimary{
+    background-color:rgb(207, 154, 89);
   }
 
   //圖片
@@ -149,3 +155,90 @@ box-shadow: -8px -5px 25px #333333;
       &:after{right: 100%;}
     }
   }
+  .titleEffect--border-bottom-bold{
+    padding: 0.2em;
+    background: linear-gradient(transparent 70%, #D11E35 70%);
+  }
+  .titleEffect--border-bottom-x{
+    text-align: center;
+  span{
+    position: relative;
+    display: inline-block;
+    padding: 0 0.8em;
+    &:before{
+     position: absolute;
+     content: '';
+     top:0;
+     right:0.2em;
+     width: 0.2em;
+     height:100%;
+     border: solid 1px black;
+     border-left: none;
+    }
+    &:after{
+     position: absolute;
+     content: '';
+     top:0;
+     left:0;
+     width: 0.2em;
+     height:100%;
+     border: solid 1px black;
+     border-right: none;
+    }
+  }
+  }
+  .titleEffect--border-bottom-down{
+    text-align: center;
+    span{
+       position: relative;
+       display: inline-block;
+       padding-bottom:0.5em;
+       border-bottom: 1px solid black;
+      &:before,&:after{
+        position: absolute;
+       top: 100%;
+       left:50%;
+       transform:translateX(-50%);
+       content: '';
+       border: 10px solid transparent;
+      }
+      &:before{
+        border-top: 10px solid black;
+      }
+      &:after{
+       margin-top: -1px;
+       border-top: 10px solid white;
+      }
+    }
+  }
+  .titleEffect--border-bottom-left{
+    position: relative;
+    padding-left: 0.7em;
+    &:after {
+       position: absolute;
+       top: 50%;
+       left:0;
+       transform:translateY(-50%);
+       content: '';
+       width: 5px;
+       height:1em;
+       background-color: #D11E35;
+    }
+  }
+  .titleEffect--ticket{
+    position: relative;
+    color: white;
+    padding:0.5em 0.5em 0.5em 1.4em;
+    background-color: #D11E35;
+    &:after {
+        position: absolute;
+        top: 50%;
+        left:0;
+        transform:translateY(-50%);
+        content: '';
+        width: 18px;
+        height:4px;
+        background-color:white;
+    }
+  }
+

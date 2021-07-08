@@ -7,12 +7,6 @@
     translate-middle " to="/">
     <img class="nav-logo-img"
     :src="scrollLogo" alt="logo"></router-link>
-    <!-- <router-link class="navbar-brand position-absolute  nav-logo  start-50
-    translate-middle " to="/">
-    <img class="nav-logo-img"
-    :src="scrollLogo"
-    src="@/assets/images/logo-white.svg" alt="logo"></router-link> -->
-    <!-- LOGO end-->
 
     <!-- 漢堡選單 start-->
     <button v-if="btnHamStatus" class="navbar-toggler " :class="navBarColor"
@@ -41,15 +35,19 @@
         </li>
         <li >
           <router-link class="nav-link fw-bold nav-drown" to="/carts"
-           @click="closeHamburger"  :class="navBarColor">購物車列表</router-link>
+           @click="closeHamburger"  :class="navBarColor">購物車</router-link>
         </li>
         <li>
           <router-link class="nav-link fw-bold nav-drown" to="/orders"
-          @click="closeHamburger"  :class="navBarColor">訂單列表</router-link>
+          @click="closeHamburger"  :class="navBarColor">訂單搜尋</router-link>
         </li>
         <li >
           <router-link class="nav-link fw-bold nav-drown" to="/admin"
-           :class="navBarColor">後台</router-link>
+           :class="navBarColor"  @click="closeHamburger">後台</router-link>
+        </li>
+        <li >
+          <router-link class="nav-link fw-bold nav-drown" to="/q&a"
+           :class="navBarColor" @click="closeHamburger">常見問題</router-link>
         </li>
       </ul>
       <span >
@@ -60,7 +58,8 @@
         <li >
           <a class="nav-link fw-bold nav-drown "  :class="navBarColor"  href="#" v-if="loginStatus"
           @click.prevent="openiSgnOutUserModal">登出</a>
-          <router-link  class="nav-link fw-bold nav-drown" href="#" v-else to="/Login">
+          <router-link  class="nav-link fw-bold nav-drown" :class="navBarColor"
+            href="#" v-else to="/Login">
           登入</router-link>
         </li>
       </ul>
@@ -128,7 +127,7 @@ export default {
       this.navBarColor = 'text-white';
       this.btnHamStatus = !this.btnHamStatus;
       // 切換logo
-      this.scrollLogo = 'img/logo-white.ff8e3e0b.svg';
+      this.scrollLogo = 'https://raw.githubusercontent.com/dstsidragon/JaMenCheese/0779b76a828a44aab8ebd1518da2d8dc8c2926d7/src/assets/images/logo-white.svg';
     },
     // closeHamBtn
     closeHamBtn() {
@@ -235,7 +234,7 @@ export default {
           // NAVBAR 顏色
           this.navBarColor = 'text-white';
           // 切換logo
-          this.scrollLogo = 'img/logo-white.ff8e3e0b.svg';
+          this.scrollLogo = 'https://raw.githubusercontent.com/dstsidragon/JaMenCheese/0779b76a828a44aab8ebd1518da2d8dc8c2926d7/src/assets/images/logo-white.svg';
         } else if (bodyh < 5 && this.btnHamStatus) {
           // navbar 變背景顏色
           this.navBarClass = 'bg-transparent';

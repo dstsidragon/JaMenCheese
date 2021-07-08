@@ -112,12 +112,13 @@
         </div>
         <!-- 分頁 end -->
 
-        <!-- 熱賣商品 -->
-        <h3 class="titleEffect pt-5"><span>熱賣商品</span></h3>
-        <HotProductSwiper :item="productData"/>
       </div>
 
       </div>
+      <hr>
+      <!-- 熱賣商品 -->
+        <h3 class="titleEffect pt-5"><span>熱賣商品</span></h3>
+        <HotProductSwiper :products="productData" @view-one-product="viewOneProduct"/>
     </div>
 
     <!-- Alert元件 start -->

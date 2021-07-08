@@ -29,6 +29,10 @@ const routes = [
         path: '/product/:id',
         component: () => import('../views/front/product.vue'),
       },
+      {
+        path: '/q&a',
+        component: () => import('../views/front/QA.vue'),
+      },
     ],
   },
   {
