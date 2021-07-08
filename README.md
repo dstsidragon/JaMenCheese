@@ -28,6 +28,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 前台
 
 #首頁
+footer
 
 #navBar
 購物車小物件
@@ -37,15 +38,19 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 #產品頁
 最愛收藏
 商品價格千分號
-V熱賣商品
+V熱賣商品  >> 需check取得的資料是all還是單一頁
 
 #產品詳細頁
 加入收藏
-加入購物車
-立即購買
-你可能會喜歡
+V加入購物車
+立即購買  >>加入購物車>>前往購物車頁面
+V你可能會喜歡
 
 #購物車
+結帳進度條
+購物車清單 >> 資料填寫  >> 付款
+套用優惠券
+
 
 
 後台

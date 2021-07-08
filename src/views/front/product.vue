@@ -1,44 +1,51 @@
 <template>
-          <div class="mt_navbar">
-            <!-- 商品CARD start -->
-          <div class="mb-3 banner py-4">
-            <div class="container">
-              <div class="card" >
-            <div class="row g-0">
-              <!-- 熱賣商品輪播 -->
-              <div class="col-md-6">
-              <SwiperOneProductImg  :product="product"/>
-              </div>
-                <!-- <img class="object-fit col-md-4" style="height:360px;weight:100%;"
+  <div class="mt_navbar">
+    <!-- 商品CARD start -->
+    <div class="mb-3 banner py-4">
+      <div class="container">
+        <div class="card">
+          <div class="row g-0">
+            <!-- 熱賣商品輪播 -->
+            <div class="col-md-6">
+              <SwiperOneProductImg :product="product" />
+            </div>
+            <!-- <img class="object-fit col-md-4" style="height:360px;weight:100%;"
                 :src="product.imageUrl" /> -->
-              <div class="col-md-6 ">
-                <div class="card-body ">
-                  <!-- 標題 -->
-                  <h3 class="card-title bg-primary text-white rounded py-2 fz-3
-                  ">{{ product.title }}</h3>
-                  <!-- 商品描述 -->
-                  <p class="card-text text-start titleEffect--border-bottom-x
-                  d-flex justify-content-center">
-                    <span >{{ product.description }}</span></p>
-                  <br>
-                  <!-- 商品內容 -->
-                  <p class="card-text text-start fz-0 " >
-                    <span v-html="product.content"></span>
-                    </p>
-                    <!-- 金額 -->
-                  <span class="row text-center">
-                    <span class="text-decoration-line-through col-4">
-                      原價
-                      <em>{{ product.origin_price }}</em>
-                      元
-                    </span>
-                    <span class="text-danger col-8 fs-2">
-                      特價
-                      <em>{{ product.price }}</em>
-                      元
-                    </span>
+            <div class="col-md-6 ">
+              <div class="card-body ">
+                <!-- 標題 -->
+                <h3
+                  class="card-title bg-primary text-white rounded py-2 fz-3
+                  "
+                >
+                  {{ product.title }}
+                </h3>
+                <!-- 商品描述 -->
+                <p
+                  class="card-text text-start titleEffect--border-bottom-x
+                  d-flex justify-content-center"
+                >
+                  <span>{{ product.description }}</span>
+                </p>
+                <br />
+                <!-- 商品內容 -->
+                <p class="card-text text-start fz-0 ">
+                  <span v-html="product.content"></span>
+                </p>
+                <!-- 金額 -->
+                <span class="row text-center">
+                  <span class="text-decoration-line-through col-4">
+                    原價
+                    <em>{{ product.origin_price }}</em>
+                    元
                   </span>
-                  <!-- <div class="d-flex justify-content-around align-items-center">
+                  <span class="text-danger col-8 fs-2">
+                    特價
+                    <em>{{ product.price }}</em>
+                    元
+                  </span>
+                </span>
+                <!-- <div class="d-flex justify-content-around align-items-center">
                     <span class="position-relative pe-38" >
                     <input type="number" ref="inputNumber" class="product-input fz-3 text-center"
                       v-model="num"
@@ -55,84 +62,126 @@
                     <button class="btn btn-danger fz-1 py-38"
                     @click=" num -- ">立即購買</button>
                   </div> -->
-                  <div class="row justify-content-around">
-                    <span class="position-relative col-4" >
+                <div class="row justify-content-around">
+                  <span class="position-relative col-4">
                     <!-- input -->
-                    <input type="number" ref="inputNumber" class="product-input fz-3 text-center"
+                    <input
+                      type="number"
+                      ref="inputNumber"
+                      class="product-input fz-3 text-center"
                       v-model="num"
-                      oninput="if(value<0)value=0;if(value>999)value=999">
-                      <span>
-                    <button  class="btn  text-danger fz-1 btn_input--top"
-                     @click=" num ++ ">+</button>
-                    <button class="btn  text-danger fz-1 btn_input--bottom"
-                    @click=" num -- ">-</button>
-                      </span>
+                      oninput="if(value<0)value=0;if(value>999)value=999"
+                    />
+                    <span>
+                      <button class="btn  text-danger fz-1 btn_input--top" @click="num++">+</button>
+                      <button class="btn  text-danger fz-1 btn_input--bottom" @click="num--">
+                        -
+                      </button>
+                    </span>
                   </span>
-                    <button class="btn btn-primary col-6 "
-                    @click=" num -- ">立即購買</button>
-                  <button  class=" d-flex justify-content-center align-items-center   col-5 mt-2
+                  <button class="btn btn-primary col-6 " @click="num--">立即購買</button>
+                  <button
+                    class=" d-flex justify-content-center align-items-center   col-5 mt-2
                   bg-white text-primary rounded border-primary border-1"
-                     >
-                     <span class="material-icons  fz-1 ">
-                      favorite_border
+                  @click="addFavorite"
+                  >
+                    <span v-if="myFavorite.includes(id)"
+                    class="material-icons text-danger">
+                      favorite
                       </span>
-                    <span>加入收藏</span></button>
-                  <button  class="d-flex justify-content-center align-items-center fz-1 col-5 mt-2
-                  bg-white text-primary rounded border-primary border-1">
-                    <span class="material-icons  fz-1 ">
+                    <span v-else
+                    class="material-icons  fz-1 ">
+                      favorite_border
+                    </span>
+                    <span>加入收藏</span>
+                  </button>
+                  <button
+                    class="d-flex justify-content-center align-items-center fz-1 col-5 mt-2
+                  bg-white  text-primary rounded border-primary border-1"
+                  @click="addCart"
+                  >
+                    <span class="material-icons  fz-1 "
+                     :class="{ 'd-none': loadingStatue.addCart!== '' }">
                       shopping_cart
                     </span>
-                     加入購物車</button>
-                  </div>
+                    <span
+                    :class="{ 'd-none': loadingStatue.addCart== '' }"
+                    class="spinner-grow spinner-grow-sm"
+                    role="status"
+                    aria-hidden="true"
+                  ></span>
+                  <span
+                    :class="{ 'd-none': loadingStatue.addCart!== '' }"
+                    class="visually-hidden"
+                  >
+                    Loading...</span
+                  >
+                    加入購物車
+                  </button>
                 </div>
               </div>
             </div>
           </div>
-            </div>
-          </div>
-            <!-- 商品CARD end -->
-          <div class="container">
-            <h3 class="titleEffect--border-bottom-bold">
-              <span>購物小叮嚀</span>
-              </h3>
-                <ul class="mt-3">
-                <li  class="titleEffect">
-                  <span> 取件方式 </span></li>
-                <li class="mt-1 fz-0 text-primary">門市取件</li>
-                <li class="mt-1 fz-0 text-primary">低溫宅配</li>
-              </ul>
-                <ul class="mt-3">
-                <li  class="titleEffect">
-                  <span> 付款方式 </span></li>
-                <li class="mt-1 fz-0 text-primary">門市付款</li>
-                <li class="mt-1 fz-0 text-primary">線上刷卡</li>
-                <li class="mt-1 fz-0 text-primary">轉帳或匯款</li>
-              </ul>
-                <ul class="mt-3">
-                <li  class="titleEffect">
-                  <span> 運送方式 </span></li>
-                <li class="mt-1 fz-0 text-primary">黑貓宅急便（低溫配送）</li>
-                <li class="mt-1 fz-0 text-primary">白貓宅急便（低溫配送）</li>
-              </ul>
-                <ul class="mt-3">
-                <li  class="titleEffect">
-                  <span> 退換貨方式 </span></li>
-                <li class="mt-1 fz-0 text-primary"> 門市現場訂購商品者不適用於7天鑑賞期，不接受退換貨機制</li>
-                <li class="mt-1 fz-0 text-primary"> 宅配運送過程如若碰撞造成損毀請當日撥打電話連繫客服，逾期恕不受理</li>
-                <li class="mt-1 fz-0 text-primary"> 如若遇到不可抗力之因素造成的延遲到貨，恕無法接受退貨</li>
-                <li class="mt-1 fz-0 text-primary"> 恕不接受因訂錯商品或商品已拆封之退換貨</li>
-                 <li class="mt-1 fz-0 text-primary"> 如超過13:00下訂，則於隔日製作</li>
-              </ul>
-          </div>
-          </div>
-          <!-- Alert元件 start -->
-          <Alert class="alert-position"  v-if="alertMessage"
-           :message="alertMessage"
-          :status="alertStatus" />
-          <!-- Alert元件 end -->
-          <!-- 讀取畫面 start-->
-          <Loading :isVueLoading='isLoading' />
-          <!-- 讀取畫面 end -->
+        </div>
+      </div>
+    </div>
+    <!-- 商品CARD end -->
+    <div class="container">
+      <h3 class="titleEffect--border-bottom-bold">
+        <span>購物小叮嚀</span>
+      </h3>
+      <ul class="mt-3">
+        <li class="titleEffect">
+          <span> 取件方式 </span>
+        </li>
+        <li class="mt-1 fz-0 text-primary">門市取件</li>
+        <li class="mt-1 fz-0 text-primary">低溫宅配</li>
+      </ul>
+      <ul class="mt-3">
+        <li class="titleEffect">
+          <span> 付款方式 </span>
+        </li>
+        <li class="mt-1 fz-0 text-primary">門市付款</li>
+        <li class="mt-1 fz-0 text-primary">線上刷卡</li>
+        <li class="mt-1 fz-0 text-primary">轉帳或匯款</li>
+      </ul>
+      <ul class="mt-3">
+        <li class="titleEffect">
+          <span> 運送方式 </span>
+        </li>
+        <li class="mt-1 fz-0 text-primary">黑貓宅急便（低溫配送）</li>
+        <li class="mt-1 fz-0 text-primary">白貓宅急便（低溫配送）</li>
+      </ul>
+      <ul class="mt-3">
+        <li class="titleEffect">
+          <span> 退換貨方式 </span>
+        </li>
+        <li class="mt-1 fz-0 text-primary">
+           門市現場訂購商品者不適用於7天鑑賞期，不接受退換貨機制
+        </li>
+        <li class="mt-1 fz-0 text-primary">
+           宅配運送過程如若碰撞造成損毀請當日撥打電話連繫客服，逾期恕不受理
+        </li>
+        <li class="mt-1 fz-0 text-primary">
+           如若遇到不可抗力之因素造成的延遲到貨，恕無法接受退貨
+        </li>
+        <li class="mt-1 fz-0 text-primary"> 恕不接受因訂錯商品或商品已拆封之退換貨</li>
+        <li class="mt-1 fz-0 text-primary"> 如超過13:00下訂，則於隔日製作</li>
+      </ul>
+    </div>
+  </div>
+  <hr />
+  <!-- 熱賣商品 -->
+  <h3 class="titleEffect pt-5">
+    <span>你可能會喜歡</span>
+  </h3>
+  <MaybeYouLike :category="product.category"  @view-one-product="viewOneProduct"/>
+  <!-- Alert元件 start -->
+  <Alert class="alert-position" v-if="alertMessage" :message="alertMessage" :status="alertStatus" />
+  <!-- Alert元件 end -->
+  <!-- 讀取畫面 start-->
+  <Loading :isVueLoading="isLoading" />
+  <!-- 讀取畫面 end -->
 </template>
 
 <script>
@@ -142,6 +191,8 @@ import Alert from '@/components/Alert.vue';
 import Loading from '@/components/Loading.vue';
 // 產品圖片輪播
 import SwiperOneProductImg from '@/components/SwiperOneProductImg.vue';
+// 可能會喜歡的商品
+import MaybeYouLike from '@/components/MaybeYouLike.vue';
 
 export default {
   components: {
@@ -151,6 +202,8 @@ export default {
     Loading,
     // 產品圖片輪播
     SwiperOneProductImg,
+    // 可能會喜歡的商品
+    MaybeYouLike,
   },
   data() {
     return {
@@ -162,6 +215,12 @@ export default {
       // 讀取畫面
       isLoading: false,
       num: 1,
+      // 讀取狀態
+      loadingStatue: {
+        // 加到購物車鈕
+        addCart: '',
+      },
+      myFavorite: this.getLoCalStorage('myFavorite') || [],
     };
   },
   methods: {
@@ -216,6 +275,108 @@ export default {
           );
         });
     },
+    // 單一商品詳細內容
+    viewOneProduct(item) {
+      // 跳轉頁面  好像無法本頁重複push 所以先切到產品頁再切回來
+      this.$router.push('/products');
+      setTimeout(
+        () => {
+          this.$router.push(`/product/${item.id}`);
+        },
+        100,
+      );
+      setTimeout(
+        () => {
+          this.$router.go(`/product/${item.id}`);
+        },
+        200,
+      );
+    },
+    // 加入購物車
+    addCart() {
+      this.loadingStatue.addCart = this.id;
+      // console.log(id)
+      // console.log(qty)
+      const product = {
+        data: {
+          product_id: this.id,
+          qty: parseInt(this.num, 10),
+        },
+      };
+      // console.log(product)
+      this.$http
+        .post(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`, product)
+        .then((res) => {
+          // console.log(res);
+          // 如果成功就執行
+          if (res.data.success) {
+            this.loadingStatue.addCart = '';
+            // alert(`${res.data.message}!`);
+
+            // alert 元件顯示
+            this.alertMessage = `${res.data.message}!`;
+            this.alertStatus = true;
+            setTimeout(
+              () => {
+                this.alertMessage = '';
+                this.alertStatus = false;
+              }, 2000,
+            );
+
+            // 刷新購物車
+            // this.getCartList();
+          } else {
+            // console.log(res.data.message)
+            // alert(`${res.data.message}!`);
+
+            // alert 元件顯示
+            this.alertMessage = `${res.data.message}!`;
+            this.alertStatus = false;
+            setTimeout(
+              () => {
+                this.alertMessage = '';
+                this.alertStatus = false;
+              }, 2000,
+            );
+          }
+        })
+        .catch((err) => {
+          // console.log(err);
+
+          // alert 元件顯示
+          this.alertMessage = err.data.message;
+          this.alertStatus = false;
+          setTimeout(
+            () => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000,
+          );
+        });
+    },
+    // 加入最愛
+    addFavorite() {
+      console.log(this.myFavorite);
+      // console.log(this.id);
+      // 如果已經在最愛 就刪除最愛  如果沒有 就加到最愛
+      if (this.myFavorite.includes(this.id)) {
+        this.myFavorite.splice(this.myFavorite.indexOf(this.id), 1);
+      } else {
+        this.myFavorite.push(this.id);
+      }
+      console.log(this.myFavorite);
+
+      // 儲存myFavorite資料到LocalStorage
+      this.setLoCalStorage('myFavorite', this.myFavorite);
+    },
+    // 將資料存到loCalStorage
+    setLoCalStorage(name, item) {
+      localStorage.setItem(name, JSON.stringify(item));
+    },
+    // 取得loCalStorage
+    getLoCalStorage(name) {
+      return JSON.parse(localStorage.getItem(name));
+    },
   },
   watch: {
     num() {
@@ -225,9 +386,6 @@ export default {
         this.num = 999;
       }
     },
-  },
-  created() {
-    // console.log(this.$route.params.id);
   },
   mounted() {
     this.isLoading = true;

@@ -1,0 +1,166 @@
+<template>
+  <Swiper
+    :effect="'coverflow'"
+    :grabCursor="true"
+    :centeredSlides="true"
+    :slidesPerView="'auto'"
+    :coverflowEffect="{
+      rotate: 50,
+      stretch: 0,
+      depth: 100,
+      modifier: 1,
+      slideShadows: true
+    }"
+    class="mySwiper"
+  >
+    <SwiperSlide v-for="(item, i) in filterProducts" :key="i"
+    @click.prevent="$emit('view-one-product',item)"
+    >
+    <div class="overflow-hidden" >
+      <img :src="item.imageUrl" class="object-fit swiper-img img--scale "/>
+      </div>
+      <span>
+        <p class="bg-primary text-white p-1 fs-2 m-0">{{item.title}}</p>
+        <p class="bg-lightPrimary text-white p-1 m-0">詳細內容</p>
+      </span>
+      <div class="bg-info text-white p-1 hotProduct-icon ">{{category}}</div>
+      </SwiperSlide>
+  </Swiper>
+</template>
+<script>
+// Import Swiper Vue.js components
+import { Swiper, SwiperSlide } from 'swiper/vue';
+
+// Import Swiper styles
+import 'swiper/swiper.scss';
+
+import 'swiper/components/effect-coverflow/effect-coverflow.min.css';
+
+// import Swiper core and required modules
+import SwiperCore, { EffectCoverflow } from 'swiper/core';
+
+// install Swiper modules
+SwiperCore.use([EffectCoverflow]);
+
+export default {
+  components: {
+    Swiper,
+    SwiperSlide,
+  },
+  props: [
+    'category',
+  ],
+  data() {
+    return {
+      productsData: '',
+      filterProducts: [],
+      filterSameCategory: '',
+    };
+  },
+  watch: {
+    category() {
+      // 隨機抓出4筆資料
+      setTimeout(
+        () => {
+          this.getSameCategoryProduct(4);
+        },
+        500,
+      );
+    },
+  },
+  methods: {
+    getRandomNumber(n) {
+      return Math.floor(Math.random() * n);
+    },
+    // 取得全部商品列表
+    getProducts() {
+      this.$http
+        .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`)
+        .then((res) => {
+          // console.log(res);
+          // 如果成功就執行
+          if (res.data.success) {
+            // console.log(res);
+            this.productsData = res.data.products;
+          } else {
+            // alert('驗證錯誤，請重新登入!');
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+        });
+    },
+    getSameCategoryProduct(num) {
+      // console.log(this.productsData);
+      // console.log(this.category);
+
+      this.filterSameCategory = this.productsData.filter(
+        (item) => item.category === this.category,
+      );
+      // console.log(this.filterSameCategory);
+      // 如果陣列商品不足，就以當前陣列長度為基準
+      const productNum = this.filterSameCategory.length
+       < num ? this.filterSameCategory.length : num;
+      // console.log(productNum);
+      // 宣告 set 陣列
+      const prdSet = new Set([]);
+      // 取出指定 不重複的陣列數量
+      for (let i = 0; prdSet.size < productNum; i += 1) {
+        const prd = this.getRandomNumber(productNum);
+        prdSet.add(prd);
+        // console.log(prd, prdSet);
+      }
+      // 將取出的數字 帶入資料內  push到陣列
+      prdSet.forEach((i) => {
+        this.filterProducts.push(this.filterSameCategory[i]);
+      });
+      // console.log(this.filterProducts);
+    },
+  },
+  mounted() {
+    this.getProducts();
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+}
+
+.swiper-container {
+  width: 100%;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+
+.swiper-slide {
+  background-position: center;
+  background-size: cover;
+  width: 300px;
+  height: 300px;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 215px;
+}
+.hotProduct-icon{
+  position: absolute;
+  top: 0;
+  left: 5px;
+}
+
+</style>
