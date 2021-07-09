@@ -26,6 +26,11 @@
         <span> Q2. 多少錢免運費？ </span>
       </li>
       <li class="mt-1 fz-1 text-primary">
+        目前開幕期間，全館免運費!
+      </li><li class="mt-1 fz-1 text-primary">
+        免運費活動過後，費用計算如下:
+      </li>
+      <li class="mt-1 fz-1 text-primary">
          台灣本島凡訂購$2500（含）以內，
         運費$180；訂購$3500（含）以內，運費$150；訂購$4500（含）以內，免運費
       </li>
@@ -48,7 +53,7 @@
         <span> Q4. 可以寄便利商店店到店嗎？ </span>
       </li>
       <li class="mt-1 fz-1 text-primary">
-        實際到貨時間還是要依照當區物流司機安排的路線為主唷！
+        目前已門市取貨及宅配服務為主，尚無法寄送便利商店店到店唷！
       </li>
     </ul>
     <ul class="mt-3">

@@ -79,7 +79,7 @@
                       </button>
                     </span>
                   </span>
-                  <button class="btn btn-primary col-6 " @click="num--">立即購買</button>
+                  <button class="btn btn-primary col-6 " @click="buyNow">立即購買</button>
                   <button
                     class=" d-flex justify-content-center align-items-center   col-5 mt-2
                   bg-white text-primary rounded border-primary border-1"
@@ -353,6 +353,15 @@ export default {
             }, 2000,
           );
         });
+    },
+    // 立即購買
+    buyNow() {
+      // 加入購物車
+      this.addCart();
+      setTimeout(() => {
+        // 前往購物車頁面
+        this.$router.push('/carts');
+      }, 500);
     },
     // 加入最愛
     addFavorite() {
