@@ -10,7 +10,7 @@
               <kinesis-element :strength="30">
                 -勾起你心中的餓
               </kinesis-element>
-                <div class="d-flex justify-content-center  pt-4">
+                <div class="d-flex justify-content-center mt-5">
                   <router-link  class="btn btn-primary px-2 d-flex
                   justify-content-center align-items-center"  href="#"
           to="/products" >

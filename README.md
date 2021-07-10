@@ -40,12 +40,15 @@ footer
 
 路由
 最愛收藏
+加入收藏刷新narbar
 商品價格千分號
 V熱賣商品  >> 需check取得的資料是all還是單一頁
 
 #產品詳細頁
 V加入收藏
+加入收藏刷新narbar
 V加入購物車
+加入購物車刷新narbar
 V你可能會喜歡
 V立即購買  >>加入購物車>>前往購物車頁面
 
@@ -59,12 +62,16 @@ V手機板 金額 按鈕置底
 BTN-繼續購物
 更改數量的按鈕
 滿版背景
+
 #填寫付款資料
 拆成元件
 BTN-繼續購物
+V備註欄位藏值
+V拆成元件
+V運費計算
 
 #結帳頁面
-拆成元件
+V拆成元件
 BTN-繼續購物
 
 後台
@@ -179,3 +186,30 @@ import DeleteAll from '@/components/DeleteAll.vue';
                 @click='this.$refs.deleteAllModal.openModal();'
 
 //////////
+
+
+data 
+          payment_method: '',
+          
+        <!-- 付款方式 -->
+        <div class="col-md-6">
+          <label for="pay" class="form-label">付款方式:</label>
+          <Field
+            id="pay"
+            ref="pay"
+            name="付款方式"
+            as="select"
+            class="form-control"
+            :class="{ 'is-invalid': errors['付款方式'] }"
+            rules="required"
+            v-model="userData.user.payment_method"
+          >
+            <option value="" disabled>點擊選取分類</option>
+            <option>WebATM</option>
+            <option>ATM</option>
+            <option>Credit</option>
+            <option>ApplePay</option>
+            <option>GooglePay</option>
+          </Field>
+          <error-message name="付款方式" class="invalid-feedback"></error-message>
+        </div>

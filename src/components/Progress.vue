@@ -40,10 +40,10 @@
         <div class=" text-primary fz-0">商品確認</div>
       </li>
       <li class="col-3 pe-sm-2 pe-md-4 pe-lg-5 pe-xl-7">
-        <div v-if="cartstep > 1" class=" text-primary fz-0">運送&付款</div>
+        <div v-if="cartstep > 1" class=" text-primary fz-0">填寫資料</div>
       </li>
       <li class="  col-3 ps-2 ps-ssm-3 ps-sm-4 ps-md-5 ps-xl-9">
-        <div v-if="cartstep > 2" class=" text-primary fz-0">確認明細</div>
+        <div v-if="cartstep > 2" class=" text-primary fz-0">訂單確認</div>
       </li>
       <li class="col-3 text-end pe-2">
         <div v-if="cartstep > 3" class=" text-primary fz-0">完成</div>

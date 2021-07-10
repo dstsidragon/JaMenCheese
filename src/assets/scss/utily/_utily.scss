@@ -135,6 +135,11 @@ box-shadow: -8px -5px 25px #333333;
     //   object-fit: cover;
     // }
   }
+  .object-sm-fit{
+    @media (min-width:400px) { 
+      object-fit: cover;
+    }
+  }
   //圖片透明 文字不透明
   .bg-img-transparent{
     background:rgba(0,0,0,0.6 );

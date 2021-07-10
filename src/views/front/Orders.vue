@@ -52,7 +52,9 @@
                   <button class="btn btn-success me-2" @click="viewSeller">
                     聯絡賣家
                   </button>
-                  <button class="btn btn-danger" @click="checkOut">付款</button>
+                  <button v-if="!item.is_paid" class="btn btn-danger"
+                  @click="this.$router.push(`/payment/${item.id}`)"
+                  >付款</button>
                 </li>
               </ul>
             </div>

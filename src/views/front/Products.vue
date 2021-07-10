@@ -267,7 +267,7 @@ export default {
               () => {
                 this.alertMessage = '';
                 this.alertStatus = false;
-              }, 2000,
+              }, 1000,
             );
 
             // 刷新購物車
@@ -283,7 +283,7 @@ export default {
               () => {
                 this.alertMessage = '';
                 this.alertStatus = false;
-              }, 2000,
+              }, 1000,
             );
           }
         })
@@ -297,7 +297,7 @@ export default {
             () => {
               this.alertMessage = '';
               this.alertStatus = false;
-            }, 2000,
+            }, 1000,
           );
         });
     },

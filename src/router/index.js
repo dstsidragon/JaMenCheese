@@ -20,10 +20,24 @@ const routes = [
       {
         path: '/carts',
         component: () => import('../views/front/Carts.vue'),
-      },
-      {
-        path: '/order',
-        component: () => import('../views/front/Order.vue'),
+        children: [
+          {
+            path: '',
+            component: () => import('../views/front/CartsIndex.vue'),
+          },
+          {
+            path: '/order',
+            component: () => import('../views/front/Order.vue'),
+          },
+          {
+            path: '/payment/:orderId',
+            component: () => import('../views/front/Payment.vue'),
+          },
+          {
+            path: '/finishpay',
+            component: () => import('../views/front/FinishPay.vue'),
+          },
+        ],
       },
       {
         path: '/orders',
