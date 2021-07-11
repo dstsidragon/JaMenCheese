@@ -38,7 +38,7 @@ footer
 
 #產品頁
 
-路由
+路由 >>麵包屑元件
 最愛收藏
 加入收藏刷新narbar
 商品價格千分號
@@ -53,26 +53,36 @@ V你可能會喜歡
 V立即購買  >>加入購物車>>前往購物車頁面
 
 
+#幸運輪盤
+畫布元件
+
 #購物車
 結帳進度條  可以加上完成時間
-拆成元件
+V拆成元件
 V購物車清單 
 V套用優惠券
 V手機板 金額 按鈕置底
-BTN-繼續購物
+VBTN-繼續購物
 更改數量的按鈕
 滿版背景
 
 #填寫付款資料
-拆成元件
-BTN-繼續購物
+V拆成元件
+VBTN-繼續購物
 V備註欄位藏值
 V拆成元件
-V運費計算
+新增選取 自取或宅配
 
 #結帳頁面
 V拆成元件
-BTN-繼續購物
+VBTN-繼續購物
+取貨方式
+運費計算
+賣場其他商品
+
+
+#Q&A
+手風琴元件
 
 後台
 
@@ -97,25 +107,6 @@ Modal 細節欄位
 小功能
 千分符號
 
-
-
-
-前台
-
-結帳付款
-[API]: /api/:api_path/pay/:order_id
-[方法]: post
-[參數]:
-	@api_path: 'thisismycourse2'
-	@order_id: 訂單編號
-[成功回傳]:
-	{
-    "success": true,
-    "message": "付款完成"
-  }
-
-  
-        "payment_method": "credit_card",
 
 
 
@@ -188,28 +179,3 @@ import DeleteAll from '@/components/DeleteAll.vue';
 //////////
 
 
-data 
-          payment_method: '',
-          
-        <!-- 付款方式 -->
-        <div class="col-md-6">
-          <label for="pay" class="form-label">付款方式:</label>
-          <Field
-            id="pay"
-            ref="pay"
-            name="付款方式"
-            as="select"
-            class="form-control"
-            :class="{ 'is-invalid': errors['付款方式'] }"
-            rules="required"
-            v-model="userData.user.payment_method"
-          >
-            <option value="" disabled>點擊選取分類</option>
-            <option>WebATM</option>
-            <option>ATM</option>
-            <option>Credit</option>
-            <option>ApplePay</option>
-            <option>GooglePay</option>
-          </Field>
-          <error-message name="付款方式" class="invalid-feedback"></error-message>
-        </div>
