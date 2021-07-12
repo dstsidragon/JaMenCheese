@@ -14,6 +14,9 @@
 @mixin  smallmobile{
     @media(max-width: 512px){ @content; }
 }
+@mixin  plusMobile{
+    @media(max-width: 414px){ @content; }
+}
 @mixin  miniMobile{
     @media(max-width: 320px){ @content; }
 }

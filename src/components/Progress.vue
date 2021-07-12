@@ -1,5 +1,5 @@
 <template>
-  <div class="row position-relative pt-5">
+  <div class="row position-relative pt-5 bg-blueGray ">
     <ul
       class="offset-1 col-10 d-flex  justify-content-between
         align-items-center z-index-1020"
@@ -63,7 +63,6 @@
     </div>
   </div>
 </template>
-
 <script>
 export default {
   props: [
@@ -109,4 +108,5 @@ export default {
   background-color: #7f5625 !important;
   color: #ffffff;
 }
+
 </style>

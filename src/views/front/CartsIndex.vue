@@ -12,7 +12,7 @@
     </div>
 
   <!-- 購物車列表 start-->
-    <table class="table mt-4 row gx-0 ">
+    <table class="table mt-4 row gx-0 " >
       <thead class="co1-12">
         <tr class="row">
           <th class="col-3 d-none d-md-table-cell">商品圖片</th>
@@ -100,9 +100,8 @@
         </tr>
       </tbody>
     </table>
-      <div class="d-flex justify-content-end mt-4">
+      <div class="d-flex justify-content-end mt-4" v-if="cartList.carts?.length >0">
         <button
-          :class="{ 'd-none': cartList.carts == 0 }"
           class=" btn btn-outline-danger "
           @click.prevent="clearCart"
         >
@@ -115,14 +114,14 @@
           清空購物車
         </button>
       </div>
-    <div class="d-none d-md-flex justify-content-between mt-4 row ">
+    <div class="d-none d-md-flex justify-content-between mt-4 row "
+     v-if="cartList.carts?.length >0">
       <hr>
         <span class="col-7 fz-0 d-flex justify-content-around align-items-center">
         <p class="mb-0">商品總計:</p>
         <p class="fz-2 mb-0 text-danger fw-bold">NT$ {{  Math.floor(cartList.total)}}</p>
       </span>
       <button
-        :class="{ 'd-none': cartList.carts == 0 }"
         class="btn btn-primary fz-2 py-2 col-5 "
         @click.prevent="sendCartsList"
       >
@@ -144,7 +143,7 @@
         <p class="mb-0">總計:</p>
         <p class="fz-3 mb-0 text-danger fw-bold">NT$ {{  Math.floor(cartList.total)}}</p>
       </span>
-      <button
+      <button v-if="cartList.carts?.length >0"
         :disabled='loadingStatue.sendCart == 1 '
         class="btn btn-primary py-2 fz-2 fz-ssm-3 col-5 btn-right
         btn-primary-mobile"
@@ -158,8 +157,28 @@
         ></span>
         送出訂單
       </button>
+    <button
+      v-if="cartList.carts?.length === 0" type="button" class="btn btn-primary py-2 fz-2 fz-ssm-3
+      col-5 btn-right"
+    @click="$router.push('/products')">
+      前往購物
+    </button>
     </div></div>
   <!-- 購物車列表 end -->
+
+   <!-- 購物車沒商品時，呈現此區塊  star-->
+  <div v-if="cartList.carts?.length === 0">
+    <span class="material-icons fz-4">
+production_quantity_limits
+</span>
+
+    <p class=" fz-3">購物車目前沒商品喔!</p>
+    <button type="button" class="btn btn-primary  fz-3"
+    @click="$router.push('/products')">
+      前往SHOPPING!
+    </button>
+  </div>
+   <!-- 購物車沒商品時，呈現此區塊  end-->
   <hr />
 
   <!-- 讀取畫面 start-->
@@ -215,6 +234,8 @@ export default {
   methods: {
     // 取得購物車列表
     getCartList() {
+      // 發起一個觸發(刷新購物車)
+      emitter.emit('refresh-carts');
       this.$http
         .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`)
         .then((res) => {
@@ -468,12 +489,14 @@ export default {
       this.cartsNum = this.cartList.carts.length;
     },
   },
-  mounted() {
+  created() {
     // 改變進度條
     this.chgCartStep();
     this.isLoading = true;
     // 刷新購物車列表
     this.getCartList();
+  },
+  mounted() {
   },
 };
 </script>

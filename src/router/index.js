@@ -51,6 +51,10 @@ const routes = [
         path: '/q&a',
         component: () => import('../views/front/QA.vue'),
       },
+      {
+        path: '/favorites',
+        component: () => import('../views/front/Favorites.vue'),
+      },
     ],
   },
   {

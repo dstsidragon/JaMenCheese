@@ -1,5 +1,12 @@
 <template>
-  <div class="container mt_navbar ">
+
+    <div class="banner mt_navbar  d-flex justify-content-center align-items-center">
+        <div class="text-white  bg-img-transparent rounded p-2 ">
+          <h2 class="text-center fz-2 fz-md-4">購買商品</h2>
+          <p class="fz-0 fz-md-1">猶豫不決固然可以免去一些作錯事的機會，但也失去了成功的機遇!</p>
+        </div>
+         </div>
+  <div class="container  ">
     <div>
       <!-- 進度條元件 start -->
       <Progress :cartstep="cartStep" />
@@ -43,5 +50,17 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.banner{
+  background: center center no-repeat
+  url('https://images.unsplash.com/photo-1620648360404-e895f8976aae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80');
+  height: 340px;
+  background-size: cover;
+  background-attachment: fixed;
+}
 
+@media(max-width:768px){
+  .banner{
+  height: 170px;
+}
+}
 </style>

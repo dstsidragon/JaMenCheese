@@ -178,7 +178,7 @@
                         NT$ {{ item.product.price }} / {{ item.product.unit }}
                       </small>
                     </p>
-                    <p class="card-text">X{{ item.product.num }}</p>
+                    <p class="card-text">X{{ item.qty}}</p>
                   </span>
                 </div>
               </div>
@@ -384,7 +384,7 @@ export default {
     },
     // 套用優惠券
     useCoupon() {
-      console.log(1);
+      // console.log(1);
       this.loadingStatue.coupon = 1;
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/coupon`;
       this.$http
@@ -482,6 +482,8 @@ export default {
             );
             this.loadingStatue.sendOrder = '';
             this.orderId = res.data.orderId;
+            // 發起一個觸發(刷新購物車)
+            emitter.emit('refresh-carts');
             // 前往付款頁面
             this.$router.push(`/payment/${this.orderId}`);
           } else {
@@ -565,10 +567,10 @@ export default {
   created() {
     // 改變進度條
     this.chgCartStep();
-  },
-  mounted() {
     // 刷新購物車列表
     this.getCartList();
+  },
+  mounted() {
     // 刷新運費
     setTimeout(() => {
       this.calculateshipping();

@@ -9,8 +9,6 @@
             <div class="col-md-6">
               <SwiperOneProductImg :product="product" />
             </div>
-            <!-- <img class="object-fit col-md-4" style="height:360px;weight:100%;"
-                :src="product.imageUrl" /> -->
             <div class="col-md-6 ">
               <div class="card-body ">
                 <!-- 標題 -->
@@ -33,37 +31,20 @@
                   <span v-html="product.content"></span>
                 </p>
                 <!-- 金額 -->
-                <span class="row text-center">
-                  <span class="text-decoration-line-through col-4">
+                <span class="row text-center align-items-center mb-2">
+                  <span class="text-decoration-line-through col-5">
                     原價
                     <em>{{ product.origin_price }}</em>
                     元
                   </span>
-                  <span class="text-danger col-8 fs-2">
+                  <span class="text-danger col-7 fs-2">
                     特價
                     <em>{{ product.price }}</em>
                     元
                   </span>
                 </span>
-                <!-- <div class="d-flex justify-content-around align-items-center">
-                    <span class="position-relative pe-38" >
-                    <input type="number" ref="inputNumber" class="product-input fz-3 text-center"
-                      v-model="num"
-                      oninput="if(value<0)value=0;if(value>999)value=999">
-                      <span>
-                    <button  class="btn  text-danger fz-1 btn_input--top"
-                     @click=" num ++ ">+</button>
-                    <button class="btn  text-danger fz-1 btn_input--bottom"
-                    @click=" num -- ">-</button>
-                      </span>
-                  </span>
-                  <button  class="btn btn-warning  fz-1  py-38"
-                     >加入購物車</button>
-                    <button class="btn btn-danger fz-1 py-38"
-                    @click=" num -- ">立即購買</button>
-                  </div> -->
-                <div class="row justify-content-around">
-                  <span class="position-relative col-4">
+                <div class="row justify-content-between">
+                  <span class="position-relative d-flex justify-content-start col-6">
                     <!-- input -->
                     <input
                       type="number"
@@ -90,7 +71,7 @@
                       favorite
                       </span>
                     <span v-else
-                    class="material-icons  fz-1 ">
+                    class="material-icons  ">
                       favorite_border
                     </span>
                     <span>加入收藏</span>
@@ -193,6 +174,8 @@ import Loading from '@/components/Loading.vue';
 import SwiperOneProductImg from '@/components/SwiperOneProductImg.vue';
 // 可能會喜歡的商品
 import MaybeYouLike from '@/components/MaybeYouLike.vue';
+// emitter
+import emitter from '@/assets/js/emitter';
 
 export default {
   components: {
@@ -220,6 +203,7 @@ export default {
         // 加到購物車鈕
         addCart: '',
       },
+      // 我的收藏
       myFavorite: this.getLoCalStorage('myFavorite') || [],
     };
   },
@@ -322,6 +306,8 @@ export default {
                 this.alertStatus = false;
               }, 2000,
             );
+            // 發起一個觸發(刷新購物車)
+            emitter.emit('refresh-carts');
 
             // 刷新購物車
             // this.getCartList();
@@ -361,11 +347,11 @@ export default {
       setTimeout(() => {
         // 前往購物車頁面
         this.$router.push('/carts');
-      }, 500);
+      }, 1000);
     },
     // 加入最愛
     addFavorite() {
-      console.log(this.myFavorite);
+      // console.log(this.myFavorite);
       // console.log(this.id);
       // 如果已經在最愛 就刪除最愛  如果沒有 就加到最愛
       if (this.myFavorite.includes(this.id)) {
@@ -373,10 +359,12 @@ export default {
       } else {
         this.myFavorite.push(this.id);
       }
-      console.log(this.myFavorite);
+      // console.log(this.myFavorite);
 
       // 儲存myFavorite資料到LocalStorage
       this.setLoCalStorage('myFavorite', this.myFavorite);
+      // 發起一個觸發(刷新最愛)
+      emitter.emit('refresh-favorites');
     },
     // 將資料存到loCalStorage
     setLoCalStorage(name, item) {

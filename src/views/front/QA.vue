@@ -2,7 +2,7 @@
   <div class="mt_navbar">
     <div class="banner position-relative">
       <div class="d-flex  align-items-center banner-title">
-        <h2 class="text-white mb-0 me-2 fz-4">常見問題</h2>
+        <h2 class="text-white mb-0 me-2 fz-2 fz-md-4">常見問題</h2>
         <img
           src="https://dstsidragon.github.io/CssOnLineClass_SeventhMisson/assets/images/icon-help.svg"
           alt="title"
