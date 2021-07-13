@@ -12,9 +12,9 @@
     >
      <!-- 頁籤 -->
     <div class=" row">
-       <img  class="col-6 d-none d-sm-block" src="https://images.unsplash.com/photo-1506459225024-1428097a7e18?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+       <img  class="col-6 d-none d-md-block" src="https://images.unsplash.com/photo-1506459225024-1428097a7e18?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
         alt="login-img">
-      <div class="d-flex justify-content-center align-items-start col-sm-6">
+      <div class="d-flex justify-content-center align-items-start col-md-6">
         <div class="row">
           <ul class="nav nav-pills  mb-3 justify-content-around"
           id="pills-tab" role="tablist">

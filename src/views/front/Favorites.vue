@@ -8,6 +8,9 @@
     </div>
   </div>
   <div class="container mt-5">
+          <div v-if='myFavoriteProducts.length ===  0 ' class="">
+            <p class="text-center text-primary fz-2"> 目前沒有商品加入收藏!</p>
+          </div>
          <div class="row   row-cols-1 row-cols-smm-2 row-cols-md-3 g-4">
   <div class="col cursor-pointer" v-for="(item, i) in myFavoriteProducts" :key="'prd'+i">
             <div class="card h-100 ">
@@ -157,8 +160,8 @@ export default {
           },
         );
       });
-      //   console.log(favAry);
       this.myFavoriteProducts = favAry;
+      // console.log(this.myFavoriteProducts);
     },
   },
   created() {

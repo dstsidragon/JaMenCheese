@@ -22,7 +22,7 @@
         <!-- 漢堡選單 start-->
         <button
           v-if="btnHamStatus"
-          class="navbar-toggler"
+          class="navbar-toggler  ms-3"
           :class="navBarColor"
           type="button"
           data-bs-toggle="collapse"
@@ -36,7 +36,7 @@
         </button>
         <button
           v-else
-          class="navbar-toggler"
+          class="navbar-toggler  ms-3"
           :class="navBarColor"
           type="button"
           data-bs-toggle="collapse"
@@ -139,6 +139,7 @@
             </div>
 
             <div
+            ref="cartOffcanvas"
               class="offcanvas offcanvas-end bg-lightPrimary"
               tabindex="-1"
               id="shoppingCart"
@@ -196,8 +197,9 @@
                     "
                     @click="$router.push('/carts')"
                   >
-                    <p class="mb-0 fz-">查看購物車</p>
-                    <span class="material-icons fz-1"> arrow_forward_ios </span>
+                    <p class="mb-0 fz-2" @click="closeCartOffcanvas">查看購物車</p>
+                    <span class="material-icons fz-1" >
+                      arrow_forward_ios </span>
                   </button>
 
                   <p v-if="cartList.carts.length < 1">
@@ -213,7 +215,7 @@
                     "
                     @click="$router.push('/products')"
                   >
-                    <p class="mb-0 fz-">快去購物</p>
+                    <p class="mb-0 fz-2" @click="closeCartOffcanvas">快去購物</p>
                     <span class="material-icons fz-1"> arrow_forward_ios </span>
                   </button>
                 </div>
@@ -233,7 +235,7 @@
               </span>
             </div>
             <!-- 內容 -->
-            <div
+            <div  ref="offcanvasRight"
               class="offcanvas offcanvas-end bg-lightPrimary"
               tabindex="-1"
               id="offcanvasRight"
@@ -259,7 +261,7 @@
                 "
               >
                 <ul class="">
-                  <li>
+                  <li @click="closeOffcanvas">
                     <router-link
                       class="
                         dropdown-item
@@ -271,7 +273,7 @@
                       >訂單搜尋</router-link
                     >
                   </li>
-                  <li>
+                  <li @click="closeOffcanvas">
                     <router-link
                       class="
                         dropdown-item
@@ -282,6 +284,19 @@
                       to="/carts"
                       @click="closeHamburger"
                       >購物車</router-link
+                    >
+                  </li>
+                  <li @click="closeOffcanvas">
+                    <router-link
+                      class="
+                        dropdown-item
+                        text-center
+                        nav-offcanvas
+                        text-primary
+                      "
+                      to="/favorites"
+                      @click="closeHamburger"
+                      >我的收藏</router-link
                     >
                   </li>
                   <li>
@@ -296,7 +311,7 @@
                       >後台</router-link
                     >
                   </li>
-                  <li>
+                  <li @click="closeOffcanvas">
                     <a
                       class="
                         dropdown-item
@@ -537,6 +552,7 @@ export default {
     },
     // 判斷使用者值
     chkUserName() {
+      // console.log('123');
       // 如果有取到值 ，代表已登入
       if (document.cookie.replace(/(?:(?:^|.*;\s*)username\s*=\s*([^;]*).*$)|^.*$/, '$1') !== '') {
         this.userName = document.cookie.replace(
@@ -614,7 +630,25 @@ export default {
     },
     // 取得loCalStorage
     getLoCalStorage() {
-      this.myFavorite = JSON.parse(localStorage.getItem('myFavorite'));
+      const favAry = JSON.parse(localStorage.getItem('myFavorite'));
+      const ary = [];
+      favAry.forEach((item) => {
+        if (item !== null) {
+          ary.push(item);
+        }
+      });
+      // console.log(ary);
+      this.myFavorite = ary;
+      // console.log(this.myFavorite);
+    },
+    closeOffcanvas() {
+      // console.dir(this.$refs.offcanvasRight);
+      this.$refs.offcanvasRight.className = 'offcanvas offcanvas-end bg-lightPrimary';
+      this.$refs.offcanvasRight.nextElementSibling.className = 'modal-backdrop fade';
+    },
+    closeCartOffcanvas() {
+      this.$refs.cartOffcanvas.className = 'offcanvas offcanvas-end bg-lightPrimary';
+      this.$refs.cartOffcanvas.nextElementSibling.className = 'modal-backdrop fade';
     },
   },
   created() {
@@ -635,6 +669,10 @@ export default {
     // 監聽一個事件(刷新購物車)
     emitter.on('refresh-favorites', () => {
       this.getLoCalStorage();
+    });
+    // 監聽一個事件(刷新使用者))
+    emitter.on('login-out', () => {
+      this.chkUserName();
     });
   },
   unmounted() {
