@@ -1,5 +1,4 @@
 <template>
-  <div class="col-8 ">
     <Form ref="signupForm" v-slot="{ errors }"  class="form-signin " @submit="sendData">
       <div class="form-floating mb-3">
         <div v-if="showStatus" class=" text-center fs-3">{{ statusPrompt }}</div>
@@ -57,7 +56,6 @@
         註冊
       </button>
     </Form>
-  </div>
 </template>
 <script>
 export default {

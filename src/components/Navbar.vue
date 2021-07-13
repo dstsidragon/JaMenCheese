@@ -51,7 +51,7 @@
         <!-- 漢堡選單 end-->
 
         <!-- 選單內容 -->
-        <ul class="navbar-nav mb-lg-0 d-none d-lg-flex">
+        <ul class="navbar-nav mb-lg-0 d-none d-lg-flex ps-lg-3">
           <li>
             <router-link
               class="nav-link fw-bold nav-drown"
@@ -746,5 +746,8 @@ export default {
   font-size: 12px;
   padding-left: 6px;
   padding-right: 6px;
+}
+.nav-offcanvas.router-link-exact-active[data-v-41458b80] {
+    color: #ffffff !important;
 }
 </style>

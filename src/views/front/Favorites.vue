@@ -7,7 +7,7 @@
       <p class="fz-0 fz-md-1">別人貪婪的時侯我恐懼，別人恐懼的時候我貪婪!</p>
     </div>
   </div>
-  <div class="container">
+  <div class="container mt-5">
          <div class="row   row-cols-1 row-cols-smm-2 row-cols-md-3 g-4">
   <div class="col cursor-pointer" v-for="(item, i) in myFavoriteProducts" :key="'prd'+i">
             <div class="card h-100 ">

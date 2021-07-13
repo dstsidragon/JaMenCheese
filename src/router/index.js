@@ -55,11 +55,11 @@ const routes = [
         path: '/favorites',
         component: () => import('../views/front/Favorites.vue'),
       },
+      {
+        path: '/login',
+        component: () => import('../views/Login.vue'),
+      },
     ],
-  },
-  {
-    path: '/login',
-    component: () => import('../views/Login.vue'),
   },
   {
     path: '/admin',
