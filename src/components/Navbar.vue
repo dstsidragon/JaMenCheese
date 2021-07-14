@@ -82,6 +82,15 @@
               >常見問題</router-link
             >
           </li>
+          <li>
+            <router-link
+              class="nav-link fw-bold nav-drown"
+              to="/lotteryturntable"
+              :class="navBarColor"
+              @click="closeHamburger"
+              >活動</router-link
+            >
+          </li>
         </ul>
         <ul class="d-flex align-items-center mb-0 mb-lg-0">
           <!-- 收藏 -->
@@ -393,6 +402,15 @@
               :class="navBarColor"
               @click="closeHamburger"
               >常見問題</router-link
+            >
+          </li>
+          <li>
+            <router-link
+              class="nav-link fw-bold nav-drown"
+              to="/lotteryturntable"
+              :class="navBarColor"
+              @click="closeHamburger"
+              >活動</router-link
             >
           </li>
         </ul>

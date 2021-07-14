@@ -18,6 +18,8 @@ import toTimestamp from '@/assets/js/toTimestamp';
 
 // 匯入 Bootstrap 主套件
 import 'bootstrap';
+// 匯入 lucky-canvas 主套件
+import LuckDraw from 'vue-luck-draw/vue3';
 
 // 匯入 vee-validate 主套件
 import {
@@ -59,6 +61,9 @@ const app = createApp(App);
 app.component('Form', Form);
 app.component('Field', Field);
 app.component('ErrorMessage', ErrorMessage);
+
+// 匯入 lucky-canvas 主套件
+app.use(LuckDraw);
 
 // 使用vue-kinesis
 app.use(VueKinesis);

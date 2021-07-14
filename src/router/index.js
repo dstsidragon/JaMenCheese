@@ -59,6 +59,10 @@ const routes = [
         path: '/login',
         component: () => import('../views/Login.vue'),
       },
+      {
+        path: '/lotteryturntable',
+        component: () => import('../views/front/LotteryTurntable.vue'),
+      },
     ],
   },
   {
