@@ -50,17 +50,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/scss/mixin/_mixin';
 .banner{
   background: center center no-repeat
   url('https://images.unsplash.com/photo-1620648360404-e895f8976aae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80');
   height: 340px;
   background-size: cover;
   background-attachment: fixed;
+  @include pad{
+  height: 170px;
+  }
 }
 
-@media(max-width:768px){
-  .banner{
-  height: 170px;
-}
-}
 </style>

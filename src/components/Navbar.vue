@@ -806,4 +806,7 @@ export default {
 .nav-offcanvas.router-link-exact-active[data-v-41458b80] {
     color: #ffffff !important;
 }
+.fixed-top{
+  z-index: 1090;
+}
 </style>

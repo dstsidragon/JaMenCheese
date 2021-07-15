@@ -124,6 +124,9 @@ box-shadow: -8px -5px 25px #333333;
   .bg-lightPrimary{
     background-color:rgb(207, 154, 89);
   }
+  .bg-lightYellow{
+    background-color: #fff8f0;
+  }
   .bg-whiteGray{
     background-color: #EEEEEE;
   }
@@ -205,6 +208,62 @@ box-shadow: -8px -5px 25px #333333;
     }
   }
   }
+  .titleEffect--border-bottom-x-danger-5{
+    text-align: center;
+  span{
+    position: relative;
+    display: inline-block;
+    padding: 0 0.8em;
+    &:before{
+     position: absolute;
+     content: '';
+     top:0;
+     right:0.2em;
+     width: 0.4em;
+     height:100%;
+     border: solid 5px #dc3545 ;
+     border-left: none;
+    }
+    &:after{
+     position: absolute;
+     content: '';
+     top:0;
+     left:0;
+     width: 0.4em;
+     height:100%;
+     border: solid 5px #dc3545 ;
+     border-right: none;
+    }
+  }
+  }
+  .titleEffect--border-bottom-x-primary-5{
+    text-align: center;
+  span{
+    position: relative;
+    display: inline-block;
+    padding: 0 0.8em;
+    &:before{
+     position: absolute;
+     content: '';
+     top:0;
+     right:0.2em;
+     width: 0.4em;
+     height:100%;
+     border: solid 5px #7f5625 ;
+     border-left: none;
+    }
+    &:after{
+     position: absolute;
+     content: '';
+     top:0;
+     left:0;
+     width: 0.4em;
+     height:100%;
+     border: solid 5px #7f5625 ;
+     border-right: none;
+    }
+  }
+  }
   .titleEffect--border-bottom-down{
     text-align: center;
     span{
@@ -259,6 +318,20 @@ box-shadow: -8px -5px 25px #333333;
         background-color:white;
     }
   }
+.border-right-top-4{
+  position: relative;
+  padding-left: 0.7em;
+  &:after {
+     position: absolute;
+     top: 59px;
+     right:-4px;
+     transform:translateY(-50%);
+     content: '';
+     width: 10px;
+     height:4em;
+     background-color: #dc3545;
+  }
+}
 
 
   // 權重
@@ -275,4 +348,16 @@ box-shadow: -8px -5px 25px #333333;
       bottom: 0;
       z-index: 1020;
     }
+  }
+
+
+  // 文字縮排
+  .text-indent-2{
+    text-indent :2rem;
+  } 
+
+  // 文字書寫方向
+  .writing-mode-vertical-lr{
+    -webkit-writing-mode: vertical-lr;
+    writing-mode: vertical-lr;
   }
