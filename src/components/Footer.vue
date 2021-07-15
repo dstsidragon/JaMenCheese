@@ -5,7 +5,7 @@
     <div class="cp-Triangle stripe-two"></div>
     <div class="cp-Triangle stripe-three"></div>
     </div>
-    <div class="bg-primary w-100">
+    <div class="bg-primary w-100 py-2">
         <div class="container d-flex justify-content-around align-items-center">
     <img class="logo d-none d-sm-block" src="@/assets/images/logo-white.svg" alt="logo" />
    <div class="">
@@ -22,7 +22,7 @@
     </ul>
     <p class="text-white">- - 個人練習使用 - -</p>
     <ul  class="d-flex justify-content-around align-items-center">
-        <li>
+        <li >
             <!-- 貼FACEBOOK 網址會跳警告 -->
             <a href="https://tw.yahoo.com/?fr=fptb-yie8">
                 <img src="https://cdn2.iconfinder.com/data/icons/social-18/512/Facebook-2-256.png"

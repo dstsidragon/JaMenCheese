@@ -4,6 +4,12 @@
           <Marquee />
           <!-- 跑馬燈元件  end-->
           </div>
+              <div class="banner   d-flex justify-content-center align-items-center">
+        <div class="text-white  bg-img-transparent rounded p-2 ">
+          <h2 class="text-center fz-2 fz-md-4">限時活動</h2>
+          <p class="fz-0 fz-md-1">少許的主動就可以使你生活中的運氣大增</p>
+        </div>
+         </div>
   <div class="bg-lightPrimary">
     <div class="g-0 g-md-2 container-md py-5">
       <div
@@ -247,3 +253,20 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+
+.banner{
+  background: center center   no-repeat
+  url('https://images.unsplash.com/photo-1506224477000-07aa8a76be20?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+  height: 340px;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+@media(max-width:768px){
+  .banner{
+  height: 170px;
+}
+}
+</style>
