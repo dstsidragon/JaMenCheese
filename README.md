@@ -31,6 +31,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 Vfooter
 V訂閱 JS  給優惠碼 
 3D卡片 點擊連接產品
+Vaos
 
 #navBar
 V購物車小物件
@@ -114,7 +115,7 @@ Modal 細節欄位
 登入 / 登出
 
 小功能
-千分符號
+V千分符號
 
 
 
