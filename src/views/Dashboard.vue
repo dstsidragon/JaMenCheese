@@ -258,7 +258,7 @@ export default {
                 }, 2000,
               );
               // 跳轉頁面
-              this.$router.push('/login');
+              // this.$router.push('/login');
             }
           },
         )
