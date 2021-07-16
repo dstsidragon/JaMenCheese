@@ -50,11 +50,11 @@
                       favorite_border
                     </span>
                  </a></div>
-              <div class="card-body p-0 " @click.prevent="viewOneProduct(item)">
+              <div v-if="item" class="card-body p-0 " @click.prevent="viewOneProduct(item)">
                 <h5 class="card-title bg-primary text-white p-1">{{item.title}}</h5>
                 <span class="d-flex justify-content-around align-items-center">
-                <p class="card-text border-right"><del>${{item.origin_price}}元</del></p>
-                <p class="card-text text-danger fz-2">${{item.price}}元</p>
+                <p class="card-text border-right"><del>${{$toComma(item.origin_price)}}元</del></p>
+                <p class="card-text text-danger fz-2">${{$toComma(item.price)}}元</p>
                 </span>
               </div>
               <div class="d-flex">
@@ -110,9 +110,9 @@
         </div>
         <p>此頁面有{{ filterProductCategory.length }}項產品</p>
          <!-- 分頁 start -->
-        <div class="d-flex justify-content-center">
+        <!-- <div class="d-flex justify-content-center">
           <Pagination :pagination="pagination" @get-product="getProduct"></Pagination>
-        </div>
+        </div> -->
         <!-- 分頁 end -->
 
       </div>
@@ -121,7 +121,7 @@
       <hr>
       <!-- 熱賣商品 -->
         <h3 class="titleEffect pt-5"><span>熱賣商品</span></h3>
-        <HotProductSwiper :products="productData" @view-one-product="viewOneProduct"/>
+        <HotProductSwiper :products="allProductsData" @view-one-product="viewOneProduct"/>
     </div>
 
     <!-- Alert元件 start -->
@@ -140,7 +140,7 @@
 // Alert元件
 import Alert from '@/components/Alert.vue';
 // 分頁
-import Pagination from '@/components/Pagination.vue';
+// import Pagination from '@/components/Pagination.vue';
 // 讀取畫面
 import Loading from '@/components/Loading.vue';
 // 熱賣商品
@@ -153,7 +153,7 @@ export default {
     // Alert元件
     Alert,
     // 分頁
-    Pagination,
+    // Pagination,
     // 讀取畫面
     Loading,
     // 熱賣商品
@@ -168,6 +168,8 @@ export default {
       isLoading: false,
       // 產品資料
       productData: [],
+      // 全部產品資料
+      allProductsData: [],
       // 分頁
       pagination: [],
       // 登入/登出鈕
@@ -194,6 +196,8 @@ export default {
   methods: {
     // 取得商品列表
     getProduct(page = 1) {
+      // 取得全部商品
+      this.getAllProducts();
       this.$http
         .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}`)
         .then((res) => {
@@ -244,6 +248,42 @@ export default {
           );
           // 關掉讀取畫面
           this.isLoading = false;
+        });
+    },
+    // 取得全部商品列表
+    getAllProducts() {
+      this.$http
+        .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`)
+        .then((res) => {
+          // console.log(res);
+          // 如果成功就執行
+          if (res.data.success) {
+            // console.log(res);
+            this.allProductsData = res.data.products;
+          } else {
+            // alert('驗證錯誤，請重新登入!');
+            // alert 元件顯示
+            this.alertMessage = res.data.message;
+            this.alertStatus = false;
+            setTimeout(
+              () => {
+                this.alertMessage = '';
+                this.alertStatus = false;
+              }, 2000,
+            );
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          // alert 元件顯示
+          this.alertMessage = err.data.message;
+          this.alertStatus = false;
+          setTimeout(
+            () => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000,
+          );
         });
     },
     // 加入購物車
@@ -405,7 +445,7 @@ export default {
   },
   computed: {
     filterProductCategory() {
-      return this.productData.filter((item) => item.category.match(this.nowCategory));
+      return this.allProductsData.filter((item) => item.category.match(this.nowCategory));
     },
   },
   created() {
@@ -452,7 +492,7 @@ export default {
     padding-left: 1.5rem*.5 !important;
 }
 .prd-card-img{
-  height:200px;
+  height:250px;
 }
 @media(max-width: 512px){
    .prd-card-img{

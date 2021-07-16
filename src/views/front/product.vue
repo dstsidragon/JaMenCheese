@@ -31,15 +31,15 @@
                   <span v-html="product.content"></span>
                 </p>
                 <!-- 金額 -->
-                <span class="row text-center align-items-center mb-2">
+                <span v-if="product" class="row text-center align-items-center mb-2">
                   <span class="text-decoration-line-through col-5">
                     原價
-                    <em>{{ product.origin_price }}</em>
+                    <em>{{ $toComma(product.origin_price) }}</em>
                     元
                   </span>
                   <span class="text-danger col-7 fs-2">
                     特價
-                    <em>{{ product.price }}</em>
+                    <em>{{ $toComma(product.price) }}</em>
                     元
                   </span>
                 </span>

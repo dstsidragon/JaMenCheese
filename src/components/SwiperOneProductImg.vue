@@ -5,8 +5,7 @@
     :spaceBetween="10"
     :navigation="true"
     :thumbs="{ swiper: thumbsSwiper }"
-    class="mySwiper2"
-    style="height: 400px;"
+    class="mySwiper2 img_big"
   >
     <swiper-slide><img  class="object-fit" :src="product.imageUrl"/></swiper-slide>
     <swiper-slide class="object-fit" v-for="(item, i) in filterProductImg" :key="i" >
@@ -132,5 +131,20 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
+.img_big{
+  height: 600px;
+}
+@media (max-width:767px) {
+  .img_big{
+    height: 400px;
+  }
 
+}
+
+@media (max-width:413px) {
+  .img_big{
+    height: 300px;
+  }
+
+}
 </style>

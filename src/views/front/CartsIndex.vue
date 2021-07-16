@@ -563,7 +563,7 @@ export default {
 }
 .cart-img {
   width: 100%;
-  height: 100px;
+  height: 200px;
 }
 
 .btn-primary-mobile:hover {
