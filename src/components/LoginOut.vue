@@ -12,7 +12,8 @@
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
                     讓我想想</button>
                 <button id="signOut" @click="signOutAdmin" type="button" class="btn btn-primary"
-                  data-bs-dismiss="modal">非常低肯定!</button>
+                  data-bs-dismiss="modal">非常低肯定!
+                  </button>
               </div>
             </div>
           </div>
@@ -20,6 +21,8 @@
 </template>
 <script>
 import { Modal } from 'bootstrap';
+// emitter
+import emitter from '@/assets/js/emitter';
 
 export default {
   data() {
@@ -30,6 +33,7 @@ export default {
   methods: {
     signOutAdmin() {
       this.$emit('sign-out-admin');
+      emitter.emit('login-out');
     },
     // 開啟modal
     openModal() {

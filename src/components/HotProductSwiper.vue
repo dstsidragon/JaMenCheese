@@ -1,5 +1,5 @@
 <template>
-  <swiper
+  <Swiper
     :effect="'coverflow'"
     :grabCursor="true"
     :centeredSlides="true"
@@ -11,19 +11,20 @@
       modifier: 1,
       slideShadows: true
     }"
-    :pagination="true"
     class="mySwiper"
   >
-    <swiper-slide><img src="https://swiperjs.com/demos/images/nature-1.jpg"/></swiper-slide
-    ><swiper-slide><img src="https://swiperjs.com/demos/images/nature-2.jpg"/></swiper-slide
-    ><swiper-slide><img src="https://swiperjs.com/demos/images/nature-3.jpg"/></swiper-slide
-    ><swiper-slide><img src="https://swiperjs.com/demos/images/nature-4.jpg"/></swiper-slide
-    ><swiper-slide><img src="https://swiperjs.com/demos/images/nature-5.jpg"/></swiper-slide
-    ><swiper-slide><img src="https://swiperjs.com/demos/images/nature-6.jpg"/></swiper-slide
-    ><swiper-slide><img src="https://swiperjs.com/demos/images/nature-7.jpg"/></swiper-slide
-    ><swiper-slide><img src="https://swiperjs.com/demos/images/nature-8.jpg"/></swiper-slide
-    ><swiper-slide><img src="https://swiperjs.com/demos/images/nature-9.jpg"/></swiper-slide>
-  </swiper>
+    <SwiperSlide v-for="(item, i) in filterProducts" :key="i"
+    @click.prevent="$emit('view-one-product',item)">
+    <div class="overflow-hidden">
+      <img :src="item.imageUrl" class="object-fit swiper-img img--scale "/>
+      </div>
+      <span>
+        <p class="bg-primary text-white p-1 fs-2 m-0">{{item.title}}</p>
+        <p class="bg-lightPrimary text-white p-1 m-0">詳細內容</p>
+      </span>
+      <div class="bg-danger text-white p-1 hotProduct-icon ">HOT</div>
+      </SwiperSlide>
+  </Swiper>
 </template>
 <script>
 // Import Swiper Vue.js components
@@ -33,23 +34,53 @@ import { Swiper, SwiperSlide } from 'swiper/vue';
 import 'swiper/swiper.scss';
 
 import 'swiper/components/effect-coverflow/effect-coverflow.min.css';
-import 'swiper/components/pagination/pagination.min.css';
 
 // import Swiper core and required modules
-import SwiperCore, { EffectCoverflow, Pagination } from 'swiper/core';
+import SwiperCore, { EffectCoverflow } from 'swiper/core';
 
 // install Swiper modules
-SwiperCore.use([EffectCoverflow, Pagination]);
+SwiperCore.use([EffectCoverflow]);
 
 export default {
   components: {
     Swiper,
     SwiperSlide,
   },
-  data() {
-    return {};
+  props: [
+    'products',
+  ],
+  watch: {
+    products() {
+      // 隨機抓出六筆資料
+      this.getRandomProduct(10);
+    },
   },
-  methods: {},
+  data() {
+    return {
+      filterProducts: [],
+    };
+  },
+  methods: {
+    getRandomNumber(n) {
+      return Math.floor(Math.random() * n);
+    },
+    getRandomProduct(item) {
+      // 宣告 set 陣列
+      const prdSet = new Set([]);
+      // 取出指定 不重複的陣列數量
+      for (let i = 0; prdSet.size < item; i += 1) {
+        const prd = this.getRandomNumber(this.products.length);
+        prdSet.add(prd);
+        // console.log(prd, prdSet);
+      }
+      // 將取出的數字 帶入資料內  push到陣列
+      prdSet.forEach((i) => {
+        this.filterProducts.push(this.products[i]);
+      });
+    },
+  },
+  mounted() {
+  },
 };
 </script>
 
@@ -85,6 +116,12 @@ body {
 .swiper-slide img {
   display: block;
   width: 100%;
+  height: 215px;
+}
+.hotProduct-icon{
+  position: absolute;
+  top: 0;
+  left: 5px;
 }
 
 </style>

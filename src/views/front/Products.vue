@@ -3,8 +3,8 @@
   <div class=" mt_navbar ">
       <div class=" prd-banner d-flex justify-content-center align-items-center">
         <div class="text-white  bg-img-transparent rounded p-2">
-          <h2 class="text-center fz-4">精選商品</h2>
-          <p>不能決定？瀏覽我們的完整菜單，並嘗試...一切！</p>
+          <h2 class="text-center fz-2 fz-md-4">精選商品</h2>
+          <p class="fz-0 fz-md-1">不能決定？瀏覽我們的完整菜單，並嘗試...一切！</p>
         </div>
       </div>
     <div class="container mt-3">
@@ -39,13 +39,16 @@
                alt="item.title">
               </div>
               <div  class="favorite ">
-               <a  class="text-danger">
-                 <span class="material-icons">
-                  favorite_border
-                  </span>
-                  <!-- <span class="material-icons">
-                  favorite
-                  </span> -->
+               <a  class="text-danger" @click="addFavorite(item.id)"
+                  >
+                    <span v-if="myFavorite.includes(item.id)"
+                    class="material-icons text-danger">
+                      favorite
+                      </span>
+                    <span v-else
+                    class="material-icons ">
+                      favorite_border
+                    </span>
                  </a></div>
               <div class="card-body p-0 " @click.prevent="viewOneProduct(item)">
                 <h5 class="card-title bg-primary text-white p-1">{{item.title}}</h5>
@@ -112,12 +115,13 @@
         </div>
         <!-- 分頁 end -->
 
-        <!-- 熱賣商品 -->
-        <h3 class="titleEffect pt-5"><span>熱賣商品</span></h3>
-        <HotProductSwiper :item="productData"/>
       </div>
 
       </div>
+      <hr>
+      <!-- 熱賣商品 -->
+        <h3 class="titleEffect pt-5"><span>熱賣商品</span></h3>
+        <HotProductSwiper :products="productData" @view-one-product="viewOneProduct"/>
     </div>
 
     <!-- Alert元件 start -->
@@ -141,6 +145,8 @@ import Pagination from '@/components/Pagination.vue';
 import Loading from '@/components/Loading.vue';
 // 熱賣商品
 import HotProductSwiper from '@/components/HotProductSwiper.vue';
+// emitter
+import emitter from '@/assets/js/emitter';
 
 export default {
   components: {
@@ -181,6 +187,8 @@ export default {
       productCategory: [],
       // 當前點擊的商品分類
       nowCategory: '',
+      // 我的收藏
+      myFavorite: this.getLoCalStorage('myFavorite') || [],
     };
   },
   methods: {
@@ -258,7 +266,7 @@ export default {
           if (res.data.success) {
             this.loadingStatue.addCart = '';
             // alert(`${res.data.message}!`);
-
+            console.log(res.data.message);
             // alert 元件顯示
             this.alertMessage = `${res.data.message}!`;
             this.alertStatus = true;
@@ -266,8 +274,10 @@ export default {
               () => {
                 this.alertMessage = '';
                 this.alertStatus = false;
-              }, 2000,
+              }, 1000,
             );
+            // 發起一個觸發(刷新購物車)
+            emitter.emit('refresh-carts');
 
             // 刷新購物車
             // this.getCartList();
@@ -282,7 +292,7 @@ export default {
               () => {
                 this.alertMessage = '';
                 this.alertStatus = false;
-              }, 2000,
+              }, 1000,
             );
           }
         })
@@ -296,7 +306,7 @@ export default {
             () => {
               this.alertMessage = '';
               this.alertStatus = false;
-            }, 2000,
+            }, 1000,
           );
         });
     },
@@ -329,6 +339,8 @@ export default {
                 this.alertStatus = false;
               }, 2000,
             );
+            // 發起一個觸發(刷新購物車)
+            emitter.emit('refreshCarts');
 
             // 刷新購物車
             // this.getCartList();
@@ -365,6 +377,31 @@ export default {
       // 跳轉頁面
       this.$router.push(`/product/${item.id}`);
     },
+    // 加入最愛
+    addFavorite(id) {
+      // console.log(this.myFavorite);
+      // console.log(this.id);
+      // 如果已經在最愛 就刪除最愛  如果沒有 就加到最愛
+      if (this.myFavorite.includes(id)) {
+        this.myFavorite.splice(this.myFavorite.indexOf(id), 1);
+      } else {
+        this.myFavorite.push(id);
+      }
+      console.log(this.myFavorite);
+
+      // 儲存myFavorite資料到LocalStorage
+      this.setLoCalStorage('myFavorite', this.myFavorite);
+      // 發起一個觸發(刷新最愛)
+      emitter.emit('refresh-favorites');
+    },
+    // 將資料存到loCalStorage
+    setLoCalStorage(name, item) {
+      localStorage.setItem(name, JSON.stringify(item));
+    },
+    // 取得loCalStorage
+    getLoCalStorage(name) {
+      return JSON.parse(localStorage.getItem(name));
+    },
   },
   computed: {
     filterProductCategory() {
@@ -391,7 +428,7 @@ export default {
   background-size: cover;
   background-attachment: fixed;
 }
-@media(max-width:776px){
+@media(max-width:768px){
   .prd-banner{
   height: 170px;
   background: center center no-repeat

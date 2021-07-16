@@ -28,21 +28,71 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 前台
 
 #首頁
+Vfooter
+V訂閱 JS  給優惠碼 
+3D卡片 點擊連接產品
+Vaos
 
 #navBar
-購物車小物件
-帳號  
-收藏
+V購物車小物件
+V帳號  
+V收藏
+移除滾動事件
+點LOGO也要改變顏色
+登出彈跳視窗出來跟關閉會跳錯
 
 #產品頁
-最愛收藏
-商品價格千分號
+
+路由 >>麵包屑元件
+V最愛收藏
+V加入收藏刷新narbar
+V商品價格千分號
+V熱賣商品  >> 需check取得的資料是all還是單一頁
 
 #產品詳細頁
-返回
+V加入收藏
+V加入收藏刷新narbar
+V加入購物車
+V加入購物車刷新narbar
+V你可能會喜歡
+V立即購買  >>加入購物車>>前往購物車頁面
+第一次進去畫面時會跑版
+
+
+#幸運輪盤
+V畫布元件
 
 #購物車
+第一次進去畫面時會沒刷新購物車
+結帳進度條  可以加上完成時間
+V拆成元件
+V購物車清單 
+V套用優惠券
+V手機板 金額 按鈕置底
+VBTN-繼續購物
+V更改數量的按鈕
+V滿版背景
+V沒資料時要提醒沒資料  可以購物
 
+#填寫付款資料
+V拆成元件
+VBTN-繼續購物
+V備註欄位藏值
+V拆成元件
+新增選取 自取或宅配
+
+#結帳頁面
+V拆成元件
+VBTN-繼續購物
+取貨方式
+運費計算
+賣場其他商品
+
+#訂單頁面
+優化
+
+#Q&A
+V手風琴元件
 
 後台
 
@@ -65,27 +115,8 @@ Modal 細節欄位
 登入 / 登出
 
 小功能
-千分符號
+V千分符號
 
-
-
-
-前台
-
-結帳付款
-[API]: /api/:api_path/pay/:order_id
-[方法]: post
-[參數]:
-	@api_path: 'thisismycourse2'
-	@order_id: 訂單編號
-[成功回傳]:
-	{
-    "success": true,
-    "message": "付款完成"
-  }
-
-  
-        "payment_method": "credit_card",
 
 
 
@@ -156,3 +187,5 @@ import DeleteAll from '@/components/DeleteAll.vue';
                 @click='this.$refs.deleteAllModal.openModal();'
 
 //////////
+
+

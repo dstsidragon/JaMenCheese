@@ -20,20 +20,60 @@ const routes = [
       {
         path: '/carts',
         component: () => import('../views/front/Carts.vue'),
+        children: [
+          {
+            path: '',
+            component: () => import('../views/front/CartsIndex.vue'),
+          },
+          {
+            path: '/order',
+            component: () => import('../views/front/Order.vue'),
+          },
+          {
+            path: '/payment/:orderId',
+            component: () => import('../views/front/Payment.vue'),
+          },
+          {
+            path: '/finishpay',
+            component: () => import('../views/front/FinishPay.vue'),
+          },
+        ],
       },
       {
         path: '/orders',
-        component: () => import('../views/front/Order.vue'),
+        component: () => import('../views/front/Orders.vue'),
+        children: [
+          {
+            path: '',
+            component: () => import('../views/front/OrdersIndex.vue'),
+          },
+          {
+            path: '/order/:id',
+            component: () => import('../views/front/OrderSearch.vue'),
+          },
+        ],
       },
       {
         path: '/product/:id',
         component: () => import('../views/front/product.vue'),
       },
+      {
+        path: '/q&a',
+        component: () => import('../views/front/QA.vue'),
+      },
+      {
+        path: '/favorites',
+        component: () => import('../views/front/Favorites.vue'),
+      },
+      {
+        path: '/login',
+        component: () => import('../views/Login.vue'),
+      },
+      {
+        path: '/lotteryturntable',
+        component: () => import('../views/front/LotteryTurntable.vue'),
+      },
     ],
-  },
-  {
-    path: '/login',
-    component: () => import('../views/Login.vue'),
   },
   {
     path: '/admin',

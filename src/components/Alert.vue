@@ -1,5 +1,5 @@
 <template>
-<div class="row  animate__animated animate__fadeInDown">
+<div class="row  animate__animated animate__fadeInDown z-index-1100">
 <div class="col ">
     <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
     <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
@@ -64,5 +64,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
+.z-index-1100{
+  z-index: 1100;
+}
 </style>

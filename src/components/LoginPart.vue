@@ -1,5 +1,4 @@
 <template>
-  <div class="col-8 ">
     <Form  class="form-signin" ref="loginForm" v-slot="{ errors }" @submit="sendData">
       <div class="form-floating mb-3">
         <div v-if="showStatus" class=" text-center fs-3">{{ statusPrompt }}</div>
@@ -43,7 +42,6 @@
         登入
       </button>
     </Form>
-  </div>
 </template>
 
 <script>
@@ -80,7 +78,7 @@ export default {
   watch: {
     // 收到回傳登入成功失敗資料 改變showStatus
     loginInFallOrSuccess() {
-      this.showStatus = false;
+      this.showStatus = this.statuBool;
     },
   },
 };

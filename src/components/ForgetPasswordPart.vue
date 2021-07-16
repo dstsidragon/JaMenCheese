@@ -1,5 +1,4 @@
 <template>
-  <div class="col-8 ">
      <h2>忘記密碼</h2>
     <Form  class="form" ref="forgetForm" v-slot="{ errors }" @submit="sendData">
       <div class="form-floating mb-3">
@@ -20,7 +19,6 @@
         送出信件
       </button>
     </Form>
-  </div>
 <!-- Alert元件 start -->
 <Alert class="alert-position"  v-if="alertMessage" :message="alertMessage"
 :status="alertStatus" />

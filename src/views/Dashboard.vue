@@ -41,14 +41,15 @@
                 </span>
                 </router-link>
             </li>
-            <li class="mb-2 ">
+            <!-- 貼文 -->
+            <!-- <li class="mb-2 ">
                 <router-link class="nav-link active"
             to="/articles">
             <span class="material-icons ">
                 article
                 </span>
                 </router-link>
-            </li>
+            </li> -->
             <li class="mb-2 ">
                <a class="nav-link"
             type="button" v-if="loginStatus" @click.prevent="openiSgnOutUserModal">
@@ -92,8 +93,9 @@
              to="/coupons">優惠券管理</router-link>
             <router-link class="nav-link"
              to="/ordersList">訂單管理</router-link>
-            <router-link class="nav-link"
-             to="/articles">貼文管理</router-link>
+            <!-- 貼文 -->
+            <!-- <router-link class="nav-link"
+             to="/articles">貼文管理</router-link> -->
             <a class="nav-link"
             type="button" v-if="loginStatus" @click.prevent="openiSgnOutUserModal">登出</a>
             <router-link class="nav-link"
