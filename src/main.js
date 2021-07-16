@@ -9,6 +9,10 @@ import VueAxios from 'vue-axios';
 // import animated from 'animate.css';
 import 'animate.css';
 
+// 匯入 AOS
+import AOS from 'aos';
+import '../node_modules/aos/dist/aos.css';
+
 // 匯入vue-kinesis
 import VueKinesis from 'vue-kinesis';
 
@@ -70,6 +74,11 @@ app.use(LuckDraw);
 
 // 使用vue-kinesis
 app.use(VueKinesis);
+
+// 使用 AOS
+// app.use(AOS);
+AOS.init({
+});
 
 // 匯入時間轉換js
 app.config.globalProperties.$toTimestamp = toTimestamp;

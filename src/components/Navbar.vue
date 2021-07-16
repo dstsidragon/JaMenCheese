@@ -184,7 +184,7 @@
                         <th class="col-1" scope="row">{{ i + 1 }}</th>
                         <td class="col-4">{{ item.product.title }}</td>
                         <td class="col-3">{{ item.qty }}</td>
-                        <td class="col-4">NT$ {{ item.product.price }}</td>
+                        <td class="col-4">NT$ {{ $toComma(item.product.price) }}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -192,7 +192,7 @@
                     v-if="cartList.carts.length > 0"
                     class="text-end text-danger fz-2"
                   >
-                    總計: NT$ {{ cartList.total }}
+                    總計: NT$ {{ $toComma(cartList.total) }}
                   </p>
                 </div>
                 <div class="d-grid gap-2" v-if="cartList">
