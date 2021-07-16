@@ -1,6 +1,6 @@
 <template>
 
-  <div class="section over-hide bg-lightYellow">
+  <div class="section over-hide ">
     <div class="container">
       <div class="row full-height justify-content-center">
         <div class="col-12 text-center align-self-center py-5">

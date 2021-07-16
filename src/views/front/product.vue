@@ -55,9 +55,8 @@
                     />
                     <span>
                       <button class="btn  text-danger fz-1 btn_input--top" @click="num++">+</button>
-                      <button class="btn  text-danger fz-1 btn_input--bottom" @click="num--">
-                        -
-                      </button>
+                      <button class="btn  text-danger fz-1 btn_input--bottom"
+                       @click="num--">-</button>
                     </span>
                   </span>
                   <button class="btn btn-primary col-6 " @click="buyNow">立即購買</button>

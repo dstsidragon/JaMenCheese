@@ -17,9 +17,9 @@
   </div>
   <div class="card-body text-start">
     <ul v-if="orderData" class="blockquote mb-0 p-3 fz-1">
-      <li class="d-flex justify-content-between align-items-center">
+      <li class="d-ssm-flex justify-content-between align-items-center">
           <p>訂單編號:</p>
-          <p>{{ orderData.order.id}}</p>
+          <p>{{orderData.order.id}}</p>
       </li>
       <li class="d-flex justify-content-between align-items-center">
           <p>訂單日期:</p>
@@ -47,15 +47,15 @@
       </li>
       <li class="d-flex justify-content-between align-items-center">
           <p>總計:</p>
-          <p>{{ finally_total }}</p>
+          <p>NT {{ $toComma(finally_total) }}</p>
       </li>
       <li class="d-flex justify-content-between align-items-center">
           <p>運費:</p>
-          <p>{{ shipping }}</p>
+          <p>NT {{ $toComma(shipping) }}</p>
       </li>
       <li class="d-flex justify-content-between align-items-center">
           <p>優惠折扣:</p>
-          <p>{{ couponPrice }}</p>
+          <p>NT {{ $toComma(couponPrice) }}</p>
       </li>
       <li class="d-flex justify-content-between align-items-center">
           <p>付款狀態:</p>
@@ -118,7 +118,7 @@
     </div>
     </div>
     <!-- 送出按鈕 start-->
-  <div class="w-100 mobile-fixed d-md-none bg-white" >
+  <div class="w-100 mobile-fixed d-md-none bg-white " >
     <div class="d-flex justify-content-between row  ">
       <button @click="$refs.formBtn.click()"
       type="submit"

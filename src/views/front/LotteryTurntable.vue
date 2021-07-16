@@ -10,7 +10,7 @@
           <p class="fz-0 fz-md-1">少許的主動就可以使你生活中的運氣大增</p>
         </div>
          </div>
-  <div class="bg-lightPrimary">
+  <div class="">
     <div class="g-0 g-md-2 container-md py-5">
       <div
         class="
@@ -35,7 +35,7 @@
         <div class="col-md-6 mt-2 mt-md-0">
           <div class="border bg-white">
             <h2 class="bg-primary text-white py-1">獎項資訊</h2>
-            <p class="fz-2 text-primary">{{ prizeName }}</p>
+            <p class="fz-2 text-primary ">{{ prizeName }}</p>
           </div>
           <table class="table table-dark table-hover mt-2">
             <thead>
@@ -255,6 +255,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '@/assets/scss/mixin/_mixin';
 
 .banner{
   background: center center   no-repeat
@@ -262,11 +263,9 @@ export default {
   height: 340px;
   background-size: cover;
   background-attachment: fixed;
+  @include pad{
+  height: 170px;
+  }
 }
 
-@media(max-width:768px){
-  .banner{
-  height: 170px;
-}
-}
 </style>

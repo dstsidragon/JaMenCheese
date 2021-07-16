@@ -42,6 +42,16 @@ const routes = [
       {
         path: '/orders',
         component: () => import('../views/front/Orders.vue'),
+        children: [
+          {
+            path: '',
+            component: () => import('../views/front/OrdersIndex.vue'),
+          },
+          {
+            path: '/order/:id',
+            component: () => import('../views/front/OrderSearch.vue'),
+          },
+        ],
       },
       {
         path: '/product/:id',

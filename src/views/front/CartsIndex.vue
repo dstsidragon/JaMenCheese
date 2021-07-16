@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5 ">
+  <div class="container mt-5">
     <div>
       <!-- Alert元件 start -->
       <Alert
@@ -11,63 +11,93 @@
       <!-- Alert元件 end -->
     </div>
 
-  <!-- 購物車列表 start-->
-    <table class="table mt-4 row gx-0 " >
+    <!-- 購物車列表 start-->
+    <table class="table mt-4 row gx-0">
       <thead class="co1-12">
         <tr class="row">
           <th class="col-3 d-none d-md-table-cell">商品圖片</th>
           <th class="col-4 col-md-2">商品名稱</th>
-          <th class=" d-none d-md-table-cell col-md-2 " width="120">
-            原價
-          </th>
-          <th class="col-2 col-md-1">
-            售價
-          </th>
-          <th class="col-3 col-md-2 ">
-            數量
-          </th>
-          <th class="col-3 col-md-2">
-            刪除
-          </th>
+          <th class="d-none d-md-table-cell col-md-2" width="120">原價</th>
+          <th class="col-2 col-md-1">售價</th>
+          <th class="col-3 col-md-2">數量</th>
+          <th class="col-3 col-md-2">刪除</th>
         </tr>
       </thead>
       <tbody>
-        <tr v-for="(item, i) in cartList.carts" class="row" :key="'delCar_' + i">
-          <td class="col-3  d-none d-md-table-cell d-flex align-items-center">
+        <tr
+          v-for="(item, i) in cartList.carts"
+          class="row"
+          :key="'delCar_' + i"
+        >
+          <td class="col-3 d-none d-md-table-cell d-flex align-items-center">
             <img
               class="cart-img object-fit"
               :src="item.product.imageUrl"
               :alt="item.product.title"
             />
           </td>
-          <td class="col-4 col-md-2 d-flex align-items-center justify-content-center">
+          <td
+            class="
+              col-4 col-md-2
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+          >
             {{ item.product.title }}
           </td>
           <td
-            class="d-none d-md-flex col-md-2
-            align-items-center justify-content-center"
+            class="
+              d-none d-md-flex
+              col-md-2
+              align-items-center
+              justify-content-center
+            "
           >
-            {{ item.product.origin_price }}
+            {{ $toComma(item.product.origin_price) }}
           </td>
-          <td class="col-2 col-md-1 d-flex align-items-center justify-content-center">
-            {{ item.product.price }}
+          <td
+            class="
+              col-2 col-md-1
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+          >
+            {{ $toComma(item.product.price) }}
           </td>
-          <td class="col-3 col-md-2  d-flex align-items-center justify-content-center">
+          <td
+            class="
+              col-3 col-md-2
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+          >
+            <button class="btn text-danger px-1 fz-2" @click="rediCartItemsNum(item, -1)">-</button>
             <input
               class="carNum"
               type="number"
               min="1"
               oninput="value=value.replace('-', '');if(value>999)value=999"
-              v-model="cartList.carts[i].qty"
+              v-model="item.qty"
               @change="rediCartItemsNum(item)"
             />
+            <button class="btn text-danger px-1 fz-2" @click="rediCartItemsNum(item, 1)">+</button>
           </td>
-          <td class="col-3 col-md-2 d-flex align-items-center justify-content-center">
+          <td
+            class="
+              col-3 col-md-2
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+          >
             <button
               type="button"
               :class="{ disabled: loadingStatue.delCart == item.id }"
               @click="delCartItem(item.id)"
-              class="btn btn-sm btn-danger btn_white "
+              class="btn btn-sm btn-danger btn_white"
               data-action="remove"
             >
               <span
@@ -100,29 +130,33 @@
         </tr>
       </tbody>
     </table>
-      <div class="d-flex justify-content-end mt-4" v-if="cartList.carts?.length >0">
-        <button
-          class=" btn btn-outline-danger "
-          @click.prevent="clearCart"
-        >
-          <span
-            :class="{ 'd-none': loadingStatue.clearCart !== 1 }"
-            class="spinner-border spinner-border-sm"
-            role="status"
-            aria-hidden="true"
-          ></span>
-          清空購物車
-        </button>
-      </div>
-    <div class="d-none d-md-flex justify-content-between mt-4 row "
-     v-if="cartList.carts?.length >0">
-      <hr>
-        <span class="col-7 fz-0 d-flex justify-content-around align-items-center">
+    <div
+      class="d-flex justify-content-end mt-4"
+      v-if="cartList.carts?.length > 0"
+    >
+      <button class="btn btn-outline-danger" @click.prevent="clearCart">
+        <span
+          :class="{ 'd-none': loadingStatue.clearCart !== 1 }"
+          class="spinner-border spinner-border-sm"
+          role="status"
+          aria-hidden="true"
+        ></span>
+        清空購物車
+      </button>
+    </div>
+    <div
+      class="d-none d-md-flex justify-content-between mt-4 row"
+      v-if="cartList.carts?.length > 0"
+    >
+      <hr />
+      <span class="col-7 fz-0 d-flex justify-content-around align-items-center">
         <p class="mb-0">商品總計:</p>
-        <p class="fz-2 mb-0 text-danger fw-bold">NT$ {{  Math.floor(cartList.total)}}</p>
+        <p class="fz-2 mb-0 text-danger fw-bold">
+          NT$ {{ $toComma(Math.floor(cartList.total)) }}
+        </p>
       </span>
       <button
-        class="btn btn-primary fz-2 py-2 col-5 "
+        class="btn btn-primary fz-2 py-2 col-5"
         @click.prevent="sendCartsList"
       >
         <span
@@ -135,18 +169,33 @@
       </button>
     </div>
   </div>
-  <div class="w-100 mobile-fixed d-md-none
-        bg-white">
-    <div class="d-flex justify-content-between row  ">
-        <span class="col-7 fz-0 d-flex justify-content-around align-items-center
-        border-top">
+  <div class="w-100 mobile-fixed d-md-none bg-white">
+    <div class="d-flex justify-content-between row">
+      <span
+        class="
+          col-7
+          fz-0
+          d-flex
+          justify-content-around
+          align-items-center
+          border-top
+        "
+      >
         <p class="mb-0">總計:</p>
-        <p class="fz-3 mb-0 text-danger fw-bold">NT$ {{  Math.floor(cartList.total)}}</p>
+        <p class="fz-2 mb-0 text-danger fw-bold">
+          NT$ {{ $toComma(Math.floor(cartList.total)) }}
+        </p>
       </span>
-      <button v-if="cartList.carts?.length >0"
-        :disabled='loadingStatue.sendCart == 1 '
-        class="btn btn-primary py-2 fz-2 fz-ssm-3 col-5 btn-right
-        btn-primary-mobile"
+      <button
+        v-if="cartList.carts?.length > 0"
+        :disabled="loadingStatue.sendCart == 1"
+        class="
+          btn btn-primary
+          py-2
+          fz-2 fz-ssm-3
+          col-5
+          btn-right btn-primary-mobile
+        "
         @click.prevent="sendCartsList"
       >
         <span
@@ -157,28 +206,32 @@
         ></span>
         送出訂單
       </button>
-    <button
-      v-if="cartList.carts?.length === 0" type="button" class="btn btn-primary py-2 fz-2 fz-ssm-3
-      col-5 btn-right"
-    @click="$router.push('/products')">
-      前往購物
-    </button>
-    </div></div>
+      <button
+        v-if="cartList.carts?.length === 0"
+        type="button"
+        class="btn btn-primary py-2 fz-2 fz-ssm-3 col-5 btn-right"
+        @click="$router.push('/products')"
+      >
+        前往購物
+      </button>
+    </div>
+  </div>
   <!-- 購物車列表 end -->
 
-   <!-- 購物車沒商品時，呈現此區塊  star-->
+  <!-- 購物車沒商品時，呈現此區塊  star-->
   <div v-if="cartList.carts?.length === 0">
-    <span class="material-icons fz-4">
-production_quantity_limits
-</span>
+    <span class="material-icons fz-4"> production_quantity_limits </span>
 
-    <p class=" fz-3">購物車目前沒商品喔!</p>
-    <button type="button" class="btn btn-primary  fz-3"
-    @click="$router.push('/products')">
+    <p class="fz-3">購物車目前沒商品喔!</p>
+    <button
+      type="button"
+      class="btn btn-primary fz-3"
+      @click="$router.push('/products')"
+    >
       前往SHOPPING!
     </button>
   </div>
-   <!-- 購物車沒商品時，呈現此區塊  end-->
+  <!-- 購物車沒商品時，呈現此區塊  end-->
   <hr />
 
   <!-- 讀取畫面 start-->
@@ -236,6 +289,8 @@ export default {
     getCartList() {
       // 發起一個觸發(刷新購物車)
       emitter.emit('refresh-carts');
+      // 開啟讀取畫面
+      this.isLoading = true;
       this.$http
         .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`)
         .then((res) => {
@@ -247,12 +302,10 @@ export default {
             // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             // 關掉讀取畫面
             this.isLoading = false;
           }
@@ -262,12 +315,10 @@ export default {
           // alert(err.data.message);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
           // 關掉讀取畫面
           this.isLoading = false;
         });
@@ -277,7 +328,9 @@ export default {
       // console.log(id)
       this.loadingStatue.delCart = id;
       this.$http
-        .delete(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`)
+        .delete(
+          `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`,
+        )
         .then((res) => {
           // console.log(res);
           if (res.data.success) {
@@ -288,22 +341,18 @@ export default {
             // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = true;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
           } else {
             // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
           }
         })
         .catch((err) => {
@@ -311,12 +360,10 @@ export default {
           // alert(err.data.message);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
         });
     },
     // 清空購物車商品
@@ -324,7 +371,9 @@ export default {
       // console.log(id)
       this.loadingStatue.clearCart = 1;
       this.$http
-        .delete(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`)
+        .delete(
+          `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`,
+        )
         .then((res) => {
           // console.log(res);
           if (res.data.success) {
@@ -335,24 +384,20 @@ export default {
             // alert 元件顯示
             this.alertMessage = res.data.message;
             this.alertStatus = true;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             this.loadingStatue.clearCart = '';
           } else {
             // alert(res.data.message);
-          // alert 元件顯示
+            // alert 元件顯示
             this.alertMessage = res.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
           }
         })
         .catch((err) => {
@@ -362,38 +407,54 @@ export default {
           // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
         });
     },
     // 改動購物車商品數量
-    rediCartItemsNum(item) {
+    rediCartItemsNum(item, i) {
+      // 開啟讀取畫面
+      this.isLoading = true;
       // console.log(item)
+      let num = 0;
+      if (parseInt(item.qty + i, 10) < 1) {
+        num = 1;
+      } else if (parseInt(item.qty + i, 10) > 999) {
+        num = 999;
+      } else {
+        num = parseInt(item.qty + i, 10);
+      }
       const cartItem = {
-        data: { product_id: item.product_id, qty: parseInt(item.qty, 10) },
+        data: {
+          product_id: item.product_id,
+          qty: num,
+        },
       };
       // console.log(cart_item)
       this.$http
-        .put(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${item.id}`, cartItem)
+        .put(
+          `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${item.id}`,
+          cartItem,
+        )
         .then((res) => {
           // console.log(res)
           if (res.data.success) {
             this.getCartList();
+            // 關掉讀取畫面
+            this.isLoading = false;
           } else {
             // alert(res.data.message);
             // alert 元件顯示
             this.alertMessage = res.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
+            // 關掉讀取畫面
+            this.isLoading = false;
           }
         })
         .catch((err) => {
@@ -402,12 +463,12 @@ export default {
           // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
+          // 關掉讀取畫面
+          this.isLoading = false;
         });
     },
     // 送出購物車訂單
@@ -436,24 +497,20 @@ export default {
             this.couponCode = '';
             this.alertMessage = res.data.message;
             this.alertStatus = true;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             // 關閉 按鈕loading
             this.loadingStatue.coupon = '';
           } else {
             // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             // 關閉 按鈕loading
             this.loadingStatue.coupon = '';
             // 清空優惠碼
@@ -465,12 +522,10 @@ export default {
           // alert(err.data.message);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
           // 關閉 按鈕loading
           this.loadingStatue.coupon = '';
           // 清空優惠碼
@@ -492,28 +547,38 @@ export default {
   created() {
     // 改變進度條
     this.chgCartStep();
+  },
+  mounted() {
+    // 開啟讀取畫面
     this.isLoading = true;
     // 刷新購物車列表
     this.getCartList();
-  },
-  mounted() {
   },
 };
 </script>
 
 <style lang="scss" scoped>
-
-.carNum{
-  width: 50px;
+.carNum {
+  width: 35px;
 }
-.cart-img{
+.cart-img {
   width: 100%;
   height: 100px;
 }
 
 .btn-primary-mobile:hover {
-    border-color: #fff;
-    background-color: #7f5625;
-    color: #fff;
+  border-color: #fff;
+  background-color: #7f5625;
+  color: #fff;
 }
+//input
+  // 消除number預設樣式
+  input[type=number] {
+    -moz-appearance:textfield;
+    }
+    input[type=number]::-webkit-inner-spin-button,
+    input[type=number]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
 </style>

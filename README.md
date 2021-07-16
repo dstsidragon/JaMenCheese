@@ -28,7 +28,9 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 前台
 
 #首頁
-footer
+Vfooter
+V訂閱 JS  給優惠碼 
+3D卡片 點擊連接產品
 
 #navBar
 V購物車小物件
@@ -36,13 +38,12 @@ V帳號
 V收藏
 移除滾動事件
 點LOGO也要改變顏色
-訂閱 JS  給優惠碼 
-3D卡片
+登出彈跳視窗出來跟關閉會跳錯
 
 #產品頁
 
 路由 >>麵包屑元件
-最愛收藏
+V最愛收藏
 V加入收藏刷新narbar
 商品價格千分號
 V熱賣商品  >> 需check取得的資料是all還是單一頁

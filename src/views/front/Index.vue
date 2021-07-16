@@ -1,5 +1,5 @@
 <template>
-  <div class="position-relative">
+  <div class="position-relative bg-white">
     <!-- <div class="banner"></div> -->
     <Swiper />
     <kinesis-container
@@ -226,20 +226,30 @@
     <Card3D />
   <!-- 訂閱 -->
   <div class="subscribe d-flex justify-content-center  align-items-center ">
-      <div class="">
+      <div class="bg-img-transparent p-1 rounded-3">
         <h2 class="text-start text-white fz-md-4">記得 <br />訂閱以獲取更多資訊!</h2>
-      <div class="input-group mb-3">
-        <input
-          type="text"
-          class="form-control w-50"
+        <div class="input-group mb-3" v-if="subscribeStatus">
+  <input type="text" class="form-control text-primary"
+  readonly value="送您訂閱優惠碼:subme"
+   aria-describedby="button-addon2">
+  <button class="btn btn-secondary" disabled type="button">已訂閱</button>
+</div>
+      <Form  v-else v-slot="{ errors }" class="input-group mb-3" @submit="sendMail">
+        <Field
+              name="信箱"
+              type="email"
+          class="form-control "
           placeholder="Your email address"
           aria-label="Your email address"
           aria-describedby="button-subscribe"
+              :class="{ 'is-invalid': errors['信箱'] }"
+              :rules="isEmail"
         />
-        <button class="btn btn-primary" type="button" id="button-subscribe">
+        <button class="btn btn-primary" type="submit" id="button-subscribe">
           訂閱
         </button>
-      </div>
+            <error-message name="信箱" class="invalid-feedback fz-2 "></error-message>
+      </Form>
     </div>
   </div>
   <!-- 讀取畫面 start -->
@@ -264,7 +274,20 @@ export default {
   data() {
     return {
       isLoading: false,
+      // 訂閱 改變class
+      subscribeStatus: false,
     };
+  },
+  methods: {
+    // 驗證信箱格式
+    isEmail(value) {
+      const mail = /^([a-zA-Z0-9_.\-+])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      return mail.test(value) ? true : '需要輸入正確的信箱';
+    },
+    // 訂閱
+    sendMail() {
+      this.subscribeStatus = true;
+    },
   },
   mounted() {
     // 讀取畫面

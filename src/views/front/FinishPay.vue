@@ -9,11 +9,11 @@
       />
       <!-- Alert元件 end -->
       <div class="card">
-  <div class="card-header">
+  <div class="card-header bg-success text-white">
     <h5 class="card-title fz-3">付款完成！</h5>
   </div>
   <div class="card-body">
-    <p class="card-text fz-2">商品開始備料製作，<br>感謝您對我們商品的支持</p>
+    <p class="card-text fz-2 text-primary">商品開始備料製作，<br>感謝您對我們商品的支持</p>
   </div>
 </div>
 <div class="d-none d-md-flex  justify-content-center mt-5">
@@ -34,7 +34,7 @@
         </div>
     </div>
     <!-- 送出按鈕 start-->
-  <div class="w-100 mobile-fixed d-md-none bg-white" >
+  <div class="w-100 mobile-fixed d-md-none bg-white border-top border-dark" >
     <div class="d-flex justify-content-between row  ">
       <button  @click="$router.push('/products')"
       type="submit"
