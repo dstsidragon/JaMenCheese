@@ -648,7 +648,7 @@ export default {
     },
     // 取得loCalStorage
     getLoCalStorage() {
-      const favAry = JSON.parse(localStorage.getItem('myFavorite'));
+      const favAry = JSON.parse(localStorage.getItem('myFavorite')) || [];
       const ary = [];
       favAry.forEach((item) => {
         if (item !== null) {
@@ -674,10 +674,10 @@ export default {
     this.chkUserName();
     // 取得購物車資料
     this.getCartList();
-    // 取得收藏資料
-    this.getLoCalStorage();
   },
   mounted() {
+    // 取得收藏資料
+    this.getLoCalStorage();
     // NavBar滾動
     this.ScrollNavbar();
     // 監聽一個事件(刷新購物車)
