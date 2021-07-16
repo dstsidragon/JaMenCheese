@@ -24,7 +24,8 @@
                     <h2 class="mb-2"><sup>$</sup>65 / 1<sup>入</sup></h2>
                     <p class="mb-4 fz-1">經典麵包</p>
                     <p class="mb-4 fz-1">店內招牌商品</p>
-                    <a href="#0" class="btn btn-info text-white fz-2">查看商品</a>
+                    <a href="#0" class="btn btn-info text-white fz-2"
+                    @click.prevent="$router.push('/product/-Mek1km57DVyzSxtPuIj')">查看商品</a>
                     <div class="img-wrap img-2">
                       <img
                         src="@/assets/images/bgPon.png"
@@ -57,7 +58,8 @@
                     <h2 class="mb-2"><sup>$</sup>3,000 / 1<sup>杯</sup></h2>
                     <p class="mb-4 fz-1">特調飲品</p>
                     <p class="mb-4 fz-1">請立即飲用，風味最佳</p>
-                    <a href="#0" class="btn btn-success fz-2">查看商品</a>
+                    <a href="#" class="btn btn-success fz-2"
+                     @click.prevent="$router.push('/product/-MejU8d8FSlrkDjPrmQt')">查看商品</a>
                     <div class="img-wrap img-2">
                       <img
                         src="@/assets/images/grass.png"

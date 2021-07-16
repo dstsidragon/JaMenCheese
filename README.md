@@ -30,7 +30,7 @@ See [Configuration Reference](https://cli.vuejs.org/config/).
 #首頁
 Vfooter
 V訂閱 JS  給優惠碼 
-3D卡片 點擊連接產品
+V3D卡片 點擊連接產品
 Vaos
 
 #navBar
@@ -48,6 +48,7 @@ V最愛收藏
 V加入收藏刷新narbar
 V商品價格千分號
 V熱賣商品  >> 需check取得的資料是all還是單一頁
+要撈全部產品的資料
 
 #產品詳細頁
 V加入收藏
@@ -97,7 +98,7 @@ V手風琴元件
 後台
 
 #產品頁面：
-
+新增產品 圖片會保留
 
 #訂單頁面：
 
