@@ -1,6 +1,5 @@
 <template>
-
-  <div class="section over-hide ">
+  <div class="section over-hide">
     <div class="container">
       <div class="row full-height justify-content-center">
         <div class="col-12 text-center align-self-center py-5">
@@ -24,31 +23,25 @@
                     <h2 class="mb-2"><sup>$</sup>65 / 1<sup>入</sup></h2>
                     <p class="mb-4 fz-1">經典麵包</p>
                     <p class="mb-4 fz-1">店內招牌商品</p>
-                    <a href="#0" class="btn btn-info text-white fz-2"
-                    @click.prevent="$router.push('/product/-Mek1km57DVyzSxtPuIj')">查看商品</a>
+                    <a
+                      href="#0"
+                      class="btn btn-info text-white fz-2"
+                      @click.prevent="
+                        $router.push('/product/-Mek1km57DVyzSxtPuIj')
+                      "
+                      >查看商品</a
+                    >
                     <div class="img-wrap img-2">
-                      <img
-                        src="@/assets/images/bgPon.png"
-                        alt="bgPon"
-                      />
+                      <img src="@/assets/images/bgPon.png" alt="bgPon" />
                     </div>
                     <div class="img-wrap img-1">
-                      <img
-                        src="@/assets/images/pon4.png"
-                        alt="pon4"
-                      />
+                      <img src="@/assets/images/pon4.png" alt="pon4" />
                     </div>
                     <div class="img-wrap img-3">
-                      <img
-                        src="@/assets/images/hotdog.png"
-                        alt="hotdog"
-                      />
+                      <img src="@/assets/images/hotdog.png" alt="hotdog" />
                     </div>
                     <div class="img-wrap img-6">
-                      <img
-                        src="@/assets/images/cheese.png"
-                        alt="cheese"
-                      />
+                      <img src="@/assets/images/cheese.png" alt="cheese" />
                     </div>
                   </div>
                 </div>
@@ -58,31 +51,25 @@
                     <h2 class="mb-2"><sup>$</sup>3,000 / 1<sup>杯</sup></h2>
                     <p class="mb-4 fz-1">特調飲品</p>
                     <p class="mb-4 fz-1">請立即飲用，風味最佳</p>
-                    <a href="#" class="btn btn-success fz-2"
-                     @click.prevent="$router.push('/product/-MejU8d8FSlrkDjPrmQt')">查看商品</a>
+                    <a
+                      href="#"
+                      class="btn btn-success fz-2"
+                      @click.prevent="
+                        $router.push('/product/-MejU8d8FSlrkDjPrmQt')
+                      "
+                      >查看商品</a
+                    >
                     <div class="img-wrap img-2">
-                      <img
-                        src="@/assets/images/grass.png"
-                        alt="grass"
-                      />
+                      <img src="@/assets/images/grass.png" alt="grass" />
                     </div>
                     <div class="img-wrap img-4">
-                      <img
-                        src="@/assets/images/cow.png"
-                        alt="cow"
-                      />
+                      <img src="@/assets/images/cow.png" alt="cow" />
                     </div>
                     <div class="img-wrap img-5">
-                      <img
-                        src="@/assets/images/Ivy.png"
-                        alt="Ivy"
-                      />
+                      <img src="@/assets/images/Ivy.png" alt="Ivy" />
                     </div>
                     <div class="img-wrap img-7">
-                      <img
-                        src="@/assets/images/milk.png"
-                        alt="milk"
-                      />
+                      <img src="@/assets/images/milk.png" alt="milk" />
                     </div>
                   </div>
                 </div>
@@ -167,14 +154,14 @@ a:hover {
   overflow: hidden;
   color: #fff;
   text-align: left;
-  border:1px solid #102770;
+  border: 1px solid #102770;
 }
 .pricing:checked + label:before,
 .pricing:not(:checked) + label:before {
   position: absolute;
   content: '';
   z-index: -2;
-  background-color: #ffeba7  ;
+  background-color: #ffeba7;
   width: 100%;
   height: 100%;
   display: block;
@@ -390,20 +377,20 @@ a:hover {
   opacity: 1;
   pointer-events: auto;
   transition: transform 400ms 1200ms ease, opacity 400ms 1200ms ease;
-  @include pad{
-  left: -107px;
-  top: -75px;
-  width: calc(45% + 100px);
+  @include pad {
+    left: -107px;
+    top: -75px;
+    width: calc(45% + 100px);
   }
-  @include mobile{
-  left: -27px;
-  top: -55px;
-  width: calc(45% + 50px);
+  @include mobile {
+    left: -27px;
+    top: -55px;
+    width: calc(45% + 50px);
   }
-  @include plusMobile{
-  left: -14px;
-  top: -71px;
-  width: calc(50% + 50px);
+  @include plusMobile {
+    left: -14px;
+    top: -71px;
+    width: calc(50% + 50px);
   }
 }
 .pricing:checked ~ .card-3d-wrap .card-3d-wrapper .img-1 {
@@ -435,10 +422,10 @@ a:hover {
   opacity: 1;
   pointer-events: auto;
   transition: transform 300ms 1300ms ease, opacity 200ms 1300ms ease;
-  @include smallmobile{
-  right: -18px;
-  top: -7px;
-  width: calc(50% + 20px);
+  @include smallmobile {
+    right: -18px;
+    top: -7px;
+    width: calc(50% + 20px);
   }
 }
 .pricing:checked ~ .card-3d-wrap .card-3d-wrapper .img-3 {
@@ -458,10 +445,10 @@ a:hover {
   opacity: 1;
   pointer-events: auto;
   transition: transform 300ms 1300ms ease, opacity 200ms 1300ms ease;
-  @include plusMobile{
-  right: -17px;
-  bottom: -63px;
-  width: calc(25% + 30px);
+  @include plusMobile {
+    right: -17px;
+    bottom: -63px;
+    width: calc(25% + 30px);
   }
 }
 .pricing:checked ~ .card-3d-wrap .card-3d-wrapper .img-6 {
@@ -482,11 +469,11 @@ a:hover {
   opacity: 0;
   pointer-events: none;
   transition: transform 400ms ease, opacity 200ms 150ms ease;
-  @include smallmobile{
+  @include smallmobile {
     left: -13px;
-        width: calc(30% + 60px);
-    }
-  @include  miniMobile{
+    width: calc(30% + 60px);
+  }
+  @include miniMobile {
     left: -19px;
     top: -49px;
   }
@@ -508,12 +495,12 @@ a:hover {
   opacity: 0;
   pointer-events: none;
   transition: transform 400ms 100ms ease, opacity 200ms 250ms ease;
-  @include smallmobile{
-        }
-  @include  miniMobile{
-  right: -52px;
-  top: -50px;
-  width: calc(55% + 70px);
+  @include smallmobile {
+  }
+  @include miniMobile {
+    right: -52px;
+    top: -50px;
+    width: calc(55% + 70px);
   }
 }
 .pricing:checked ~ .card-3d-wrap .card-3d-wrapper .img-5 {
@@ -533,10 +520,10 @@ a:hover {
   opacity: 0;
   pointer-events: none;
   transition: transform 400ms 100ms ease, opacity 200ms 250ms ease;
-  @include smallmobile{
-  right: -20px;
-        }
-  @include  miniMobile{
+  @include smallmobile {
+    right: -20px;
+  }
+  @include miniMobile {
   }
 }
 .pricing:checked ~ .card-3d-wrap .card-3d-wrapper .img-7 {
@@ -545,5 +532,4 @@ a:hover {
   transform: translate3d(0, 0, 35px) perspective(100px) scale(1);
   transition: transform 400ms 1300ms ease, opacity 300ms 1300ms ease;
 }
-
 </style>

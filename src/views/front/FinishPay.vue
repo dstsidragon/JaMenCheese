@@ -1,27 +1,38 @@
 <template>
-  <div class="container mt-3 ">
-      <!-- Alert元件 start -->
-      <Alert
-        class="alert-position"
-        v-if="alertMessage"
-        :message="alertMessage"
-        :status="alertStatus"
-      />
-      <!-- Alert元件 end -->
-      <div class="card">
-  <div class="card-header bg-success text-white">
-    <h5 class="card-title fz-3">付款完成！</h5>
-  </div>
-  <div class="card-body">
-    <p class="card-text fz-2 text-primary">商品開始備料製作，<br>感謝您對我們商品的支持</p>
-  </div>
-</div>
-<div class="d-none d-md-flex  justify-content-center mt-5">
-          <button ref="formBtn"   @click="$router.push('/products')"
-      type="submit"
-        :disabled='loadingStatue.sendOrder == 1 '
-        class="btn btn-primary py-2 fz-2 fz-ssm-3 col-10 col-sm-5
-         d-flex justify-content-center align-items-center"
+  <div class="container mt-3">
+    <!-- Alert元件 start -->
+    <Alert
+      class="alert-position"
+      v-if="alertMessage"
+      :message="alertMessage"
+      :status="alertStatus"
+    />
+    <!-- Alert元件 end -->
+    <div class="card">
+      <div class="card-header bg-success text-white">
+        <h5 class="card-title fz-3">付款完成！</h5>
+      </div>
+      <div class="card-body">
+        <p class="card-text fz-2 text-primary">
+          商品開始備料製作，<br />感謝您對我們商品的支持
+        </p>
+      </div>
+    </div>
+    <div class="d-none d-md-flex justify-content-center mt-5">
+      <button
+        ref="formBtn"
+        @click="$router.push('/products')"
+        type="submit"
+        :disabled="loadingStatue.sendOrder == 1"
+        class="
+          btn btn-primary
+          py-2
+          fz-2 fz-ssm-3
+          col-10 col-sm-5
+          d-flex
+          justify-content-center
+          align-items-center
+        "
       >
         <span
           :class="{ 'd-none': loadingStatue.sendOrder !== 1 }"
@@ -31,16 +42,24 @@
         ></span>
         <span>繼續購物</span>
       </button>
-        </div>
     </div>
-    <!-- 送出按鈕 start-->
-  <div class="w-100 mobile-fixed d-md-none bg-white border-top border-dark" >
-    <div class="d-flex justify-content-between row  ">
-      <button  @click="$router.push('/products')"
-      type="submit"
-        :disabled='loadingStatue.sendOrder == 1 '
-        class="btn btn-primary py-2 fz-2 fz-ssm-3  btn-right
-        btn-primary-mobile d-flex justify-content-center align-items-center"
+  </div>
+  <!-- 送出按鈕 start-->
+  <div class="w-100 mobile-fixed d-md-none bg-white border-top border-dark">
+    <div class="d-flex justify-content-between row">
+      <button
+        @click="$router.push('/products')"
+        type="submit"
+        :disabled="loadingStatue.sendOrder == 1"
+        class="
+          btn btn-primary
+          py-2
+          fz-2 fz-ssm-3
+          btn-right btn-primary-mobile
+          d-flex
+          justify-content-center
+          align-items-center
+        "
       >
         <span
           :class="{ 'd-none': loadingStatue.sendOrder !== 1 }"
@@ -83,8 +102,7 @@ export default {
       // 讀取畫面
       isLoading: false,
       // 讀取狀態
-      loadingStatue: {
-      },
+      loadingStatue: {},
       // 購物步驟
       cartStep: 4,
     };
@@ -96,23 +114,19 @@ export default {
       emitter.emit('chg-cart-step', this.cartStep);
     },
   },
-  computed: {
-  },
+  computed: {},
   created() {
     // 改變進度條
     this.chgCartStep();
   },
-  mounted() {
-  },
+  mounted() {},
 };
 </script>
 
 <style lang="scss" scoped>
-
 .btn-primary-mobile:hover {
-    border-color: #fff;
-    background-color: #7f5625;
-    color: #fff;
+  border-color: #fff;
+  background-color: #7f5625;
+  color: #fff;
 }
-
 </style>

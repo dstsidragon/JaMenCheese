@@ -1,15 +1,25 @@
 <template>
   <swiper
-    :style="{ '--swiper-navigation-color': '#fff', '--swiper-pagination-color': '#fff' }"
+    :style="{
+      '--swiper-navigation-color': '#fff',
+      '--swiper-pagination-color': '#fff',
+    }"
     :loop="true"
     :spaceBetween="10"
     :navigation="true"
     :thumbs="{ swiper: thumbsSwiper }"
     class="mySwiper2 img_big"
   >
-    <swiper-slide><img  class="object-fit" :src="product.imageUrl"/></swiper-slide>
-    <swiper-slide class="object-fit" v-for="(item, i) in filterProductImg" :key="i" >
-      <img  :src="item"/></swiper-slide>
+    <swiper-slide
+      ><img class="object-fit" :src="product.imageUrl"
+    /></swiper-slide>
+    <swiper-slide
+      class="object-fit"
+      v-for="(item, i) in filterProductImg"
+      :key="i"
+    >
+      <img :src="item"
+    /></swiper-slide>
   </swiper>
   <swiper
     @swiper="setThumbsSwiper"
@@ -20,13 +30,16 @@
     :watchSlidesVisibility="true"
     :watchSlidesProgress="true"
     class="mySwiper"
-    style="height: 100px; "
+    style="height: 100px"
   >
-    <swiper-slide><img  :src="product.imageUrl"/></swiper-slide>
+    <swiper-slide><img :src="product.imageUrl" /></swiper-slide>
 
-    <swiper-slide  style="width: 100px; "
-     v-for="(item, i) in filterProductImg" :key="i">
-      <img  :src="item"/>
+    <swiper-slide
+      style="width: 100px"
+      v-for="(item, i) in filterProductImg"
+      :key="i"
+    >
+      <img :src="item" />
     </swiper-slide>
   </swiper>
 </template>
@@ -47,9 +60,7 @@ import SwiperCore, { Navigation, Thumbs } from 'swiper/core';
 SwiperCore.use([Navigation, Thumbs]);
 
 export default {
-  props: [
-    'product',
-  ],
+  props: ['product'],
   components: {
     Swiper,
     SwiperSlide,
@@ -65,21 +76,20 @@ export default {
       this.thumbsSwiper = swiper;
     },
   },
-  // computed: {
-  //   filterProductImg() {
-  //     return this.product.imagesUrl.filter((item) => item !== '');
-  //   },
-  // },
   watch: {
     // 塞選掉空白的圖片
     product() {
-      this.filterProductImg = this.product.imagesUrl.filter((item) => item !== '');
+      this.filterProductImg = this.product.imagesUrl.filter(
+        (item) => item !== '',
+      );
     },
   },
 };
 </script>
 <style lang="scss" scoped>
-#app { height: 100% }
+#app {
+  height: 100%;
+}
 html,
 body {
   position: relative;
@@ -131,20 +141,18 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-.img_big{
+.img_big {
   height: 600px;
 }
-@media (max-width:767px) {
-  .img_big{
+@media (max-width: 767px) {
+  .img_big {
     height: 400px;
   }
-
 }
 
-@media (max-width:413px) {
-  .img_big{
+@media (max-width: 413px) {
+  .img_big {
     height: 300px;
   }
-
 }
 </style>

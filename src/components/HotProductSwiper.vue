@@ -9,21 +9,24 @@
       stretch: 0,
       depth: 100,
       modifier: 1,
-      slideShadows: true
+      slideShadows: true,
     }"
     class="mySwiper"
   >
-    <SwiperSlide v-for="(item, i) in filterProducts" :key="i"
-    @click.prevent="$emit('view-one-product',item)">
-    <div class="overflow-hidden">
-      <img :src="item.imageUrl" class="object-fit swiper-img img--scale "/>
+    <SwiperSlide
+      v-for="(item, i) in filterProducts"
+      :key="i"
+      @click.prevent="$emit('view-one-product', item)"
+    >
+      <div class="overflow-hidden">
+        <img :src="item.imageUrl" class="object-fit swiper-img img--scale" />
       </div>
       <span>
-        <p class="bg-primary text-white p-1 fs-2 m-0">{{item.title}}</p>
+        <p class="bg-primary text-white p-1 fs-2 m-0">{{ item.title }}</p>
         <p class="bg-lightPrimary text-white p-1 m-0">詳細內容</p>
       </span>
-      <div class="bg-danger text-white p-1 hotProduct-icon ">HOT</div>
-      </SwiperSlide>
+      <div class="bg-danger text-white p-1 hotProduct-icon">HOT</div>
+    </SwiperSlide>
   </Swiper>
 </template>
 <script>
@@ -46,9 +49,7 @@ export default {
     Swiper,
     SwiperSlide,
   },
-  props: [
-    'products',
-  ],
+  props: ['products'],
   watch: {
     products() {
       // 隨機抓出六筆資料
@@ -78,8 +79,7 @@ export default {
       });
     },
   },
-  mounted() {
-  },
+  mounted() {},
 };
 </script>
 
@@ -117,10 +117,9 @@ body {
   width: 100%;
   height: 215px;
 }
-.hotProduct-icon{
+.hotProduct-icon {
   position: absolute;
   top: 0;
   left: 5px;
 }
-
 </style>

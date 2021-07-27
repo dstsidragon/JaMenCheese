@@ -94,6 +94,7 @@ export default {
       products: '',
       // 收藏的產品
       myFavoriteProducts: '',
+      err: '',
     };
   },
   computed: {
@@ -101,22 +102,17 @@ export default {
   watch: {
     myFavorite() {
       this.myFavoriteProduct();
-    //   console.log('watch');
     },
   },
   methods: {
     // 加入最愛
     addFavorite(id) {
-    //   console.log(this.myFavorite);
-      // console.log(this.id);
       // 如果已經在最愛 就刪除最愛  如果沒有 就加到最愛
       if (this.myFavorite.includes(id)) {
         this.myFavorite.splice(this.myFavorite.indexOf(id), 1);
       } else {
         this.myFavorite.push(id);
       }
-      //   console.log(this.myFavorite);
-
       // 儲存myFavorite資料到LocalStorage
       this.setLoCalStorage('myFavorite', this.myFavorite);
       // 發起一個觸發(刷新最愛)
@@ -136,17 +132,14 @@ export default {
       this.$http
         .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`)
         .then((res) => {
-          // console.log(res);
           // 如果成功就執行
           if (res.data.success) {
             this.products = res.data.products;
             this.myFavoriteProduct();
-          } else {
-            console.log('驗證錯誤，請重新登入!');
           }
         })
         .catch((err) => {
-          console.log(err);
+          this.err = err;
         });
     },
     myFavoriteProduct() {
@@ -161,7 +154,6 @@ export default {
         );
       });
       this.myFavoriteProducts = favAry;
-      // console.log(this.myFavoriteProducts);
     },
   },
   created() {

@@ -1,18 +1,19 @@
 <template>
   <!-- 訂單列表 start-->
-   <!-- 訂單列表沒訂單時，呈現此區塊  star-->
-  <div v-if="orderPagination.total_pages ===0" class="container mt-5">
-    <span class="material-icons fz-4">
-list_alt
-</span>
+  <!-- 訂單列表沒訂單時，呈現此區塊  star-->
+  <div v-if="orderPagination.total_pages === 0" class="container mt-5">
+    <span class="material-icons fz-4"> list_alt </span>
 
-    <p class=" fz-3">目前沒訂單喔!</p>
-    <button type="button" class="btn btn-primary  fz-3"
-    @click="$router.push('/products')">
+    <p class="fz-3">目前沒訂單喔!</p>
+    <button
+      type="button"
+      class="btn btn-primary fz-3"
+      @click="$router.push('/products')"
+    >
       前往SHOPPING!
     </button>
   </div>
-   <!-- 訂單列表沒訂單時，呈現此區塊  end-->
+  <!-- 訂單列表沒訂單時，呈現此區塊  end-->
   <div v-else class="container mt-5">
     <form class="d-flex justify-content-center" @submit.prevent="searchOrder">
       <input
@@ -230,15 +231,12 @@ export default {
           `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/orders?page=${page}`,
         )
         .then((res) => {
-          // console.log(res)
           if (res.data.success) {
-            // console.log(res.data);
             this.orderList = res.data;
             this.orderPagination = res.data.pagination;
             // 關閉讀取畫面
             this.isLoading = false;
           } else {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
@@ -250,8 +248,6 @@ export default {
           }
         })
         .catch((err) => {
-          // console.log(err)
-          // alert(err.data.message);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {
@@ -288,15 +284,12 @@ export default {
           }/order/${this.order.trim()}`,
         )
         .then((res) => {
-          // console.log(res)
           if (res.data.success) {
-            // console.log(res.data);
             // 關閉讀取畫面
             this.isLoading = false;
             this.loadingStatue.searchOrder = '';
             this.$router.push(`/order/${this.order.trim()}`);
           } else {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
@@ -309,8 +302,6 @@ export default {
           }
         })
         .catch((err) => {
-          // console.log(err)
-          // alert(err.data.message);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {

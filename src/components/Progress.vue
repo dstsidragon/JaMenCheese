@@ -1,11 +1,19 @@
 <template>
-  <div class="row position-relative pt-5 bg-blueGray ">
+  <div class="row position-relative pt-5 bg-blueGray">
     <ul
-      class="offset-1 col-10 d-flex  justify-content-between
-        align-items-center z-index-1020"
+      class="
+        offset-1
+        col-10
+        d-flex
+        justify-content-between
+        align-items-center
+        z-index-1020
+      "
     >
       <li>
-        <div class="rounded-pill border-primary border px-2 bg-white active">1</div>
+        <div class="rounded-pill border-primary border px-2 bg-white active">
+          1
+        </div>
       </li>
       <li>
         <div
@@ -32,25 +40,22 @@
         </div>
       </li>
     </ul>
-    <ul
-      class="offset-1 col-10 d-flex gx-0
-        align-items-center row"
-    >
-      <li class=" col-3 text-start">
-        <div class=" text-primary fz-0">商品確認</div>
+    <ul class="offset-1 col-10 d-flex gx-0 align-items-center row">
+      <li class="col-3 text-start">
+        <div class="text-primary fz-0">商品確認</div>
       </li>
       <li class="col-3 pe-sm-2 pe-md-4 pe-lg-5 pe-xl-7">
-        <div v-if="cartstep > 1" class=" text-primary fz-0">填寫資料</div>
+        <div v-if="cartstep > 1" class="text-primary fz-0">填寫資料</div>
       </li>
-      <li class="  col-3 ps-2 ps-ssm-3 ps-sm-4 ps-md-5 ps-xl-9">
-        <div v-if="cartstep > 2" class=" text-primary fz-0">訂單確認</div>
+      <li class="col-3 ps-2 ps-ssm-3 ps-sm-4 ps-md-5 ps-xl-9">
+        <div v-if="cartstep > 2" class="text-primary fz-0">訂單確認</div>
       </li>
       <li class="col-3 text-end pe-2">
-        <div v-if="cartstep > 3" class=" text-primary fz-0">完成</div>
+        <div v-if="cartstep > 3" class="text-primary fz-0">完成</div>
       </li>
     </ul>
     <div class="offset-1 col-10 progressbar">
-      <div class="progress" style="height: 2px;">
+      <div class="progress" style="height: 2px">
         <div
           class="progress-bar"
           role="progressbar"
@@ -65,9 +70,7 @@
 </template>
 <script>
 export default {
-  props: [
-    'cartstep',
-  ],
+  props: ['cartstep'],
   data() {
     return {
       progress: '',
@@ -108,5 +111,4 @@ export default {
   background-color: #7f5625 !important;
   color: #ffffff;
 }
-
 </style>

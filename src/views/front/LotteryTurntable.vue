@@ -1,15 +1,15 @@
 <template>
   <div class="mt_navbar">
-          <!-- 跑馬燈元件  start-->
-          <Marquee />
-          <!-- 跑馬燈元件  end-->
-          </div>
-              <div class="banner   d-flex justify-content-center align-items-center">
-        <div class="text-white  bg-img-transparent rounded p-2 ">
-          <h2 class="text-center fz-2 fz-md-4">限時活動</h2>
-          <p class="fz-0 fz-md-1">少許的主動就可以使你生活中的運氣大增</p>
-        </div>
-         </div>
+    <!-- 跑馬燈元件  start-->
+    <Marquee />
+    <!-- 跑馬燈元件  end-->
+  </div>
+  <div class="banner d-flex justify-content-center align-items-center">
+    <div class="text-white bg-img-transparent rounded p-2">
+      <h2 class="text-center fz-2 fz-md-4">限時活動</h2>
+      <p class="fz-0 fz-md-1">少許的主動就可以使你生活中的運氣大增</p>
+    </div>
+  </div>
   <div class="">
     <div class="g-0 g-md-2 container-md py-5">
       <div
@@ -35,7 +35,7 @@
         <div class="col-md-6 mt-2 mt-md-0">
           <div class="border bg-white">
             <h2 class="bg-primary text-white py-1">獎項資訊</h2>
-            <p class="fz-2 text-primary ">{{ prizeName }}</p>
+            <p class="fz-2 text-primary">{{ prizeName }}</p>
           </div>
           <table class="table table-dark table-hover mt-2">
             <thead>
@@ -240,15 +240,12 @@ export default {
       this.refushPrizeName();
     },
     refushPrizeName() {
-      // console.log(this.prizeName);
-      // console.log(this.prizeAry);
       if (this.prizeAry.length < 5) {
         this.prizeAry.push(this.prizeName);
       } else {
         this.prizeAry.shift();
         this.prizeAry.push(this.prizeName);
       }
-      // console.log(this.prizeAry);
     },
   },
 };
@@ -257,15 +254,14 @@ export default {
 <style lang="scss" scoped>
 @import '@/assets/scss/mixin/_mixin';
 
-.banner{
-  background: center center   no-repeat
-  url('https://images.unsplash.com/photo-1506224477000-07aa8a76be20?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+.banner {
+  background: center center no-repeat
+    url('https://images.unsplash.com/photo-1506224477000-07aa8a76be20?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
   height: 340px;
   background-size: cover;
   background-attachment: fixed;
-  @include pad{
-  height: 170px;
+  @include pad {
+    height: 170px;
   }
 }
-
 </style>

@@ -158,36 +158,30 @@ export default {
     // 登入
     login() {
       // 信箱驗證
-      const myreg =
-        /^([a-zA-Z0-9_.\-+])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      const myreg = /^([a-zA-Z0-9_.\-+])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
       const adminInfo = {
         username: this.username,
         password: this.password,
       };
-      // console.log(adminInfo);
 
       if (
-        this.username !== '' &&
-        myreg.test(this.username) &&
-        this.password !== ''
+        this.username !== ''
+        && myreg.test(this.username)
+        && this.password !== ''
       ) {
         // 送出登入帳號資料做驗證
         this.$http
           .post(`${process.env.VUE_APP_API}/admin/signin`, adminInfo)
           .then((res) => {
-            console.log(res);
             // 如果成功就執行
             if (res.data.success) {
-              // alert(`${res.data.message}!!`);
-
               const [token, expired] = [res.data.token, res.data.expired];
-              // console.log(token,expired)
               // res塞到data
               this.statusPromptLogin = `${res.data.message}!!`;
               this.statuBoolLogin = true;
               // 存到cookies
               document.cookie = `hexToken=${token}; expires=${new Date(
-                expired
+                expired,
               )};username=${this.username}`;
               document.cookie = `username=${
                 this.username.split('@')[0]
@@ -200,8 +194,6 @@ export default {
               // 傳入變化的時間 讓元件的watch監聽
               this.loginInFallOrSuccess = new Date();
             } else {
-              console.log(res.data.message);
-              // alert(`${res.data.message}!!請檢查帳號密碼!`);
               // 密碼錯誤 清空密碼
               this.password = '';
 
@@ -213,15 +205,12 @@ export default {
             }
           })
           .catch((err) => {
-            console.dir(err);
             this.statusPromptLogin = `${err.data.message}!!請檢查帳號密碼!`;
             this.statuBoolLogin = false;
             // 傳入變化的時間 讓元件的watch監聽
             this.loginInFallOrSuccess = new Date();
           });
       } else {
-        console.log('41');
-        // alert("帳號密碼錯誤!");
         // 帳號密碼錯誤 清空帳號密碼錯誤
         this.username = '';
         this.password = '';
@@ -238,7 +227,6 @@ export default {
       // 將取得的資料賦予到data
       this.username = e.username;
       this.password = e.password;
-      // console.log( this.username, this.password)3
 
       // 登入
       this.login();
@@ -247,27 +235,24 @@ export default {
     // 註冊
     signup() {
       // 信箱驗證
-      const myreg =
-        /^([a-zA-Z0-9_.\-+])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+      const myreg = /^([a-zA-Z0-9_.\-+])+@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;
       const adminInfo = {
         username: this.username,
         password: this.password,
         confirm_password: this.passwordRepit,
       };
-      // console.log(adminInfo);
 
       if (
-        this.username !== '' &&
-        myreg.test(this.username) &&
-        this.password !== '' &&
-        this.passwordRepit !== ''
+        this.username !== ''
+        && myreg.test(this.username)
+        && this.password !== ''
+        && this.passwordRepit !== ''
       ) {
         // 送出註冊帳號資料做驗證
         const url = `${process.env.VUE_APP_API}/signup`;
         this.$http
           .post(url, adminInfo)
           .then((res) => {
-            // console.log(res);
             // 如果成功就執行
             if (res.data.success) {
               // res塞到data
@@ -278,7 +263,6 @@ export default {
               // 傳入變化的時間 讓元件的watch監聽
               this.signUpFallOrSuccess = new Date();
             } else {
-              // alert(`${res.data.message}!!請檢查帳號密碼!`);
               // 密碼錯誤 清空密碼
               this.password = '';
               // res塞到data
@@ -289,10 +273,7 @@ export default {
             }
           })
           .catch((err) => {
-            // console.dir(err);
-            // console.dir(err.response.data.code);
             if (err.response.data.code === 'auth/weak-password') {
-              // alert("密碼強度太弱!!")
               // 帳號密碼錯誤 清空帳號密碼錯誤
               this.username = '';
               this.password = '';
@@ -330,8 +311,6 @@ export default {
     },
     // 取得signupEmit
     getSignupEmitData(e) {
-      // console.log(e)
-
       // 將取得的資料賦予到data
       this.username = e.username;
       this.password = e.password;

@@ -1,7 +1,6 @@
 <template>
   <div class="position-relative bg-white">
     <Swiper />
-    <!-- bgc-transparent -->
     <kinesis-container
       class="banner__font rounded text-primary ff-HachiMaruPop p-sm-4"
     >

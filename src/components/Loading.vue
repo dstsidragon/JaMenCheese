@@ -1,5 +1,5 @@
 <template>
-  <div class="vld-parent ">
+  <div class="vld-parent">
     <loading v-model:active="isLoading">
       <h1 class="h1 ml6">
         <span class="text-wrapper">
@@ -45,14 +45,16 @@ export default {
     },
   },
   mounted() {
-    anime.timeline({ loop: true })
+    anime
+      .timeline({ loop: true })
       .add({
         targets: '.ml6 .letter',
         translateY: ['1.1em', 0],
         translateZ: 0,
         duration: 750,
         delay: (el, i) => 50 * i,
-      }).add({
+      })
+      .add({
         targets: '.ml6',
         opacity: 0,
         duration: 1000,
@@ -64,24 +66,30 @@ export default {
 </script>
 
 <style style lang="scss">
-@import "../assets/scss/mixin/mixin";
+@import '../assets/scss/mixin/mixin';
 
 .ml6 {
   position: relative;
   font-weight: 900;
   font-size: 3.3em;
-  }
+}
 // 文字閃耀
-.shine-font{
-  animation: change 1s  ease-in  infinite ;
+.shine-font {
+  animation: change 1s ease-in infinite;
   font-size: 36px;
-  color:#774023;
-  font-weight: bold
-  }
+  color: #774023;
+  font-weight: bold;
+}
 @keyframes change {
-  0%{ text-shadow: 0 0 4px #774023}
-  50%{ text-shadow: 0 0 16px #774023}
-  100%{ text-shadow: 0 0 4px #774023}
+  0% {
+    text-shadow: 0 0 4px #774023;
+  }
+  50% {
+    text-shadow: 0 0 16px #774023;
+  }
+  100% {
+    text-shadow: 0 0 4px #774023;
+  }
 }
 .ml6 .text-wrapper {
   position: relative;

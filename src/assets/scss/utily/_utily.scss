@@ -1,12 +1,12 @@
 /* 推擠 */
 .mt_navbar{
-    margin-top: 89px !important;
-    @include pc {
-      margin-top: 66px !important;
-    }
+  margin-top: 89px !important;
+  @include pc {
+    margin-top: 66px !important;
+  }
 }
 .mt_90{
-    margin-top: 90px;
+  margin-top: 90px;
 }
 .py-8 {
   padding-top: 4px;
@@ -40,243 +40,237 @@ box-shadow: -8px -5px 25px #333333;
 
 /* 圓角 */
 .rounded-bottom-50{
-    border-radius: 0 0 0.5rem 0.5rem;
-    border-top: 0;
+  border-radius: 0 0 0.5rem 0.5rem;
+  border-top: 0;
 }
 .rounded-top-50{
-    border-radius:  0.5rem 0.5rem 0 0;
-    border-bottom: 0;
+  border-radius:  0.5rem 0.5rem 0 0;
+  border-bottom: 0;
 
 }
 
 /* 鼠標 */
 .cursor-point{
-    cursor:pointer;
+  cursor:pointer;
 }
 /* 高度 */
 .h-40{
-    height: 80px;
+  height: 80px;
 }
 /* 字體 */
 .ff-PottaOne{
-    font-family: 'Potta One', cursive;
+  font-family: 'Potta One', cursive;
 }
 .ff-KosugiMaru{
-    font-family: 'Kosugi Maru', sans-serif;
+  font-family: 'Kosugi Maru', sans-serif;
 }
 .ff-HachiMaruPop{
-    font-family: 'Hachi Maru Pop', cursive;
+  font-family: 'Hachi Maru Pop', cursive;
 }
 
 
 /* 文字輸入效果 */
 @keyframes typing {
-    from { width: 0 }
-  }
+  from { width: 0 }
+}
   
-  @keyframes caret {
-    50% { border-color: transparent; }
-  }
+@keyframes caret {
+  50% { border-color: transparent; }
+} 
+.css_wordInput {
+  width: 12em;
+  border-right: .05em solid;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(12),
+  caret 1s steps(1) infinite;
+}
   
-  .css_wordInput {
-    width: 12em;
-    border-right: .05em solid;
-    overflow: hidden;
-    white-space: nowrap;
-    animation: typing 3s steps(12),
-      caret 1s steps(1) infinite;
-  }
-  
-  .css_wordInput_13 {
-    width: 13em;
-    border-right: .05em solid;
-    overflow: hidden;
-    white-space: nowrap;
-    animation: typing 3s steps(13),
-      caret 1s steps(1) infinite;
-  }
-  .css_wordInput_4 {
-    width: 5em;
-    border-right: .05em solid;
-    overflow: hidden;
-    white-space: nowrap;
-    animation: typing 3s steps(5),
-      caret 1s steps(1) infinite;
-  }
-  .w_100{
-    width: 100%;
-  }
-  .w-80{
-    width: 80%;
-  }
-  .w_50{
-    width: 50%;
-  }
-  .w_33{
-    width: 30%;
-  }
-
-  
-  // 顏色
-  .bg-veryGray{
-    background-color: #fdfdfd !important;
-  }
-  .bg-lightPrimary{
-    background-color:rgb(207, 154, 89);
-  }
-  .bg-lightYellow{
-    background-color: #fff8f0;
-  }
-  .bg-whiteGray{
-    background-color: #EEEEEE;
-  }
-  .bg-blueGray{
-    background-color: #FAFAFC;
-  }
-
-  //圖片
-  .object-fit{
+.css_wordInput_13 {
+  width: 13em;
+  border-right: .05em solid;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(13),
+  caret 1s steps(1) infinite;
+}
+.css_wordInput_4 {
+  width: 5em;
+  border-right: .05em solid;
+  overflow: hidden;
+  white-space: nowrap;
+  animation: typing 3s steps(5),
+  caret 1s steps(1) infinite;
+}
+.w_100{
+  width: 100%;
+}
+.w-80{
+  width: 80%;
+}
+.w_50{
+  width: 50%;
+}
+.w_33{
+  width: 30%;
+}
+// 顏色
+.bg-veryGray{
+  background-color: #fdfdfd !important;
+}
+.bg-lightPrimary{
+  background-color:rgb(207, 154, 89);
+}
+.bg-lightYellow{
+  background-color: #fff8f0;
+}
+.bg-whiteGray{
+  background-color: #EEEEEE;
+}
+.bg-blueGray{
+  background-color: #FAFAFC;
+}
+//圖片
+.object-fit{
+  object-fit: cover;
+  // @media screen and (min-width:400px) { 
+  //   object-fit: cover;
+  // }
+}
+.object-sm-fit{
+  @media (min-width:400px) { 
     object-fit: cover;
-    // @media screen and (min-width:400px) { 
-    //   object-fit: cover;
-    // }
   }
-  .object-sm-fit{
-    @media (min-width:400px) { 
-      object-fit: cover;
-    }
-  }
-  //圖片透明 文字不透明
-  .bg-img-transparent{
-    background:rgba(0,0,0,0.6 );
-  }
-
-  // 圖片特效 縮放
-  .img--scale{
-    transform:scale(1,1);transition: all .5s ease-out;
-    &:hover{transform:scale(1.2,1.2);};
-  }
-
-  //標題
-  .titleEffect{
-    text-align: center;
-    span{
-       position: relative;
-       display: inline-block;
-       padding: 0 0.5em;
-      &:before,&:after{
-        position: absolute;
-       top: 50%;
-       content: '';
-       width: 1.5em;
-       height: 1px;
-       background-color: black;
-      }
-      &:before{left: 100%;}
-      &:after{right: 100%;}
-    }
-  }
-  .titleEffect--border-bottom-bold{
-    padding: 0.2em;
-    background: linear-gradient(transparent 70%, #D11E35 70%);
-  }
-  .titleEffect--border-bottom-x{
-    text-align: center;
+}
+//圖片透明 文字不透明
+.bg-img-transparent{
+  background:rgba(0,0,0,0.6 );
+}
+// 圖片特效 縮放
+.img--scale{
+  transform:scale(1,1);transition: all .5s ease-out;
+  &:hover{transform:scale(1.2,1.2);};
+}
+//標題
+.titleEffect{
+  text-align: center;
   span{
-    position: relative;
-    display: inline-block;
-    padding: 0 0.8em;
-    &:before{
+     position: relative;
+     display: inline-block;
+     padding: 0 0.5em;
+     &:before,&:after{
      position: absolute;
+     top: 50%;
      content: '';
-     top:0;
-     right:0.2em;
-     width: 0.2em;
-     height:100%;
-     border: solid 1px black;
-     border-left: none;
+     width: 1.5em;
+     height: 1px;
+     background-color: black;
     }
-    &:after{
-     position: absolute;
-     content: '';
-     top:0;
-     left:0;
-     width: 0.2em;
-     height:100%;
-     border: solid 1px black;
-     border-right: none;
-    }
+    &:before{left: 100%;}
+    &:after{right: 100%;}
   }
+}
+.titleEffect--border-bottom-bold{
+  padding: 0.2em;
+  background: linear-gradient(transparent 70%, #D11E35 70%);
+}
+.titleEffect--border-bottom-x{
+  text-align: center;
+span{
+  position: relative;
+  display: inline-block;
+  padding: 0 0.8em;
+  &:before{
+   position: absolute;
+   content: '';
+   top:0;
+   right:0.2em;
+   width: 0.2em;
+   height:100%;
+   border: solid 1px black;
+   border-left: none;
   }
-  .titleEffect--border-bottom-x-danger-5{
-    text-align: center;
+  &:after{
+   position: absolute;
+   content: '';
+   top:0;
+   left:0;
+   width: 0.2em;
+   height:100%;
+   border: solid 1px black;
+   border-right: none;
+  }
+}
+}
+.titleEffect--border-bottom-x-danger-5{
+  text-align: center;
+span{
+  position: relative;
+  display: inline-block;
+  padding: 0 0.8em;
+  &:before{
+   position: absolute;
+   content: '';
+   top:0;
+   right:0.2em;
+   width: 0.4em;
+   height:100%;
+   border: solid 5px #dc3545 ;
+   border-left: none;
+  }
+  &:after{
+   position: absolute;
+   content: '';
+   top:0;
+   left:0;
+   width: 0.4em;
+   height:100%;
+   border: solid 5px #dc3545 ;
+   border-right: none;
+  }
+}
+}
+.titleEffect--border-bottom-x-primary-5{
+  text-align: center;
   span{
-    position: relative;
-    display: inline-block;
-    padding: 0 0.8em;
-    &:before{
-     position: absolute;
-     content: '';
-     top:0;
-     right:0.2em;
-     width: 0.4em;
-     height:100%;
-     border: solid 5px #dc3545 ;
-     border-left: none;
-    }
-    &:after{
-     position: absolute;
-     content: '';
-     top:0;
-     left:0;
-     width: 0.4em;
-     height:100%;
-     border: solid 5px #dc3545 ;
-     border-right: none;
-    }
+  position: relative;
+  display: inline-block;
+  padding: 0 0.8em;
+  &:before{
+   position: absolute;
+   content: '';
+   top:0;
+   right:0.2em;
+   width: 0.4em;
+   height:100%;
+   border: solid 5px #7f5625 ;
+   border-left: none;
   }
+  &:after{
+   position: absolute;
+   content: '';
+   top:0;
+   left:0;
+   width: 0.4em;
+   height:100%;
+   border: solid 5px #7f5625 ;
+   border-right: none;
   }
-  .titleEffect--border-bottom-x-primary-5{
-    text-align: center;
+}
+}
+.titleEffect--border-bottom-down{
+  text-align: center;
   span{
-    position: relative;
-    display: inline-block;
-    padding: 0 0.8em;
-    &:before{
-     position: absolute;
-     content: '';
-     top:0;
-     right:0.2em;
-     width: 0.4em;
-     height:100%;
-     border: solid 5px #7f5625 ;
-     border-left: none;
-    }
-    &:after{
-     position: absolute;
-     content: '';
-     top:0;
-     left:0;
-     width: 0.4em;
-     height:100%;
-     border: solid 5px #7f5625 ;
-     border-right: none;
-    }
-  }
-  }
-  .titleEffect--border-bottom-down{
-    text-align: center;
-    span{
-       position: relative;
-       display: inline-block;
-       padding-bottom:0.5em;
-       border-bottom: 1px solid black;
-      &:before,&:after{
-        position: absolute;
-       top: 100%;
-       left:50%;
-       transform:translateX(-50%);
-       content: '';
+     position: relative;
+     display: inline-block;
+     padding-bottom:0.5em;
+     border-bottom: 1px solid black;
+    &:before,&:after{
+      position: absolute;
+      top: 100%;
+      left:50%;
+      transform:translateX(-50%);
+      content: '';
        border: 10px solid transparent;
       }
       &:before{

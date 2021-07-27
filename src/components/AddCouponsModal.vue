@@ -19,103 +19,120 @@
           ></button>
         </div>
         <div class="modal-body fs-2">
-          <Form ref="addOrderForm" v-slot="{ errors }"  @submit="addCouponData">
-          <div class="card card-body ">
-         <div class=" d-flex flex-wrap justify-content-around mb-2">
-              <div class="form-group ">
-                <label for="title">標題</label>
-                <Field
-                type="text"
-                id="title"
-                name="標題"
-                placeholder="請輸入標題"
-                :class="{ 'is-invalid': errors['標題'] }"
-                rules="required"
-                class="form-control"
-                required
-                v-model="addCoupon.title"
-              />
-              <error-message name="標題" class="invalid-feedback"></error-message>
-              </div>
+          <Form ref="addOrderForm" v-slot="{ errors }" @submit="addCouponData">
+            <div class="card card-body">
+              <div class="d-flex flex-wrap justify-content-around mb-2">
+                <div class="form-group">
+                  <label for="title">標題</label>
+                  <Field
+                    type="text"
+                    id="title"
+                    name="標題"
+                    placeholder="請輸入標題"
+                    :class="{ 'is-invalid': errors['標題'] }"
+                    rules="required"
+                    class="form-control"
+                    required
+                    v-model="addCoupon.title"
+                  />
+                  <error-message
+                    name="標題"
+                    class="invalid-feedback"
+                  ></error-message>
+                </div>
 
+                <div class="form-group">
+                  <label for="percent">折扣</label>
+                  <Field
+                    type="number"
+                    style="width: 202px"
+                    id="percent"
+                    name="折扣"
+                    :class="{ 'is-invalid': errors['折扣'] }"
+                    rules="required"
+                    min="0"
+                    max="100"
+                    oninput="value=value.replace('-', '')"
+                    placeholder="請輸入折扣"
+                    class="form-control"
+                    v-model="addCoupon.percent"
+                  />
+                  <error-message
+                    name="折扣"
+                    class="invalid-feedback"
+                  ></error-message>
+                </div>
+              </div>
+              <div class="d-flex flex-wrap justify-content-around mb-2">
+                <div class="form-group">
+                  <label for="due_date">到期日</label>
+                  <Field
+                    style="width: 202px"
+                    type="date"
+                    id="due_date"
+                    name="到期日"
+                    :class="{ 'is-invalid': errors['到期日'] }"
+                    rules="required"
+                    class="form-control"
+                    v-model="addCoupon.due_date"
+                  />
+                  <error-message
+                    name="到期日"
+                    class="invalid-feedback"
+                  ></error-message>
+                </div>
+
+                <div class="form-group col-md-5" style="width: 202px">
+                  <label for="code">折扣碼</label>
+                  <Field
+                    type="text"
+                    id="code"
+                    name="折扣碼"
+                    :class="{ 'is-invalid': errors['折扣碼'] }"
+                    :rules="isCode"
+                    placeholder="請輸入折扣碼"
+                    class="form-control"
+                    v-model="addCoupon.code"
+                  />
+                  <error-message
+                    name="折扣碼"
+                    class="invalid-feedback"
+                  ></error-message>
+                </div>
+              </div>
+              <hr class="mt-5" />
               <div class="form-group">
-                <label for="percent">折扣</label>
-                <Field
-                  type="number"
-                  style="width:202px"
-                  id="percent"
-                  name="折扣"
-                  :class="{ 'is-invalid': errors['折扣'] }"
-                rules="required"
-                  min="0"
-                  max="100"
-                  oninput="value=value.replace('-', '')"
-                  placeholder="請輸入折扣"
-                  class="form-control"
-                  v-model="addCoupon.percent"
-                />
-              <error-message name="折扣" class="invalid-feedback"></error-message>
+                <div class="form-check">
+                  <input
+                    type="checkbox"
+                    true-value="1"
+                    false-value="0"
+                    id="is_enabled"
+                    class="form-check-input"
+                    v-model="addCoupon.is_enabled"
+                  />
+                  <label for="is_enabled" class="form-check-label">
+                    是否使用
+                  </label>
+                </div>
               </div>
             </div>
-            <div class=" d-flex flex-wrap justify-content-around mb-2">
-              <div class="form-group ">
-                <label for="due_date">到期日</label>
-                <Field
-                  style="width:202px"
-                  type="date"
-                  id="due_date"
-                  name="到期日"
-                  :class="{ 'is-invalid': errors['到期日'] }"
-                rules="required"
-                  class="form-control"
-                  v-model="addCoupon.due_date"
-                />
-              <error-message name="到期日" class="invalid-feedback"></error-message>
-              </div>
-
-              <div class="form-group col-md-5"
-                  style="width:202px">
-                <label for="code">折扣碼</label>
-                <Field
-                  type="text"
-                  id="code"
-                  name="折扣碼"
-                  :class="{ 'is-invalid': errors['折扣碼'] }"
-                  :rules="isCode"
-                  placeholder="請輸入折扣碼"
-                  class="form-control"
-                  v-model="addCoupon.code"
-                />
-              <error-message name="折扣碼" class="invalid-feedback"></error-message>
-              </div>
+            <div class="d-grid gap-2 d-md-flex justify-content-md-around pt-1">
+              <button
+                type="button"
+                class="btn btn-secondary fs-2"
+                data-bs-dismiss="modal"
+              >
+                取消建立
+              </button>
+              <button type="submit" class="btn btn-primary fs-2">
+                建立優惠券
+              </button>
             </div>
-            <hr class="mt-5" />
-            <div class="form-group">
-              <div class="form-check">
-                <input
-                  type="checkbox"
-                  true-value="1"
-                  false-value="0"
-                  id="is_enabled"
-                  class="form-check-input"
-                  v-model="addCoupon.is_enabled"
-                />
-                <label for="is_enabled" class="form-check-label">
-                  是否使用
-                </label>
-              </div>
-            </div>
-          </div>
-        <div class="d-grid gap-2  d-md-flex justify-content-md-around pt-1 ">
-          <button type="button" class="btn btn-secondary fs-2"
-          data-bs-dismiss="modal">取消建立</button>
-          <button type="submit" class="btn btn-primary fs-2"
-           >建立優惠券</button>
-        </div>
           </Form>
         </div>
-        </div>
-        </div>
+      </div>
+    </div>
   </div>
 </template>
 <script>

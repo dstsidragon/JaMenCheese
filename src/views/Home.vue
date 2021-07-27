@@ -1,17 +1,16 @@
 <template>
-
   <!-- scrollToTop start-->
-<ScrollToTop />
-<!-- scrollToTop end-->
+  <ScrollToTop />
+  <!-- scrollToTop end-->
 
   <!-- Navbar元件 start-->
-<Navbar />
+  <Navbar />
   <!-- Navbar元件 end-->
 
-<router-view/>
+  <router-view />
 
   <!-- Footer元件 start-->
-<Footer />
+  <Footer />
   <!-- Footer元件 end-->
 </template>
 <script>
@@ -32,5 +31,4 @@ export default {
 </script>
 
 <style lang="scss">
-
 </style>
