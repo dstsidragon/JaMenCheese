@@ -71,7 +71,6 @@ export default {
       for (let i = 0; prdSet.size < item; i += 1) {
         const prd = this.getRandomNumber(this.products.length);
         prdSet.add(prd);
-        // console.log(prd, prdSet);
       }
       // 將取出的數字 帶入資料內  push到陣列
       prdSet.forEach((i) => {

@@ -56,9 +56,7 @@ export default {
   },
   mounted() {
     this.alertMessage = this.message;
-    console.log(this.alertMessage);
     this.Is_succes = this.status;
-    console.log(this.Is_succes);
   },
 };
 </script>

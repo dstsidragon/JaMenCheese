@@ -53,7 +53,6 @@ export default {
       this.$http.post(url, this.email)
         .then(
           (res) => {
-            console.log(res);
             if (res.data.success) {
               // alert(res.data.message);
               this.alertMessage = res.data.message;

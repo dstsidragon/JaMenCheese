@@ -371,7 +371,6 @@ export default {
     },
     // 圖片上傳
     uploadImg() {
-      // console.dir(this.$refs.UpLoadImgInp.files[0]);
       const img = this.$refs.UpLoadImgInp.files[0];
       const imgFormData = new FormData();
       imgFormData.append('file-to-upload', img);
@@ -380,13 +379,11 @@ export default {
       this.$http
         .post(url, imgFormData)
         .then((res) => {
-          // console.log(res);
           if (res.data.success) {
             this.addProducts.imageUrl = res.data.imageUrl;
           }
         })
         .catch((err) => {
-          // console.log(err.data);
           // alert(err.data);
 
           // alert 元件顯示
