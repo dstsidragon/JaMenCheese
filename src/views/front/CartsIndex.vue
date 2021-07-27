@@ -115,7 +115,7 @@
                 class="spinner-border spinner-border-sm"
                 role="status"
                 aria-hidden="true"
-              ></span>
+              />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -150,7 +150,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         清空購物車
       </button>
     </div>
@@ -174,7 +174,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         送出訂單 ( {{ cartsNum }} )筆商品
       </button>
     </div>
@@ -213,7 +213,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         送出訂單
       </button>
       <button

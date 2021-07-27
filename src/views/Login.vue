@@ -14,68 +14,10 @@
       <div class="row">
         <img
           class="col-6 d-none d-md-block"
-          src="https://images.unsplash.com/photo-1506459225024-1428097a7e18?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+          src="https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627379482361.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=k4X8vbeMvFFpSiehNH6tYQVcTHx6m2%2B5V%2FA45OXAzAiN5K7HP8ol8Bch9COURdKQhPXRtNOL9%2FSAOvHfBrrvVWTs0gpb8WF2cdcuQWInmadjJGhcUZdr70krygrBEWThLlznLAsM35L4xaVoRGB242l7s%2BDZnNuQvtNaWt3j8YGfc9VRtySLbtrI1uPRXGxgF8KwMN9ZZoTNLYfTXVd1SLQvkrx%2FC%2Fzb3JFla7QVynfaQoU4pl26agIhvZZhUmxhY5WXpZeQmaQZ1gKNSQYyVr%2BtXXJRnvXVabJVP14OF366jBZ6kKbDg81wrsI6GbjRBFMC23d9CkIPf3WQ4Ndo4Q%3D%3D"
           alt="login-img"
         />
-        <div class="d-flex justify-content-center align-items-start col-md-6">
-          <div class="row">
-            <ul
-              class="nav nav-pills mb-3 justify-content-around"
-              id="pills-tab"
-              role="tablist"
-            >
-              <li class="nav-item" role="presentation">
-                <a
-                  href="#"
-                  class="nav-link active"
-                  id="login-tab"
-                  @click="chkMenuData"
-                  data-bs-toggle="pill"
-                  data-bs-target="#v-pills-login"
-                  role="tab"
-                  aria-controls="v-pills-login"
-                  aria-selected="true"
-                >
-                  登入</a
-                >
-              </li>
-              <li class="nav-item" role="presentation">
-                <a
-                  class="nav-link"
-                  id="signup-tab"
-                  data-bs-toggle="pill"
-                  @click="chkMenuData"
-                  data-bs-target="#v-pills-signup"
-                  role="tab"
-                  aria-controls="v-pills-signup"
-                  aria-selected="false"
-                  href="#"
-                  >註冊</a
-                >
-              </li>
-              <li class="nav-item" role="presentation">
-                <a
-                  class="nav-link"
-                  id="forget-tab"
-                  @click="chkMenuData"
-                  data-bs-toggle="pill"
-                  data-bs-target="#v-pills-forget"
-                  role="tab"
-                  aria-controls="v-pills-forget"
-                  aria-selected="true"
-                  href="#"
-                >
-                  忘記密碼</a
-                >
-              </li>
-            </ul>
-            <div class="tab-content" id="v-pills-tabContent">
-              <div
-                class="tab-pane fade show active"
-                id="v-pills-login"
-                role="tabpanel"
-                aria-labelledby="login-tab"
-              >
+        <div class="col-md-6">
                 <!-- 登入元件 -->
                 <Login
                   ref="Login"
@@ -84,35 +26,7 @@
                   :statu-bool="statuBoolLogin"
                   :login-in-fall-or-success="loginInFallOrSuccess"
                   :chk-menu="chkMenu"
-                ></Login>
-              </div>
-              <div
-                class="tab-pane fade"
-                id="v-pills-signup"
-                role="tabpanel"
-                aria-labelledby="signup-tab"
-              >
-                <!-- 註冊元件 -->
-                <Signup
-                  ref="Signup"
-                  @signup-emit="getSignupEmitData"
-                  :statusprompt="statusPromptSignup"
-                  :statu-bool="statuBoolSignup"
-                  :sign-up-fall-or-success="signUpFallOrSuccess"
-                  :chk-menu="chkMenu"
-                ></Signup>
-              </div>
-              <div
-                class="tab-pane fade"
-                id="v-pills-forget"
-                role="tabpanel"
-                aria-labelledby="forget-tab"
-              >
-                <!-- 忘記密碼 -->
-                <ForgetPasswordPart ref="ForgetPassword" />
-              </div>
-            </div>
-          </div>
+                />
         </div>
       </div>
       <p class="mt-5 pb-3 text-muted text-center">&copy; {{ footer }}</p>
@@ -121,14 +35,10 @@
 </template>
 <script>
 import Login from '@/components/LoginPart.vue';
-import Signup from '@/components/SignupPart.vue';
-import ForgetPasswordPart from '@/components/ForgetPasswordPart.vue';
 
 export default {
   components: {
     Login,
-    Signup,
-    ForgetPasswordPart,
   },
   data() {
     return {
@@ -332,7 +242,7 @@ export default {
 <style lang="scss" scoped>
 .banner {
   background: center center no-repeat
-    url('https://images.unsplash.com/photo-1474377207190-a7d8b3334068?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80');
+    url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627379580824.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=la0v1pP%2BJ1RInA9HHMzAzDwQW83AAm%2FVaQ4XRtLNOaZODjzYQpc5apcsCUcOYtHywfrhm1P0KxYNEtcTXiozIRX4JCTczDTiZhV%2BEYx1xFo0%2BuPYt4T3teAm%2BY6Ud42L3Bp56A75Zrc%2BmRYNSPNGJ%2FCYMVH3AjdXAlk%2FJLoSg7B1Uy%2FFTwpaX8yJyeXArSz%2BKoVFToRdsgfj3ccE6%2FK23Z70nvQZ0RO3pPrGRvgattju97%2B4mnz3LCLXG%2BpmYnpq1k4iNprFiDqWOYKAtwLgEwBslhXL7JGyHoWxiwjxwXrObdd30C7Qhtnd9Epd9w7QJpkcJLL%2FePKojePBJ67xNg%3D%3D');
   height: 340px;
   background-size: cover;
   background-attachment: fixed;

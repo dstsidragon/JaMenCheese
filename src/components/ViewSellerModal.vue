@@ -11,7 +11,7 @@
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <div class="modal-body">
           <img :src="url" :alt="title" />
@@ -39,7 +39,7 @@ import { Modal } from 'bootstrap';
 export default {
   data() {
     return {
-      url: 'https://upload.cc/i1/2021/03/07/WOiJwU.png',
+      url: 'https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384892475.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=RD%2BGGlmDYSODZdtim2p2mkklhZLG3NK1%2B1Eo2UtlMl6XVDRZeUYAGdhP2bR6MKlML2DI6trN8UKICK4iGmyWSTKKxybBjNtY3qYqA%2FBrxbgjnqzRf4mZj60WMC0VunTSklIWihz8y7O41Sd6dcIJonG%2B%2FNDczINYczxfRJ8Uo83MJ1aGX9Cyvp0V%2B903J91B%2FNeB3wryB%2BTDohSOBR6pth61ZpgCVtQGYxAqAFFT37gEzUcy8B%2FGO0DwexAe5nxUShB55Jzhhd1n1neCyeLyLdXY9e9zKHdIIPigoDiN55mM9D13HWHU2G1V%2BeX7KAEKdb0CoC8loZ31h3FjtVwPcA%3D%3D',
       title: '阿喵賣菜:D',
       modal: '',
     };

@@ -15,10 +15,10 @@
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <div class="modal-body fs-2">
-          <Form ref="addOrderForm" v-slot="{ errors }" @submit="reditOneData">
+          <Form ref="addOrderForm" v-slot="{ errors }" @submit.prevent="reditOneData">
             <div class="card card-body">
               <div class="d-flex flex-wrap justify-content-around mb-2">
                 <div class="form-group">
@@ -37,7 +37,7 @@
                   <error-message
                     name="標題"
                     class="invalid-feedback"
-                  ></error-message>
+                  />
                 </div>
 
                 <div class="form-group">
@@ -59,7 +59,7 @@
                   <error-message
                     name="折扣"
                     class="invalid-feedback"
-                  ></error-message>
+                  />
                 </div>
               </div>
               <div class="d-flex flex-wrap justify-content-around mb-2">
@@ -80,7 +80,7 @@
                   <error-message
                     name="到期日"
                     class="invalid-feedback"
-                  ></error-message>
+                  />
                 </div>
 
                 <div class="form-group col-md-5" style="width: 202px">
@@ -98,7 +98,7 @@
                   <error-message
                     name="折扣碼"
                     class="invalid-feedback"
-                  ></error-message>
+                  />
                 </div>
               </div>
               <hr class="mt-5" />

@@ -46,7 +46,7 @@
                   type="checkbox"
                   name="onoffswitch"
                   class="onoffswitch-checkbox"
-                  @click="orderEnable"
+                  @click.prevent="orderEnable"
                   :id="'myonoffswitch_' + item.id"
                   tabindex="0"
                   v-if="item.is_paid == 1"
@@ -57,7 +57,7 @@
                   type="checkbox"
                   name="onoffswitch"
                   class="onoffswitch-checkbox"
-                  @click="orderEnable"
+                  @click.prevent="orderEnable"
                   :id="'myonoffswitch_' + item.id"
                   tabindex="0"
                   v-else
@@ -66,7 +66,7 @@
                 <label
                   class="onoffswitch-label"
                   :for="'myonoffswitch_' + item.id"
-                ></label>
+                />
               </div>
             </div>
           </td>
@@ -124,7 +124,7 @@
       <Pagination
         :pagination="pagination"
         @get-product="getOrdersData"
-      ></Pagination>
+      />
     </div>
     <!-- 分頁 end-->
 

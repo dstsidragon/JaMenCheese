@@ -88,6 +88,7 @@
             class="nav-link"
             type="button"
             v-if="loginStatus"
+            href="#"
             @click.prevent="openiSgnOutUserModal"
             >登出</a
           >
@@ -117,7 +118,7 @@
   <!-- Alert元件 end -->
 
   <!-- 登出Modal -->
-  <LoginOut ref="signOutUserModal" @sign-out-admin="signOutAdmin"></LoginOut>
+  <LoginOut ref="signOutUserModal" @sign-out-admin="signOutAdmin" />
 </template>
 <script>
 // Alert元件
@@ -307,16 +308,6 @@ export default {
 .sidebar {
   min-width: 200px;
   height: 100%;
-}
-.navbarLogo {
-  background: center center no-repeat
-    url(https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/085a62fb22df4bf21c605a180648c6c6e35c2b32/week5/logo-ANSWER.svg);
-  width: 100%;
-  margin: 0 auto;
-  height: 40px;
-  text-indent: 101%;
-  overflow: hidden;
-  white-space: nowrap;
 }
 @media (min-width: 631px) {
   .Main {

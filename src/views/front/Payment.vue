@@ -65,7 +65,7 @@
               ref="creatForm"
               v-slot="{ errors }"
               class="row g-3"
-              @submit="payment"
+              @submit.prevent="payment"
             >
               <!-- 付款方式 -->
               <div class="">
@@ -90,7 +90,7 @@
                 <error-message
                   name="付款方式"
                   class="invalid-feedback"
-                ></error-message>
+                />
               </div>
               <div
                 class="
@@ -133,7 +133,7 @@
                     class="spinner-border spinner-border-sm"
                     role="status"
                     aria-hidden="true"
-                  ></span>
+                  />
                   <span>確認付款</span>
                 </button>
               </div>
@@ -166,7 +166,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         <span>確認付款</span>
       </button>
     </div>

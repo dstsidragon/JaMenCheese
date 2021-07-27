@@ -29,7 +29,7 @@
           class="spinner-grow spinner-grow-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         <span
           :class="{ 'd-none': loadingStatue.searchOrder == '' }"
           class="visually-hidden"
@@ -159,12 +159,12 @@
       <Pagination
         :pagination="orderPagination"
         @get-product="getOrderList"
-      ></Pagination>
+      />
     </div>
     <!-- 訂單分頁 end -->
 
     <!-- 賣家資訊 start-->
-    <ViewSellerModal ref="viewSeller"></ViewSellerModal>
+    <ViewSellerModal ref="viewSeller" />
     <!-- 賣家資訊 end-->
   </div>
   <!-- Alert元件 start -->

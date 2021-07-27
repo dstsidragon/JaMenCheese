@@ -91,7 +91,7 @@ export default {
           imgs: [
             {
               width: '30%',
-              src: 'https://cdn4.iconfinder.com/data/icons/smileys-for-fun/128/smiley__22-128.png',
+              src: 'https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627383780992.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=jwuFze1F6awE%2Fwg0C2Cfbt%2F01c%2BS%2Btdi14TtXVDQggpgnDA4PPCeZULZb8CJoiqBFTH%2Fdn6Ps85UJEaPHZyLr1Kmmckj3XxHF3a1s8sm%2FPHg8nb8TkxEmUpDEIgSVyhXdj%2BTeipTHbMoSF38PPgoZ%2B8OHT6oFQm5L5uHI%2BFNInUbcmp2fiNDPngxIQ2EAe%2Fj1lD2RR7mlEiYWeuEE3AozNWrhvs7j3MxwYLDQJqnz4XFrS94L11VAlOs8lDlQvrBUOJeNFwy2rLekoU5z4WRXaWI%2Fo5ekZNSrZqqXcQJVIfYRJR4ZH0feSveNSO8L%2BwwjYDu4gRFIl5pA1Mp9hubEw%3D%3D',
               top: '35%',
             },
           ],
@@ -108,7 +108,7 @@ export default {
           imgs: [
             {
               width: '30%',
-              src: 'https://cdn3.iconfinder.com/data/icons/emoji-1-4/64/_happy_smiley-128.png',
+              src: 'https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627383820144.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=P4lE9Wb2bOCrvIOGH8IS1UK4YDySfOt0nj3g9Z%2Fc80ijQZIxKwSPE6OtGVuocvF2nMCfjzNt47iAQaICEuyxcQR4T%2FkfP2onuFjiHAybH1EY87geo%2B8p%2Fc8cYTqWXHqKvmiBaz3bDJrOPSAmISX0pvw8X4oyrsVSBsiBydTP%2FFQ0I1XleMCGmKxHCxJsxp2cYDILgrxUq2hab0l%2B5v4MDDSfJzc1EdjbzBrK55ateaCwmuy%2BYUmBCrKPvWrDHUMyNDODMH5a3zON9qmkBZV9NTVOIwNK6shLG88dYhKgHl1KU8zMZV%2F8avJIutJRcWPbB4tHHdL9fKLjb90gN9ZWbg%3D%3D',
               top: '35%',
             },
           ],
@@ -125,7 +125,7 @@ export default {
           imgs: [
             {
               width: '30%',
-              src: 'https://cdn4.iconfinder.com/data/icons/smileys-for-fun/128/smiley__3-128.png',
+              src: 'https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627383820144.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=P4lE9Wb2bOCrvIOGH8IS1UK4YDySfOt0nj3g9Z%2Fc80ijQZIxKwSPE6OtGVuocvF2nMCfjzNt47iAQaICEuyxcQR4T%2FkfP2onuFjiHAybH1EY87geo%2B8p%2Fc8cYTqWXHqKvmiBaz3bDJrOPSAmISX0pvw8X4oyrsVSBsiBydTP%2FFQ0I1XleMCGmKxHCxJsxp2cYDILgrxUq2hab0l%2B5v4MDDSfJzc1EdjbzBrK55ateaCwmuy%2BYUmBCrKPvWrDHUMyNDODMH5a3zON9qmkBZV9NTVOIwNK6shLG88dYhKgHl1KU8zMZV%2F8avJIutJRcWPbB4tHHdL9fKLjb90gN9ZWbg%3D%3D',
               top: '35%',
             },
           ],
@@ -142,7 +142,7 @@ export default {
           imgs: [
             {
               width: '30%',
-              src: 'https://cdn4.iconfinder.com/data/icons/smileys-for-fun/128/smiley__22-128.png',
+              src: 'https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627383780992.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=jwuFze1F6awE%2Fwg0C2Cfbt%2F01c%2BS%2Btdi14TtXVDQggpgnDA4PPCeZULZb8CJoiqBFTH%2Fdn6Ps85UJEaPHZyLr1Kmmckj3XxHF3a1s8sm%2FPHg8nb8TkxEmUpDEIgSVyhXdj%2BTeipTHbMoSF38PPgoZ%2B8OHT6oFQm5L5uHI%2BFNInUbcmp2fiNDPngxIQ2EAe%2Fj1lD2RR7mlEiYWeuEE3AozNWrhvs7j3MxwYLDQJqnz4XFrS94L11VAlOs8lDlQvrBUOJeNFwy2rLekoU5z4WRXaWI%2Fo5ekZNSrZqqXcQJVIfYRJR4ZH0feSveNSO8L%2BwwjYDu4gRFIl5pA1Mp9hubEw%3D%3D',
               top: '35%',
             },
           ],
@@ -159,7 +159,7 @@ export default {
           imgs: [
             {
               width: '30%',
-              src: 'https://cdn4.iconfinder.com/data/icons/emoji-18/61/2-128.png',
+              src: 'https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627383758821.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=qkQWPOjk88LJdK3ACJf8H1%2BLP3MkAiREVyJ6xsDlauebv7rI7Xd17ijlXaePl57LkaPJczwsObnk6gA3U6GsRJ6Pilfsi1Q6fym5brZWaM%2BuhgtLqMAdBpqQSsBu%2Bc7DS1wW3sE8e8ascoxHKv7jpyo5NnpnrgQUzEdBe8Xl4xWFcrwunZ18N1eFwhGh%2BUB6TATo2XVE27RwTO%2F0E9D%2F%2B1gbgGZOUNKWOLyVcXroHV%2FFTehfV4QCWJtZhKX%2B5lo1suiJQvEwyTseoMt6BiJNpesL%2FgoLq4GAdUHDkNCSak6uSfg%2BsYHpoxz73oZgpj1Q6LDXnG2cfTlUP5KtH57QUg%3D%3D',
               top: '35%',
             },
           ],
@@ -176,7 +176,7 @@ export default {
           imgs: [
             {
               width: '30%',
-              src: 'https://cdn4.iconfinder.com/data/icons/emoji-18/61/3-128.png',
+              src: 'https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627383729947.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=eAYNHp2kO4gdGdPnTPjuJOY%2BHOdLFQ8AD6u3zMVDBs4ZGU1CJ7XeYWxlbv6Xw4mbm1Whr1n5kODtOunvGsT6ygunmAbhpJqpz15TR4w3eFPEhqJnRut0mapA922YvpCRPb6QXX1eRyVIusQl0qe%2BL3EDHSGumX5AMp%2BJw3SNGiKgdzQ7Gdl0YloagOeNsYYK%2FVmL0X8XfnGMeHs0O7PRmJ7gZdN5o0%2FdwSt3Wamk5PHGZiGH6d0khR0WR0iFjNTPtElPmb2xNo1YHZElzqu4HcjqjgBAWqHxyUFc7iV3iSJQnCNl%2BggzOgY%2BfgEvewCkcf5xkpzJV34WJ0e9xCllrw%3D%3D',
               top: '35%',
             },
           ],
@@ -256,7 +256,7 @@ export default {
 
 .banner {
   background: center center no-repeat
-    url('https://images.unsplash.com/photo-1506224477000-07aa8a76be20?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+    url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627383685067.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=Z2yPuKZcgVIt9P0L77ro0mGj2iJFrY%2FyqH0uKuRhYw93XD%2Ft3w8p0jZhA9PMUCd0mMDZNIqcoSMamOSbbMRkkqT%2F20XNtmRrLy1qN3RnE8A9u1WfPWlnV8H00VH8gB0rx754n0kLw%2F0c84k3Q7W0uFlGYOduxnScNyN9owOuHbvCpciA97mGRhQbKhwPybhZ1uXowMmtCPkOIvl%2BtMMdrFOEwfY0JERaOcghqiDZ3U2jHML0E87lucJ286tf0cdCH21U2Xsun3D5Tu6YLcLSmwRKYdrXTil2uCZI9%2BelcKNX5TiwxQ5da0oFckF3CDLAFpzjZWWV5oCSKKUpMMLHgw%3D%3D');
   height: 340px;
   background-size: cover;
   background-attachment: fixed;

@@ -39,7 +39,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         <span>繼續購物</span>
       </button>
     </div>
@@ -66,7 +66,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         <span>繼續購物</span>
       </button>
     </div>

@@ -16,13 +16,13 @@
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <Form
           class="form"
           ref="addPrdForm"
           v-slot="{ errors }"
-          @submit="addPrductData"
+          @submit.prevent="addPrductData"
         >
           <div class="modal-body fs-2">
             <div class="card card-body row">
@@ -38,10 +38,7 @@
                   rules="required"
                   v-model="addProducts.bg_add_title"
                 />
-                <error-message
-                  name="標題"
-                  class="invalid-feedback"
-                ></error-message>
+                <error-message name="標題" class="invalid-feedback" />
               </div>
 
               <div class="form-group mb-2">
@@ -56,11 +53,8 @@
                   :class="{ 'is-invalid': errors['描述'] }"
                   rules="required"
                   v-model="addProducts.bg_add_description"
-                ></Field>
-                <error-message
-                  name="描述"
-                  class="invalid-feedback"
-                ></error-message>
+                />
+                <error-message name="描述" class="invalid-feedback" />
               </div>
               <div class="form-group mb-2">
                 <label for="bg_add_content">介紹</label>
@@ -74,11 +68,8 @@
                   rules="required"
                   class="form-control"
                   v-model="addProducts.bg_add_content"
-                ></Field>
-                <error-message
-                  name="介紹"
-                  class="invalid-feedback"
-                ></error-message>
+                />
+                <error-message name="介紹" class="invalid-feedback" />
               </div>
               <div
                 class="
@@ -108,10 +99,7 @@
                     <option>手作餅乾</option>
                     <option>典藏蛋糕</option>
                   </Field>
-                  <error-message
-                    name="分類"
-                    class="invalid-feedback"
-                  ></error-message>
+                  <error-message name="分類" class="invalid-feedback" />
                 </div>
 
                 <div class="form-group col-12 col-md-5">
@@ -126,10 +114,7 @@
                     class="form-control"
                     v-model="addProducts.bg_add_unit"
                   />
-                  <error-message
-                    name="單位"
-                    class="invalid-feedback"
-                  ></error-message>
+                  <error-message name="單位" class="invalid-feedback" />
                 </div>
               </div>
               <div
@@ -155,10 +140,7 @@
                     class="form-control"
                     v-model="addProducts.bg_add_origin_price"
                   />
-                  <error-message
-                    name="原價"
-                    class="invalid-feedback"
-                  ></error-message>
+                  <error-message name="原價" class="invalid-feedback" />
                 </div>
 
                 <div class="form-group col-12 col-md-5">
@@ -175,10 +157,7 @@
                     oninput="value=value.replace('-', '')"
                     v-model="addProducts.bg_add_price"
                   />
-                  <error-message
-                    name="售價"
-                    class="invalid-feedback"
-                  ></error-message>
+                  <error-message name="售價" class="invalid-feedback" />
                 </div>
               </div>
               <hr class="mt-5" />

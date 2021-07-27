@@ -59,7 +59,7 @@
               aria-current="page"
               :class="navBarColor"
               to="/"
-              @click="closeHamburger"
+              @click.prevent="closeHamburger"
               >首頁</router-link
             >
           </li>
@@ -69,7 +69,7 @@
               href="#"
               to="/products"
               :class="navBarColor"
-              @click="closeHamburger"
+              @click.prevent="closeHamburger"
               >商品列表</router-link
             >
           </li>
@@ -78,7 +78,7 @@
               class="nav-link fw-bold nav-drown"
               to="/q&a"
               :class="navBarColor"
-              @click="closeHamburger"
+              @click.prevent="closeHamburger"
               >常見問題</router-link
             >
           </li>
@@ -87,7 +87,7 @@
               class="nav-link fw-bold nav-drown"
               to="/lotteryturntable"
               :class="navBarColor"
-              @click="closeHamburger"
+              @click.prevent="closeHamburger"
               >活動</router-link
             >
           </li>
@@ -102,7 +102,7 @@
               cursor-pointer
             "
             :class="navBarColor"
-            @click="$router.push('/favorites')"
+            @click.prevent="$router.push('/favorites')"
           >
             <div class="position-relative cursor-pointer">
               <span class="material-icons"> favorite </span>
@@ -163,7 +163,7 @@
                   class="btn-close text-reset"
                   data-bs-dismiss="offcanvas"
                   aria-label="Close"
-                ></button>
+                />
               </div>
               <div class="offcanvas-body bg-white">
                 <div v-if="cartList">
@@ -208,7 +208,7 @@
                     "
                     @click="$router.push('/carts')"
                   >
-                    <p class="mb-0 fz-2" @click="closeCartOffcanvas">
+                    <p class="mb-0 fz-2" @click.prevent="closeCartOffcanvas">
                       查看購物車
                     </p>
                     <span class="material-icons fz-1"> arrow_forward_ios </span>
@@ -227,7 +227,7 @@
                     "
                     @click="$router.push('/products')"
                   >
-                    <p class="mb-0 fz-2" @click="closeCartOffcanvas">
+                    <p class="mb-0 fz-2" @click.prevent="closeCartOffcanvas">
                       快去購物
                     </p>
                     <span class="material-icons fz-1"> arrow_forward_ios </span>
@@ -265,7 +265,7 @@
                   class="btn-close text-reset"
                   data-bs-dismiss="offcanvas"
                   aria-label="Close"
-                ></button>
+                />
               </div>
               <div
                 class="
@@ -276,7 +276,7 @@
                 "
               >
                 <ul class="">
-                  <li @click="closeOffcanvas">
+                  <li @click.prevent="closeOffcanvas">
                     <router-link
                       class="
                         dropdown-item
@@ -284,11 +284,11 @@
                         text-center text-primary
                       "
                       to="/orders"
-                      @click="closeHamburger"
+                      @click.prevent="closeHamburger"
                       >訂單搜尋</router-link
                     >
                   </li>
-                  <li @click="closeOffcanvas">
+                  <li @click.prevent="closeOffcanvas">
                     <router-link
                       class="
                         dropdown-item
@@ -297,11 +297,11 @@
                         text-primary
                       "
                       to="/carts"
-                      @click="closeHamburger"
+                      @click.prevent="closeHamburger"
                       >購物車</router-link
                     >
                   </li>
-                  <li @click="closeOffcanvas">
+                  <li @click.prevent="closeOffcanvas">
                     <router-link
                       class="
                         dropdown-item
@@ -310,7 +310,7 @@
                         text-primary
                       "
                       to="/favorites"
-                      @click="closeHamburger"
+                      @click.prevent="closeHamburger"
                       >我的收藏</router-link
                     >
                   </li>
@@ -322,11 +322,11 @@
                         text-center text-primary
                       "
                       to="/admin"
-                      @click="closeHamburger"
+                      @click.prevent="closeHamburger"
                       >後台</router-link
                     >
                   </li>
-                  <li @click="closeOffcanvas">
+                  <li @click.prevent="closeOffcanvas">
                     <a
                       class="
                         dropdown-item
@@ -352,16 +352,15 @@
                     >
                   </li>
                 </ul>
-                <a
+                <p
                   class="
                     border-top border-primary
-                    fz-2
+                    fz-2 mb-0
                     disabled
                     text-center text-white
                   "
-                  href="#"
                 >
-                  {{ userName }},您好</a
+                  {{ userName }},您好</p
                 >
               </div>
             </div>
@@ -387,7 +386,7 @@
               aria-current="page"
               :class="navBarColor"
               to="/"
-              @click="closeHamburger"
+              @click.prevent="closeHamburger"
               >首頁</router-link
             >
           </li>
@@ -397,7 +396,7 @@
               href="#"
               to="/products"
               :class="navBarColor"
-              @click="closeHamburger"
+              @click.prevent="closeHamburger"
               >商品列表</router-link
             >
           </li>
@@ -406,7 +405,7 @@
               class="nav-link fw-bold nav-drown"
               to="/q&a"
               :class="navBarColor"
-              @click="closeHamburger"
+              @click.prevent="closeHamburger"
               >常見問題</router-link
             >
           </li>
@@ -415,7 +414,7 @@
               class="nav-link fw-bold nav-drown"
               to="/lotteryturntable"
               :class="navBarColor"
-              @click="closeHamburger"
+              @click.prevent="closeHamburger"
               >活動</router-link
             >
           </li>
@@ -432,9 +431,9 @@
     :status="alertStatus"
   />
   <!-- Alert元件 end -->
-  <Loading></Loading>
+  <Loading/>
   <!-- 登出Modal -->
-  <LoginOut ref="signOutUserModal" @sign-out-admin="signOutAdmin"></LoginOut>
+  <LoginOut ref="signOutUserModal" @sign-out-admin="signOutAdmin"/>
 
   <!-- <router-view/> -->
 </template>

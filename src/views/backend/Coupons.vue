@@ -51,7 +51,7 @@
                   type="checkbox"
                   name="onoffswitch"
                   class="onoffswitch-checkbox"
-                  @click="couponsEnable"
+                  @click.prevent="couponsEnable"
                   :id="'myonoffswitch_' + item.id"
                   tabindex="0"
                   v-if="item.is_enabled == 1"
@@ -62,7 +62,7 @@
                   type="checkbox"
                   name="onoffswitch"
                   class="onoffswitch-checkbox"
-                  @click="couponsEnable"
+                  @click.prevent="couponsEnable"
                   :id="'myonoffswitch_' + item.id"
                   tabindex="0"
                   v-else
@@ -71,7 +71,7 @@
                 <label
                   class="onoffswitch-label"
                   :for="'myonoffswitch_' + item.id"
-                ></label>
+                />
               </div>
             </div>
           </td>
@@ -120,7 +120,7 @@
       <Pagination
         :pagination="pagination"
         @get-product="getCouponsData"
-      ></Pagination>
+      />
     </div>
     <!-- 分頁 end-->
 

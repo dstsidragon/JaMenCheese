@@ -9,5 +9,5 @@ module.exports = {
         return args;
       });
   },
-  publicPath: '/呷面起士|勾起你心中的餓/',
+  publicPath: './',
 };

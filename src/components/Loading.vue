@@ -9,14 +9,14 @@
       <div class="loadingio-spinner-bean-eater-2v5tjxyt7hp scale">
         <div class="ldio-twhkzmcd38">
           <div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div />
+            <div />
+            <div />
           </div>
           <div>
-            <div></div>
-            <div></div>
-            <div></div>
+            <div />
+            <div />
+            <div />
           </div>
         </div>
       </div>

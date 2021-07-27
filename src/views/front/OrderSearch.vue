@@ -117,7 +117,7 @@
     <!-- 訂單列表 end -->
 
     <!-- 賣家資訊 start-->
-    <ViewSellerModal ref="viewSeller"></ViewSellerModal>
+    <ViewSellerModal ref="viewSeller" />
     <!-- 賣家資訊 end-->
   </div>
 

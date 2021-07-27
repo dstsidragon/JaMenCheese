@@ -8,46 +8,58 @@
     </div>
   </div>
   <div class="container mt-5">
-          <div v-if='myFavoriteProducts.length ===  0 ' class="">
-            <p class="text-center text-primary fz-2"> 目前沒有商品加入收藏!</p>
+    <div v-if="myFavoriteProducts.length === 0" class="">
+      <p class="text-center text-primary fz-2">目前沒有商品加入收藏!</p>
+    </div>
+    <div class="row row-cols-1 row-cols-smm-2 row-cols-md-3 g-4">
+      <div
+        class="col cursor-pointer"
+        v-for="(item, i) in myFavoriteProducts"
+        :key="'prd' + i"
+      >
+        <div class="card h-100">
+          <div
+            class="overflow-hidden"
+            @click.prevent="$router.push(`/product/${item.id}`)"
+          >
+            <img
+              :src="item.imageUrl"
+              class="card-img-top prd-card-img object-fit img--scale"
+              alt="item.title"
+            />
           </div>
-         <div class="row   row-cols-1 row-cols-smm-2 row-cols-md-3 g-4">
-  <div class="col cursor-pointer" v-for="(item, i) in myFavoriteProducts" :key="'prd'+i">
-            <div class="card h-100 ">
-              <div class="overflow-hidden "
-              @click.prevent="$router.push(`/product/${item.id}`);">
-                <img :src="item.imageUrl"  class="card-img-top prd-card-img object-fit img--scale"
-               alt="item.title">
-              </div>
-              <!-- 最愛按鈕 -->
-              <div  class="favorite ">
-               <a  class="text-danger" @click="addFavorite(item.id)"
-                  >
-                    <span v-if="myFavorite.includes(item.id)"
-                    class="material-icons text-danger">
-                      favorite
-                      </span>
-                    <span v-else
-                    class="material-icons ">
-                      favorite_border
-                    </span>
-                 </a></div>
-              <div class="card-body p-0 " @click.prevent="viewOneProduct(item)">
-                <h5 class="card-title bg-primary text-white p-1">{{item.title}}</h5>
-                <span class="d-flex justify-content-around align-items-center">
-                <p class="card-text border-right"><del>${{item.origin_price}}元</del></p>
-                <p class="card-text text-danger fz-2">${{item.price}}元</p>
-                </span>
-              </div>
-            </div>
+          <!-- 最愛按鈕 -->
+          <div class="favorite">
+            <a class="text-danger" @click.prevent="addFavorite(item.id)">
+              <span
+                v-if="myFavorite.includes(item.id)"
+                class="material-icons text-danger"
+              >
+                favorite
+              </span>
+              <span v-else class="material-icons"> favorite_border </span>
+            </a>
           </div>
-         </div>
+          <div class="card-body p-0" @click.prevent="viewOneProduct(item)">
+            <h5 class="card-title bg-primary text-white p-1">
+              {{ item.title }}
+            </h5>
+            <span class="d-flex justify-content-around align-items-center">
+              <p class="card-text border-right">
+                <del>${{ item.origin_price }}元</del>
+              </p>
+              <p class="card-text text-danger fz-2">${{ item.price }}元</p>
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 <style lang="scss" scoped>
 .banner {
   background: center center no-repeat
-    url('https://images.unsplash.com/photo-1509125602259-dc019b0b874f?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
+    url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384537686.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=hVq0cCLDD3ZvSZwrFJNfBGgcDqIbrfoJiBXiW0GlvOltTFcdwY3LUEXHqamTNgAbLSBA1SeSUGDZEHQY%2FvgihB%2FCq0f9ob2NxGTKJqMVkJyzKVpP1W7wFx5fKvP5kO3pgaEPEuIVq0EoFMypPzvK73oZGGaXkgghgMDdyrbvlbCsSaWKYMjVWGFSyJAQCwgL0fhdmVLfaRPROVr4Ya1oB6DcPwVZDmOyYnUAYkdO2tJ%2F%2Br6SVCpffpzXBgWLLR%2FNa0UL6oK8A4xyGfc6R%2B1T75bf2ei6qEa79krGM8E89exbz6W%2Bcec1gu6BRVvReu4UiN%2FSHdbdSwb3QivW%2Bz1Tgw%3D%3D');
   height: 340px;
   background-size: cover;
   background-attachment: fixed;
@@ -58,25 +70,25 @@
     height: 170px;
   }
 }
-.favorite{
+.favorite {
   position: absolute;
   top: 5px;
   right: 5px;
 }
 .product-link {
-    -webkit-box-flex: 1;
-    -ms-flex: 1;
-    flex: 1;
-    padding: .5rem 0;
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 0.5rem 0;
 }
 .list-group {
-    padding-left: 1.5rem*.5 !important;
+  padding-left: 1.5rem * 0.5 !important;
 }
-.prd-card-img{
-  height:200px;
+.prd-card-img {
+  height: 200px;
 }
-@media(max-width: 512px){
-   .prd-card-img{
+@media (max-width: 512px) {
+  .prd-card-img {
     height: 300px;
   }
 }
@@ -88,7 +100,7 @@ import emitter from '@/assets/js/emitter';
 export default {
   data() {
     return {
-    // 我的收藏
+      // 我的收藏
       myFavorite: this.getLoCalStorage('myFavorite') || [],
       // 全部商品
       products: '',
@@ -97,8 +109,7 @@ export default {
       err: '',
     };
   },
-  computed: {
-  },
+  computed: {},
   watch: {
     myFavorite() {
       this.myFavoriteProduct();
@@ -130,7 +141,9 @@ export default {
     // 取得商品列表
     getProducts() {
       this.$http
-        .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`)
+        .get(
+          `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`,
+        )
         .then((res) => {
           // 如果成功就執行
           if (res.data.success) {
@@ -145,21 +158,17 @@ export default {
     myFavoriteProduct() {
       const favAry = [];
       this.myFavorite.forEach((fav) => {
-        this.products.forEach(
-          (item) => {
-            if (item.id === fav) {
-              favAry.push(item);
-            }
-          },
-        );
+        this.products.forEach((item) => {
+          if (item.id === fav) {
+            favAry.push(item);
+          }
+        });
       });
       this.myFavoriteProducts = favAry;
     },
   },
   created() {
     this.getProducts();
-  },
-  mounted() {
   },
 };
 </script>

@@ -37,7 +37,7 @@
       "
     >
       往下滑
-      <i class="chevron bottom mt-1"></i>
+      <i class="chevron bottom mt-1" />
     </div>
   </div>
   <div class="container overflow-hidden">
@@ -55,7 +55,7 @@
         data-aos="flip-up"
         data-aos-duration="1500"
         class="col-md-5 mt-5 order-2 order-md-1 object-fit"
-        src="https://images.unsplash.com/photo-1591261730588-9c21770ff6f3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80"
+        src="https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384084609.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=XM%2FgWDAD1hTGqynmlFLr5N1e682QA69hHbgSGdl3ST1VyBBYtPoKIGcepgZ7DxPe1DC7gPSNV5JzgaE%2FwN4JcW3UP4k8hJFUzIKwJcsYT0dcs91OSTASfkVugKLEw4AN%2BcZAQ5CAt5tZos8ZDAiZkEyHiqZmuRrRPRtSLId5MndTEQdYwVM80YgzskFxGD8T798TCBUJkMuLVKfff%2BKe4QxVY8Ot0feC19qIVJAJcKfC8WdnXLObOZwuRfgcjKBKigaykhLlpsr7sUqOEs%2Bom4rpKeItqlp1mfsoq6Uldk1AqJkVr43MQKLj9n2yv%2FWhukhhAzYTMlBE2rfy5xmwzg%3D%3D"
         alt="user"
       />
       <div
@@ -142,7 +142,7 @@
             data-aos-duration="1500"
             class="col-md-6 mt-5 rounded-circle object-sm-fit"
             style="height: 200px; width: 224px"
-            src="https://images.unsplash.com/photo-1560512154-fa1f9d3a810a?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80"
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384139270.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=Ebfxon%2FBo0UdtmfQjOxoeJVyIklDbKLD0VqMmEmFDFQOuoZ4xTZ1PlafeTASwGb0jC5afLhF%2B8UgUsF2OlaIchRmtGQuC53jHzaxMQOExwc0ZSKXLi8OkGDglB0yn6ApHa4NCJC3FXwE9l2AkEYlythn3JaN501JkMGuwDR5giOCsVwKZGgKwj%2FhKIP42KwCxi4BBqHZYix4yCNaF8HZVUaEVeWSxsgfwKC1GnF9NRkdDSiy5myAZUQ0PrkS%2BtaVTDSWZhYFnNrEHk1yNUSu8JP20XsF8HKaVRMNnNFfA8x3fCdn6ioIXuoL8hyuLYuH56TzHvik45PL2j4cgK9k%2Fg%3D%3D"
             alt="ingredients"
           />
           <div
@@ -173,7 +173,7 @@
             data-aos-duration="1500"
             class="col-md-6 mt-5 rounded-circle object-sm-fit"
             style="height: 200px; width: 224px"
-            src="https://images.unsplash.com/photo-1514970461500-96e88f5d7bdf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80"
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384169900.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=pgOkhMLbXHo7pM71moCDvhlaNyicUTsn2YkjZ3Imu7YCP011Lqi8jqZbJciJrUcyhfMwnukuGgqSUC0b%2F2TvqgNmt2hbneQ%2B7U0m3ka6vB1Yx%2FuaX3X8iBk3Tjq0LrorYNlviCnYSUL%2FAcm8lHLmS0bNUk%2Bg3LloRtK7l67I8YhfmUnVi0KlCQGOgXQvwjf4E8raEufHZN7XOFRcyUqkMMMZynNWl8Aj51N38ji480cpBg01QCss4TGPQ%2FZlzeaizAPhkGVGorfrpvm%2BBsCAfsb9VcdaX9c8lcGZFXalPmcXfkw4oCL9%2FR%2ByLPJevLzGq1p6JfEo7qsBt6XGBGXnaw%3D%3D"
             alt="ingredients"
           />
           <div
@@ -203,7 +203,7 @@
             data-aos-duration="1500"
             class="col-md-6 mt-5 rounded-circle object-sm-fit"
             style="height: 200px; width: 224px"
-            src="https://images.unsplash.com/photo-1601740982034-56bc80e986ee?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1187&q=80"
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384205576.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=PQM8QTvNyrQ2Dlc1C0lUICrl6mFEcfuOVN6cSLlsiaWDVZ1nEhvcoE8vEEUjsbbWYNXJbWMvwIP736a9kuGy1RlJI2%2B1UlTZBDQnnLZa9S35YVJI3i4RS%2FA%2FGTU0s%2FsmX1%2FGRlygTE4%2BJeu3%2FsziPX79W8bOsIJZQDN%2FxhvNDfA%2Ba3HnT2UrglQEf6kTrU04nmsbRXSApkwsDy2tQL7dw%2ByroscDBss9CVwzzqVxEJYPlN736Neyarmy67W059UnownR6oi5JRvL0abNYOBpzFcc6FFHumUeA4ld%2BHnowhut5sO4oJmxdGUqkCUa%2Bwd2qu3XaeRX2UoVwDjZDi4Ncg%3D%3D"
             alt="ingredients"
           />
           <div
@@ -260,7 +260,7 @@
         />
         <button class="btn btn-secondary" disabled type="button">已訂閱</button>
       </div>
-      <Form v-else v-slot="{ errors }" class="input-group" @submit="sendMail">
+      <Form v-else v-slot="{ errors }" class="input-group" @submit.prevent="sendMail">
         <Field
           name="信箱"
           type="email"
@@ -277,7 +277,7 @@
         <error-message
           name="信箱"
           class="invalid-feedback fz-2"
-        ></error-message>
+        />
       </Form>
     </div>
   </div>
@@ -351,12 +351,6 @@ export default {
     color: #ffffff;
     font-weight: bold;
     text-align: left;
-    @include mobile {
-      //   width: 70%;
-      // top: 50%;
-      // left: 50%;
-      // transform: translate(-50%,-50%)!important;
-    }
   }
   &__subtitle {
     font-size: 3rem;
@@ -437,7 +431,7 @@ export default {
 }
 .activity {
   background: center center no-repeat
-    url('https://images.unsplash.com/photo-1575613586166-d07573e2a428?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1050&q=80');
+    url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384318807.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=ItJjBuuG0FkMrJ8%2Fhcv8c9qv8W%2Bp%2FIAnEpeLRbeWYUFSW%2FKHJ%2B6gh08arnbIJwOWAleYdJf4PPE5xCpGu%2B193CrHNozfISr8X7GZWOHr6XPBCDo1SLlZsCbFYjzN8bDVf%2F61b%2FG5vLp9wqDj%2F3eWELwMpwwJBfiz%2Fhvs0t8hBEhmBRSA0PD7Viqvtyy3%2FiEgXebrs9nRt7AFy%2BEQULAtmZSGlyk9LZGJ4gNlMDJ%2BD2hUtvZeTYwS7uOuvBDKMXzFekfiez9G9oZ%2F1nIHSx5ssvqroy7DbWAZvsrfcWs56UC%2B4isw5lCcSLffZOz13nggNKW3AUlcPgRrfZN2JzZEew%3D%3D');
   height: 340px;
   background-size: cover;
   background-attachment: fixed;
@@ -448,7 +442,7 @@ export default {
 }
 .subscribe {
   background: center center no-repeat
-    url('https://images.unsplash.com/photo-1567752588693-ad10a647c5a3?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1900&q=80');
+    url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384405648.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=A2LeM7mB0lN7OaSJ1%2Bm6vwLotS4NscE9d6lYQMv3xHPzdPrWRO9%2Fxyi1cywztO5OsqrxzvnFAFEeEaPmI9yFztrK%2Fgnnl5AdyHvrBv6H2wsLXIbs2zdsprd%2F6IivV3KrlDtTJSQ946hIDM7sVbw5sPBYH7nS83ytY5GMulECZQtRJ4dUrXYFL8VQPOSHAKJaJHXfRCblcQpuElrRYFWd8inaUjHQx%2FxSR5jFGj5lcTjZ02%2Bn3GQp8kY5akb7d2kNbR6NDvu2S2VsHAfordBq%2FTzVVi7yJpz3K8MOeqH2xPhoDqWU%2BrO%2Bteuib9C1navsEwESa41TPbZo1GV3oVoJKQ%3D%3D');
   height: 400px;
   background-size: cover;
   background-attachment: fixed;
@@ -457,10 +451,4 @@ export default {
     background-attachment: unset;
   }
 }
-// [data-aos] {
-//   visibility: hidden;
-// }
-// [data-aos].animated {
-//   visibility: visible;
-// }
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div class="overflow-hidden h-28">
-    <h2 class="text-white bg-primary fz-2" v-text="msg"></h2>
+    <h2 class="text-white bg-primary fz-2" v-text="msg" />
   </div>
 </template>
 <style lang="scss" scoped>

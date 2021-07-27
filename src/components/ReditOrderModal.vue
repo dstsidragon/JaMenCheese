@@ -15,7 +15,7 @@
             class="btn-close bg-white"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <div class="modal-body">
           <div class="card card-body row fw-bold fz-2">

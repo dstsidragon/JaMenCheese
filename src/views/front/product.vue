@@ -1,7 +1,7 @@
 <template>
   <div class="mt_navbar">
     <!-- 商品CARD start -->
-    <div class="mb-3 banner py-4">
+    <div class="mb-3 py-4">
       <div class="container">
         <div class="card">
           <div class="row g-0">
@@ -30,7 +30,7 @@
                 <br />
                 <!-- 商品內容 -->
                 <p class="card-text text-start fz-0">
-                  <span v-html="product.content"></span>
+                  <span v-html="product.content"/>
                 </p>
                 <!-- 金額 -->
                 <span
@@ -127,7 +127,7 @@
                       class="spinner-grow spinner-grow-sm"
                       role="status"
                       aria-hidden="true"
-                    ></span>
+                    />
                     <span
                       :class="{ 'd-none': loadingStatue.addCart !== '' }"
                       class="visually-hidden"
@@ -399,9 +399,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.banner {
-  background: url('https://images.unsplash.com/photo-1534621735346-1de48541fa12?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
-}
 .product-input {
   width: 76px;
   height: 76px;

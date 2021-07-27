@@ -17,7 +17,7 @@
           ref="creatForm"
           v-slot="{ errors }"
           class="row g-3"
-          @submit="sendOrder"
+          @submit.prevent="sendOrder"
         >
           <!-- 姓名 -->
           <div class="col-md-6">
@@ -32,8 +32,8 @@
               placeholder="請輸入 姓名"
               rules="required"
               v-model="userData.user.name"
-            ></Field>
-            <error-message name="姓名" class="invalid-feedback"></error-message>
+            />
+            <error-message name="姓名" class="invalid-feedback"/>
           </div>
 
           <!-- 電話 -->
@@ -49,8 +49,8 @@
               placeholder="請輸入 手機號碼"
               :rules="isPhone"
               v-model="userData.user.tel"
-            ></Field>
-            <error-message name="電話" class="invalid-feedback"></error-message>
+            />
+            <error-message name="電話" class="invalid-feedback"/>
           </div>
 
           <!-- 信箱 -->
@@ -66,8 +66,8 @@
               placeholder="請輸入 信箱"
               :rules="isEmail"
               v-model="userData.user.email"
-            ></Field>
-            <error-message name="信箱" class="invalid-feedback"></error-message>
+            />
+            <error-message name="信箱" class="invalid-feedback"/>
           </div>
           <!-- 本島/離島 -->
           <div class="col-md-6">
@@ -107,7 +107,7 @@
             <error-message
               name="本島/離島"
               class="invalid-feedback"
-            ></error-message>
+            />
           </div>
           <!-- 地址 -->
           <div class="col-12">
@@ -122,8 +122,8 @@
               placeholder="請輸入 地址"
               rules="required"
               v-model="userData.user.address"
-            ></Field>
-            <error-message name="地址" class="invalid-feedback"></error-message>
+            />
+            <error-message name="地址" class="invalid-feedback"/>
           </div>
           <div class="col-12">
             <label for="text" class="form-label">留言:</label>
@@ -133,7 +133,7 @@
               placeholder="請輸入想說的話"
               class="form-control"
               v-model="userData.message"
-            ></textarea>
+            />
           </div>
           <div
             class="
@@ -176,7 +176,7 @@
                 class="spinner-border spinner-border-sm"
                 role="status"
                 aria-hidden="true"
-              ></span>
+              />
               <span>送出訂單</span>
             </button>
           </div>
@@ -322,7 +322,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         <span>送出訂單</span>
       </button>
     </div>
@@ -492,8 +492,6 @@ export default {
             tel: this.userData.user.tel,
             address: this.userData.user.address,
           },
-          // couponPrice: Math.floor(this.cartList.total) - Math.floor(this.cartList.final_total),
-          // shipping: this.shipping,
           message: `${
             this.userData.message
           } //splitValue//finally_total//splitValue//${
@@ -503,7 +501,6 @@ export default {
           }//splitValue//couponPrice//splitValue//${
             Math.floor(this.cartList.total) - Math.floor(this.cartList.final_total)
           }`,
-          // finally_total: Math.floor(this.cartList.final_total) + this.shipping,
         },
         prd: {
           shipping: this.shipping,
