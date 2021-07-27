@@ -9,7 +9,9 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title css_wordInput_13 fz-2 fz-sm-3">請輸入詳細資訊~ ~ (・ω・)</h5>
+          <h5 class="modal-title css_wordInput_13 fz-2 fz-sm-3">
+            請輸入詳細資訊~ ~ (・ω・)
+          </h5>
           <button
             type="button"
             class="btn-close"
@@ -17,16 +19,18 @@
             aria-label="Close"
           ></button>
         </div>
-        <div class="modal-body">
-          
-        </div>
+        <div class="modal-body"></div>
       </div>
     </div>
   </div>
-<!-- Alert元件 start -->
-<Alert class=" alert-position"  v-if="alertMessage" :message="alertMessage"
-:status="alertStatus" />
-<!-- Alert元件 end -->
+  <!-- Alert元件 start -->
+  <Alert
+    class="alert-position"
+    v-if="alertMessage"
+    :message="alertMessage"
+    :status="alertStatus"
+  />
+  <!-- Alert元件 end -->
 </template>
 
 <script>
@@ -75,38 +79,35 @@ export default {
 
       // 送出訂單
       this.$http
-        .post(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`, data)
+        .post(
+          `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`,
+          data,
+        )
         .then((res) => {
           if (res.data.success) {
             this.alertMessage = res.data.message;
             this.alertStatus = true;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             this.reGetCartList();
           } else {
             this.alertMessage = res.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
           }
         })
         .catch((err) => {
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
         });
     },
     // 刷新購物車列表

@@ -9,22 +9,24 @@
       stretch: 0,
       depth: 100,
       modifier: 1,
-      slideShadows: true
+      slideShadows: true,
     }"
     class="mySwiper"
   >
-    <SwiperSlide v-for="(item, i) in filterProducts" :key="i"
-    @click.prevent="$emit('view-one-product',item)"
+    <SwiperSlide
+      v-for="(item, i) in filterProducts"
+      :key="i"
+      @click.prevent="$emit('view-one-product', item)"
     >
-    <div class="overflow-hidden" >
-      <img :src="item.imageUrl" class="object-fit swiper-img img--scale "/>
+      <div class="overflow-hidden">
+        <img :src="item.imageUrl" class="object-fit swiper-img img--scale" />
       </div>
       <span>
-        <p class="bg-primary text-white p-1 fs-2 m-0">{{item.title}}</p>
+        <p class="bg-primary text-white p-1 fs-2 m-0">{{ item.title }}</p>
         <p class="bg-lightPrimary text-white p-1 m-0">詳細內容</p>
       </span>
-      <div class="bg-info text-white p-1 hotProduct-icon ">{{category}}</div>
-      </SwiperSlide>
+      <div class="bg-info text-white p-1 hotProduct-icon">{{ category }}</div>
+    </SwiperSlide>
   </Swiper>
 </template>
 <script>
@@ -47,9 +49,7 @@ export default {
     Swiper,
     SwiperSlide,
   },
-  props: [
-    'category',
-  ],
+  props: ['category'],
   data() {
     return {
       productsData: '',
@@ -61,12 +61,9 @@ export default {
   watch: {
     category() {
       // 隨機抓出4筆資料
-      setTimeout(
-        () => {
-          this.getSameCategoryProduct(4);
-        },
-        500,
-      );
+      setTimeout(() => {
+        this.getSameCategoryProduct(4);
+      }, 500);
     },
   },
   methods: {
@@ -76,7 +73,9 @@ export default {
     // 取得全部商品列表
     getProducts() {
       this.$http
-        .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`)
+        .get(
+          `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`,
+        )
         .then((res) => {
           // 如果成功就執行
           if (res.data.success) {
@@ -93,7 +92,7 @@ export default {
       );
       // 如果陣列商品不足，就以當前陣列長度為基準
       const productNum = this.filterSameCategory.length
-       < num ? this.filterSameCategory.length : num;
+      < num ? this.filterSameCategory.length : num;
       // 宣告 set 陣列
       const prdSet = new Set([]);
       // 取出指定 不重複的陣列數量
@@ -147,10 +146,9 @@ body {
   width: 100%;
   height: 215px;
 }
-.hotProduct-icon{
+.hotProduct-icon {
   position: absolute;
   top: 0;
   left: 5px;
 }
-
 </style>

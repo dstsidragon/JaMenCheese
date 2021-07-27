@@ -1,5 +1,5 @@
 <template>
-  <div class="container mt-5 ">
+  <div class="container mt-5">
     <div>
       <!-- Alert元件 start -->
       <Alert
@@ -13,7 +13,12 @@
     <div class="row">
       <div class="col-md-8">
         <!-- 表單 start-->
-        <Form ref="creatForm" v-slot="{ errors }" class="row g-3" @submit="sendOrder">
+        <Form
+          ref="creatForm"
+          v-slot="{ errors }"
+          class="row g-3"
+          @submit="sendOrder"
+        >
           <!-- 姓名 -->
           <div class="col-md-6">
             <label for="name" class="form-label">姓名:</label>
@@ -99,7 +104,10 @@
                 <label class="form-check-label" for="inlineRadio2">離島</label>
               </div>
             </Field>
-            <error-message name="本島/離島" class="invalid-feedback"></error-message>
+            <error-message
+              name="本島/離島"
+              class="invalid-feedback"
+            ></error-message>
           </div>
           <!-- 地址 -->
           <div class="col-12">
@@ -127,11 +135,24 @@
               v-model="userData.message"
             ></textarea>
           </div>
-          <div class="d-none d-md-flex flex-wrap justify-content-center justify-content-sm-between">
+          <div
+            class="
+              d-none d-md-flex
+              flex-wrap
+              justify-content-center justify-content-sm-between
+            "
+          >
             <button
               type="button"
-              class="btn btn-secondary py-2 fz-2 fz-ssm-3 col-10 col-sm-5
-        d-flex justify-content-center align-items-center"
+              class="
+                btn btn-secondary
+                py-2
+                fz-2 fz-ssm-3
+                col-10 col-sm-5
+                d-flex
+                justify-content-center
+                align-items-center
+              "
               @click="$router.push('/carts')"
             >
               <span>返回購物車</span>
@@ -140,8 +161,15 @@
               ref="formBtn"
               type="submit"
               :disabled="loadingStatue.sendOrder == 1"
-              class="btn btn-primary py-2 fz-2 fz-ssm-3 col-10 col-sm-5
-         d-flex justify-content-center align-items-center"
+              class="
+                btn btn-primary
+                py-2
+                fz-2 fz-ssm-3
+                col-10 col-sm-5
+                d-flex
+                justify-content-center
+                align-items-center
+              "
             >
               <span
                 :class="{ 'd-none': loadingStatue.sendOrder !== 1 }"
@@ -160,25 +188,31 @@
         <ul class="p-2 border border-primary">
           <li>訂單明細</li>
           <li v-for="(item, i) in cartList.carts" :key="'Car_' + i">
-            <div class="card border-0 mb-3 text-dark bg-light" style="max-width: 540px;">
+            <div
+              class="card border-0 mb-3 text-dark bg-light"
+              style="max-width: 540px"
+            >
               <div class="row g-0">
                 <div class="col-2">
                   <img
                     class="cart-img object-sm-fit"
-                    style="width: 48px; height: 48px; object-fit: cover;"
+                    style="width: 48px; height: 48px; object-fit: cover"
                     :src="item.product.imageUrl"
                     :alt="item.product.title"
                   />
                 </div>
                 <div class="col-10">
-                  <h5 class="card-title fz-1 m-0 py-1 text-start">{{ item.product.title }}</h5>
+                  <h5 class="card-title fz-1 m-0 py-1 text-start">
+                    {{ item.product.title }}
+                  </h5>
                   <span class="d-flex justify-content-between">
                     <p class="card-text m-0">
                       <small class="text-muted">
-                        NT$ {{ $toComma(item.product.price) }} / {{ item.product.unit }}
+                        NT$ {{ $toComma(item.product.price) }} /
+                        {{ item.product.unit }}
                       </small>
                     </p>
-                    <p class="card-text">X{{ item.qty}}</p>
+                    <p class="card-text">X{{ item.qty }}</p>
                   </span>
                 </div>
               </div>
@@ -201,8 +235,7 @@
               />
               <button
                 type="submit"
-                class="btn btn-outline-primary btn-right fz-0
-         "
+                class="btn btn-outline-primary btn-right fz-0"
                 id="button-coupon"
               >
                 套用優惠碼
@@ -210,23 +243,28 @@
             </form>
           </li>
           <li>
-            <span class="  d-flex justify-content-between align-items-center">
+            <span class="d-flex justify-content-between align-items-center">
               <p class="mb-0">小計:</p>
-              <p class=" mb-0">NT$ {{ $toComma(Math.floor(cartList.total)) }}</p>
+              <p class="mb-0">NT$ {{ $toComma(Math.floor(cartList.total)) }}</p>
             </span>
           </li>
           <!-- 運費 -->
           <li>
-            <span class="  d-flex justify-content-between align-items-center">
+            <span class="d-flex justify-content-between align-items-center">
               <p class="mb-0">運費:</p>
-              <p class=" mb-0">NT$ {{ $toComma(shipping) }}</p>
+              <p class="mb-0">NT$ {{ $toComma(shipping) }}</p>
             </span>
           </li>
           <li>
-            <span class="  d-flex justify-content-between align-items-center">
+            <span class="d-flex justify-content-between align-items-center">
               <p class="mb-0">優惠折抵:</p>
-              <p class=" mb-0">
-                NT$ -{{ $toComma(Math.floor(cartList.total) - Math.floor(cartList.final_total)) }}
+              <p class="mb-0">
+                NT$ -{{
+                  $toComma(
+                    Math.floor(cartList.total) -
+                      Math.floor(cartList.final_total)
+                  )
+                }}
               </p>
             </span>
           </li>
@@ -234,7 +272,7 @@
             <hr />
           </li>
           <li>
-            <span class=" fz-1 d-flex justify-content-around align-items-center">
+            <span class="fz-1 d-flex justify-content-around align-items-center">
               <p class="mb-0">總計:</p>
               <p class="fz-2 mb-0 text-danger fw-bold">
                 NT$ {{ $toComma(Math.floor(cartList.final_total) + shipping) }}
@@ -248,10 +286,15 @@
   </div>
   <!-- 送出按鈕 start-->
   <div class="w-100 mobile-fixed d-md-none bg-white">
-    <div class="d-flex justify-content-between row  ">
+    <div class="d-flex justify-content-between row">
       <span
-        class="col-7 fz-0 d-flex justify-content-around align-items-center
-        border-top
+        class="
+          col-7
+          fz-0
+          d-flex
+          justify-content-around
+          align-items-center
+          border-top
         "
       >
         <p class="mb-0">總計:</p>
@@ -263,8 +306,16 @@
         @click="$refs.formBtn.click()"
         type="submit"
         :disabled="loadingStatue.sendOrder == 1"
-        class="btn btn-primary py-2 fz-2 fz-ssm-3 col-5 btn-right
-        btn-primary-mobile d-flex justify-content-center align-items-center"
+        class="
+          btn btn-primary
+          py-2
+          fz-2 fz-ssm-3
+          col-5
+          btn-right btn-primary-mobile
+          d-flex
+          justify-content-center
+          align-items-center
+        "
       >
         <span
           :class="{ 'd-none': loadingStatue.sendOrder !== 1 }"
@@ -357,40 +408,33 @@ export default {
             // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             // 關掉讀取畫面
             this.isLoading = false;
           }
         })
         .catch((err) => {
-          // console.log(err)
-          // alert(err.data.message);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
           // 關掉讀取畫面
           this.isLoading = false;
         });
     },
     // 套用優惠券
     useCoupon() {
-      // console.log(1);
       this.loadingStatue.coupon = 1;
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/coupon`;
       this.$http
         .post(url, {
           data: {
-            code: (this.couponCode === '' ? 'origin' : this.couponCode),
+            code: this.couponCode === '' ? 'origin' : this.couponCode,
           },
         })
         .then((res) => {
@@ -400,12 +444,10 @@ export default {
             this.couponCode = '';
             this.alertMessage = res.data.message;
             this.alertStatus = true;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             // 刷新購物車
             this.getCartList();
             // 關閉 按鈕loading
@@ -416,12 +458,10 @@ export default {
             // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             // 關閉 按鈕loading
             this.loadingStatue.coupon = '';
             // 清空優惠碼
@@ -429,16 +469,12 @@ export default {
           }
         })
         .catch((err) => {
-          // console.log(err)
-          // alert(err.data.message);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
           // 關閉 按鈕loading
           this.loadingStatue.coupon = '';
           // 清空優惠碼
@@ -458,7 +494,15 @@ export default {
           },
           // couponPrice: Math.floor(this.cartList.total) - Math.floor(this.cartList.final_total),
           // shipping: this.shipping,
-          message: `${this.userData.message} //splitValue//finally_total//splitValue//${Math.floor(this.cartList.final_total) + this.shipping}//splitValue//shipping//splitValue//${this.shipping}//splitValue//couponPrice//splitValue//${Math.floor(this.cartList.total) - Math.floor(this.cartList.final_total)}`,
+          message: `${
+            this.userData.message
+          } //splitValue//finally_total//splitValue//${
+            Math.floor(this.cartList.final_total) + this.shipping
+          }//splitValue//shipping//splitValue//${
+            this.shipping
+          }//splitValue//couponPrice//splitValue//${
+            Math.floor(this.cartList.total) - Math.floor(this.cartList.final_total)
+          }`,
           // finally_total: Math.floor(this.cartList.final_total) + this.shipping,
         },
         prd: {
@@ -467,19 +511,19 @@ export default {
       };
       // 送出訂單
       this.$http
-        .post(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`, data)
+        .post(
+          `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`,
+          data,
+        )
         .then((res) => {
-          console.log(res);
           if (res.data.success) {
             // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = true;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             this.loadingStatue.sendOrder = '';
             this.orderId = res.data.orderId;
             // 發起一個觸發(刷新購物車)
@@ -490,27 +534,20 @@ export default {
             // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             this.loadingStatue.sendOrder = '';
           }
         })
         .catch((err) => {
-          // console.log(err);
-
-          // alert(err.data.message);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
           this.loadingStatue.coupon = '';
         });
     },
@@ -529,8 +566,10 @@ export default {
       if (this.island === '本島') {
         if (Math.floor(this.cartList.total) < 2500) {
           this.shipping = 180;
-        } else if (Math.floor(this.cartList.total) >= 2500
-        && Math.floor(this.cartList.total) < 3500) {
+        } else if (
+          Math.floor(this.cartList.total) >= 2500
+          && Math.floor(this.cartList.total) < 3500
+        ) {
           this.shipping = 150;
         } else {
           this.shipping = 0;
@@ -538,8 +577,9 @@ export default {
       } else if (this.island === '離島') {
         if (Math.floor(this.cartList.total) < 2500) {
           this.shipping = 280;
-        } else if (Math.floor(this.cartList.total) < 3500
-        && Math.floor(this.cartList.total) >= 2500
+        } else if (
+          Math.floor(this.cartList.total) < 3500
+          && Math.floor(this.cartList.total) >= 2500
         ) {
           this.shipping = 250;
         } else {
@@ -580,18 +620,16 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-
-.carNum{
+.carNum {
   width: 50px;
 }
-.cart-img{
+.cart-img {
   width: 100%;
   height: 100px;
 }
 .btn-primary-mobile:hover {
-    border-color: #fff;
-    background-color: #7f5625;
-    color: #fff;
+  border-color: #fff;
+  background-color: #7f5625;
+  color: #fff;
 }
-
 </style>

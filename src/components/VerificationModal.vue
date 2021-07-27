@@ -19,10 +19,14 @@
         </div>
         <div class="modal-body">
           <label class="mr-2" for="API_Path">API_Path:</label>
-          <input  type="text"  v-model="apipath"/>
+          <input type="text" v-model="apipath" />
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
             我忘記我的path碼，先饒過你
           </button>
           <button

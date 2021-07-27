@@ -1,92 +1,124 @@
 /* eslint-disable radix */
 <template>
-    <h2 class="shadow-sm p-3 mt-1 mb-5 bg-yellow-lighten text-primary
-    rounded fz-3 fz-sm-4">商品管理</h2>
+  <h2
+    class="
+      shadow-sm
+      p-3
+      mt-1
+      mb-5
+      bg-yellow-lighten
+      text-primary
+      rounded
+      fz-3 fz-sm-4
+    "
+  >
+    商品管理
+  </h2>
   <!-- 新增產品 start-->
-  <div class='container mt-5 justify-content-evenly d-flex align-items-center'>
-
+  <div class="container mt-5 justify-content-evenly d-flex align-items-center">
     <!-- Alert元件 start -->
-    <Alert class="alert-position"  v-if="alertMessage" :message="alertMessage"
-    :status="alertStatus" />
+    <Alert
+      class="alert-position"
+      v-if="alertMessage"
+      :message="alertMessage"
+      :status="alertStatus"
+    />
     <!-- Alert元件 end -->
     <!-- Button trigger modal -->
-      <button
-        class='btn btn-primary '
-        type='button'
-        @click='clearProductData'
-      >
-        新增產品
-      </button>
-    <button class='btn btn-primary d-none d-sm-block'
-    type='button' @click='OneKeyAddDefaultProduct'>
+    <button class="btn btn-primary" type="button" @click="clearProductData">
+      新增產品
+    </button>
+    <button
+      class="btn btn-primary d-none d-sm-block"
+      type="button"
+      @click="OneKeyAddDefaultProduct"
+    >
       一鑑輸入預設商品
     </button>
     <button
-    v-if="dataLength>0"
+      v-if="dataLength > 0"
       :class="{ 'd-none': !this.productDataAll }"
-      class='btn btn-danger d-none d-sm-block'
-      type='button'
-      @click='this.$refs.deleteAllModal.openModal();'
+      class="btn btn-danger d-none d-sm-block"
+      type="button"
+      @click="this.$refs.deleteAllModal.openModal()"
     >
       一鑑刪除全部商品
     </button>
 
     <!-- Modal -->
-    <AddProductModal ref='UpLoadImg' :add-product='addProduct' @emit-product-data='addPrductData'>
+    <AddProductModal
+      ref="UpLoadImg"
+      :add-product="addProduct"
+      @emit-product-data="addPrductData"
+    >
     </AddProductModal>
   </div>
   <!-- 新增產品 end-->
 
   <!-- 刪除單一Modal start-->
-  <Delete ref="deleteModal"  @send="delOneData" />
+  <Delete ref="deleteModal" @send="delOneData" />
   <!-- 刪除單一Modal end-->
 
   <!-- 產品列表 -->
-  <div class='container mt_5p '>
-    <div class='container'>
-      <table class='table mt-4 row'>
-        <thead class='co1-12'>
-          <tr class='row'>
-            <th class='col-3 d-none d-md-table-cell'>產品圖片</th>
-            <th class='col-3 '>產品名稱</th>
-            <th class='col-2 col-md-1 d-none d-ssm-table-cell' width='120'>
+  <div class="container mt_5p">
+    <div class="container">
+      <table class="table mt-4 row">
+        <thead class="co1-12">
+          <tr class="row">
+            <th class="col-3 d-none d-md-table-cell">產品圖片</th>
+            <th class="col-3">產品名稱</th>
+            <th class="col-2 col-md-1 d-none d-ssm-table-cell" width="120">
               原價
             </th>
-            <th class='col-3 col-ssm-2 col-md-1'>
-              售價
-            </th>
-            <th class='col-3 col-ssm-2'>
-              是否啟用
-            </th>
-            <th class='col-3 col-md-2'>
-              編輯/刪除
-            </th>
+            <th class="col-3 col-ssm-2 col-md-1">售價</th>
+            <th class="col-3 col-ssm-2">是否啟用</th>
+            <th class="col-3 col-md-2">編輯/刪除</th>
           </tr>
         </thead>
-        <tbody id='productList'>
-          <tr v-for='(item, i) in productData' class='row' :key="'bg_prd' + i">
-            <td class='col-3 d-none d-md-table-cell d-flex align-items-center'>
-              <img class='prd_img' :src='item.imageUrl' alt='' />
+        <tbody id="productList">
+          <tr v-for="(item, i) in productData" class="row" :key="'bg_prd' + i">
+            <td class="col-3 d-none d-md-table-cell d-flex align-items-center">
+              <img class="prd_img" :src="item.imageUrl" alt="" />
             </td>
-            <td class='col-3  d-flex justify-content-center
-            align-items-center'>{{ item.title }}
+            <td class="col-3 d-flex justify-content-center align-items-center">
+              {{ item.title }}
             </td>
-            <td class='col-2 col-md-1 d-none d-ssm-table-cell
-             d-flex justify-content-center align-items-center'>
+            <td
+              class="
+                col-2 col-md-1
+                d-none d-ssm-table-cell d-flex
+                justify-content-center
+                align-items-center
+              "
+            >
               {{ item.origin_price }}
             </td>
-            <td class='col-3 col-ssm-2 col-md-1 justify-content-center d-flex align-items-center'>
+            <td
+              class="
+                col-3 col-ssm-2 col-md-1
+                justify-content-center
+                d-flex
+                align-items-center
+              "
+            >
               {{ item.price }}
             </td>
-            <td class='col-3 col-ssm-2  d-flex justify-content-center align-items-center'>
-              <div class='onoffswitch'>
+            <td
+              class="
+                col-3 col-ssm-2
+                d-flex
+                justify-content-center
+                align-items-center
+              "
+            >
+              <div class="onoffswitch">
                 <input
-                  type='checkbox'
-                  name='onoffswitch'
-                  class='onoffswitch-checkbox'
-                  @click='productEnable'
+                  type="checkbox"
+                  name="onoffswitch"
+                  class="onoffswitch-checkbox"
+                  @click="productEnable"
                   :id="'myonoffswitch_' + item.id"
-                  tabindex='0'
+                  tabindex="0"
                   v-if="item.is_enabled == 1"
                   checked
                   :data-is_enabled="item.is_enabled"
@@ -98,42 +130,52 @@
                   :data-price="item.price"
                 />
                 <input
-                  type='checkbox'
-                  name='onoffswitch'
+                  type="checkbox"
+                  name="onoffswitch"
                   class="onoffswitch-checkbox"
-                  @click='productEnable'
+                  @click="productEnable"
                   :id="'myonoffswitch_' + item.id"
-                  tabindex='0'
+                  tabindex="0"
                   v-else
-                  :data-is_enabled='item.is_enabled'
-                  :data-id='item.id'
-                  :data-title='item.title'
-                  :data-category='item.category'
-                  :data-unit='item.unit'
-                  :data-origin_price='item.origin_price'
-                  :data-price='item.price'
+                  :data-is_enabled="item.is_enabled"
+                  :data-id="item.id"
+                  :data-title="item.title"
+                  :data-category="item.category"
+                  :data-unit="item.unit"
+                  :data-origin_price="item.origin_price"
+                  :data-price="item.price"
                 />
-                <label class='onoffswitch-label' :for="'myonoffswitch_' + item.id"></label>
+                <label
+                  class="onoffswitch-label"
+                  :for="'myonoffswitch_' + item.id"
+                ></label>
               </div>
             </td>
-            <td class='col-3 col-md-2 justify-content-center d-flex align-items-center'>
+            <td
+              class="
+                col-3 col-md-2
+                justify-content-center
+                d-flex
+                align-items-center
+              "
+            >
               <button
-                type='button'
+                type="button"
                 :id="'redit_' + i"
-                @click='getReditOneData'
-                class='btn btn-sm btn-primary btn-left'
-                data-action='remove'
-                :data-id='item.id'
+                @click="getReditOneData"
+                class="btn btn-sm btn-primary btn-left"
+                data-action="remove"
+                :data-id="item.id"
               >
                 編輯
               </button>
               <button
-                type='button'
+                type="button"
                 :id="'del_' + item.id"
-                @click='this.$refs.deleteModal.openModal(item)'
-                class='btn btn-sm btn-danger btn-right'
-                data-action='remove'
-                :data-id='item.id'
+                @click="this.$refs.deleteModal.openModal(item)"
+                class="btn btn-sm btn-danger btn-right"
+                data-action="remove"
+                :data-id="item.id"
               >
                 刪除
               </button>
@@ -147,24 +189,24 @@
 
   <!-- 修改商品Modal -->
   <ReditProductModal
-  ref="ReditProductModal"
-    :redi-datas='rediData'
-    @emit-redit-new-nata='reditOneData'
+    ref="ReditProductModal"
+    :redi-datas="rediData"
+    @emit-redit-new-nata="reditOneData"
   ></ReditProductModal>
 
   <!-- 分頁 start-->
-  <div class='d-flex justify-content-center'>
-    <Pagination :pagination='pagination' @get-product='getProduct'></Pagination>
+  <div class="d-flex justify-content-center">
+    <Pagination :pagination="pagination" @get-product="getProduct"></Pagination>
 
-  <!-- 分頁 end-->
+    <!-- 分頁 end-->
 
-  <!-- 讀取畫面 start-->
-  <Loading :isVueLoading='isLoading' />
-  <!-- 讀取畫面 end -->
+    <!-- 讀取畫面 start-->
+    <Loading :isVueLoading="isLoading" />
+    <!-- 讀取畫面 end -->
 
-  <!-- 刪除全部Modal start-->
-  <DeleteAll ref="deleteAllModal"  @send="OneKeyDelAllProduct" />
-  <!-- 刪除全部Modal end-->
+    <!-- 刪除全部Modal start-->
+    <DeleteAll ref="deleteAllModal" @send="OneKeyDelAllProduct" />
+    <!-- 刪除全部Modal end-->
   </div>
 </template>
 <script>
@@ -217,7 +259,10 @@ export default {
       // 商品資料筆數
       dataLength: 0,
       // 取得token
-      token: document.cookie.replace(/(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/, '$1'),
+      token: document.cookie.replace(
+        /(?:(?:^|.*;\s*)hexToken\s*=\s*([^;]*).*$)|^.*$/,
+        '$1',
+      ),
       // 預存的商品資料
       defaulData: [],
       // 編輯資料索引
@@ -255,13 +300,9 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          // console.log(res);
-          // console.log(res.data.success);
-
           // 如果成功就執行
           if (res.data.success) {
             this.productData = res.data.products;
-            // console.log(this.productData);
             this.pagination = res.data.pagination;
             // 更新筆數
             this.dataLength = this.productData.length;
@@ -272,29 +313,23 @@ export default {
             // 關掉讀取畫面
             this.isLoading = false;
           } else {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             // 跳轉頁面
             this.$router.push('/login');
           }
         })
         .catch((err) => {
-          // console.log(err);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
         });
     },
 
@@ -305,42 +340,31 @@ export default {
       this.$http
         .delete(url)
         .then((res) => {
-          // console.log(res);
-
           // 如果成功就執行
           if (res.data.success) {
-            // alert(`${res.data.message}`);
             this.alertMessage = res.data.message;
             this.alertStatus = true;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             this.getProduct();
           } else {
-            // alert(`${res.data.message}`);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
           }
         })
         .catch((err) => {
-          // console.log(err);
           this.alertMessage = err.data.message;
           this.alertStatus = true;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
         });
     },
     // 啟用/未啟用事件
@@ -361,37 +385,29 @@ export default {
           },
         })
         .then((res) => {
-          // console.log(res)
           // 如果成功就執行
           if (res.data.success) {
-            // alert('已變更啟用狀態!');
             this.alertMessage = res.data.message;
             this.alertStatus = true;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             this.getProduct();
           }
         })
         .catch((err) => {
-          // console.log(err);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
         });
     },
 
     // 建立產品
     addPrductData(emitproductData) {
-      // console.log(emitproductData);
       // 判斷是否都不為空值
       if (
         emitproductData.bg_add_title !== ''
@@ -400,24 +416,20 @@ export default {
         && emitproductData.bg_add_origin_price !== ''
         && emitproductData.bg_add_price !== ''
       ) {
-        //   console.log(API_Path)
         const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product`;
 
         // 送至伺服器
         this.$http
           .post(url, emitproductData)
           .then((res) => {
-            // alert(res.data.message);
             // 如果成功就執行
             if (res.data.success) {
               this.alertMessage = res.data.message;
               this.alertStatus = true;
-              setTimeout(
-                () => {
-                  this.alertMessage = '';
-                  this.alertStatus = false;
-                }, 2000,
-              );
+              setTimeout(() => {
+                this.alertMessage = '';
+                this.alertStatus = false;
+              }, 2000);
               // 刷新
               this.getProduct();
 
@@ -428,26 +440,20 @@ export default {
             }
           })
           .catch((err) => {
-            // console.dir(err);
             this.alertMessage = err.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
           });
       } else {
-        // alert('標題、分類、單位、原價、售價為必填欄位!');
         this.alertMessage = '標題、分類、單位、原價、售價為必填欄位!';
         this.alertStatus = false;
-        setTimeout(
-          () => {
-            this.alertMessage = '';
-            this.alertStatus = false;
-          }, 2000,
-        );
+        setTimeout(() => {
+          this.alertMessage = '';
+          this.alertStatus = false;
+        }, 2000);
       }
     },
     // 一鑑輸入預設商品
@@ -517,7 +523,8 @@ export default {
         {
           title: 'ワンピース　B賞マルコ リペイント',
           description: '１番くじ　B賞マルコ　リペイント',
-          content: '趣味程度のリペイントになります。プライマー～塗装『全て筆の塗装』～トップコートで仕上げてます。気に入ってくれた方、購入お願い致します。完品をお求めの方はご遠慮ください。神経質な方もご遠慮ください。実際の物と写真では異なる場合がございます。',
+          content:
+            '趣味程度のリペイントになります。プライマー～塗装『全て筆の塗装』～トップコートで仕上げてます。気に入ってくれた方、購入お願い致します。完品をお求めの方はご遠慮ください。神経質な方もご遠慮ください。実際の物と写真では異なる場合がございます。',
           category: '魂豪示像',
           unit: '種',
           origin_price: 5000,
@@ -534,7 +541,8 @@ export default {
           ],
         },
         {
-          title: '一番くじ ワンピース EX 悪魔を宿す者達 A 賞 カイドウ 魂豪示像 フィギュア',
+          title:
+            '一番くじ ワンピース EX 悪魔を宿す者達 A 賞 カイドウ 魂豪示像 フィギュア',
           description:
             '『一番くじ ワンピース EX 悪魔を宿す者達』より・A賞：カイドウ 魂豪示像（全1種）以上、１点の出品になります。',
           content:
@@ -618,7 +626,8 @@ export default {
         {
           title: 'ワンピース　B賞マルコ リペイント',
           description: '１番くじ　B賞マルコ　リペイント',
-          content: '趣味程度のリペイントになります。プライマー～塗装『全て筆の塗装』～トップコートで仕上げてます。気に入ってくれた方、購入お願い致します。完品をお求めの方はご遠慮ください。神経質な方もご遠慮ください。実際の物と写真では異なる場合がございます。',
+          content:
+            '趣味程度のリペイントになります。プライマー～塗装『全て筆の塗装』～トップコートで仕上げてます。気に入ってくれた方、購入お願い致します。完品をお求めの方はご遠慮ください。神経質な方もご遠慮ください。実際の物と写真では異なる場合がございます。',
           category: '魂豪示像',
           unit: '種',
           origin_price: 5000,
@@ -635,7 +644,8 @@ export default {
           ],
         },
         {
-          title: '一番くじ ワンピース EX 悪魔を宿す者達 A 賞 カイドウ 魂豪示像 フィギュア',
+          title:
+            '一番くじ ワンピース EX 悪魔を宿す者達 A 賞 カイドウ 魂豪示像 フィギュア',
           description:
             '『一番くじ ワンピース EX 悪魔を宿す者達』より・A賞：カイドウ 魂豪示像（全1種）以上、１点の出品になります。',
           content:
@@ -719,7 +729,8 @@ export default {
         {
           title: 'ワンピース　B賞マルコ リペイント',
           description: '１番くじ　B賞マルコ　リペイント',
-          content: '趣味程度のリペイントになります。プライマー～塗装『全て筆の塗装』～トップコートで仕上げてます。気に入ってくれた方、購入お願い致します。完品をお求めの方はご遠慮ください。神経質な方もご遠慮ください。実際の物と写真では異なる場合がございます。',
+          content:
+            '趣味程度のリペイントになります。プライマー～塗装『全て筆の塗装』～トップコートで仕上げてます。気に入ってくれた方、購入お願い致します。完品をお求めの方はご遠慮ください。神経質な方もご遠慮ください。実際の物と写真では異なる場合がございます。',
           category: '魂豪示像',
           unit: '種',
           origin_price: 5000,
@@ -736,7 +747,8 @@ export default {
           ],
         },
         {
-          title: '一番くじ ワンピース EX 悪魔を宿す者達 A 賞 カイドウ 魂豪示像 フィギュア',
+          title:
+            '一番くじ ワンピース EX 悪魔を宿す者達 A 賞 カイドウ 魂豪示像 フィギュア',
           description:
             '『一番くじ ワンピース EX 悪魔を宿す者達』より・A賞：カイドウ 魂豪示像（全1種）以上、１点の出品になります。',
           content:
@@ -820,7 +832,8 @@ export default {
         {
           title: 'ワンピース　B賞マルコ リペイント',
           description: '１番くじ　B賞マルコ　リペイント',
-          content: '趣味程度のリペイントになります。プライマー～塗装『全て筆の塗装』～トップコートで仕上げてます。気に入ってくれた方、購入お願い致します。完品をお求めの方はご遠慮ください。神経質な方もご遠慮ください。実際の物と写真では異なる場合がございます。',
+          content:
+            '趣味程度のリペイントになります。プライマー～塗装『全て筆の塗装』～トップコートで仕上げてます。気に入ってくれた方、購入お願い致します。完品をお求めの方はご遠慮ください。神経質な方もご遠慮ください。実際の物と写真では異なる場合がございます。',
           category: '魂豪示像',
           unit: '種',
           origin_price: 5000,
@@ -837,7 +850,8 @@ export default {
           ],
         },
         {
-          title: '一番くじ ワンピース EX 悪魔を宿す者達 A 賞 カイドウ 魂豪示像 フィギュア',
+          title:
+            '一番くじ ワンピース EX 悪魔を宿す者達 A 賞 カイドウ 魂豪示像 フィギュア',
           description:
             '『一番くじ ワンピース EX 悪魔を宿す者達』より・A賞：カイドウ 魂豪示像（全1種）以上、１点の出品になります。',
           content:
@@ -858,7 +872,6 @@ export default {
           ],
         },
       ];
-      // console.log(defaulData.length)
       this.defaulData.forEach((item, i) => {
         const product = {
           data: {
@@ -882,12 +895,10 @@ export default {
             ],
           },
         };
-        // console.log(product)
         const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product`;
         this.$http
           .post(url, product)
           .then((res) => {
-            // alert(res.data.message);
             // 如果成功就執行
             if (res.data.success) {
               if (i === this.defaulData.length - 1) {
@@ -897,25 +908,20 @@ export default {
                 // alert('已輸入預設商品!');
                 this.alertMessage = '已輸入預設商品!';
                 this.alertStatus = true;
-                setTimeout(
-                  () => {
-                    this.alertMessage = '';
-                    this.alertStatus = false;
-                  }, 2000,
-                );
+                setTimeout(() => {
+                  this.alertMessage = '';
+                  this.alertStatus = false;
+                }, 2000);
               }
             }
           })
           .catch((err) => {
-            // console.dir(err);
             this.alertMessage = err.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
           });
       });
     },
@@ -926,86 +932,61 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          // console.log(res);
-          // console.log(res.data.success);
-
           // 如果成功就執行
           if (res.data.success) {
             this.productDataAll = res.data.products;
           } else {
-            // console.log(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
-            // window.location='index.html';
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
           }
         })
         .catch((err) => {
-          // console.log(err);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
         });
     },
     // 一鑑刪除全部商品
     OneKeyDelAllProduct() {
       this.allProductAry.forEach((item, i) => {
-        // console.log(item)
         const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${item}`;
         this.$http
           .delete(url)
           .then((res) => {
-            // console.log(res);
-
             // 如果成功就執行
             if (res.data.success) {
-              // alert(`${res.data.message}`);
-              // console.log(i === this.allProductAry.length - 1);
-
               if (i === this.allProductAry.length - 1) {
                 this.alertMessage = res.data.message;
                 this.alertStatus = true;
-                setTimeout(
-                  () => {
-                    this.alertMessage = '';
-                    this.alertStatus = false;
-                  }, 2000,
-                );
-                this.getProduct();
-                // alert('已刪除全部商品!');
-              }
-            } else {
-              // alert(`${res.data.message}`);
-              this.alertMessage = res.data.message;
-              this.alertStatus = false;
-              setTimeout(
-                () => {
+                setTimeout(() => {
                   this.alertMessage = '';
                   this.alertStatus = false;
-                }, 2000,
-              );
+                }, 2000);
+                this.getProduct();
+              }
+            } else {
+              this.alertMessage = res.data.message;
+              this.alertStatus = false;
+              setTimeout(() => {
+                this.alertMessage = '';
+                this.alertStatus = false;
+              }, 2000);
             }
           })
           .catch((err) => {
-            // console.log(err);
             this.alertMessage = err.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
           });
       });
     },
@@ -1051,18 +1032,14 @@ export default {
       this.$http
         .put(url, reditNewData)
         .then((res) => {
-          // console.log(res);
-          // alert(res.data.message);
           // 如果成功就執行
           if (res.data.success) {
             this.alertMessage = res.data.message;
             this.alertStatus = true;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             // 刷新
             this.getProduct();
             // 關閉編輯視窗
@@ -1070,15 +1047,12 @@ export default {
           }
         })
         .catch((err) => {
-          // console.log(err);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
         });
     },
   },

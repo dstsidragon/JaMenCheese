@@ -22,7 +22,7 @@
         <!-- 漢堡選單 start-->
         <button
           v-if="btnHamStatus"
-          class="navbar-toggler  ms-3"
+          class="navbar-toggler ms-3"
           :class="navBarColor"
           type="button"
           data-bs-toggle="collapse"
@@ -36,7 +36,7 @@
         </button>
         <button
           v-else
-          class="navbar-toggler  ms-3"
+          class="navbar-toggler ms-3"
           :class="navBarColor"
           type="button"
           data-bs-toggle="collapse"
@@ -105,7 +105,7 @@
             @click="$router.push('/favorites')"
           >
             <div class="position-relative cursor-pointer">
-            <span class="material-icons"> favorite </span>
+              <span class="material-icons"> favorite </span>
               <p
                 v-if="myFavorite"
                 class="
@@ -116,7 +116,7 @@
                   rounded-pill
                 "
               >
-                {{ myFavorite.length  }}
+                {{ myFavorite.length }}
               </p>
             </div>
           </li>
@@ -148,7 +148,7 @@
             </div>
 
             <div
-            ref="cartOffcanvas"
+              ref="cartOffcanvas"
               class="offcanvas offcanvas-end bg-lightPrimary"
               tabindex="-1"
               id="shoppingCart"
@@ -184,7 +184,9 @@
                         <th class="col-1" scope="row">{{ i + 1 }}</th>
                         <td class="col-4">{{ item.product.title }}</td>
                         <td class="col-3">{{ item.qty }}</td>
-                        <td class="col-4">NT$ {{ $toComma(item.product.price) }}</td>
+                        <td class="col-4">
+                          NT$ {{ $toComma(item.product.price) }}
+                        </td>
                       </tr>
                     </tbody>
                   </table>
@@ -206,9 +208,10 @@
                     "
                     @click="$router.push('/carts')"
                   >
-                    <p class="mb-0 fz-2" @click="closeCartOffcanvas">查看購物車</p>
-                    <span class="material-icons fz-1" >
-                      arrow_forward_ios </span>
+                    <p class="mb-0 fz-2" @click="closeCartOffcanvas">
+                      查看購物車
+                    </p>
+                    <span class="material-icons fz-1"> arrow_forward_ios </span>
                   </button>
 
                   <p v-if="cartList.carts.length < 1">
@@ -224,7 +227,9 @@
                     "
                     @click="$router.push('/products')"
                   >
-                    <p class="mb-0 fz-2" @click="closeCartOffcanvas">快去購物</p>
+                    <p class="mb-0 fz-2" @click="closeCartOffcanvas">
+                      快去購物
+                    </p>
                     <span class="material-icons fz-1"> arrow_forward_ios </span>
                   </button>
                 </div>
@@ -244,7 +249,8 @@
               </span>
             </div>
             <!-- 內容 -->
-            <div  ref="offcanvasRight"
+            <div
+              ref="offcanvasRight"
               class="offcanvas offcanvas-end bg-lightPrimary"
               tabindex="-1"
               id="offcanvasRight"
@@ -506,19 +512,15 @@ export default {
       this.$http
         .post(`${process.env.VUE_APP_API}/logout`)
         .then((res) => {
-          // console.log(res);
           // 如果成功就執行
           if (res.data.success) {
-            // alert(res.data.message);
-          // alert 元件顯示
+            // alert 元件顯示
             this.alertMessage = res.data.message;
             this.alertStatus = true;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
 
             // 刪除cookie
             this.deleteAllCookies();
@@ -529,28 +531,23 @@ export default {
             // alert 元件顯示
             this.alertMessage = '未知的錯誤!';
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
 
             // 跳轉頁面
             this.$router.push('/Login');
           }
         })
         .catch((err) => {
-          // console.log(err);
           // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
         });
     },
     // 登出Modal
@@ -570,9 +567,13 @@ export default {
     },
     // 判斷使用者值
     chkUserName() {
-      // console.log('123');
       // 如果有取到值 ，代表已登入
-      if (document.cookie.replace(/(?:(?:^|.*;\s*)username\s*=\s*([^;]*).*$)|^.*$/, '$1') !== '') {
+      if (
+        document.cookie.replace(
+          /(?:(?:^|.*;\s*)username\s*=\s*([^;]*).*$)|^.*$/,
+          '$1',
+        ) !== ''
+      ) {
         this.userName = document.cookie.replace(
           /(?:(?:^|.*;\s*)username\s*=\s*([^;]*).*$)|^.*$/,
           '$1',
@@ -590,7 +591,6 @@ export default {
       window.onscroll = () => {
         const bodyh = document.documentElement.scrollTop || document.body.scrollTop;
         if (bodyh > 5) {
-          // console.log(bodyh);
           // navbar 變背景顏色
           this.navBarClass = 'bg-primary';
           // NAVBAR 顏色
@@ -620,30 +620,23 @@ export default {
           if (res.data.success) {
             this.cartList = res.data.data;
           } else {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
-            setTimeout(
-              () => {
-                this.alertMessage = '';
-                this.alertStatus = false;
-              }, 2000,
-            );
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
             // 關掉讀取畫面
             this.isLoading = false;
           }
         })
         .catch((err) => {
-          // console.log(err)
-          // alert(err.data.message);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
-          setTimeout(
-            () => {
-              this.alertMessage = '';
-              this.alertStatus = false;
-            }, 2000,
-          );
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
         });
     },
     // 取得loCalStorage
@@ -655,12 +648,9 @@ export default {
           ary.push(item);
         }
       });
-      // console.log(ary);
       this.myFavorite = ary;
-      // console.log(this.myFavorite);
     },
     closeOffcanvas() {
-      // console.dir(this.$refs.offcanvasRight);
       this.$refs.offcanvasRight.className = 'offcanvas offcanvas-end bg-lightPrimary';
       this.$refs.offcanvasRight.nextElementSibling.className = 'modal-backdrop fade';
     },
@@ -693,101 +683,102 @@ export default {
       this.chkUserName();
     });
   },
-  unmounted() {
-  },
+  unmounted() {},
 };
 </script>
 
 <style lang="scss" scoped>
 @import '../assets/scss/mixin/mixin';
-.top-20px{
-  top:20px;
+.top-20px {
+  top: 20px;
 }
-.nav-drown{
-  &:focus,&:hover{
-  color: #CF9A59  !important;
+.nav-drown {
+  &:focus,
+  &:hover {
+    color: #cf9a59 !important;
   }
   &.router-link-exact-active {
-  color: #CF9A59  !important;
+    color: #cf9a59 !important;
   }
-  @include pc{
+  @include pc {
     font-size: 1.5rem;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-top:#000000 1px dashed;
-    &:hover{
-    border-bottom: 0;
-  }
-  }
-}
-.navbar-collapse{
-  @include pc{
-  margin-bottom: -14px;
-  }
-}
-.nav-logo{
-    top:43px;
-     @include pc {
-    top:18px;
+    border-top: #000000 1px dashed;
+    &:hover {
+      border-bottom: 0;
     }
+  }
+}
+.navbar-collapse {
+  @include pc {
+    margin-bottom: -14px;
+  }
+}
+.nav-logo {
+  top: 43px;
+  @include pc {
+    top: 18px;
+  }
 
-    &-img{
+  &-img {
     height: 80px !important;
-    color:  red;
+    color: red;
 
     @include pc {
-    height:60px !important;
-    }
+      height: 60px !important;
     }
   }
-.navbar-padding{
+}
+.navbar-padding {
   padding: 0px;
-  @include pc{
+  @include pc {
     padding: 15px;
   }
 }
-.nav-md-link{
+.nav-md-link {
   padding-right: 0.5rem;
-    padding-left: 0.5rem;
+  padding-left: 0.5rem;
   padding-top: 30px;
   padding-bottom: 30px;
-  @include pc{
-  padding-right: 0.5rem;
+  @include pc {
+    padding-right: 0.5rem;
     padding-left: 0.5rem;
-  padding-top: 0px;
-  padding-bottom: 0px;
+    padding-top: 0px;
+    padding-bottom: 0px;
   }
-  @include plusMobile{
-  padding-right: 0.5rem;
+  @include plusMobile {
+    padding-right: 0.5rem;
     padding-left: 0.5rem;
   }
 }
-.navbar,.container-fluid{
-
-  @include plusMobile{
-  padding-right: 0rem;
+.navbar,
+.container-fluid {
+  @include plusMobile {
+    padding-right: 0rem;
     padding-left: 0rem;
   }
 }
-.offcanvas-end{
+.offcanvas-end {
   width: 320px;
 }
-.nav-offcanvas{
-  &:focus,&:hover{
-  color: #CF9A59  !important;
+.nav-offcanvas {
+  &:focus,
+  &:hover {
+    color: #cf9a59 !important;
   }
   &.router-link-exact-active {
-  color: #CF9A59  !important;
+    color: #cf9a59 !important;
   }
-    font-size: 1.5rem;
-    padding-top: 10px;
-    padding-bottom: 10px;
-    border-top:#000000 1px dashed;
-    &:hover{
+  font-size: 1.5rem;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-top: #000000 1px dashed;
+  &:hover {
     border-bottom: 0;
   }
 }
-.cartsNum{
+.cartsNum {
   position: absolute;
   top: -8px;
   right: 2px;
@@ -795,7 +786,7 @@ export default {
   padding-left: 6px;
   padding-right: 6px;
 }
-.favoriteNum{
+.favoriteNum {
   position: absolute;
   top: -8px;
   right: -10px;
@@ -804,9 +795,9 @@ export default {
   padding-right: 6px;
 }
 .nav-offcanvas.router-link-exact-active[data-v-41458b80] {
-    color: #ffffff !important;
+  color: #ffffff !important;
 }
-.fixed-top{
+.fixed-top {
   z-index: 1090;
 }
 </style>

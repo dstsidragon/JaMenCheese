@@ -7,7 +7,7 @@
     aria-labelledby="exampleModalLabel"
     aria-hidden="true"
   >
-    <div class="modal-dialog ">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-dark text-warning fw-bold">
           <h5 class="modal-title fz-4" id="exampleModalLabel">修改商品</h5>
@@ -21,7 +21,7 @@
         <div class="modal-body">
           <div class="card card-body row fw-bold fz-2">
             <div class="form-group mb-2">
-              <label for="bg_redit_title " >標題</label>
+              <label for="bg_redit_title ">標題</label>
               <textarea
                 type="text"
                 id="bg_redit_title"
@@ -44,7 +44,8 @@
             <div class="form-group mb-2">
               <label for="bg_redit_content ">說明</label>
               <textarea
-                type="text" cols="5"
+                type="text"
+                cols="5"
                 id="bg_redit_content"
                 placeholder="請輸入說明"
                 v-model="rediData.content"
@@ -242,8 +243,15 @@
           >
             取消修改
           </button>
-          <button type="button" data-backdrop="false" data-dismiss="modal"  class="btn btn-primary"
-           @click="reditOneData">儲存修改</button>
+          <button
+            type="button"
+            data-backdrop="false"
+            data-dismiss="modal"
+            class="btn btn-primary"
+            @click="reditOneData"
+          >
+            儲存修改
+          </button>
         </div>
       </div>
     </div>

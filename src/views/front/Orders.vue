@@ -10,22 +10,17 @@
     </div>
   </div>
 
-<router-view/>
+  <router-view />
 </template>
 
 <script>
-
 export default {
-  components: {
-  },
+  components: {},
   data() {
-    return {
-    };
+    return {};
   },
-  methods: {
-  },
-  mounted() {
-  },
+  methods: {},
+  mounted() {},
 };
 </script>
 <style lang="scss" scoped>

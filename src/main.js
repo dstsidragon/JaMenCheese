@@ -61,9 +61,6 @@ setLocale('zh_TW');
 
 const app = createApp(App);
 
-// 註冊 amimate.css
-// app.use(animated);
-
 // 註冊 vee-validate 三個全域元件
 app.component('Form', Form);
 app.component('Field', Field);
@@ -76,7 +73,6 @@ app.use(LuckDraw);
 app.use(VueKinesis);
 
 // 使用 AOS
-// app.use(AOS);
 AOS.init({
 });
 

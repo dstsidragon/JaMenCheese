@@ -1,5 +1,5 @@
 <template>
-  <router-view/>
+  <router-view />
 </template>
 
 <style lang="scss">
@@ -8,7 +8,8 @@
 .nav-link {
   padding: 30px;
 
-  a,.routerLink{
+  a,
+  .routerLink {
     font-weight: bold;
     color: #2c3e50;
 

@@ -1,11 +1,11 @@
 <template>
-<div class="overflow-hidden h-28">
-  <h2 class="text-white bg-primary fz-2 " v-text="msg" ></h2>
+  <div class="overflow-hidden h-28">
+    <h2 class="text-white bg-primary fz-2" v-text="msg"></h2>
   </div>
 </template>
 <style lang="scss" scoped>
-.h-28{
-    height: 28px;
+.h-28 {
+  height: 28px;
 }
 </style>
 <script>

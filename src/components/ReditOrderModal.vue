@@ -64,8 +64,6 @@
                     fw-bold
                   "
                 >
-                  <!-- <li><p>目前有{{cartsNum}}項產品</p></li> -->
-                  <!-- <li>總共 {{item.product}} 項商品</li> -->
                   <li class="fs-3 text-danger">
                     <p>總計:{{ rediData.total }} 元</p>
                   </li>
@@ -73,10 +71,6 @@
                     <p>已付款</p>
                   </li>
                   <li v-else class="fs-3 text-danger"><p>未付款</p></li>
-                  <!--
-                <li>
-                  <button class="btn btn-danger" @click="checkOut">付款</button>
-                </li> -->
                 </ul>
               </div>
             </div>

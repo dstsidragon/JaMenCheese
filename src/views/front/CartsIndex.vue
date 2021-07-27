@@ -74,7 +74,12 @@
               justify-content-center
             "
           >
-            <button class="btn text-danger px-1 fz-2" @click="rediCartItemsNum(item, -1)">-</button>
+            <button
+              class="btn text-danger px-1 fz-2"
+              @click="rediCartItemsNum(item, -1)"
+            >
+              -
+            </button>
             <input
               class="carNum"
               type="number"
@@ -83,7 +88,12 @@
               v-model="item.qty"
               @change="rediCartItemsNum(item)"
             />
-            <button class="btn text-danger px-1 fz-2" @click="rediCartItemsNum(item, 1)">+</button>
+            <button
+              class="btn text-danger px-1 fz-2"
+              @click="rediCartItemsNum(item, 1)"
+            >
+              +
+            </button>
           </td>
           <td
             class="
@@ -311,8 +321,6 @@ export default {
           }
         })
         .catch((err) => {
-          // console.log(err)
-          // alert(err.data.message);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {
@@ -325,20 +333,17 @@ export default {
     },
     // 刪除購物車商品
     delCartItem(id) {
-      // console.log(id)
       this.loadingStatue.delCart = id;
       this.$http
         .delete(
           `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${id}`,
         )
         .then((res) => {
-          // console.log(res);
           if (res.data.success) {
             // 刷新購物車
             this.getCartList();
             // 清空讀取狀態
             this.loadingStatue.delCart = '';
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = true;
             setTimeout(() => {
@@ -346,7 +351,6 @@ export default {
               this.alertStatus = false;
             }, 2000);
           } else {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
@@ -356,8 +360,6 @@ export default {
           }
         })
         .catch((err) => {
-          // console.log(err);
-          // alert(err.data.message);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {
@@ -368,18 +370,15 @@ export default {
     },
     // 清空購物車商品
     clearCart() {
-      // console.log(id)
       this.loadingStatue.clearCart = 1;
       this.$http
         .delete(
           `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/carts`,
         )
         .then((res) => {
-          // console.log(res);
           if (res.data.success) {
             // 刷新購物車
             this.getCartList();
-            // alert(res.data.message);
 
             // alert 元件顯示
             this.alertMessage = res.data.message;
@@ -401,9 +400,6 @@ export default {
           }
         })
         .catch((err) => {
-          // console.log(err);
-          // alert(err.data.message);
-
           // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
@@ -417,7 +413,6 @@ export default {
     rediCartItemsNum(item, i) {
       // 開啟讀取畫面
       this.isLoading = true;
-      // console.log(item)
       let num = 0;
       if (parseInt(item.qty + i, 10) < 1) {
         num = 1;
@@ -432,14 +427,12 @@ export default {
           qty: num,
         },
       };
-      // console.log(cart_item)
       this.$http
         .put(
           `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart/${item.id}`,
           cartItem,
         )
         .then((res) => {
-          // console.log(res)
           if (res.data.success) {
             this.getCartList();
             // 關掉讀取畫面
@@ -458,9 +451,6 @@ export default {
           }
         })
         .catch((err) => {
-          // console.log(err);
-          // alert(err.data.message);
-          // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {
@@ -518,8 +508,6 @@ export default {
           }
         })
         .catch((err) => {
-          // console.log(err)
-          // alert(err.data.message);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {
@@ -572,13 +560,13 @@ export default {
   color: #fff;
 }
 //input
-  // 消除number預設樣式
-  input[type=number] {
-    -moz-appearance:textfield;
-    }
-    input[type=number]::-webkit-inner-spin-button,
-    input[type=number]::-webkit-outer-spin-button {
-        -webkit-appearance: none;
-        margin: 0;
-    }
+// 消除number預設樣式
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
 </style>
