@@ -23,7 +23,9 @@
     />
     <!-- Alert元件 end -->
     <div class="d-flex justify-content-end">
-      <button class="btn btn-primary" @click="addCouponModal">新增產品</button>
+      <button class="btn btn-primary" @click="addCouponModal" type="button">
+        新增產品
+      </button>
     </div>
     <table class="table table-hover">
       <thead>
@@ -43,7 +45,7 @@
             {{ $toLocaleDate(item.due_date) }}
           </td>
           <td class="col-4 col-md-2">{{ item.title }}</td>
-          <td class="d-none d-lg-table-cell col-1">{{ item.percent }}%</td>
+          <td class="d-none d-lg-table-cell col-1">{{ `${item.percent}%` }}</td>
           <td class="col-3 position-relative d-none d-ssm-table-cell">
             <div class="btn__enable--center">
               <div class="onoffswitch">
@@ -117,10 +119,7 @@
 
     <!-- 分頁 start-->
     <div v-if="pagination.total_pages" class="d-flex justify-content-center">
-      <Pagination
-        :pagination="pagination"
-        @get-product="getCouponsData"
-      />
+      <Pagination :pagination="pagination" @get-product="getCouponsData" />
     </div>
     <!-- 分頁 end-->
 

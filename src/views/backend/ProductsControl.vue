@@ -70,7 +70,7 @@
         <tbody id="productList">
           <tr v-for="(item, i) in productData" class="row" :key="'bg_prd' + i">
             <td class="col-3 d-none d-md-table-cell d-flex align-items-center">
-              <img class="prd_img" :src="item.imageUrl" alt="" />
+              <img class="prd_img" :src="item.imageUrl" :alt="item.imageUrl" />
             </td>
             <td class="col-3 d-flex justify-content-center align-items-center">
               {{ item.title }}
@@ -175,7 +175,7 @@
           </tr>
         </tbody>
       </table>
-      <p>目前頁面有 {{ dataLength }} 項產品</p>
+      <p>{{ `目前頁面有 ${dataLength} 項產品` }}</p>
     </div>
   </div>
 

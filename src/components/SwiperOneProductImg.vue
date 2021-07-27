@@ -11,14 +11,14 @@
     class="mySwiper2 img_big"
   >
     <swiper-slide
-      ><img class="object-fit" :src="product.imageUrl"
+      ><img class="object-fit" :src="product.imageUrl" :alt="product.imageUrl"
     /></swiper-slide>
     <swiper-slide
       class="object-fit"
       v-for="(item, i) in filterProductImg"
       :key="i"
     >
-      <img :src="item"
+      <img :src="item" :alt="item"
     /></swiper-slide>
   </swiper>
   <swiper
@@ -39,7 +39,7 @@
       v-for="(item, i) in filterProductImg"
       :key="i"
     >
-      <img :src="item" />
+      <img :src="item" :alt="item"/>
     </swiper-slide>
   </swiper>
 </template>

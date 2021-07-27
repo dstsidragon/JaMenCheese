@@ -25,12 +25,16 @@
             <img
               :src="item.imageUrl"
               class="card-img-top prd-card-img object-fit img--scale"
-              alt="item.title"
+              :alt="item.title"
             />
           </div>
           <!-- 最愛按鈕 -->
           <div class="favorite">
-            <a class="text-danger" @click.prevent="addFavorite(item.id)">
+            <a
+              class="text-danger"
+              href="#"
+              @click.prevent="addFavorite(item.id)"
+            >
               <span
                 v-if="myFavorite.includes(item.id)"
                 class="material-icons text-danger"
@@ -46,7 +50,7 @@
             </h5>
             <span class="d-flex justify-content-around align-items-center">
               <p class="card-text border-right">
-                <del>${{ item.origin_price }}元</del>
+                <del>{{ `$ ${item.origin_price} 元` }}</del>
               </p>
               <p class="card-text text-danger fz-2">${{ item.price }}元</p>
             </span>

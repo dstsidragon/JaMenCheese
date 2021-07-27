@@ -125,10 +125,10 @@
                 fw-bold
               "
             >
-              <!-- <li><p>目前有{{cartsNum}}項產品</p></li> -->
-              <!-- <li>總共 {{item.product}} 項商品</li> -->
+              <!-- <li><p>目前有{{ cartsNum }}項產品</p></li> -->
+              <!-- <li>總共 {{ item.product }} 項商品</li> -->
               <li class="fs-3 text-danger">
-                <p>總計:{{ Math.floor(item.total) }} 元</p>
+                <p>{{ `總計: ${Math.floor(item.total)} 元` }}</p>
               </li>
               <li v-if="item.is_paid" class="fs-3 text-success">
                 <p>已付款</p>
@@ -136,12 +136,17 @@
               <li v-else class="fs-3 text-danger"><p>未付款</p></li>
 
               <li>
-                <button class="btn btn-success me-2" @click="viewSeller">
+                <button
+                  class="btn btn-success me-2"
+                  @click="viewSeller"
+                  type="button"
+                >
                   聯絡賣家
                 </button>
                 <button
                   v-if="!item.is_paid"
                   class="btn btn-danger"
+                  type="button"
                   @click="this.$router.push(`/payment/${item.id}`)"
                 >
                   付款
@@ -156,10 +161,7 @@
     <!-- 訂單列表 end -->
     <!-- 訂單分頁 start -->
     <div class="d-flex justify-content-center">
-      <Pagination
-        :pagination="orderPagination"
-        @get-product="getOrderList"
-      />
+      <Pagination :pagination="orderPagination" @get-product="getOrderList" />
     </div>
     <!-- 訂單分頁 end -->
 

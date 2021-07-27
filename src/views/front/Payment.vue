@@ -45,15 +45,15 @@
           </li>
           <li class="d-flex justify-content-between align-items-center">
             <p>總計:</p>
-            <p>NT {{ $toComma(finally_total) }}</p>
+            <p> {{`NT ${$toComma(finally_total)}` }}</p>
           </li>
           <li class="d-flex justify-content-between align-items-center">
             <p>運費:</p>
-            <p>NT {{ $toComma(shipping) }}</p>
+            <p>{{`NT ${$toComma(shipping)}` }}</p>
           </li>
           <li class="d-flex justify-content-between align-items-center">
             <p>優惠折扣:</p>
-            <p>NT {{ $toComma(couponPrice) }}</p>
+            <p>{{`NT ${$toComma(couponPrice)}` }}</p>
           </li>
           <li class="d-flex justify-content-between align-items-center">
             <p>付款狀態:</p>
@@ -65,7 +65,7 @@
               ref="creatForm"
               v-slot="{ errors }"
               class="row g-3"
-              @submit.prevent="payment"
+              @submit="payment"
             >
               <!-- 付款方式 -->
               <div class="">

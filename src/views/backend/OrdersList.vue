@@ -16,6 +16,7 @@
   <div class="container">
     <div v-if="pagination.total_pages" class="d-flex justify-content-end">
       <button
+        type="button"
         class="btn btn-danger"
         @click="this.$refs.deleteAllModal.openModal()"
       >
@@ -121,10 +122,7 @@
 
     <!-- 分頁 start-->
     <div v-if="pagination.total_pages" class="d-flex justify-content-center">
-      <Pagination
-        :pagination="pagination"
-        @get-product="getOrdersData"
-      />
+      <Pagination :pagination="pagination" @get-product="getOrdersData" />
     </div>
     <!-- 分頁 end-->
 

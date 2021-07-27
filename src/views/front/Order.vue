@@ -17,7 +17,7 @@
           ref="creatForm"
           v-slot="{ errors }"
           class="row g-3"
-          @submit.prevent="sendOrder"
+          @submit="sendOrder"
         >
           <!-- 姓名 -->
           <div class="col-md-6">
@@ -208,11 +208,10 @@
                   <span class="d-flex justify-content-between">
                     <p class="card-text m-0">
                       <small class="text-muted">
-                        NT$ {{ $toComma(item.product.price) }} /
-                        {{ item.product.unit }}
+                         {{ `NT$ ${$toComma(item.product.price)} / ${item.product.unit} `}}
                       </small>
                     </p>
-                    <p class="card-text">X{{ item.qty }}</p>
+                    <p class="card-text">{{ `X ${item.qty}` }}</p>
                   </span>
                 </div>
               </div>
@@ -245,25 +244,24 @@
           <li>
             <span class="d-flex justify-content-between align-items-center">
               <p class="mb-0">小計:</p>
-              <p class="mb-0">NT$ {{ $toComma(Math.floor(cartList.total)) }}</p>
+              <p class="mb-0"> {{ `NT $ ${$toComma(Math.floor(cartList.total))}` }}</p>
             </span>
           </li>
           <!-- 運費 -->
           <li>
             <span class="d-flex justify-content-between align-items-center">
               <p class="mb-0">運費:</p>
-              <p class="mb-0">NT$ {{ $toComma(shipping) }}</p>
+              <p class="mb-0">{{ `NT $ ${$toComma(shipping)}` }}</p>
             </span>
           </li>
           <li>
             <span class="d-flex justify-content-between align-items-center">
               <p class="mb-0">優惠折抵:</p>
               <p class="mb-0">
-                NT$ -{{
-                  $toComma(
+                {{ `NT $ -${$toComma(
                     Math.floor(cartList.total) -
                       Math.floor(cartList.final_total)
-                  )
+                  )}`
                 }}
               </p>
             </span>
@@ -275,7 +273,7 @@
             <span class="fz-1 d-flex justify-content-around align-items-center">
               <p class="mb-0">總計:</p>
               <p class="fz-2 mb-0 text-danger fw-bold">
-                NT$ {{ $toComma(Math.floor(cartList.final_total) + shipping) }}
+                {{ `NT $ ${$toComma(Math.floor(cartList.final_total) + shipping)}` }}
               </p>
             </span>
           </li>
@@ -299,7 +297,7 @@
       >
         <p class="mb-0">總計:</p>
         <p class="fz-2 mb-0 text-danger fw-bold">
-          NT$ {{ $toComma(Math.floor(cartList.final_total) + shipping) }}
+          {{ `NT $ ${$toComma(Math.floor(cartList.final_total) + shipping)}` }}
         </p>
       </span>
       <button

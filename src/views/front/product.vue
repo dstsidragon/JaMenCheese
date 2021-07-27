@@ -30,7 +30,7 @@
                 <br />
                 <!-- 商品內容 -->
                 <p class="card-text text-start fz-0">
-                  <span v-html="product.content"/>
+                  <span v-html="product.content" />
                 </p>
                 <!-- 金額 -->
                 <span
@@ -38,14 +38,10 @@
                   class="row text-center align-items-center mb-2"
                 >
                   <span class="text-decoration-line-through col-5">
-                    原價
-                    <em>{{ $toComma(product.origin_price) }}</em>
-                    元
+                    {{ `原價 ${$toComma(product.origin_price)} 元` }}
                   </span>
                   <span class="text-danger col-7 fs-2">
-                    特價
-                    <em>{{ $toComma(product.price) }}</em>
-                    元
+                    {{ `特價 ${$toComma(product.price)} 元` }}
                   </span>
                 </span>
                 <div class="row justify-content-between">
@@ -62,12 +58,14 @@
                     />
                     <span>
                       <button
+                        type="button"
                         class="btn text-danger fz-1 btn_input--top"
                         @click="num++"
                       >
                         +
                       </button>
                       <button
+                        type="button"
                         class="btn text-danger fz-1 btn_input--bottom"
                         @click="num--"
                       >
@@ -75,10 +73,15 @@
                       </button>
                     </span>
                   </span>
-                  <button class="btn btn-primary col-6" @click="buyNow">
+                  <button
+                    class="btn btn-primary col-6"
+                    type="button"
+                    @click="buyNow"
+                  >
                     立即購買
                   </button>
                   <button
+                    type="button"
                     class="
                       d-flex
                       justify-content-center
@@ -102,6 +105,7 @@
                     <span>加入收藏</span>
                   </button>
                   <button
+                    type="button"
                     class="
                       d-flex
                       justify-content-center

@@ -98,11 +98,16 @@
               <li v-else class="fs-3 text-danger"><p>未付款</p></li>
 
               <li>
-                <button class="btn btn-success me-2" @click="viewSeller">
+                <button
+                  class="btn btn-success me-2"
+                  @click="viewSeller"
+                  type="button"
+                >
                   聯絡賣家
                 </button>
                 <button
                   v-if="!orderData.order.is_paid"
+                  type="button"
                   class="btn btn-danger"
                   @click="this.$router.push(`/payment/${orderId}`)"
                 >

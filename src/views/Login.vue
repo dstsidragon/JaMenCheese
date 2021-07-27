@@ -18,18 +18,18 @@
           alt="login-img"
         />
         <div class="col-md-6">
-                <!-- 登入元件 -->
-                <Login
-                  ref="Login"
-                  @login-emit="getLoginEmitData"
-                  :statusprompt="statusPromptLogin"
-                  :statu-bool="statuBoolLogin"
-                  :login-in-fall-or-success="loginInFallOrSuccess"
-                  :chk-menu="chkMenu"
-                />
+          <!-- 登入元件 -->
+          <Login
+            ref="Login"
+            @login-emit="getLoginEmitData"
+            :statusprompt="statusPromptLogin"
+            :statu-bool="statuBoolLogin"
+            :login-in-fall-or-success="loginInFallOrSuccess"
+            :chk-menu="chkMenu"
+          />
         </div>
       </div>
-      <p class="mt-5 pb-3 text-muted text-center">&copy; {{ footer }}</p>
+      <p class="mt-5 pb-3 text-muted text-center">{{ `&copy;${footer}` }}</p>
     </div>
   </div>
 </template>

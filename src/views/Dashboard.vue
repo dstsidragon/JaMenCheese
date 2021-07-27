@@ -5,7 +5,7 @@
         <router-link class="d-block" to="/admin">
           <img
             src="../assets/images/logo4.svg"
-            alt=""
+            alt="logo"
             width="100"
             height="100"
             srcset=""
@@ -34,6 +34,7 @@
         </li>
         <li class="mb-2">
           <a
+            href="#"
             class="nav-link"
             type="button"
             v-if="loginStatus"
@@ -51,7 +52,7 @@
     </div>
 
     <div class="sidebar-footer d-flex justify-content-center">
-      <img class="sidebar-footer-img" src="../assets/images/admin.png" />
+      <img class="sidebar-footer-img" src="../assets/images/admin.png" alt="user"/>
       <ul class="ms-2 mb-0 text-start fz-0">
         <li>{{ userName }}</li>
         <li class="">{{ userEmail }}</li>
@@ -97,7 +98,7 @@
         </div>
       </div>
       <div class="d-flex justify-content-center align-items-center">
-        <img class="sidebar-footer-img" src="../assets/images/admin.png" />
+        <img class="sidebar-footer-img" src="../assets/images/admin.png" alt="user"/>
         <ul class="ms-2 mb-0 text-start fz-0">
           <li>{{ userName }}</li>
           <li class="">{{ userEmail }}</li>

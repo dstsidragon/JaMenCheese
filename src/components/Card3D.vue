@@ -24,7 +24,7 @@
                     <p class="mb-4 fz-1">經典麵包</p>
                     <p class="mb-4 fz-1">店內招牌商品</p>
                     <a
-                      href="#0"
+                      href="#"
                       class="btn btn-info text-white fz-2"
                       @click.prevent="
                         $router.push('/product/-Mek1km57DVyzSxtPuIj')

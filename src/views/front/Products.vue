@@ -64,11 +64,15 @@
                   <img
                     :src="item.imageUrl"
                     class="card-img-top prd-card-img object-fit img--scale"
-                    alt="item.title"
+                    :alt="item.title"
                   />
                 </div>
                 <div class="favorite">
-                  <a class="text-danger" href="#" @click.prevent="addFavorite(item.id)">
+                  <a
+                    class="text-danger"
+                    href="#"
+                    @click.prevent="addFavorite(item.id)"
+                  >
                     <span
                       v-if="myFavorite.includes(item.id)"
                       class="material-icons text-danger"
@@ -90,10 +94,10 @@
                     class="d-flex justify-content-around align-items-center"
                   >
                     <p class="card-text border-right">
-                      <del>${{ $toComma(item.origin_price) }}元</del>
+                      <del>{{ `$ ${$toComma(item.origin_price)} 元` }}</del>
                     </p>
                     <p class="card-text text-danger fz-2">
-                      ${{ $toComma(item.price) }}元
+                      {{ `$ ${$toComma(item.price)} 元` }}
                     </p>
                   </span>
                 </div>
@@ -154,7 +158,7 @@
               </div>
             </div>
           </div>
-          <p>此頁面有{{ filterProductCategory.length }}項產品</p>
+          <p>{{ `此頁面有 ${filterProductCategory.length} 項產品` }}</p>
           <!-- 分頁 start -->
           <!-- <div class="d-flex justify-content-center">
           <Pagination :pagination="pagination" @get-product="getProduct"/>
@@ -459,14 +463,16 @@ export default {
 <style lang="scss" scoped>
 .prd-banner {
   height: 340px;
-  background: center center no-repeat url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627379949432.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=B%2Bq%2BvzNhAGumFKDQzNn7muw1Q8Y3rjPd3PGT7U2bjU78LffMeu5yEbwnb2dfRG5IJi1BQ8rPO1OymuxYjE7JpH%2FjgLdkKIFL8JQImVhbIhxUp9s%2FkGIrVfcVODAfr3%2BdxyTog3eWRQf050WJXR8MCNqaJJw%2B4Mv%2FaWBUI4kA8CF9kPoJyOSlpmHOZom6O9uz9%2BJuKRU6aVOZfXHx93MNHwgIqYaASAo0zk18GynlhiDfSvDCdID4neh5GGTAzIhixZhj1FpOhZXQ%2Bn9L6bprNSdrvWhO57k7AY1f9Aq%2BNLP0s7V6I9RE6GVHxeyVKRuTRHQjo0B5FLHNBv2hf6WB%2BA%3D%3D');
+  background: center center no-repeat
+    url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627379949432.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=B%2Bq%2BvzNhAGumFKDQzNn7muw1Q8Y3rjPd3PGT7U2bjU78LffMeu5yEbwnb2dfRG5IJi1BQ8rPO1OymuxYjE7JpH%2FjgLdkKIFL8JQImVhbIhxUp9s%2FkGIrVfcVODAfr3%2BdxyTog3eWRQf050WJXR8MCNqaJJw%2B4Mv%2FaWBUI4kA8CF9kPoJyOSlpmHOZom6O9uz9%2BJuKRU6aVOZfXHx93MNHwgIqYaASAo0zk18GynlhiDfSvDCdID4neh5GGTAzIhixZhj1FpOhZXQ%2Bn9L6bprNSdrvWhO57k7AY1f9Aq%2BNLP0s7V6I9RE6GVHxeyVKRuTRHQjo0B5FLHNBv2hf6WB%2BA%3D%3D');
   background-size: cover;
   background-attachment: fixed;
 }
 @media (max-width: 768px) {
   .prd-banner {
     height: 170px;
-    background: center center no-repeat url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627379982059.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=V322tazhWOJkaK1f%2FQ%2FjFHJ1i3Zh4kwPT6qjY3YD3vZdfDRBooDEb2Je5BzTyJnaq7kh1hKXiC%2FkW%2Fq8MVqWlK1pCakPFxduNoc9uElkH%2BKYsDmGHkka3boWWYHveZpNsVH47Gmisp3gYUtELvo59jXI2ml5Oxby%2BYIvkEyntDwCAzWikRvpJJW%2F%2BZxI28BApYpwImaOpWVi%2B99HU5%2FYG6HkXLxX0nFHL8xS0UTi4cNbgLB5yYNZSMQb4CJEGK6hO%2BotZOySRkVkTuj6RAVvu%2Fp2pKnq6nYXXZ9Ib2X3ZAd6pLWU2%2BBFzVXVgXn4vCVASXHzu1n9p00gv4CvgbUx%2FQ%3D%3D');
+    background: center center no-repeat
+      url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627379982059.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=V322tazhWOJkaK1f%2FQ%2FjFHJ1i3Zh4kwPT6qjY3YD3vZdfDRBooDEb2Je5BzTyJnaq7kh1hKXiC%2FkW%2Fq8MVqWlK1pCakPFxduNoc9uElkH%2BKYsDmGHkka3boWWYHveZpNsVH47Gmisp3gYUtELvo59jXI2ml5Oxby%2BYIvkEyntDwCAzWikRvpJJW%2F%2BZxI28BApYpwImaOpWVi%2B99HU5%2FYG6HkXLxX0nFHL8xS0UTi4cNbgLB5yYNZSMQb4CJEGK6hO%2BotZOySRkVkTuj6RAVvu%2Fp2pKnq6nYXXZ9Ib2X3ZAd6pLWU2%2BBFzVXVgXn4vCVASXHzu1n9p00gv4CvgbUx%2FQ%3D%3D');
     background-size: cover;
     // background-attachment: fixed;
   }

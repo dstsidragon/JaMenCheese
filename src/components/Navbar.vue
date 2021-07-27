@@ -185,7 +185,7 @@
                         <td class="col-4">{{ item.product.title }}</td>
                         <td class="col-3">{{ item.qty }}</td>
                         <td class="col-4">
-                          NT$ {{ $toComma(item.product.price) }}
+                          {{ `NT$ ${$toComma(item.product.price)}` }}
                         </td>
                       </tr>
                     </tbody>
@@ -194,11 +194,12 @@
                     v-if="cartList.carts.length > 0"
                     class="text-end text-danger fz-2"
                   >
-                    總計: NT$ {{ $toComma(cartList.total) }}
+                    {{ `總計: NT$ ${$toComma(cartList.total)}` }}
                   </p>
                 </div>
                 <div class="d-grid gap-2" v-if="cartList">
                   <button
+                    type="button"
                     v-if="cartList.carts.length > 0"
                     class="
                       btn btn-outline-primary
@@ -218,6 +219,7 @@
                     你目前沒有任何商品在購物車~
                   </p>
                   <button
+                    type="button"
                     v-if="cartList.carts.length < 1"
                     class="
                       btn btn-outline-primary
@@ -355,13 +357,14 @@
                 <p
                   class="
                     border-top border-primary
-                    fz-2 mb-0
+                    fz-2
+                    mb-0
                     disabled
                     text-center text-white
                   "
                 >
-                  {{ userName }},您好</p
-                >
+                  {{ `${userName},您好` }}
+                </p>
               </div>
             </div>
           </li>
@@ -431,9 +434,9 @@
     :status="alertStatus"
   />
   <!-- Alert元件 end -->
-  <Loading/>
+  <Loading />
   <!-- 登出Modal -->
-  <LoginOut ref="signOutUserModal" @sign-out-admin="signOutAdmin"/>
+  <LoginOut ref="signOutUserModal" @sign-out-admin="signOutAdmin" />
 
   <!-- <router-view/> -->
 </template>

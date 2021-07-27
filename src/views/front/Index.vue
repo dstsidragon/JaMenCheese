@@ -174,7 +174,7 @@
             class="col-md-6 mt-5 rounded-circle object-sm-fit"
             style="height: 200px; width: 224px"
             src="https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384169900.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=pgOkhMLbXHo7pM71moCDvhlaNyicUTsn2YkjZ3Imu7YCP011Lqi8jqZbJciJrUcyhfMwnukuGgqSUC0b%2F2TvqgNmt2hbneQ%2B7U0m3ka6vB1Yx%2FuaX3X8iBk3Tjq0LrorYNlviCnYSUL%2FAcm8lHLmS0bNUk%2Bg3LloRtK7l67I8YhfmUnVi0KlCQGOgXQvwjf4E8raEufHZN7XOFRcyUqkMMMZynNWl8Aj51N38ji480cpBg01QCss4TGPQ%2FZlzeaizAPhkGVGorfrpvm%2BBsCAfsb9VcdaX9c8lcGZFXalPmcXfkw4oCL9%2FR%2ByLPJevLzGq1p6JfEo7qsBt6XGBGXnaw%3D%3D"
-            alt="ingredients"
+            alt="ingred"
           />
           <div
             class="col-md-6 mt-5 text-start"
@@ -204,7 +204,7 @@
             class="col-md-6 mt-5 rounded-circle object-sm-fit"
             style="height: 200px; width: 224px"
             src="https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384205576.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=PQM8QTvNyrQ2Dlc1C0lUICrl6mFEcfuOVN6cSLlsiaWDVZ1nEhvcoE8vEEUjsbbWYNXJbWMvwIP736a9kuGy1RlJI2%2B1UlTZBDQnnLZa9S35YVJI3i4RS%2FA%2FGTU0s%2FsmX1%2FGRlygTE4%2BJeu3%2FsziPX79W8bOsIJZQDN%2FxhvNDfA%2Ba3HnT2UrglQEf6kTrU04nmsbRXSApkwsDy2tQL7dw%2ByroscDBss9CVwzzqVxEJYPlN736Neyarmy67W059UnownR6oi5JRvL0abNYOBpzFcc6FFHumUeA4ld%2BHnowhut5sO4oJmxdGUqkCUa%2Bwd2qu3XaeRX2UoVwDjZDi4Ncg%3D%3D"
-            alt="ingredients"
+            alt="food"
           />
           <div
             class="col-md-6 mt-5 text-start"

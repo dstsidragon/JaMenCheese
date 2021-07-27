@@ -21,11 +21,11 @@
           <div class="card card-body row fw-bold fz-2">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">訂單編號 : {{ rediData.id }}</h5>
+                <h5 class="card-title">{{ `訂單編號 : ${rediData.id}` }}</h5>
                 <p class="card-text">
                   <small>{{ rediData.create_at }}</small>
                 </p>
-                <p class="card-text">備註: {{ rediData.message }}</p>
+                <p class="card-text">{{ `備註: ${rediData.message}` }}</p>
                 <ul>
                   訂單內容
                   <li v-for="prd in rediData.products" :key="prd.id">
@@ -35,7 +35,7 @@
                           <img
                             class="prd_img_100"
                             :src="prd.product.imageUrl"
-                            alt="..."
+                            :alt="prd.product.imageUrl"
                           />
                         </div>
                         <div class="col-md-10">
@@ -65,7 +65,7 @@
                   "
                 >
                   <li class="fs-3 text-danger">
-                    <p>總計:{{ rediData.total }} 元</p>
+                    <p>{{ `總計: ${rediData.total} 元` }}</p>
                   </li>
                   <li v-if="rediData.is_paid" class="fs-3 text-success">
                     <p>已付款</p>
@@ -98,7 +98,7 @@
                   class="form-check-input"
                 />
                 <label for="bg_redit_is_paid" class="form-check-label">
-                  是否已付款 {{ rediData.is_paid }}
+                  {{ `是否已付款  ${rediData.is_paid}` }}
                 </label>
               </div>
             </div>
