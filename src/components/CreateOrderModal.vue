@@ -77,9 +77,7 @@ export default {
       this.$http
         .post(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`, data)
         .then((res) => {
-          // console.log(res)
           if (res.data.success) {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = true;
             setTimeout(
@@ -90,7 +88,6 @@ export default {
             );
             this.reGetCartList();
           } else {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(
@@ -102,9 +99,6 @@ export default {
           }
         })
         .catch((err) => {
-          // console.log(err);
-
-          // alert(err.data.message);
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(

@@ -55,6 +55,7 @@ export default {
       productsData: '',
       filterProducts: [],
       filterSameCategory: '',
+      err: '',
     };
   },
   watch: {
@@ -77,44 +78,33 @@ export default {
       this.$http
         .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`)
         .then((res) => {
-          // console.log(res);
           // 如果成功就執行
           if (res.data.success) {
-            // console.log(res);
             this.productsData = res.data.products;
-          } else {
-            // alert('驗證錯誤，請重新登入!');
           }
         })
         .catch((err) => {
-          console.log(err);
+          this.err = err;
         });
     },
     getSameCategoryProduct(num) {
-      // console.log(this.productsData);
-      // console.log(this.category);
-
       this.filterSameCategory = this.productsData.filter(
         (item) => item.category === this.category,
       );
-      // console.log(this.filterSameCategory);
       // 如果陣列商品不足，就以當前陣列長度為基準
       const productNum = this.filterSameCategory.length
        < num ? this.filterSameCategory.length : num;
-      // console.log(productNum);
       // 宣告 set 陣列
       const prdSet = new Set([]);
       // 取出指定 不重複的陣列數量
       for (let i = 0; prdSet.size < productNum; i += 1) {
         const prd = this.getRandomNumber(productNum);
         prdSet.add(prd);
-        // console.log(prd, prdSet);
       }
       // 將取出的數字 帶入資料內  push到陣列
       prdSet.forEach((i) => {
         this.filterProducts.push(this.filterSameCategory[i]);
       });
-      // console.log(this.filterProducts);
     },
   },
   mounted() {

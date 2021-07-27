@@ -61,12 +61,10 @@ export default {
     //   送出資料
     sendData() {
       this.showStatus = true;
-      // console.log(1)
       const admin = {
         username: this.username,
         password: this.password,
       };
-      // console.log(admin);
       this.$emit('login-emit', admin);
     },
     // 驗證信箱格式

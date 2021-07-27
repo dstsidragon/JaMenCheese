@@ -260,20 +260,10 @@ export default {
     },
     // 單一商品詳細內容
     viewOneProduct(item) {
-      // 跳轉頁面  好像無法本頁重複push 所以先切到產品頁再切回來
-      this.$router.push('/products');
-      setTimeout(
-        () => {
-          this.$router.push(`/product/${item.id}`);
-        },
-        100,
-      );
-      setTimeout(
-        () => {
-          this.$router.go(`/product/${item.id}`);
-        },
-        200,
-      );
+      // console.log(item);
+      this.id = item.id;
+      this.$router.push(`/product/${item.id}`);
+      this.getProductData(item.id);
     },
     // 加入購物車
     addCart() {

@@ -41,7 +41,7 @@
       <i class="chevron bottom mt-1"></i>
     </div>
   </div>
-  <div class="container">
+  <div class="container overflow-hidden">
     <!-- 介紹 -->
     <div
       class="
@@ -458,10 +458,10 @@ export default {
     background-attachment: unset;
   }
 }
-[data-aos] {
-  visibility: hidden;
-}
-[data-aos].animated {
-  visibility: visible;
-}
+// [data-aos] {
+//   visibility: hidden;
+// }
+// [data-aos].animated {
+//   visibility: visible;
+// }
 </style>
