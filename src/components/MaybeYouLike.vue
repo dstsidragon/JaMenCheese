@@ -1,16 +1,14 @@
 <template>
   <Swiper
-    :effect="'coverflow'"
-    :grabCursor="true"
-    :centeredSlides="true"
-    :slidesPerView="'auto'"
-    :coverflowEffect="{
-      rotate: 50,
-      stretch: 0,
-      depth: 100,
-      modifier: 1,
-      slideShadows: true,
-    }"
+    :slidesPerView="3"
+    :spaceBetween="10"
+    :slidesPerGroup="1"
+    :loop="true"
+    :loopFillGroupWithBlank="true"
+    :autoplay='{
+    "delay": 1500,
+    "disableOnInteraction": false
+}'
     class="mySwiper"
   >
     <SwiperSlide
@@ -43,10 +41,10 @@ import 'swiper/swiper.scss';
 import 'swiper/components/effect-coverflow/effect-coverflow.min.css';
 
 // import Swiper core and required modules
-import SwiperCore, { EffectCoverflow } from 'swiper/core';
+import SwiperCore, { Autoplay } from 'swiper/core';
 
 // install Swiper modules
-SwiperCore.use([EffectCoverflow]);
+SwiperCore.use([Autoplay]);
 
 export default {
   components: {

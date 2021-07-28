@@ -102,7 +102,7 @@
                 <button
                   type="button"
                   class="
-                    btn btn-secondary
+                    btn btn-outline-secondary
                     py-2
                     fz-2 fz-ssm-3
                     col-10 col-sm-5

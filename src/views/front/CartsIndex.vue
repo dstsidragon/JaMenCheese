@@ -109,7 +109,7 @@
               type="button"
               :class="{ disabled: loadingStatue.delCart == item.id }"
               @click="delCartItem(item.id)"
-              class="btn btn-sm btn-danger btn_white"
+              class="btn btn-sm btn-outline-danger"
               data-action="remove"
             >
               <span
@@ -168,7 +168,7 @@
       <span class="col-7 fz-0 d-flex justify-content-around align-items-center">
         <p class="mb-0">商品總計:</p>
         <p class="fz-2 mb-0 text-danger fw-bold">
-          {{ `NT$ ${$toComma(Math.floor(cartList.total))}` }}
+          {{ cartList.total == null ? 'NT$ 0' : `NT$ ${$toComma(Math.floor(cartList.total))}` }}
         </p>
       </span>
       <button
@@ -200,7 +200,7 @@
       >
         <p class="mb-0">總計:</p>
         <p class="fz-2 mb-0 text-danger fw-bold">
-          {{ `NT$ ${$toComma(Math.floor(cartList.total))}` }}
+          {{ cartList.total == null ? 'NT$ 0' : `NT$ ${$toComma(Math.floor(cartList.total))}` }}
         </p>
       </span>
       <button

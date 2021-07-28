@@ -5,14 +5,14 @@
     <div class="cp-Triangle stripe-three" />
   </div>
   <div class="bg-primary w-100 py-2">
-    <div class="container d-flex justify-content-around align-items-center">
-      <img
+    <div class="container d-flex justify-content-center align-items-center">
+      <!-- <img
         class="logo d-none d-sm-block"
         src="@/assets/images/logo-white.svg"
         alt="logo"
-      />
-      <div class="">
-        <ul class="text-white fz-0">
+      /> -->
+      <div>
+        <ul class="text-white fz-smm-2">
           <li>
             <p>營業時間:周一至周六 08:00~17:00</p>
           </li>
@@ -23,7 +23,13 @@
             <p>店面地址: 台中市隔壁區大馬路123號</p>
           </li>
         </ul>
-        <p class="text-white">- - 個人練習使用 - -</p>
+        <p class="text-white fz-smm-2">- - 個人練習使用 - -</p>
+        <router-link class="text-center text-white hover-red d-flex justify-content-center mb-4"
+         to="/admin">
+          <span class="material-icons"> home </span>
+          <span>前往後台</span>
+          </router-link
+        >
         <ul class="d-flex justify-content-around align-items-center">
           <li>
             <!-- 貼FACEBOOK 網址會跳警告 -->
@@ -64,28 +70,10 @@
 .logo {
   width: 150px;
   height: 150px;
-  // 992px
-  @include pc {
-  }
-  // 768px
-  @include pad {
-  }
-  // 630px
-  @include mobile {
-  }
-  // 512px
-  @include smallmobile {
-  }
-  // 414px
-  @include plusMobile {
-  }
-  // 320px
-  @include miniMobile {
-  }
 }
 .clip-path {
   width: 100%;
-  height: 400px;
+  height: 200px;
   -webkit-clip-path: ellipse(69% 77% at 50% 80%);
   clip-path: ellipse(69% 77% at 50% 80%);
   // 992px
@@ -113,7 +101,7 @@
 .cp-Triangle {
   height: 200px;
   width: 200px;
-  background-color: #ffffff;
+  background-color: #fff8f0;
   -webkit-clip-path: polygon(50% 0%, 82% 99%, 66% 0);
   clip-path: polygon(50% 0%, 82% 99%, 66% 0);
   // 992px

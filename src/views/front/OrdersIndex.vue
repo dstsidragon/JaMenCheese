@@ -43,7 +43,7 @@
       <li v-for="(item, i) in orderList.orders" :key="i" class="mb-3">
         <div class="card">
           <h5 class="card-header bg-primary text-white fs-5">
-            #{{ (orderList.pagination.current_page - 1) * 10 + i + 1 }}
+            {{ `#${(orderList.pagination.current_page - 1) * 10 + i + 1}` }}
           </h5>
           <div class="card-body">
             <h5
@@ -107,8 +107,8 @@
                           }}</small>
                         </p>
                         <p class="card-text d-flex justify-content-between">
-                          <small>*{{ prd.qty }}</small
-                          ><small>${{ prd.total }}</small>
+                          <small>{{ `* ${prd.qty}` }}</small
+                          ><small>{{ `$${$toComma(prd.total)}` }}</small>
                         </p>
                       </div>
                     </div>
@@ -128,7 +128,7 @@
               <!-- <li><p>目前有{{ cartsNum }}項產品</p></li> -->
               <!-- <li>總共 {{ item.product }} 項商品</li> -->
               <li class="fs-3 text-danger">
-                <p>{{ `總計: ${Math.floor(item.total)} 元` }}</p>
+                <p>{{ `總計: ${$toComma(Math.floor(item.total))} 元` }}</p>
               </li>
               <li v-if="item.is_paid" class="fs-3 text-success">
                 <p>已付款</p>

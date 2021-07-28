@@ -24,7 +24,7 @@ import toTimestamp from '@/assets/js/toTimestamp';
 import toComma from '@/assets/js/toComma';
 
 // 匯入 Bootstrap 主套件
-import 'bootstrap';
+// import 'bootstrap';
 
 // 匯入 lucky-canvas 主套件
 import LuckDraw from 'vue-luck-draw/vue3';
@@ -81,7 +81,6 @@ AOS.init({
 app.config.globalProperties.$toTimestamp = toTimestamp;
 app.config.globalProperties.$toLocaleDate = toLocaleDate;
 app.config.globalProperties.$toComma = toComma;
-
 // 註冊 axios 全域元件
 app.use(VueAxios, axios);
 

@@ -233,7 +233,7 @@
           >超級優惠價格外，<br />
           還有幸運大轉盤，有機會讓你得到全館半價的機會!!
         </p>
-        <router-link class="btn btn-danger" href="#" to="/lotteryturntable">
+        <router-link class="btn btn-primary-lighten" href="#" to="/lotteryturntable">
           <div class="d-flex justify-content-center align-items-center">
             <i class="material-icons fz-md-2 me-2"> casino </i>
             <p class="m-0 fz-md-2">立即前往!!</p>

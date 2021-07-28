@@ -9,7 +9,7 @@
     />
     <!-- Alert元件 end -->
     <div class="card">
-      <div class="card-header bg-success text-white">
+      <div class="card-header bg-primary text-white">
         <h5 class="card-title fz-3">付款完成！</h5>
       </div>
       <div class="card-body">
@@ -25,7 +25,7 @@
         type="submit"
         :disabled="loadingStatue.sendOrder == 1"
         class="
-          btn btn-primary
+          btn btn-primary-lighten
           py-2
           fz-2 fz-ssm-3
           col-10 col-sm-5

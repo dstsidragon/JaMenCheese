@@ -49,11 +49,12 @@
           </option>
         </select>
         <!-- 商品內容 -->
-        <div class="col-lg-9">
+        <div class="col-lg-9"
+            v-if="nowCategory === ''">
           <div class="row row-cols-1 row-cols-smm-2 row-cols-md-3 g-4">
             <div
               class="col cursor-pointer"
-              v-for="(item, i) in filterProductCategory"
+              v-for="(item, i) in productData"
               :key="'prd' + i"
             >
               <div class="card h-100">
@@ -75,11 +76,11 @@
                   >
                     <span
                       v-if="myFavorite.includes(item.id)"
-                      class="material-icons text-danger"
+                      class="material-icons text-danger hover-zoom-35"
                     >
                       favorite
                     </span>
-                    <span v-else class="material-icons"> favorite_border </span>
+                    <span v-else class="material-icons hover-zoom-35"> favorite_border </span>
                   </a>
                 </div>
                 <div
@@ -87,7 +88,7 @@
                   class="card-body p-0"
                   @click.prevent="viewOneProduct(item)"
                 >
-                  <h5 class="card-title bg-primary text-white p-1">
+                  <h5 class="card-title bg-blueGray text-primary fw-bold p-1">
                     {{ item.title }}
                   </h5>
                   <span
@@ -104,7 +105,7 @@
                 <div class="d-flex">
                   <a
                     href="#"
-                    class="product-link btn btn-success rounded-0"
+                    class="product-link btn btn-outline-primary-lighten rounded-0"
                     :class="{
                       disabled: item.id === loadingStatue.viewContentStatus,
                     }"
@@ -132,7 +133,7 @@
                   </a>
                   <a
                     href="#"
-                    class="product-link btn btn-danger rounded-0"
+                    class="product-link btn btn-primary rounded-0"
                     :class="{ disabled: item.id === loadingStatue.addCart }"
                     :id="'car_' + item.id"
                     @click.prevent="addCart(item.id, item.qty)"
@@ -158,12 +159,124 @@
               </div>
             </div>
           </div>
-          <p>{{ `此頁面有 ${filterProductCategory.length} 項產品` }}</p>
+          <p>{{ `全部共有 ${filterProductCategory.length} 項產品` }}</p>
           <!-- 分頁 start -->
-          <!-- <div class="d-flex justify-content-center">
+          <div class="d-flex justify-content-center">
           <Pagination :pagination="pagination" @get-product="getProduct"/>
-        </div> -->
+        </div>
           <!-- 分頁 end -->
+        </div>
+        <div class="col-lg-9"
+            v-else>
+          <div class="row row-cols-1 row-cols-smm-2 row-cols-md-3 g-4">
+            <div
+              class="col cursor-pointer"
+              v-for="(item, i) in filterProductCategory"
+              :key="'prd' + i"
+            >
+              <div class="card h-100">
+                <div
+                  class="overflow-hidden"
+                  @click.prevent="viewOneProduct(item)"
+                >
+                  <img
+                    :src="item.imageUrl"
+                    class="card-img-top prd-card-img object-fit img--scale"
+                    :alt="item.title"
+                  />
+                </div>
+                <div class="favorite">
+                  <a
+                    class="text-danger"
+                    href="#"
+                    @click.prevent="addFavorite(item.id)"
+                  >
+                    <span
+                      v-if="myFavorite.includes(item.id)"
+                      class="material-icons text-danger hover-zoom-35"
+                    >
+                      favorite
+                    </span>
+                    <span v-else class="material-icons hover-zoom-35"> favorite_border </span>
+                  </a>
+                </div>
+                <div
+                  v-if="item"
+                  class="card-body p-0"
+                  @click.prevent="viewOneProduct(item)"
+                >
+                  <h5 class="card-title bg-blueGray text-primary fw-bold p-1">
+                    {{ item.title }}
+                  </h5>
+                  <span
+                    class="d-flex justify-content-around align-items-center"
+                  >
+                    <p class="card-text border-right">
+                      <del>{{ `$ ${$toComma(item.origin_price)} 元` }}</del>
+                    </p>
+                    <p class="card-text text-danger fz-2">
+                      {{ `$ ${$toComma(item.price)} 元` }}
+                    </p>
+                  </span>
+                </div>
+                <div class="d-flex">
+                  <a
+                    href="#"
+                    class="product-link btn btn-outline-primary-lighten rounded-0"
+                    :class="{
+                      disabled: item.id === loadingStatue.viewContentStatus,
+                    }"
+                    :id="'content_' + item.id"
+                    data-id="item.id"
+                    @click.prevent="viewOneProduct(item)"
+                  >
+                    <!-- class="btn  btn-success btn_white " -->
+                    <span
+                      :class="{
+                        'd-none': item.id !== loadingStatue.viewContentStatus,
+                      }"
+                      class="spinner-grow spinner-grow-sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                    <span
+                      :class="{
+                        'd-none': item.id !== loadingStatue.viewContentStatus,
+                      }"
+                      class="visually-hidden"
+                      >Loading...</span
+                    >
+                    查看內容
+                  </a>
+                  <a
+                    href="#"
+                    class="product-link btn btn-primary rounded-0"
+                    :class="{ disabled: item.id === loadingStatue.addCart }"
+                    :id="'car_' + item.id"
+                    @click.prevent="addCart(item.id, item.qty)"
+                    data-action="remove"
+                    data-id="item.id"
+                  >
+                    <!-- class="btn  btn-info btn_white " -->
+                    <span
+                      :class="{ 'd-none': item.id !== loadingStatue.addCart }"
+                      class="spinner-grow spinner-grow-sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                    <span
+                      :class="{ 'd-none': item.id !== loadingStatue.addCart }"
+                      class="visually-hidden"
+                    >
+                      Loading...</span
+                    >
+                    加入購物車
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p>{{ `此分類有 ${filterProductCategory.length} 項產品` }}</p>
         </div>
       </div>
       <hr />
@@ -195,20 +308,22 @@
 // Alert元件
 import Alert from '@/components/Alert.vue';
 // 分頁
-// import Pagination from '@/components/Pagination.vue';
+import Pagination from '@/components/Pagination.vue';
 // 讀取畫面
 import Loading from '@/components/Loading.vue';
 // 熱賣商品
 import HotProductSwiper from '@/components/HotProductSwiper.vue';
 // emitter
 import emitter from '@/assets/js/emitter';
+// bs5 元件
+import 'bootstrap/js/dist/tab';
 
 export default {
   components: {
     // Alert元件
     Alert,
     // 分頁
-    // Pagination,
+    Pagination,
     // 讀取畫面
     Loading,
     // 熱賣商品

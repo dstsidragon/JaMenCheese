@@ -29,7 +29,7 @@
     :freeMode="true"
     :watchSlidesVisibility="true"
     :watchSlidesProgress="true"
-    class="mySwiper"
+    class="mySwiper my-2"
     style="height: 100px"
   >
     <swiper-slide><img :src="product.imageUrl" /></swiper-slide>

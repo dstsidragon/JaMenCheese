@@ -2,8 +2,6 @@
   <div
     class="modal fade"
     ref="signOutUser"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
     tabindex="-1"
     aria-labelledby="signOutUserLabel"
     aria-hidden="true"

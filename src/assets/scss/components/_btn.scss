@@ -45,3 +45,23 @@
     border-color: #7f5625;
   }
 }
+
+.btn-outline-primary-lighten {
+  &:hover,
+  &:focus,
+  &:active:hover {
+    color: #fff;
+    background-color: #dda62e;
+    border-color: #fff;
+  }
+}
+.btn-primary-lighten{
+  color: #fff;
+  &:hover,
+  &:focus,
+  &:active:hover {
+    color: #7f5625;
+    background-color: #fff;
+    border-color: #7f5625;
+  }
+}

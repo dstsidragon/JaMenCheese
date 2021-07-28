@@ -31,6 +31,7 @@
           aria-expanded="false"
           aria-label="Toggle navigation"
           @click="openHamBtn"
+          ref="btnHamCollapse"
         >
           <span class="material-icons" :class="navBarColor">menu</span>
         </button>
@@ -98,7 +99,7 @@
             class="
               nav-md-link
               align-middle
-              d-none d-ssm-inline-block
+              d-none d-smm-inline-block
               cursor-pointer
             "
             :class="navBarColor"
@@ -174,17 +175,17 @@
                     <thead>
                       <tr>
                         <th scope="col">#</th>
-                        <th scope="col">商品名稱</th>
+                        <th scope="col" class="text-start">商品名稱</th>
                         <th scope="col">數量</th>
-                        <th scope="col">單價</th>
+                        <th scope="col" class="text-end">單價</th>
                       </tr>
                     </thead>
                     <tbody>
                       <tr v-for="(item, i) in cartList.carts" :key="'car' + i">
                         <th class="col-1" scope="row">{{ i + 1 }}</th>
-                        <td class="col-4">{{ item.product.title }}</td>
+                        <td class="col-4 text-start">{{ item.product.title }}</td>
                         <td class="col-3">{{ item.qty }}</td>
-                        <td class="col-4">
+                        <td class="col-4 text-end">
                           {{ `NT$ ${$toComma(item.product.price)}` }}
                         </td>
                       </tr>
@@ -316,18 +317,6 @@
                       >我的收藏</router-link
                     >
                   </li>
-                  <li>
-                    <router-link
-                      class="
-                        dropdown-item
-                        nav-offcanvas
-                        text-center text-primary
-                      "
-                      to="/admin"
-                      @click.prevent="closeHamburger"
-                      >後台</router-link
-                    >
-                  </li>
                   <li @click.prevent="closeOffcanvas">
                     <a
                       class="
@@ -448,6 +437,9 @@ import Loading from '@/components/Loading.vue';
 import $ from 'jquery';
 // emitte
 import emitter from '@/assets/js/emitter';
+// bs5 元件
+import 'bootstrap/js/dist/collapse';
+import 'bootstrap/js/dist/offcanvas';
 
 export default {
   components: {
@@ -485,6 +477,7 @@ export default {
       cartList: '',
       // 我的收藏
       myFavorite: [],
+      offcanvasRight: '',
     };
   },
   methods: {
@@ -687,7 +680,6 @@ export default {
   },
 };
 </script>
-
 <style lang="scss" scoped>
 @import '../assets/scss/mixin/mixin';
 .top-20px {
@@ -696,10 +688,12 @@ export default {
 .nav-drown {
   &:focus,
   &:hover {
-    color: #cf9a59 !important;
+    color: #000000 !important;
+    text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
   }
   &.router-link-exact-active {
-    color: #cf9a59 !important;
+    color: #000000 !important;
+    text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
   }
   @include pc {
     font-size: 1.5rem;

@@ -2,7 +2,6 @@
   <Swiper
     :effect="'coverflow'"
     :grabCursor="true"
-    :centeredSlides="true"
     :slidesPerView="'auto'"
     :coverflowEffect="{
       rotate: 50,
