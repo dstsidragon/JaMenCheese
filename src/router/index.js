@@ -49,10 +49,10 @@ const routes = [
           },
         ],
       },
-      // {
-      //   path: '/product/:id',
-      //   component: () => import('../views/front/Product.vue'),
-      // },
+      {
+        path: '/product/:id',
+        component: () => import('../views/front/Product.vue'),
+      },
       {
         path: '/q&a',
         component: () => import('../views/front/QA.vue'),
