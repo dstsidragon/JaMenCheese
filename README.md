@@ -135,11 +135,11 @@ V*沒有用途的 .vue 檔案會建議移除，例如：HelloWorld.vue 等等這
 V*部分地方可以使用樣板字面值來組合，例如：Products.vue 的 18 行。
 V*img 標籤的 alt 屬性如果要作為動態屬性的話，記得補上 v-bind。 :alt=""
 V*button 標籤建議補上 type="button" 屬性。
-*沒有使用的生命週期可以刪除。
-*屬性上的單雙引號請統一唷。
-*template 、script 與 style 標籤建議統一擺放順序，以官方建議來講 style 標籤永遠在最後。
-**請不要使用 eslint-disable-next-line 關閉提示訊息，而是試著解決。
-*萬用路由請放到最後。
+V*沒有使用的生命週期可以刪除。
+V*屬性上的單雙引號請統一唷。
+V*template 、script 與 style 標籤建議統一擺放順序，以官方建議來講 style 標籤永遠在最後。
+V**請不要使用 eslint-disable-next-line 關閉提示訊息，而是試著解決。
+V*萬用路由請放到最後。
 **請參考課程範例是如何引入 Modal 的寫法，此「import { Modal } from 'bootstrap';」寫法是不太正確的。
  import Tooltip from 'bootstrap/js/dist/tooltip'; 
 *console.log() 會建議移除，例如：main.js 等等地方，在實際開發環境下比較不會遺留 console.log 在程式碼中，許多系統的漏洞問題都是來自於這些，需清楚注意到 console.log() 的使用時機絕大部分都是「開發模式」下使用，也會建議不要使用 babel 來去除，我們無法保證哪一天系統突然發神經不將 console.log 去除，所以請務必將 console.log 刪除，最主要也是要養成一個良好的開發習慣，在正式部署環境時就必須習慣性移除會比較好，在這邊也提供相關文獻給予參考。

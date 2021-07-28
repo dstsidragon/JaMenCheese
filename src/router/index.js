@@ -2,10 +2,6 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
   {
-    path: '/:pathMatch(.*)*',
-    component: () => import('../views/NotFound.vue'),
-  },
-  {
     path: '/',
     component: () => import('../views/Home.vue'),
     children: [
@@ -100,6 +96,10 @@ const routes = [
         component: () => import('../views/backend/Coupons.vue'),
       },
     ],
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('../views/NotFound.vue'),
   },
 ];
 
