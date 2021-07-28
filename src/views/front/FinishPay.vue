@@ -114,12 +114,10 @@ export default {
       emitter.emit('chg-cart-step', this.cartStep);
     },
   },
-  computed: {},
   created() {
     // 改變進度條
     this.chgCartStep();
   },
-  mounted() {},
 };
 </script>
 

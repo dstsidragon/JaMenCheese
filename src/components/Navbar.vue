@@ -685,7 +685,6 @@ export default {
       this.chkUserName();
     });
   },
-  unmounted() {},
 };
 </script>
 

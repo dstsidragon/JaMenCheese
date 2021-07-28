@@ -224,7 +224,6 @@ export default {
       },
     };
   },
-  mounted() {},
   methods: {
     startCallBack() {
       this.prizeName = '祝你中獎';

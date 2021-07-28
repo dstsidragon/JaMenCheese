@@ -228,7 +228,6 @@ export default {
     // 取得訂單資料
     this.getOrderData();
   },
-  mounted() {},
 };
 </script>
 <style lang="scss" scoped>

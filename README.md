@@ -138,9 +138,10 @@ V*button 標籤建議補上 type="button" 屬性。
 *沒有使用的生命週期可以刪除。
 *屬性上的單雙引號請統一唷。
 *template 、script 與 style 標籤建議統一擺放順序，以官方建議來講 style 標籤永遠在最後。
-*請不要使用 eslint-disable-next-line 關閉提示訊息，而是試著解決。
+**請不要使用 eslint-disable-next-line 關閉提示訊息，而是試著解決。
 *萬用路由請放到最後。
-*請參考課程範例是如何引入 Modal 的寫法，此「import { Modal } from 'bootstrap';」寫法是不太正確的。
+**請參考課程範例是如何引入 Modal 的寫法，此「import { Modal } from 'bootstrap';」寫法是不太正確的。
+ import Tooltip from 'bootstrap/js/dist/tooltip'; 
 *console.log() 會建議移除，例如：main.js 等等地方，在實際開發環境下比較不會遺留 console.log 在程式碼中，許多系統的漏洞問題都是來自於這些，需清楚注意到 console.log() 的使用時機絕大部分都是「開發模式」下使用，也會建議不要使用 babel 來去除，我們無法保證哪一天系統突然發神經不將 console.log 去除，所以請務必將 console.log 刪除，最主要也是要養成一個良好的開發習慣，在正式部署環境時就必須習慣性移除會比較好，在這邊也提供相關文獻給予參考。
 非必要註解可以斟酌刪除，否則 code 會顯得特別雜亂，若是屬於想要釐清邏輯的，那麼可以斟酌留下來沒關係，只是會建議盡可能撰寫註解時，也要整理一下唷~
 *可多加美化 index.html 中的 meta，另外請多加注意 lang 要調整至相關語系，例如調整成 「zh-Hant-TW」，若是英語系網站則可以保留預設 「en」。

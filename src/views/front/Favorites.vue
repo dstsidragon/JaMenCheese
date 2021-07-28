@@ -60,43 +60,6 @@
     </div>
   </div>
 </template>
-<style lang="scss" scoped>
-.banner {
-  background: center center no-repeat
-    url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384537686.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=hVq0cCLDD3ZvSZwrFJNfBGgcDqIbrfoJiBXiW0GlvOltTFcdwY3LUEXHqamTNgAbLSBA1SeSUGDZEHQY%2FvgihB%2FCq0f9ob2NxGTKJqMVkJyzKVpP1W7wFx5fKvP5kO3pgaEPEuIVq0EoFMypPzvK73oZGGaXkgghgMDdyrbvlbCsSaWKYMjVWGFSyJAQCwgL0fhdmVLfaRPROVr4Ya1oB6DcPwVZDmOyYnUAYkdO2tJ%2F%2Br6SVCpffpzXBgWLLR%2FNa0UL6oK8A4xyGfc6R%2B1T75bf2ei6qEa79krGM8E89exbz6W%2Bcec1gu6BRVvReu4UiN%2FSHdbdSwb3QivW%2Bz1Tgw%3D%3D');
-  height: 340px;
-  background-size: cover;
-  background-attachment: fixed;
-}
-
-@media (max-width: 768px) {
-  .banner {
-    height: 170px;
-  }
-}
-.favorite {
-  position: absolute;
-  top: 5px;
-  right: 5px;
-}
-.product-link {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
-  flex: 1;
-  padding: 0.5rem 0;
-}
-.list-group {
-  padding-left: 1.5rem * 0.5 !important;
-}
-.prd-card-img {
-  height: 200px;
-}
-@media (max-width: 512px) {
-  .prd-card-img {
-    height: 300px;
-  }
-}
-</style>
 <script>
 // emitter
 import emitter from '@/assets/js/emitter';
@@ -176,3 +139,40 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+.banner {
+  background: center center no-repeat
+    url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384537686.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=hVq0cCLDD3ZvSZwrFJNfBGgcDqIbrfoJiBXiW0GlvOltTFcdwY3LUEXHqamTNgAbLSBA1SeSUGDZEHQY%2FvgihB%2FCq0f9ob2NxGTKJqMVkJyzKVpP1W7wFx5fKvP5kO3pgaEPEuIVq0EoFMypPzvK73oZGGaXkgghgMDdyrbvlbCsSaWKYMjVWGFSyJAQCwgL0fhdmVLfaRPROVr4Ya1oB6DcPwVZDmOyYnUAYkdO2tJ%2F%2Br6SVCpffpzXBgWLLR%2FNa0UL6oK8A4xyGfc6R%2B1T75bf2ei6qEa79krGM8E89exbz6W%2Bcec1gu6BRVvReu4UiN%2FSHdbdSwb3QivW%2Bz1Tgw%3D%3D');
+  height: 340px;
+  background-size: cover;
+  background-attachment: fixed;
+}
+
+@media (max-width: 768px) {
+  .banner {
+    height: 170px;
+  }
+}
+.favorite {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+}
+.product-link {
+  -webkit-box-flex: 1;
+  -ms-flex: 1;
+  flex: 1;
+  padding: 0.5rem 0;
+}
+.list-group {
+  padding-left: 1.5rem * 0.5 !important;
+}
+.prd-card-img {
+  height: 200px;
+}
+@media (max-width: 512px) {
+  .prd-card-img {
+    height: 300px;
+  }
+}
+</style>

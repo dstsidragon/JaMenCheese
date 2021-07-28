@@ -38,8 +38,6 @@ export default {
       cartStep: 1,
     };
   },
-  methods: {},
-  watch: {},
   mounted() {
     //  監聽一個事件
     emitter.on('chg-cart-step', (e) => {

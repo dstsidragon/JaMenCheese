@@ -451,7 +451,6 @@ export default {
       return this.allProductsData.filter((item) => item.category.match(this.nowCategory));
     },
   },
-  created() {},
   mounted() {
     this.isLoading = true;
     // 取得商品資料
