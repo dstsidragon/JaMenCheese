@@ -297,12 +297,9 @@ export default {
           content: this.rediData.content,
           description: this.rediData.description,
           id: this.rediData.id,
-          // eslint-disable-next-line radix
-          is_enabled: parseInt(this.rediData.is_enabled),
-          // eslint-disable-next-line radix
-          origin_price: parseInt(this.rediData.origin_price),
-          // eslint-disable-next-line radix
-          price: parseInt(this.rediData.price),
+          is_enabled: parseInt(this.rediData.is_enabled, 10),
+          origin_price: parseInt(this.rediData.origin_price, 10),
+          price: parseInt(this.rediData.price, 10),
           title: this.rediData.title,
           unit: this.rediData.unit,
           num: 1,

@@ -127,8 +127,8 @@ a:hover {
 .full-height {
   min-height: 100vh;
 }
-[type='checkbox']:checked,
-[type='checkbox']:not(:checked) {
+[type="checkbox"]:checked,
+[type="checkbox"]:not(:checked) {
   position: absolute;
   left: -9999px;
 }

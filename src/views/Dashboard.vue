@@ -55,7 +55,7 @@
       <img class="sidebar-footer-img" src="../assets/images/admin.png" alt="user"/>
       <ul class="ms-2 mb-0 text-start fz-0">
         <li>{{ userName }}</li>
-        <li class="">{{ userEmail }}</li>
+        <li >{{ userEmail }}</li>
       </ul>
     </div>
   </div>
