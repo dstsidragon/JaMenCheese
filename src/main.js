@@ -6,7 +6,6 @@ import axios from 'axios';
 import VueAxios from 'vue-axios';
 
 // 匯入 amimate.css
-// import animated from 'animate.css';
 import 'animate.css';
 
 // 匯入 AOS
