@@ -51,7 +51,7 @@ const routes = [
       },
       {
         path: '/product/:id',
-        component: () => import('../views/front/product.vue'),
+        component: () => import('../views/front/Product.vue'),
       },
       {
         path: '/q&a',

@@ -173,7 +173,7 @@
             data-aos-duration="1500"
             class="col-md-6 mt-5 rounded-circle object-sm-fit"
             style="height: 200px; width: 224px"
-            src="https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384169900.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=pgOkhMLbXHo7pM71moCDvhlaNyicUTsn2YkjZ3Imu7YCP011Lqi8jqZbJciJrUcyhfMwnukuGgqSUC0b%2F2TvqgNmt2hbneQ%2B7U0m3ka6vB1Yx%2FuaX3X8iBk3Tjq0LrorYNlviCnYSUL%2FAcm8lHLmS0bNUk%2Bg3LloRtK7l67I8YhfmUnVi0KlCQGOgXQvwjf4E8raEufHZN7XOFRcyUqkMMMZynNWl8Aj51N38ji480cpBg01QCss4TGPQ%2FZlzeaizAPhkGVGorfrpvm%2BBsCAfsb9VcdaX9c8lcGZFXalPmcXfkw4oCL9%2FR%2ByLPJevLzGq1p6JfEo7qsBt6XGBGXnaw%3D%3D"
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627444635684.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=NlKQ2ABcdGeymtoibApypmBMPpAqU1G1Vf9fHzBLw5mjJhFzVbvhguAGfAyqc0NamZ%2FnILZ%2BQPiyEw7p4c8OmYCQqdG1pTrHtGFY12C3w13IsjECYvqeuXGunpcJIg5rgEkXGdpzdfrhtzO9i3C0gFoB39iFWGU6eO2uv6Fi0qCkTEBn763h1MQWAcqePWEFBjd1n%2Bdg43IPs4cCLIgGzr8NoQ5YRL0onWcarfTYryxlrTi%2BAyJzVv%2FwA4T%2FPjxL8qkhvZti0aWmCzswFrDCDuIsXalZiJroc0pidzG7YBP2nV5zliN328nhNR2bX2Ob7FjPpcYsQeWdIE9qNzAMNg%3D%3D"
             alt="ingred"
           />
           <div
@@ -203,7 +203,7 @@
             data-aos-duration="1500"
             class="col-md-6 mt-5 rounded-circle object-sm-fit"
             style="height: 200px; width: 224px"
-            src="https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384205576.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=PQM8QTvNyrQ2Dlc1C0lUICrl6mFEcfuOVN6cSLlsiaWDVZ1nEhvcoE8vEEUjsbbWYNXJbWMvwIP736a9kuGy1RlJI2%2B1UlTZBDQnnLZa9S35YVJI3i4RS%2FA%2FGTU0s%2FsmX1%2FGRlygTE4%2BJeu3%2FsziPX79W8bOsIJZQDN%2FxhvNDfA%2Ba3HnT2UrglQEf6kTrU04nmsbRXSApkwsDy2tQL7dw%2ByroscDBss9CVwzzqVxEJYPlN736Neyarmy67W059UnownR6oi5JRvL0abNYOBpzFcc6FFHumUeA4ld%2BHnowhut5sO4oJmxdGUqkCUa%2Bwd2qu3XaeRX2UoVwDjZDi4Ncg%3D%3D"
+            src="https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627444730872.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=kzX6wUNjUov%2BqtuFyXZQcQKta8q%2BTO8p4hILVSX2vmOo36Yer1BAllFXiyqmNcmeERkaas%2FmRepO6CSd4qV2uFX9NmmBWW65bdyMapxsHgVuSiElBwMAJZL34V%2FRViLrS6qFqOt8thtRz1apm8Ms%2BN1TM1Sqf0niXgFW0TFkNxjOOtztjejoGIfRI6Md5pHWBeW%2BqlAGVa8Lp1p0IFTGUzGRBISx%2FGP2zEQrwL0H1veKuw2AGM2ZoZPKmUI3ipZF%2BenkP7fnvP%2B5w5nrM2ah3lw3%2BZC1qxM4h76YRofS7u9K3dz%2Fjrg437eWyoloMon4Jz7PeU7BJl4r9gVDiPs2cQ%3D%3D"
             alt="food"
           />
           <div
@@ -442,7 +442,7 @@ export default {
 }
 .subscribe {
   background: center center no-repeat
-    url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384405648.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=A2LeM7mB0lN7OaSJ1%2Bm6vwLotS4NscE9d6lYQMv3xHPzdPrWRO9%2Fxyi1cywztO5OsqrxzvnFAFEeEaPmI9yFztrK%2Fgnnl5AdyHvrBv6H2wsLXIbs2zdsprd%2F6IivV3KrlDtTJSQ946hIDM7sVbw5sPBYH7nS83ytY5GMulECZQtRJ4dUrXYFL8VQPOSHAKJaJHXfRCblcQpuElrRYFWd8inaUjHQx%2FxSR5jFGj5lcTjZ02%2Bn3GQp8kY5akb7d2kNbR6NDvu2S2VsHAfordBq%2FTzVVi7yJpz3K8MOeqH2xPhoDqWU%2BrO%2Bteuib9C1navsEwESa41TPbZo1GV3oVoJKQ%3D%3D');
+    url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627444877790.png?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=ChTvMUMENscE4zceB05SxJAiF9FBEojCkn7GMC3qF5gK6rw02csb21piZLmRdDvRABNbfqspu1WtMs%2FOPIn3hvgmoEtRbdMs2hVeXlPQZdshbkQnmd7gnDcNAkphGl2YHoSPnwVvbQv4rtyL1kJsvArqO5ykcgCmLjZzJanyLwBaaD44CQxHYf%2Bs3s6HpjoZmstNqVyUaRiLm6y000xOliGij%2Fgi5g3cbVIlJlkhcDMFOWlgWAfkK8wu%2FuomatQC%2FXDGR7HmRymsew9Y5qoVQoh0KB3A5X%2BnsP5A77hcYhX7NXDx995vbPgp9t9Su8%2BSwSZA45aY911Zh5ML3Wu2lA%3D%3D');
   height: 400px;
   background-size: cover;
   background-attachment: fixed;

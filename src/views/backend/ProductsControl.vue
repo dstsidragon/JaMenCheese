@@ -78,7 +78,7 @@
             <td
               class="
                 col-2 col-md-1
-                d-none d-ssm-table-cell d-flex
+                d-none d-ssm-flex
                 justify-content-center
                 align-items-center
               "

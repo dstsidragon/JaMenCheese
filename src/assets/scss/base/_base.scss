@@ -1,56 +1,50 @@
-
 body {
-    // background:  rgb(215,228,231);
-    font-family: 'Kosugi Maru', sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    text-align: center;
-    color: #2c3e50;
-    background-color: #fff8f0;
-    // overflow-x: hidden !important;
-  }
-  a{
-    text-decoration: none !important;
-  }
-  ul,li{
-    list-style: none;
-    padding-left: 0;
-  }
-  
-  
-  tbody tr:hover {
-    /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100;White+to+Transparent */
-    background: -moz-radial-gradient(
-      center,
-      ellipse cover,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0) 100%
-    ); /* FF3.6-15 */
-    background: -webkit-radial-gradient(
-      center,
-      ellipse cover,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0) 100%
-    ); /* Chrome10-25,Safari5.1-6 */
-    background: radial-gradient(
-      ellipse at center,
-      rgba(255, 255, 255, 1) 0%,
-      rgba(255, 255, 255, 0) 100%
-    ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
-  }
-  
-/**
-* Bootstrap Modal
-*/
+  // background:  rgb(215,228,231);
+  font-family: "Kosugi Maru", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  background-color: #fff8f0;
+  // overflow-x: hidden !important;
+}
+a {
+  text-decoration: none !important;
+}
+ul,
+li {
+  list-style: none;
+  padding-left: 0;
+}
+
+tbody tr:hover {
+  /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#ffffff+0,ffffff+100&1+0,0+100;White+to+Transparent */
+  background: -moz-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  ); /* FF3.6-15 */
+  background: -webkit-radial-gradient(
+    center,
+    ellipse cover,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  ); /* Chrome10-25,Safari5.1-6 */
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 0) 100%
+  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+}
+
+/*Bootstrap Modal*/
 .modal {
   z-index: 1101 !important;
 }
 
-
-/**
-* Vue Loading
-*/
+/** Vue Loading*/
 .vld-overlay.is-full-page {
   z-index: 1103 !important;
 }

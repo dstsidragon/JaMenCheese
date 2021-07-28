@@ -19,7 +19,11 @@
       @click.prevent="$emit('view-one-product', item)"
     >
       <div class="overflow-hidden">
-        <img :src="item.imageUrl" class="object-fit swiper-img img--scale" :alt="item.imageUrl"/>
+        <img
+          :src="item.imageUrl"
+          class="object-fit swiper-img img--scale"
+          :alt="item.imageUrl"
+        />
       </div>
       <span>
         <p class="bg-primary text-white p-1 fs-2 m-0">{{ item.title }}</p>
@@ -87,23 +91,26 @@ export default {
         });
     },
     getSameCategoryProduct(num) {
-      this.filterSameCategory = this.productsData.filter(
-        (item) => item.category === this.category,
-      );
-      // 如果陣列商品不足，就以當前陣列長度為基準
-      const productNum = this.filterSameCategory.length
-      < num ? this.filterSameCategory.length : num;
-      // 宣告 set 陣列
-      const prdSet = new Set([]);
-      // 取出指定 不重複的陣列數量
-      for (let i = 0; prdSet.size < productNum; i += 1) {
-        const prd = this.getRandomNumber(productNum);
-        prdSet.add(prd);
+      if (this.productsData !== '') {
+        this.filterSameCategory = this.productsData.filter(
+          (item) => item.category === this.category,
+        );
+        // 如果陣列商品不足，就以當前陣列長度為基準
+        const productNum = this.filterSameCategory.length < num
+          ? this.filterSameCategory.length
+          : num;
+        // 宣告 set 陣列
+        const prdSet = new Set([]);
+        // 取出指定 不重複的陣列數量
+        for (let i = 0; prdSet.size < productNum; i += 1) {
+          const prd = this.getRandomNumber(productNum);
+          prdSet.add(prd);
+        }
+        // 將取出的數字 帶入資料內  push到陣列
+        prdSet.forEach((i) => {
+          this.filterProducts.push(this.filterSameCategory[i]);
+        });
       }
-      // 將取出的數字 帶入資料內  push到陣列
-      prdSet.forEach((i) => {
-        this.filterProducts.push(this.filterSameCategory[i]);
-      });
     },
   },
   mounted() {
