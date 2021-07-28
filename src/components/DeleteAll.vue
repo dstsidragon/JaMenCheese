@@ -44,7 +44,7 @@
   </div>
 </template>
 <script>
-import { Modal } from 'bootstrap';
+import Modal from 'bootstrap/js/dist/modal';
 
 export default {
   data() {

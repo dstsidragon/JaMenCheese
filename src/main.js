@@ -25,6 +25,7 @@ import toComma from '@/assets/js/toComma';
 
 // 匯入 Bootstrap 主套件
 import 'bootstrap';
+
 // 匯入 lucky-canvas 主套件
 import LuckDraw from 'vue-luck-draw/vue3';
 
