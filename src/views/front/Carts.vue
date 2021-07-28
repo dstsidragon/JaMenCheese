@@ -38,8 +38,6 @@ export default {
       cartStep: 1,
     };
   },
-  methods: {},
-  watch: {},
   mounted() {
     //  監聽一個事件
     emitter.on('chg-cart-step', (e) => {
@@ -53,7 +51,7 @@ export default {
 @import '@/assets/scss/mixin/_mixin';
 .banner {
   background: center center no-repeat
-    url('https://images.unsplash.com/photo-1620648360404-e895f8976aae?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1189&q=80');
+    url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627384683804.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=CCAjYbXhtk0AEfzr4vyKAztR52diMCQNfF%2BcEJSMtiz4ZBC2njfp8gYNbnzPqoKMtoVDeYUJfIzt%2FaibOxmav5ea%2BmvUGF90zTFTBf1j2gqQrzFvXs120EQMd0JKeigVEUUvUyHMTdKeOinXoFmKRX4kumXXE5bRw%2B1qpPREkGhl7tln%2BU%2FnZHJmDFKEzLc6k8WbivkFICPNAsgwuZ%2FTOZ8Z0mIT4bPMEAkyzphJolvPYiFqRGeQooNFaYi8l9cwdNVWcx%2Fq2aLIVRkO%2BCnoKUh3pEGvo4drN8rH5%2FFCf69uUzHI5%2Fy%2F5CJPf9y4Vkly6FC%2FRYu%2Bgsd9MVbhfsBk0g%3D%3D');
   height: 340px;
   background-size: cover;
   background-attachment: fixed;

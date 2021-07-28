@@ -75,6 +75,7 @@
             "
           >
             <button
+              type="button"
               class="btn text-danger px-1 fz-2"
               @click="rediCartItemsNum(item, -1)"
             >
@@ -89,6 +90,7 @@
               @change="rediCartItemsNum(item)"
             />
             <button
+              type="button"
               class="btn text-danger px-1 fz-2"
               @click="rediCartItemsNum(item, 1)"
             >
@@ -107,7 +109,7 @@
               type="button"
               :class="{ disabled: loadingStatue.delCart == item.id }"
               @click="delCartItem(item.id)"
-              class="btn btn-sm btn-danger btn_white"
+              class="btn btn-sm btn-outline-danger"
               data-action="remove"
             >
               <span
@@ -115,7 +117,7 @@
                 class="spinner-border spinner-border-sm"
                 role="status"
                 aria-hidden="true"
-              ></span>
+              />
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="16"
@@ -144,13 +146,17 @@
       class="d-flex justify-content-end mt-4"
       v-if="cartList.carts?.length > 0"
     >
-      <button class="btn btn-outline-danger" @click.prevent="clearCart">
+      <button
+        class="btn btn-outline-danger"
+        type="button"
+        @click.prevent="clearCart"
+      >
         <span
           :class="{ 'd-none': loadingStatue.clearCart !== 1 }"
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         清空購物車
       </button>
     </div>
@@ -162,10 +168,15 @@
       <span class="col-7 fz-0 d-flex justify-content-around align-items-center">
         <p class="mb-0">商品總計:</p>
         <p class="fz-2 mb-0 text-danger fw-bold">
-          NT$ {{ $toComma(Math.floor(cartList.total)) }}
+          {{
+            cartList.total == null
+              ? 'NT$ 0'
+              : `NT$ ${$toComma(Math.floor(cartList.total))}`
+          }}
         </p>
       </span>
       <button
+        type="button"
         class="btn btn-primary fz-2 py-2 col-5"
         @click.prevent="sendCartsList"
       >
@@ -174,8 +185,8 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        ></span>
-        送出訂單 ( {{ cartsNum }} )筆商品
+        />
+        {{ `送出訂單( ${cartsNum} )筆商品` }}
       </button>
     </div>
   </div>
@@ -193,10 +204,15 @@
       >
         <p class="mb-0">總計:</p>
         <p class="fz-2 mb-0 text-danger fw-bold">
-          NT$ {{ $toComma(Math.floor(cartList.total)) }}
+          {{
+            cartList.total == null
+              ? 'NT$ 0'
+              : `NT$ ${$toComma(Math.floor(cartList.total))}`
+          }}
         </p>
       </span>
       <button
+        type="button"
         v-if="cartList.carts?.length > 0"
         :disabled="loadingStatue.sendCart == 1"
         class="
@@ -213,7 +229,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         送出訂單
       </button>
       <button

@@ -2,7 +2,6 @@
   <Swiper
     :effect="'coverflow'"
     :grabCursor="true"
-    :centeredSlides="true"
     :slidesPerView="'auto'"
     :coverflowEffect="{
       rotate: 50,
@@ -19,7 +18,11 @@
       @click.prevent="$emit('view-one-product', item)"
     >
       <div class="overflow-hidden">
-        <img :src="item.imageUrl" class="object-fit swiper-img img--scale" />
+        <img
+          :src="item.imageUrl"
+          class="object-fit swiper-img img--scale"
+          :alt="item.imageUrl"
+        />
       </div>
       <span>
         <p class="bg-primary text-white p-1 fs-2 m-0">{{ item.title }}</p>
@@ -79,7 +82,6 @@ export default {
       });
     },
   },
-  mounted() {},
 };
 </script>
 

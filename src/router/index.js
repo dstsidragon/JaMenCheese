@@ -2,10 +2,6 @@ import { createRouter, createWebHashHistory } from 'vue-router';
 
 const routes = [
   {
-    path: '/:pathMatch(.*)*',
-    component: () => import('../views/NotFound.vue'),
-  },
-  {
     path: '/',
     component: () => import('../views/Home.vue'),
     children: [
@@ -55,7 +51,7 @@ const routes = [
       },
       {
         path: '/product/:id',
-        component: () => import('../views/front/product.vue'),
+        component: () => import('../views/front/Product.vue'),
       },
       {
         path: '/q&a',
@@ -100,6 +96,10 @@ const routes = [
         component: () => import('../views/backend/Coupons.vue'),
       },
     ],
+  },
+  {
+    path: '/:pathMatch(.*)*',
+    component: () => import('../views/NotFound.vue'),
   },
 ];
 

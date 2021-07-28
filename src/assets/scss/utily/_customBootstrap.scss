@@ -1,19 +1,24 @@
 $utilities: map-merge(
   $utilities,
   (
-    'rounded': (
-      responsive: true,  //是否要響應式斷點
-      property: font-size,  //屬性
-      class: fz,        //class名稱
-      values: (
-        0: 0.875rem,             //class參數 : 屬性值
-        1: 1rem,
-        2: 1.5rem,
-        3: 2rem,
-        4: 3rem,
-      ),
+    "rounded": (
+      responsive: true,
+      //是否要響應式斷點
+      property: font-size,
+      //屬性
+      class: fz,
+      //class名稱
+      values:
+        (
+          0: 0.875rem,
+          //class參數 : 屬性值
+          1: 1rem,
+          2: 1.5rem,
+          3: 2rem,
+          4: 3rem,
+        ),
     ),
-    'width': (
+    "width": (
       responsive: true,
       property: width,
       class: w,

@@ -16,6 +16,7 @@
   <div class="container">
     <div v-if="pagination.total_pages" class="d-flex justify-content-end">
       <button
+        type="button"
         class="btn btn-danger"
         @click="this.$refs.deleteAllModal.openModal()"
       >
@@ -46,7 +47,7 @@
                   type="checkbox"
                   name="onoffswitch"
                   class="onoffswitch-checkbox"
-                  @click="orderEnable"
+                  @click.prevent="orderEnable"
                   :id="'myonoffswitch_' + item.id"
                   tabindex="0"
                   v-if="item.is_paid == 1"
@@ -57,7 +58,7 @@
                   type="checkbox"
                   name="onoffswitch"
                   class="onoffswitch-checkbox"
-                  @click="orderEnable"
+                  @click.prevent="orderEnable"
                   :id="'myonoffswitch_' + item.id"
                   tabindex="0"
                   v-else
@@ -66,7 +67,7 @@
                 <label
                   class="onoffswitch-label"
                   :for="'myonoffswitch_' + item.id"
-                ></label>
+                />
               </div>
             </div>
           </td>
@@ -121,10 +122,7 @@
 
     <!-- 分頁 start-->
     <div v-if="pagination.total_pages" class="d-flex justify-content-center">
-      <Pagination
-        :pagination="pagination"
-        @get-product="getOrdersData"
-      ></Pagination>
+      <Pagination :pagination="pagination" @get-product="getOrdersData" />
     </div>
     <!-- 分頁 end-->
 

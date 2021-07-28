@@ -2,8 +2,6 @@
   <div
     class="modal fade"
     ref="signOutUser"
-    data-bs-backdrop="static"
-    data-bs-keyboard="false"
     tabindex="-1"
     aria-labelledby="signOutUserLabel"
     aria-hidden="true"
@@ -19,7 +17,7 @@
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <div class="modal-footer">
           <button
@@ -44,7 +42,7 @@
   </div>
 </template>
 <script>
-import { Modal } from 'bootstrap';
+import Modal from 'bootstrap/js/dist/modal';
 // emitter
 import emitter from '@/assets/js/emitter';
 

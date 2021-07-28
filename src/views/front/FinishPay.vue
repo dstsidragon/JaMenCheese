@@ -9,7 +9,7 @@
     />
     <!-- Alert元件 end -->
     <div class="card">
-      <div class="card-header bg-success text-white">
+      <div class="card-header bg-primary text-white">
         <h5 class="card-title fz-3">付款完成！</h5>
       </div>
       <div class="card-body">
@@ -25,7 +25,7 @@
         type="submit"
         :disabled="loadingStatue.sendOrder == 1"
         class="
-          btn btn-primary
+          btn btn-primary-lighten
           py-2
           fz-2 fz-ssm-3
           col-10 col-sm-5
@@ -39,7 +39,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         <span>繼續購物</span>
       </button>
     </div>
@@ -66,7 +66,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         <span>繼續購物</span>
       </button>
     </div>
@@ -114,12 +114,10 @@ export default {
       emitter.emit('chg-cart-step', this.cartStep);
     },
   },
-  computed: {},
   created() {
     // 改變進度條
     this.chgCartStep();
   },
-  mounted() {},
 };
 </script>
 

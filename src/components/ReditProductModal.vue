@@ -16,7 +16,7 @@
             class="btn-close bg-white"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <div class="modal-body">
           <div class="card card-body row fw-bold fz-2">
@@ -39,7 +39,7 @@
                 v-model="rediData.description"
                 placeholder="請輸入描述"
                 class="form-control"
-              ></textarea>
+              />
             </div>
             <div class="form-group mb-2">
               <label for="bg_redit_content ">說明</label>
@@ -50,7 +50,7 @@
                 placeholder="請輸入說明"
                 v-model="rediData.content"
                 class="form-control"
-              ></textarea>
+              />
             </div>
             <div class="form-row d-flex flex-wrap justify-content-between mb-2">
               <div class="form-group col-md-5">
@@ -297,12 +297,9 @@ export default {
           content: this.rediData.content,
           description: this.rediData.description,
           id: this.rediData.id,
-          // eslint-disable-next-line radix
-          is_enabled: parseInt(this.rediData.is_enabled),
-          // eslint-disable-next-line radix
-          origin_price: parseInt(this.rediData.origin_price),
-          // eslint-disable-next-line radix
-          price: parseInt(this.rediData.price),
+          is_enabled: parseInt(this.rediData.is_enabled, 10),
+          origin_price: parseInt(this.rediData.origin_price, 10),
+          price: parseInt(this.rediData.price, 10),
           title: this.rediData.title,
           unit: this.rediData.unit,
           num: 1,

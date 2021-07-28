@@ -4,17 +4,26 @@
       <div class="row full-height justify-content-center">
         <div class="col-12 text-center align-self-center py-5">
           <div class="section text-center py-5 py-md-0">
+            <p class="activeCard bottom fz-1 text-shadow-multipleLight">
+              點擊下方!
+              <img
+                src="https://cdn3.iconfinder.com/data/icons/wpzoom-developer-icon-set/500/143-256.png"
+                style="width: 20px"
+                alt="click"
+              />
+            </p>
             <input
               class="pricing"
               type="checkbox"
               id="pricing"
               name="pricing"
             />
-            <label for="pricing"
-              ><span class="block-diff"
-                >本店主打<span class="float-end">招牌飲品</span></span
-              ></label
-            >
+            <label for="pricing">
+              <span class="block-diff">
+                本店主打
+                <span class="float-end"> 招牌飲品 </span>
+              </span>
+            </label>
             <div class="card-3d-wrap mx-auto">
               <div class="card-3d-wrapper">
                 <div class="card-front">
@@ -24,8 +33,8 @@
                     <p class="mb-4 fz-1">經典麵包</p>
                     <p class="mb-4 fz-1">店內招牌商品</p>
                     <a
-                      href="#0"
-                      class="btn btn-info text-white fz-2"
+                      href="#"
+                      class="btn btn-primary-secondary text-white fz-2"
                       @click.prevent="
                         $router.push('/product/-Mek1km57DVyzSxtPuIj')
                       "
@@ -87,6 +96,29 @@
 
 @import url('https://fonts.googleapis.com/css?family=Poppins:400,500,600,700,800,900');
 
+.activeCard {
+  margin-top: 20px;
+  display: block;
+  -webkit-animation: pulse 2s infinite;
+  animation: pulse 2s infinite;
+  color: #7f5625;
+  font-weight: bold;
+}
+
+@keyframes pulse {
+  0% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+  50% {
+    -webkit-transform: translate(0, 10px);
+    transform: translate(0, 10px);
+  }
+  100% {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+}
 :root {
   font-size: 20px;
 }
@@ -95,8 +127,8 @@ body {
   font-weight: 500;
   font-size: 15px;
   line-height: 1.7;
-  color: #102770;
-  background-color: #ffeba7;
+  color: #fff;
+  background-color: #f8eaba;
   overflow-x: hidden;
 }
 a {
@@ -146,13 +178,13 @@ a:hover {
   font-family: 'Poppins', sans-serif;
   font-weight: 600;
   text-transform: uppercase;
-  font-size: 14px;
+  font-size: 20px;
   letter-spacing: 1px;
   line-height: 44px;
   padding: 0 25px;
   padding-right: 27px;
   overflow: hidden;
-  color: #fff;
+  color: #7f5625;
   text-align: left;
   border: 1px solid #102770;
 }
@@ -161,7 +193,7 @@ a:hover {
   position: absolute;
   content: '';
   z-index: -2;
-  background-color: #ffeba7;
+  // background-color: #ffeba7;
   width: 100%;
   height: 100%;
   display: block;
@@ -173,7 +205,7 @@ a:hover {
   position: absolute;
   content: '';
   z-index: -1;
-  background-color: #102770;
+  background-color: #dda62e;
   width: 128px;
   height: 40px;
   display: block;
@@ -257,14 +289,14 @@ a:hover {
   letter-spacing: 3px;
   font-size: 22px;
   line-height: 1.7;
-  color: #102770;
+  color: #a32c0e;
   transform: translate3d(0, 0, 35px) perspective(100px);
 }
 .pricing-wrap h4:before {
   position: absolute;
   content: '';
   z-index: -1;
-  background: linear-gradient(217deg, #448ad5, #b8eaf9);
+  background: linear-gradient(217deg, #a32c0e, #f5c67c);
   width: 70px;
   height: 70px;
   display: block;
@@ -311,7 +343,7 @@ a:hover {
   letter-spacing: 1px;
   font-size: 36px;
   line-height: 1.1;
-  color: #102770;
+  color: #a32c0e;
   transform: translate3d(0, 0, 30px) perspective(100px);
 }
 .pricing-wrap h2 sup {
@@ -327,7 +359,7 @@ a:hover {
   font-size: 14px;
   line-height: 1.2;
   letter-spacing: 1px;
-  color: #102770;
+  color: #a32c0e;
   transform: translate3d(0, 0, 30px) perspective(100px);
 }
 .card-back h2,

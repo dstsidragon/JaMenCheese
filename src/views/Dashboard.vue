@@ -5,7 +5,7 @@
         <router-link class="d-block" to="/admin">
           <img
             src="../assets/images/logo4.svg"
-            alt=""
+            alt="logo"
             width="100"
             height="100"
             srcset=""
@@ -34,6 +34,7 @@
         </li>
         <li class="mb-2">
           <a
+            href="#"
             class="nav-link"
             type="button"
             v-if="loginStatus"
@@ -51,10 +52,14 @@
     </div>
 
     <div class="sidebar-footer d-flex justify-content-center">
-      <img class="sidebar-footer-img" src="../assets/images/admin.png" />
+      <img
+        class="sidebar-footer-img"
+        src="../assets/images/admin.png"
+        alt="user"
+      />
       <ul class="ms-2 mb-0 text-start fz-0">
         <li>{{ userName }}</li>
-        <li class="">{{ userEmail }}</li>
+        <li>{{ userEmail }}</li>
       </ul>
     </div>
   </div>
@@ -88,6 +93,7 @@
             class="nav-link"
             type="button"
             v-if="loginStatus"
+            href="#"
             @click.prevent="openiSgnOutUserModal"
             >登出</a
           >
@@ -96,7 +102,11 @@
         </div>
       </div>
       <div class="d-flex justify-content-center align-items-center">
-        <img class="sidebar-footer-img" src="../assets/images/admin.png" />
+        <img
+          class="sidebar-footer-img"
+          src="../assets/images/admin.png"
+          alt="user"
+        />
         <ul class="ms-2 mb-0 text-start fz-0">
           <li>{{ userName }}</li>
           <li class="">{{ userEmail }}</li>
@@ -117,7 +127,7 @@
   <!-- Alert元件 end -->
 
   <!-- 登出Modal -->
-  <LoginOut ref="signOutUserModal" @sign-out-admin="signOutAdmin"></LoginOut>
+  <LoginOut ref="signOutUserModal" @sign-out-admin="signOutAdmin" />
 </template>
 <script>
 // Alert元件
@@ -307,16 +317,6 @@ export default {
 .sidebar {
   min-width: 200px;
   height: 100%;
-}
-.navbarLogo {
-  background: center center no-repeat
-    url(https://raw.githubusercontent.com/hexschool/webLayoutTraining1st/085a62fb22df4bf21c605a180648c6c6e35c2b32/week5/logo-ANSWER.svg);
-  width: 100%;
-  margin: 0 auto;
-  height: 40px;
-  text-indent: 101%;
-  overflow: hidden;
-  white-space: nowrap;
 }
 @media (min-width: 631px) {
   .Main {

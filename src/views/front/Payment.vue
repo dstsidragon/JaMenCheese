@@ -45,15 +45,15 @@
           </li>
           <li class="d-flex justify-content-between align-items-center">
             <p>總計:</p>
-            <p>NT {{ $toComma(finally_total) }}</p>
+            <p>{{ `NT ${$toComma(finally_total)}` }}</p>
           </li>
           <li class="d-flex justify-content-between align-items-center">
             <p>運費:</p>
-            <p>NT {{ $toComma(shipping) }}</p>
+            <p>{{ `NT ${$toComma(shipping)}` }}</p>
           </li>
           <li class="d-flex justify-content-between align-items-center">
             <p>優惠折扣:</p>
-            <p>NT {{ $toComma(couponPrice) }}</p>
+            <p>{{ `NT ${$toComma(couponPrice)}` }}</p>
           </li>
           <li class="d-flex justify-content-between align-items-center">
             <p>付款狀態:</p>
@@ -87,10 +87,7 @@
                   <option>ApplePay</option>
                   <option>GooglePay</option>
                 </Field>
-                <error-message
-                  name="付款方式"
-                  class="invalid-feedback"
-                ></error-message>
+                <error-message name="付款方式" class="invalid-feedback" />
               </div>
               <div
                 class="
@@ -102,7 +99,7 @@
                 <button
                   type="button"
                   class="
-                    btn btn-secondary
+                    btn btn-outline-secondary
                     py-2
                     fz-2 fz-ssm-3
                     col-10 col-sm-5
@@ -133,7 +130,7 @@
                     class="spinner-border spinner-border-sm"
                     role="status"
                     aria-hidden="true"
-                  ></span>
+                  />
                   <span>確認付款</span>
                 </button>
               </div>
@@ -166,7 +163,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         <span>確認付款</span>
       </button>
     </div>

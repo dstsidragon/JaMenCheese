@@ -1,13 +1,8 @@
 <template>
   <div class="overflow-hidden h-28">
-    <h2 class="text-white bg-primary fz-2" v-text="msg"></h2>
+    <h2 class="text-white bg-primary fz-2" v-text="msg" />
   </div>
 </template>
-<style lang="scss" scoped>
-.h-28 {
-  height: 28px;
-}
-</style>
 <script>
 export default {
   data() {
@@ -36,3 +31,9 @@ export default {
   },
 };
 </script>
+
+<style lang="scss" scoped>
+.h-28 {
+  height: 28px;
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
   <div class="mt_navbar">
     <!-- 商品CARD start -->
-    <div class="mb-3 banner py-4">
+    <div class="mb-3 py-4">
       <div class="container">
         <div class="card">
           <div class="row g-0">
@@ -12,14 +12,39 @@
             <div class="col-md-6">
               <div class="card-body">
                 <!-- 標題 -->
-                <h3 class="card-title bg-primary text-white rounded py-2 fz-3">
+                <h3
+                  class="
+                    card-title
+                    bg-primary
+                    text-white
+                    rounded
+                    py-2
+                    fz-3
+                    position-relative
+                  "
+                >
                   {{ product.title }}
+                  <a
+                    class="text-danger fac-position"
+                    href="#"
+                    @click.prevent="addFavorite"
+                  >
+                    <span
+                      v-if="myFavorite.includes(id)"
+                      class="material-icons text-danger hover-zoom-35"
+                    >
+                      favorite
+                    </span>
+                    <span v-else class="material-icons hover-zoom-35">
+                      favorite_border
+                    </span>
+                  </a>
                 </h3>
                 <!-- 商品描述 -->
                 <p
                   class="
                     card-text
-                    text-start
+                    text-center
                     titleEffect--border-bottom-x
                     d-flex
                     justify-content-center
@@ -30,7 +55,7 @@
                 <br />
                 <!-- 商品內容 -->
                 <p class="card-text text-start fz-0">
-                  <span v-html="product.content"></span>
+                  <span v-html="product.content" />
                 </p>
                 <!-- 金額 -->
                 <span
@@ -38,17 +63,13 @@
                   class="row text-center align-items-center mb-2"
                 >
                   <span class="text-decoration-line-through col-5">
-                    原價
-                    <em>{{ $toComma(product.origin_price) }}</em>
-                    元
+                    {{ `原價 ${$toComma(product.origin_price)} 元` }}
                   </span>
                   <span class="text-danger col-7 fs-2">
-                    特價
-                    <em>{{ $toComma(product.price) }}</em>
-                    元
+                    {{ `特價 ${$toComma(product.price)} 元` }}
                   </span>
                 </span>
-                <div class="row justify-content-between">
+                <div class="d-flex justify-content-between flex-wrap">
                   <span
                     class="position-relative d-flex justify-content-start col-6"
                   >
@@ -62,12 +83,14 @@
                     />
                     <span>
                       <button
+                        type="button"
                         class="btn text-danger fz-1 btn_input--top"
                         @click="num++"
                       >
                         +
                       </button>
                       <button
+                        type="button"
                         class="btn text-danger fz-1 btn_input--bottom"
                         @click="num--"
                       >
@@ -75,49 +98,30 @@
                       </button>
                     </span>
                   </span>
-                  <button class="btn btn-primary col-6" @click="buyNow">
+                  <button
+                    class="btn btn-primary fz-smm-3 col-6"
+                    type="button"
+                    @click="buyNow"
+                  >
                     立即購買
                   </button>
                   <button
+                    type="button"
                     class="
                       d-flex
                       justify-content-center
                       align-items-center
-                      col-5
-                      mt-2
-                      bg-white
-                      text-primary
-                      rounded
-                      border-primary border-1
-                    "
-                    @click="addFavorite"
-                  >
-                    <span
-                      v-if="myFavorite.includes(id)"
-                      class="material-icons text-danger"
-                    >
-                      favorite
-                    </span>
-                    <span v-else class="material-icons"> favorite_border </span>
-                    <span>加入收藏</span>
-                  </button>
-                  <button
-                    class="
-                      d-flex
-                      justify-content-center
-                      align-items-center
-                      fz-1
-                      col-5
-                      mt-2
-                      bg-white
-                      text-primary
-                      rounded
-                      border-primary border-1
+                      fz-smm-3
+                      col-12
+                      mt-3
+                      btn
+                      py-3
+                      btn-outline-primary
                     "
                     @click="addCart"
                   >
                     <span
-                      class="material-icons fz-1"
+                      class="material-icons fz-smm-3"
                       :class="{ 'd-none': loadingStatue.addCart !== '' }"
                     >
                       shopping_cart
@@ -127,7 +131,7 @@
                       class="spinner-grow spinner-grow-sm"
                       role="status"
                       aria-hidden="true"
-                    ></span>
+                    />
                     <span
                       :class="{ 'd-none': loadingStatue.addCart !== '' }"
                       class="visually-hidden"
@@ -148,46 +152,52 @@
       <h3 class="titleEffect--border-bottom-bold">
         <span>購物小叮嚀</span>
       </h3>
-      <ul class="mt-3">
-        <li class="titleEffect">
-          <span> 取件方式 </span>
-        </li>
-        <li class="mt-1 fz-0 text-primary">門市取件</li>
-        <li class="mt-1 fz-0 text-primary">低溫宅配</li>
-      </ul>
-      <ul class="mt-3">
-        <li class="titleEffect">
-          <span> 付款方式 </span>
-        </li>
-        <li class="mt-1 fz-0 text-primary">門市付款</li>
-        <li class="mt-1 fz-0 text-primary">線上刷卡</li>
-        <li class="mt-1 fz-0 text-primary">轉帳或匯款</li>
-      </ul>
-      <ul class="mt-3">
-        <li class="titleEffect">
-          <span> 運送方式 </span>
-        </li>
-        <li class="mt-1 fz-0 text-primary">黑貓宅急便（低溫配送）</li>
-        <li class="mt-1 fz-0 text-primary">白貓宅急便（低溫配送）</li>
-      </ul>
-      <ul class="mt-3">
-        <li class="titleEffect">
-          <span> 退換貨方式 </span>
-        </li>
-        <li class="mt-1 fz-0 text-primary">
-           門市現場訂購商品者不適用於7天鑑賞期，不接受退換貨機制
-        </li>
-        <li class="mt-1 fz-0 text-primary">
-           宅配運送過程如若碰撞造成損毀請當日撥打電話連繫客服，逾期恕不受理
-        </li>
-        <li class="mt-1 fz-0 text-primary">
-           如若遇到不可抗力之因素造成的延遲到貨，恕無法接受退貨
-        </li>
-        <li class="mt-1 fz-0 text-primary">
-           恕不接受因訂錯商品或商品已拆封之退換貨
-        </li>
-        <li class="mt-1 fz-0 text-primary"> 如超過13:00下訂，則於隔日製作</li>
-      </ul>
+      <div class="row text-start">
+        <ul class="mt-3 col-smm-4 d-flex flex-column align-items-center">
+          <li class="titleEffect">
+            <span> 取件方式 </span>
+          </li>
+          <li class="mt-1 fz-0 text-primary">門市取件</li>
+          <li class="mt-1 fz-0 text-primary">低溫宅配</li>
+        </ul>
+        <ul class="mt-3 col-smm-4 d-flex flex-column align-items-center">
+          <li class="titleEffect">
+            <span> 付款方式 </span>
+          </li>
+          <li class="mt-1 fz-0 text-primary">門市付款</li>
+          <li class="mt-1 fz-0 text-primary">線上刷卡</li>
+          <li class="mt-1 fz-0 text-primary">轉帳或匯款</li>
+        </ul>
+        <ul class="mt-3 col-smm-4 d-flex flex-column align-items-center">
+          <li class="titleEffect">
+            <span> 運送方式 </span>
+          </li>
+          <li class="mt-1 fz-0 text-primary">黑貓宅急便（低溫配送）</li>
+          <li class="mt-1 fz-0 text-primary">白貓宅急便（低溫配送）</li>
+        </ul>
+        <div class="d-flex flex-column align-items-center">
+          <ul class="mt-3">
+            <li class="titleEffect">
+              <span> 退換貨方式 </span>
+            </li>
+            <li class="mt-1 fz-0 text-primary">
+               門市現場訂購商品者不適用於7天鑑賞期，不接受退換貨機制
+            </li>
+            <li class="mt-1 fz-0 text-primary">
+               宅配運送過程如若碰撞造成損毀請當日撥打電話連繫客服，逾期恕不受理
+            </li>
+            <li class="mt-1 fz-0 text-primary">
+               如若遇到不可抗力之因素造成的延遲到貨，恕無法接受退貨
+            </li>
+            <li class="mt-1 fz-0 text-primary">
+               恕不接受因訂錯商品或商品已拆封之退換貨
+            </li>
+            <li class="mt-1 fz-0 text-primary">
+               如超過13:00下訂，則於隔日製作
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
   </div>
   <hr />
@@ -399,9 +409,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.banner {
-  background: url('https://images.unsplash.com/photo-1534621735346-1de48541fa12?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80');
-}
 .product-input {
   width: 76px;
   height: 76px;
@@ -447,5 +454,10 @@ input[type='number']::-webkit-outer-spin-button {
 .py-38 {
   padding-top: 25px;
   padding-bottom: 25px;
+}
+.fac-position {
+  position: absolute;
+  top: 10px;
+  right: 20px;
 }
 </style>

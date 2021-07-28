@@ -21,7 +21,7 @@
         >
           <!-- 姓名 -->
           <div class="col-md-6">
-            <label for="name" class="form-label">姓名:</label>
+            <label for="name" class="form-label d-flex">姓名:</label>
             <Field
               id="name"
               ref="name"
@@ -32,13 +32,13 @@
               placeholder="請輸入 姓名"
               rules="required"
               v-model="userData.user.name"
-            ></Field>
-            <error-message name="姓名" class="invalid-feedback"></error-message>
+            />
+            <error-message name="姓名" class="invalid-feedback d-flex" />
           </div>
 
           <!-- 電話 -->
           <div class="col-md-6">
-            <label for="tel" class="form-label">電話:</label>
+            <label for="tel" class="form-label d-flex">電話:</label>
             <Field
               id="tel"
               ref="tel"
@@ -49,13 +49,13 @@
               placeholder="請輸入 手機號碼"
               :rules="isPhone"
               v-model="userData.user.tel"
-            ></Field>
-            <error-message name="電話" class="invalid-feedback"></error-message>
+            />
+            <error-message name="電話" class="invalid-feedback d-flex" />
           </div>
 
           <!-- 信箱 -->
           <div class="col-md-6">
-            <label for="email" class="form-label">Email:</label>
+            <label for="email" class="form-label d-flex">信箱:</label>
             <Field
               id="email"
               ref="email"
@@ -66,12 +66,12 @@
               placeholder="請輸入 信箱"
               :rules="isEmail"
               v-model="userData.user.email"
-            ></Field>
-            <error-message name="信箱" class="invalid-feedback"></error-message>
+            />
+            <error-message name="信箱" class="invalid-feedback d-flex" />
           </div>
           <!-- 本島/離島 -->
           <div class="col-md-6">
-            <label for="island" class="form-label">本島/離島:</label>
+            <label for="island" class="form-label d-flex">本島/離島:</label>
             <Field
               id="island"
               ref="island"
@@ -104,14 +104,11 @@
                 <label class="form-check-label" for="inlineRadio2">離島</label>
               </div>
             </Field>
-            <error-message
-              name="本島/離島"
-              class="invalid-feedback"
-            ></error-message>
+            <error-message name="本島/離島" class="invalid-feedback d-flex" />
           </div>
           <!-- 地址 -->
           <div class="col-12">
-            <label for="address" class="form-label">地址</label>
+            <label for="address" class="form-label d-flex">地址:</label>
             <Field
               id="address"
               ref="address"
@@ -122,18 +119,18 @@
               placeholder="請輸入 地址"
               rules="required"
               v-model="userData.user.address"
-            ></Field>
-            <error-message name="地址" class="invalid-feedback"></error-message>
+            />
+            <error-message name="地址" class="invalid-feedback d-flex" />
           </div>
           <div class="col-12">
-            <label for="text" class="form-label">留言:</label>
+            <label for="text" class="form-label d-flex">留言:</label>
             <textarea
               type="text"
               id="text"
               placeholder="請輸入想說的話"
               class="form-control"
               v-model="userData.message"
-            ></textarea>
+            />
           </div>
           <div
             class="
@@ -145,7 +142,7 @@
             <button
               type="button"
               class="
-                btn btn-secondary
+                btn btn-outline-secondary
                 py-2
                 fz-2 fz-ssm-3
                 col-10 col-sm-5
@@ -176,7 +173,7 @@
                 class="spinner-border spinner-border-sm"
                 role="status"
                 aria-hidden="true"
-              ></span>
+              />
               <span>送出訂單</span>
             </button>
           </div>
@@ -185,34 +182,37 @@
       </div>
       <div class="col-md-4">
         <!-- 購物車列表 start-->
-        <ul class="p-2 border border-primary">
+        <ul class="p-3 border border-primary">
           <li>訂單明細</li>
           <li v-for="(item, i) in cartList.carts" :key="'Car_' + i">
             <div
-              class="card border-0 mb-3 text-dark bg-light"
+              class="card border-0 mb-3 text-dark bg-white"
               style="max-width: 540px"
             >
               <div class="row g-0">
                 <div class="col-2">
                   <img
                     class="cart-img object-sm-fit"
-                    style="width: 48px; height: 48px; object-fit: cover"
+                    style="width: 48px; height: 100%; object-fit: cover"
                     :src="item.product.imageUrl"
                     :alt="item.product.title"
                   />
                 </div>
                 <div class="col-10">
-                  <h5 class="card-title fz-1 m-0 py-1 text-start">
+                  <h5 class="card-title fz-1 m-0 text-start p-2">
                     {{ item.product.title }}
                   </h5>
-                  <span class="d-flex justify-content-between">
+                  <span class="d-flex justify-content-between px-2">
                     <p class="card-text m-0">
                       <small class="text-muted">
-                        NT$ {{ $toComma(item.product.price) }} /
-                        {{ item.product.unit }}
+                        {{
+                          `NT$ ${$toComma(item.product.price)} / ${
+                            item.product.unit
+                          } `
+                        }}
                       </small>
                     </p>
-                    <p class="card-text">X{{ item.qty }}</p>
+                    <p class="card-text">{{ `X ${item.qty}` }}</p>
                   </span>
                 </div>
               </div>
@@ -245,25 +245,27 @@
           <li>
             <span class="d-flex justify-content-between align-items-center">
               <p class="mb-0">小計:</p>
-              <p class="mb-0">NT$ {{ $toComma(Math.floor(cartList.total)) }}</p>
+              <p class="mb-0">
+                {{ `NT $ ${$toComma(Math.floor(cartList.total))}` }}
+              </p>
             </span>
           </li>
           <!-- 運費 -->
           <li>
             <span class="d-flex justify-content-between align-items-center">
               <p class="mb-0">運費:</p>
-              <p class="mb-0">NT$ {{ $toComma(shipping) }}</p>
+              <p class="mb-0">{{ `NT $ ${$toComma(shipping)}` }}</p>
             </span>
           </li>
           <li>
             <span class="d-flex justify-content-between align-items-center">
               <p class="mb-0">優惠折抵:</p>
               <p class="mb-0">
-                NT$ -{{
-                  $toComma(
+                {{
+                  `NT $ -${$toComma(
                     Math.floor(cartList.total) -
                       Math.floor(cartList.final_total)
-                  )
+                  )}`
                 }}
               </p>
             </span>
@@ -272,10 +274,18 @@
             <hr />
           </li>
           <li>
-            <span class="fz-1 d-flex justify-content-around align-items-center">
+            <span
+              class="fz-1 d-flex justify-content-between align-items-center"
+            >
               <p class="mb-0">總計:</p>
               <p class="fz-2 mb-0 text-danger fw-bold">
-                NT$ {{ $toComma(Math.floor(cartList.final_total) + shipping) }}
+                {{
+                  cartList.final_total == null
+                    ? 'NT$ 0'
+                    : `NT $ ${$toComma(
+                        Math.floor(cartList.final_total) + shipping
+                      )}`
+                }}
               </p>
             </span>
           </li>
@@ -299,7 +309,11 @@
       >
         <p class="mb-0">總計:</p>
         <p class="fz-2 mb-0 text-danger fw-bold">
-          NT$ {{ $toComma(Math.floor(cartList.final_total) + shipping) }}
+          {{
+            cartList.final_total == null
+              ? 'NT$ 0'
+              : `NT $ ${$toComma(Math.floor(cartList.final_total) + shipping)}`
+          }}
         </p>
       </span>
       <button
@@ -322,7 +336,7 @@
           class="spinner-border spinner-border-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         <span>送出訂單</span>
       </button>
     </div>
@@ -492,8 +506,6 @@ export default {
             tel: this.userData.user.tel,
             address: this.userData.user.address,
           },
-          // couponPrice: Math.floor(this.cartList.total) - Math.floor(this.cartList.final_total),
-          // shipping: this.shipping,
           message: `${
             this.userData.message
           } //splitValue//finally_total//splitValue//${
@@ -503,7 +515,6 @@ export default {
           }//splitValue//couponPrice//splitValue//${
             Math.floor(this.cartList.total) - Math.floor(this.cartList.final_total)
           }`,
-          // finally_total: Math.floor(this.cartList.final_total) + this.shipping,
         },
         prd: {
           shipping: this.shipping,

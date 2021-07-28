@@ -15,7 +15,7 @@
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <div class="modal-body">
           <label class="mr-2" for="API_Path">API_Path:</label>

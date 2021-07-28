@@ -49,11 +49,11 @@
           </option>
         </select>
         <!-- 商品內容 -->
-        <div class="col-lg-9">
+        <div class="col-lg-9" v-if="nowCategory === ''">
           <div class="row row-cols-1 row-cols-smm-2 row-cols-md-3 g-4">
             <div
               class="col cursor-pointer"
-              v-for="(item, i) in filterProductCategory"
+              v-for="(item, i) in productData"
               :key="'prd' + i"
             >
               <div class="card h-100">
@@ -64,18 +64,24 @@
                   <img
                     :src="item.imageUrl"
                     class="card-img-top prd-card-img object-fit img--scale"
-                    alt="item.title"
+                    :alt="item.title"
                   />
                 </div>
                 <div class="favorite">
-                  <a class="text-danger" @click="addFavorite(item.id)">
+                  <a
+                    class="text-danger"
+                    href="#"
+                    @click.prevent="addFavorite(item.id)"
+                  >
                     <span
                       v-if="myFavorite.includes(item.id)"
-                      class="material-icons text-danger"
+                      class="material-icons text-danger hover-zoom-35"
                     >
                       favorite
                     </span>
-                    <span v-else class="material-icons"> favorite_border </span>
+                    <span v-else class="material-icons hover-zoom-35">
+                      favorite_border
+                    </span>
                   </a>
                 </div>
                 <div
@@ -83,24 +89,28 @@
                   class="card-body p-0"
                   @click.prevent="viewOneProduct(item)"
                 >
-                  <h5 class="card-title bg-primary text-white p-1">
+                  <h5 class="card-title bg-blueGray text-primary fw-bold p-1">
                     {{ item.title }}
                   </h5>
                   <span
                     class="d-flex justify-content-around align-items-center"
                   >
                     <p class="card-text border-right">
-                      <del>${{ $toComma(item.origin_price) }}元</del>
+                      <del>{{ `$ ${$toComma(item.origin_price)} 元` }}</del>
                     </p>
                     <p class="card-text text-danger fz-2">
-                      ${{ $toComma(item.price) }}元
+                      {{ `$ ${$toComma(item.price)} 元` }}
                     </p>
                   </span>
                 </div>
                 <div class="d-flex">
                   <a
                     href="#"
-                    class="product-link btn btn-success rounded-0"
+                    class="
+                      product-link
+                      btn btn-outline-primary-lighten
+                      rounded-0
+                    "
                     :class="{
                       disabled: item.id === loadingStatue.viewContentStatus,
                     }"
@@ -116,7 +126,7 @@
                       class="spinner-grow spinner-grow-sm"
                       role="status"
                       aria-hidden="true"
-                    ></span>
+                    />
                     <span
                       :class="{
                         'd-none': item.id !== loadingStatue.viewContentStatus,
@@ -128,7 +138,7 @@
                   </a>
                   <a
                     href="#"
-                    class="product-link btn btn-danger rounded-0"
+                    class="product-link btn btn-primary rounded-0"
                     :class="{ disabled: item.id === loadingStatue.addCart }"
                     :id="'car_' + item.id"
                     @click.prevent="addCart(item.id, item.qty)"
@@ -141,7 +151,7 @@
                       class="spinner-grow spinner-grow-sm"
                       role="status"
                       aria-hidden="true"
-                    ></span>
+                    />
                     <span
                       :class="{ 'd-none': item.id !== loadingStatue.addCart }"
                       class="visually-hidden"
@@ -154,12 +164,129 @@
               </div>
             </div>
           </div>
-          <p>此頁面有{{ filterProductCategory.length }}項產品</p>
+          <p>{{ `全部共有 ${filterProductCategory.length} 項產品` }}</p>
           <!-- 分頁 start -->
-          <!-- <div class="d-flex justify-content-center">
-          <Pagination :pagination="pagination" @get-product="getProduct"></Pagination>
-        </div> -->
+          <div class="d-flex justify-content-center">
+            <Pagination :pagination="pagination" @get-product="getProduct" />
+          </div>
           <!-- 分頁 end -->
+        </div>
+        <div class="col-lg-9" v-else>
+          <div class="row row-cols-1 row-cols-smm-2 row-cols-md-3 g-4">
+            <div
+              class="col cursor-pointer"
+              v-for="(item, i) in filterProductCategory"
+              :key="'prd' + i"
+            >
+              <div class="card h-100">
+                <div
+                  class="overflow-hidden"
+                  @click.prevent="viewOneProduct(item)"
+                >
+                  <img
+                    :src="item.imageUrl"
+                    class="card-img-top prd-card-img object-fit img--scale"
+                    :alt="item.title"
+                  />
+                </div>
+                <div class="favorite">
+                  <a
+                    class="text-danger"
+                    href="#"
+                    @click.prevent="addFavorite(item.id)"
+                  >
+                    <span
+                      v-if="myFavorite.includes(item.id)"
+                      class="material-icons text-danger hover-zoom-35"
+                    >
+                      favorite
+                    </span>
+                    <span v-else class="material-icons hover-zoom-35">
+                      favorite_border
+                    </span>
+                  </a>
+                </div>
+                <div
+                  v-if="item"
+                  class="card-body p-0"
+                  @click.prevent="viewOneProduct(item)"
+                >
+                  <h5 class="card-title bg-blueGray text-primary fw-bold p-1">
+                    {{ item.title }}
+                  </h5>
+                  <span
+                    class="d-flex justify-content-around align-items-center"
+                  >
+                    <p class="card-text border-right">
+                      <del>{{ `$ ${$toComma(item.origin_price)} 元` }}</del>
+                    </p>
+                    <p class="card-text text-danger fz-2">
+                      {{ `$ ${$toComma(item.price)} 元` }}
+                    </p>
+                  </span>
+                </div>
+                <div class="d-flex">
+                  <a
+                    href="#"
+                    class="
+                      product-link
+                      btn btn-outline-primary-lighten
+                      rounded-0
+                    "
+                    :class="{
+                      disabled: item.id === loadingStatue.viewContentStatus,
+                    }"
+                    :id="'content_' + item.id"
+                    data-id="item.id"
+                    @click.prevent="viewOneProduct(item)"
+                  >
+                    <!-- class="btn  btn-success btn_white " -->
+                    <span
+                      :class="{
+                        'd-none': item.id !== loadingStatue.viewContentStatus,
+                      }"
+                      class="spinner-grow spinner-grow-sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                    <span
+                      :class="{
+                        'd-none': item.id !== loadingStatue.viewContentStatus,
+                      }"
+                      class="visually-hidden"
+                      >Loading...</span
+                    >
+                    查看內容
+                  </a>
+                  <a
+                    href="#"
+                    class="product-link btn btn-primary rounded-0"
+                    :class="{ disabled: item.id === loadingStatue.addCart }"
+                    :id="'car_' + item.id"
+                    @click.prevent="addCart(item.id, item.qty)"
+                    data-action="remove"
+                    data-id="item.id"
+                  >
+                    <!-- class="btn  btn-info btn_white " -->
+                    <span
+                      :class="{ 'd-none': item.id !== loadingStatue.addCart }"
+                      class="spinner-grow spinner-grow-sm"
+                      role="status"
+                      aria-hidden="true"
+                    />
+                    <span
+                      :class="{ 'd-none': item.id !== loadingStatue.addCart }"
+                      class="visually-hidden"
+                    >
+                      Loading...</span
+                    >
+                    加入購物車
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+          <p>{{ `此分類有 ${filterProductCategory.length} 項產品` }}</p>
         </div>
       </div>
       <hr />
@@ -191,20 +318,22 @@
 // Alert元件
 import Alert from '@/components/Alert.vue';
 // 分頁
-// import Pagination from '@/components/Pagination.vue';
+import Pagination from '@/components/Pagination.vue';
 // 讀取畫面
 import Loading from '@/components/Loading.vue';
 // 熱賣商品
 import HotProductSwiper from '@/components/HotProductSwiper.vue';
 // emitter
 import emitter from '@/assets/js/emitter';
+// bs5 元件
+import 'bootstrap/js/dist/tab';
 
 export default {
   components: {
     // Alert元件
     Alert,
     // 分頁
-    // Pagination,
+    Pagination,
     // 讀取畫面
     Loading,
     // 熱賣商品
@@ -447,7 +576,6 @@ export default {
       return this.allProductsData.filter((item) => item.category.match(this.nowCategory));
     },
   },
-  created() {},
   mounted() {
     this.isLoading = true;
     // 取得商品資料
@@ -459,14 +587,16 @@ export default {
 <style lang="scss" scoped>
 .prd-banner {
   height: 340px;
-  background: center center no-repeat url('https://i.imgur.com/T5rE13B.jpg');
+  background: center center no-repeat
+    url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627379949432.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=B%2Bq%2BvzNhAGumFKDQzNn7muw1Q8Y3rjPd3PGT7U2bjU78LffMeu5yEbwnb2dfRG5IJi1BQ8rPO1OymuxYjE7JpH%2FjgLdkKIFL8JQImVhbIhxUp9s%2FkGIrVfcVODAfr3%2BdxyTog3eWRQf050WJXR8MCNqaJJw%2B4Mv%2FaWBUI4kA8CF9kPoJyOSlpmHOZom6O9uz9%2BJuKRU6aVOZfXHx93MNHwgIqYaASAo0zk18GynlhiDfSvDCdID4neh5GGTAzIhixZhj1FpOhZXQ%2Bn9L6bprNSdrvWhO57k7AY1f9Aq%2BNLP0s7V6I9RE6GVHxeyVKRuTRHQjo0B5FLHNBv2hf6WB%2BA%3D%3D');
   background-size: cover;
   background-attachment: fixed;
 }
 @media (max-width: 768px) {
   .prd-banner {
     height: 170px;
-    background: center center no-repeat url('https://i.imgur.com/T5rE13B.jpg');
+    background: center center no-repeat
+      url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627379982059.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=V322tazhWOJkaK1f%2FQ%2FjFHJ1i3Zh4kwPT6qjY3YD3vZdfDRBooDEb2Je5BzTyJnaq7kh1hKXiC%2FkW%2Fq8MVqWlK1pCakPFxduNoc9uElkH%2BKYsDmGHkka3boWWYHveZpNsVH47Gmisp3gYUtELvo59jXI2ml5Oxby%2BYIvkEyntDwCAzWikRvpJJW%2F%2BZxI28BApYpwImaOpWVi%2B99HU5%2FYG6HkXLxX0nFHL8xS0UTi4cNbgLB5yYNZSMQb4CJEGK6hO%2BotZOySRkVkTuj6RAVvu%2Fp2pKnq6nYXXZ9Ib2X3ZAd6pLWU2%2BBFzVXVgXn4vCVASXHzu1n9p00gv4CvgbUx%2FQ%3D%3D');
     background-size: cover;
     // background-attachment: fixed;
   }

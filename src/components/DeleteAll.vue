@@ -19,7 +19,7 @@
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <div class="modal-footer">
           <button
@@ -44,7 +44,7 @@
   </div>
 </template>
 <script>
-import { Modal } from 'bootstrap';
+import Modal from 'bootstrap/js/dist/modal';
 
 export default {
   data() {

@@ -26,7 +26,7 @@
         :rules="isEmail"
         v-model="username"
       />
-      <error-message name="信箱" class="invalid-feedback"></error-message>
+      <error-message name="信箱" class="invalid-feedback" />
       <label for="login-username">Email address</label>
     </div>
     <div class="form-floating">
@@ -39,8 +39,8 @@
         :class="{ 'is-invalid': errors['密碼'] }"
         rules="required"
         v-model="password"
-      ></Field>
-      <error-message name="密碼" class="invalid-feedback"></error-message>
+      />
+      <error-message name="密碼" class="invalid-feedback" />
       <label for="login-password">Password</label>
     </div>
     <button

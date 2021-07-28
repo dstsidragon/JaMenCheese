@@ -29,7 +29,7 @@
           class="spinner-grow spinner-grow-sm"
           role="status"
           aria-hidden="true"
-        ></span>
+        />
         <span
           :class="{ 'd-none': loadingStatue.searchOrder == '' }"
           class="visually-hidden"
@@ -43,7 +43,7 @@
       <li v-for="(item, i) in orderList.orders" :key="i" class="mb-3">
         <div class="card">
           <h5 class="card-header bg-primary text-white fs-5">
-            #{{ (orderList.pagination.current_page - 1) * 10 + i + 1 }}
+            {{ `#${(orderList.pagination.current_page - 1) * 10 + i + 1}` }}
           </h5>
           <div class="card-body">
             <h5
@@ -107,8 +107,8 @@
                           }}</small>
                         </p>
                         <p class="card-text d-flex justify-content-between">
-                          <small>*{{ prd.qty }}</small
-                          ><small>${{ prd.total }}</small>
+                          <small>{{ `* ${prd.qty}` }}</small
+                          ><small>{{ `$${$toComma(prd.total)}` }}</small>
                         </p>
                       </div>
                     </div>
@@ -125,10 +125,10 @@
                 fw-bold
               "
             >
-              <!-- <li><p>目前有{{cartsNum}}項產品</p></li> -->
-              <!-- <li>總共 {{item.product}} 項商品</li> -->
+              <!-- <li><p>目前有{{ cartsNum }}項產品</p></li> -->
+              <!-- <li>總共 {{ item.product }} 項商品</li> -->
               <li class="fs-3 text-danger">
-                <p>總計:{{ Math.floor(item.total) }} 元</p>
+                <p>{{ `總計: ${$toComma(Math.floor(item.total))} 元` }}</p>
               </li>
               <li v-if="item.is_paid" class="fs-3 text-success">
                 <p>已付款</p>
@@ -136,12 +136,17 @@
               <li v-else class="fs-3 text-danger"><p>未付款</p></li>
 
               <li>
-                <button class="btn btn-success me-2" @click="viewSeller">
+                <button
+                  class="btn btn-success me-2"
+                  @click="viewSeller"
+                  type="button"
+                >
                   聯絡賣家
                 </button>
                 <button
                   v-if="!item.is_paid"
                   class="btn btn-danger"
+                  type="button"
                   @click="this.$router.push(`/payment/${item.id}`)"
                 >
                   付款
@@ -156,15 +161,12 @@
     <!-- 訂單列表 end -->
     <!-- 訂單分頁 start -->
     <div class="d-flex justify-content-center">
-      <Pagination
-        :pagination="orderPagination"
-        @get-product="getOrderList"
-      ></Pagination>
+      <Pagination :pagination="orderPagination" @get-product="getOrderList" />
     </div>
     <!-- 訂單分頁 end -->
 
     <!-- 賣家資訊 start-->
-    <ViewSellerModal ref="viewSeller"></ViewSellerModal>
+    <ViewSellerModal ref="viewSeller" />
     <!-- 賣家資訊 end-->
   </div>
   <!-- Alert元件 start -->

@@ -1,22 +1,32 @@
-@mixin  pc{
-  @media(max-width: 992px){ @content; }
+@mixin pc {
+  @media (max-width: 992px) {
+    @content;
+  }
 }
 
-
-@mixin  pad{
-  @media(max-width: 768px){ @content; }
+@mixin pad {
+  @media (max-width: 768px) {
+    @content;
+  }
 }
 
-
-@mixin  mobile{
-  @media(max-width: 630px){ @content; }
+@mixin mobile {
+  @media (max-width: 630px) {
+    @content;
+  }
 }
-@mixin  smallmobile{
-  @media(max-width: 512px){ @content; }
+@mixin smallmobile {
+  @media (max-width: 512px) {
+    @content;
+  }
 }
-@mixin  plusMobile{
-  @media(max-width: 414px){ @content; }
+@mixin plusMobile {
+  @media (max-width: 414px) {
+    @content;
+  }
 }
-@mixin  miniMobile{
-  @media(max-width: 320px){ @content; }
+@mixin miniMobile {
+  @media (max-width: 320px) {
+    @content;
+  }
 }

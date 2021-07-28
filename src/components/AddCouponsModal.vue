@@ -16,10 +16,14 @@
             class="btn-close"
             data-bs-dismiss="modal"
             aria-label="Close"
-          ></button>
+          />
         </div>
         <div class="modal-body fs-2">
-          <Form ref="addOrderForm" v-slot="{ errors }" @submit="addCouponData">
+          <Form
+            ref="addOrderForm"
+            v-slot="{ errors }"
+            @submit.prevent="addCouponData"
+          >
             <div class="card card-body">
               <div class="d-flex flex-wrap justify-content-around mb-2">
                 <div class="form-group">
@@ -35,10 +39,7 @@
                     required
                     v-model="addCoupon.title"
                   />
-                  <error-message
-                    name="標題"
-                    class="invalid-feedback"
-                  ></error-message>
+                  <error-message name="標題" class="invalid-feedback" />
                 </div>
 
                 <div class="form-group">
@@ -57,10 +58,7 @@
                     class="form-control"
                     v-model="addCoupon.percent"
                   />
-                  <error-message
-                    name="折扣"
-                    class="invalid-feedback"
-                  ></error-message>
+                  <error-message name="折扣" class="invalid-feedback" />
                 </div>
               </div>
               <div class="d-flex flex-wrap justify-content-around mb-2">
@@ -76,10 +74,7 @@
                     class="form-control"
                     v-model="addCoupon.due_date"
                   />
-                  <error-message
-                    name="到期日"
-                    class="invalid-feedback"
-                  ></error-message>
+                  <error-message name="到期日" class="invalid-feedback" />
                 </div>
 
                 <div class="form-group col-md-5" style="width: 202px">
@@ -94,10 +89,7 @@
                     class="form-control"
                     v-model="addCoupon.code"
                   />
-                  <error-message
-                    name="折扣碼"
-                    class="invalid-feedback"
-                  ></error-message>
+                  <error-message name="折扣碼" class="invalid-feedback" />
                 </div>
               </div>
               <hr class="mt-5" />

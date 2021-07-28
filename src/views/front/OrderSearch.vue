@@ -71,8 +71,8 @@
                           }}</small>
                         </p>
                         <p class="card-text d-flex justify-content-between">
-                          <small>*{{ prd.qty }}</small
-                          ><small>${{ prd.total }}</small>
+                          <small>{{ `*${prd.qty}` }}</small
+                          ><small>{{ `$${$toComma(prd.total)}` }}</small>
                         </p>
                       </div>
                     </div>
@@ -90,7 +90,9 @@
               "
             >
               <li class="fs-3 text-danger">
-                <p>總計:{{ Math.floor(orderData.order.total) }} 元</p>
+                <p>
+                  {{ `總計:${$toComma(Math.floor(orderData.order.total))} 元` }}
+                </p>
               </li>
               <li v-if="orderData.order.is_paid" class="fs-3 text-success">
                 <p>已付款</p>
@@ -98,11 +100,16 @@
               <li v-else class="fs-3 text-danger"><p>未付款</p></li>
 
               <li>
-                <button class="btn btn-success me-2" @click="viewSeller">
+                <button
+                  class="btn btn-success me-2"
+                  @click="viewSeller"
+                  type="button"
+                >
                   聯絡賣家
                 </button>
                 <button
                   v-if="!orderData.order.is_paid"
+                  type="button"
                   class="btn btn-danger"
                   @click="this.$router.push(`/payment/${orderId}`)"
                 >
@@ -117,7 +124,7 @@
     <!-- 訂單列表 end -->
 
     <!-- 賣家資訊 start-->
-    <ViewSellerModal ref="viewSeller"></ViewSellerModal>
+    <ViewSellerModal ref="viewSeller" />
     <!-- 賣家資訊 end-->
   </div>
 
@@ -223,7 +230,6 @@ export default {
     // 取得訂單資料
     this.getOrderData();
   },
-  mounted() {},
 };
 </script>
 <style lang="scss" scoped>
