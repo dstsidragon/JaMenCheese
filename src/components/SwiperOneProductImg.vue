@@ -39,7 +39,7 @@
       v-for="(item, i) in filterProductImg"
       :key="i"
     >
-      <img :src="item" :alt="item"/>
+      <img :src="item" :alt="item" />
     </swiper-slide>
   </swiper>
 </template>

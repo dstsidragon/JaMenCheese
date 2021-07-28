@@ -90,7 +90,9 @@
               "
             >
               <li class="fs-3 text-danger">
-                <p>{{ `總計:${$toComma(Math.floor(orderData.order.total))} 元` }}</p>
+                <p>
+                  {{ `總計:${$toComma(Math.floor(orderData.order.total))} 元` }}
+                </p>
               </li>
               <li v-if="orderData.order.is_paid" class="fs-3 text-success">
                 <p>已付款</p>

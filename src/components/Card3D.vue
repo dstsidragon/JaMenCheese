@@ -4,10 +4,14 @@
       <div class="row full-height justify-content-center">
         <div class="col-12 text-center align-self-center py-5">
           <div class="section text-center py-5 py-md-0">
-              <p class="activeCard bottom fz-1 text-shadow-multipleLight"> 點擊下方!
-                <img src="https://cdn3.iconfinder.com/data/icons/wpzoom-developer-icon-set/500/143-256.png"
-                style="width: 20px" alt="click">
-              </p>
+            <p class="activeCard bottom fz-1 text-shadow-multipleLight">
+              點擊下方!
+              <img
+                src="https://cdn3.iconfinder.com/data/icons/wpzoom-developer-icon-set/500/143-256.png"
+                style="width: 20px"
+                alt="click"
+              />
+            </p>
             <input
               class="pricing"
               type="checkbox"
@@ -19,8 +23,7 @@
                 本店主打
                 <span class="float-end"> 招牌飲品 </span>
               </span>
-              </label
-            >
+            </label>
             <div class="card-3d-wrap mx-auto">
               <div class="card-3d-wrapper">
                 <div class="card-front">
@@ -100,7 +103,6 @@
   animation: pulse 2s infinite;
   color: #7f5625;
   font-weight: bold;
-
 }
 
 @keyframes pulse {
@@ -287,14 +289,14 @@ a:hover {
   letter-spacing: 3px;
   font-size: 22px;
   line-height: 1.7;
-  color: #A32C0E;
+  color: #a32c0e;
   transform: translate3d(0, 0, 35px) perspective(100px);
 }
 .pricing-wrap h4:before {
   position: absolute;
   content: '';
   z-index: -1;
-  background: linear-gradient(217deg, #A32C0E, #F5C67C);
+  background: linear-gradient(217deg, #a32c0e, #f5c67c);
   width: 70px;
   height: 70px;
   display: block;
@@ -341,7 +343,7 @@ a:hover {
   letter-spacing: 1px;
   font-size: 36px;
   line-height: 1.1;
-  color: #A32C0E;
+  color: #a32c0e;
   transform: translate3d(0, 0, 30px) perspective(100px);
 }
 .pricing-wrap h2 sup {
@@ -357,7 +359,7 @@ a:hover {
   font-size: 14px;
   line-height: 1.2;
   letter-spacing: 1px;
-  color: #A32C0E;
+  color: #a32c0e;
   transform: translate3d(0, 0, 30px) perspective(100px);
 }
 .card-back h2,

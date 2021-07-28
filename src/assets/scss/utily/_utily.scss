@@ -364,17 +364,17 @@
 }
 
 // hover
-.hover-red{
-&:hover,
-&:focus,
-&:active:hover {
-  color: #d10a1e !important;
+.hover-red {
+  &:hover,
+  &:focus,
+  &:active:hover {
+    color: #d10a1e !important;
+  }
 }
-}
-.hover-zoom-35{
-  &:hover{
-    transition: .5s;
+.hover-zoom-35 {
+  &:hover {
+    transition: 0.5s;
     color: #dc3545 !important;
-    font-size: 35px!important;
+    font-size: 35px !important;
   }
 }

@@ -5,10 +5,10 @@
     :slidesPerGroup="1"
     :loop="true"
     :loopFillGroupWithBlank="true"
-    :autoplay='{
-    "delay": 1500,
-    "disableOnInteraction": false
-}'
+    :autoplay="{
+      delay: 1500,
+      disableOnInteraction: false,
+    }"
     class="mySwiper"
   >
     <SwiperSlide

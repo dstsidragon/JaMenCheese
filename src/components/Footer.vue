@@ -24,12 +24,19 @@
           </li>
         </ul>
         <p class="text-white fz-smm-2">- - 個人練習使用 - -</p>
-        <router-link class="text-center text-white hover-red d-flex justify-content-center mb-4"
-         to="/admin">
+        <router-link
+          class="
+            text-center text-white
+            hover-red
+            d-flex
+            justify-content-center
+            mb-4
+          "
+          to="/admin"
+        >
           <span class="material-icons"> home </span>
           <span>前往後台</span>
-          </router-link
-        >
+        </router-link>
         <ul class="d-flex justify-content-around align-items-center">
           <li>
             <!-- 貼FACEBOOK 網址會跳警告 -->

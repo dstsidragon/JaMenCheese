@@ -168,7 +168,11 @@
       <span class="col-7 fz-0 d-flex justify-content-around align-items-center">
         <p class="mb-0">商品總計:</p>
         <p class="fz-2 mb-0 text-danger fw-bold">
-          {{ cartList.total == null ? 'NT$ 0' : `NT$ ${$toComma(Math.floor(cartList.total))}` }}
+          {{
+            cartList.total == null
+              ? 'NT$ 0'
+              : `NT$ ${$toComma(Math.floor(cartList.total))}`
+          }}
         </p>
       </span>
       <button
@@ -200,7 +204,11 @@
       >
         <p class="mb-0">總計:</p>
         <p class="fz-2 mb-0 text-danger fw-bold">
-          {{ cartList.total == null ? 'NT$ 0' : `NT$ ${$toComma(Math.floor(cartList.total))}` }}
+          {{
+            cartList.total == null
+              ? 'NT$ 0'
+              : `NT$ ${$toComma(Math.floor(cartList.total))}`
+          }}
         </p>
       </span>
       <button
@@ -569,11 +577,11 @@ export default {
 }
 //input
 // 消除number預設樣式
-input[type="number"] {
+input[type='number'] {
   -moz-appearance: textfield;
 }
-input[type="number"]::-webkit-inner-spin-button,
-input[type="number"]::-webkit-outer-spin-button {
+input[type='number']::-webkit-inner-spin-button,
+input[type='number']::-webkit-outer-spin-button {
   -webkit-appearance: none;
   margin: 0;
 }

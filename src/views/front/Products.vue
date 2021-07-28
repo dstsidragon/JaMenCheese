@@ -49,8 +49,7 @@
           </option>
         </select>
         <!-- 商品內容 -->
-        <div class="col-lg-9"
-            v-if="nowCategory === ''">
+        <div class="col-lg-9" v-if="nowCategory === ''">
           <div class="row row-cols-1 row-cols-smm-2 row-cols-md-3 g-4">
             <div
               class="col cursor-pointer"
@@ -80,7 +79,9 @@
                     >
                       favorite
                     </span>
-                    <span v-else class="material-icons hover-zoom-35"> favorite_border </span>
+                    <span v-else class="material-icons hover-zoom-35">
+                      favorite_border
+                    </span>
                   </a>
                 </div>
                 <div
@@ -105,7 +106,11 @@
                 <div class="d-flex">
                   <a
                     href="#"
-                    class="product-link btn btn-outline-primary-lighten rounded-0"
+                    class="
+                      product-link
+                      btn btn-outline-primary-lighten
+                      rounded-0
+                    "
                     :class="{
                       disabled: item.id === loadingStatue.viewContentStatus,
                     }"
@@ -162,12 +167,11 @@
           <p>{{ `全部共有 ${filterProductCategory.length} 項產品` }}</p>
           <!-- 分頁 start -->
           <div class="d-flex justify-content-center">
-          <Pagination :pagination="pagination" @get-product="getProduct"/>
-        </div>
+            <Pagination :pagination="pagination" @get-product="getProduct" />
+          </div>
           <!-- 分頁 end -->
         </div>
-        <div class="col-lg-9"
-            v-else>
+        <div class="col-lg-9" v-else>
           <div class="row row-cols-1 row-cols-smm-2 row-cols-md-3 g-4">
             <div
               class="col cursor-pointer"
@@ -197,7 +201,9 @@
                     >
                       favorite
                     </span>
-                    <span v-else class="material-icons hover-zoom-35"> favorite_border </span>
+                    <span v-else class="material-icons hover-zoom-35">
+                      favorite_border
+                    </span>
                   </a>
                 </div>
                 <div
@@ -222,7 +228,11 @@
                 <div class="d-flex">
                   <a
                     href="#"
-                    class="product-link btn btn-outline-primary-lighten rounded-0"
+                    class="
+                      product-link
+                      btn btn-outline-primary-lighten
+                      rounded-0
+                    "
                     :class="{
                       disabled: item.id === loadingStatue.viewContentStatus,
                     }"

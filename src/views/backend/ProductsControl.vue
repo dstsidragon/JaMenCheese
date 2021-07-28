@@ -188,7 +188,7 @@
 
   <!-- 分頁 start-->
   <div class="d-flex justify-content-center">
-    <Pagination :pagination="pagination" @get-product="getProduct"/>
+    <Pagination :pagination="pagination" @get-product="getProduct" />
 
     <!-- 分頁 end-->
 

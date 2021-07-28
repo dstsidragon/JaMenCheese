@@ -229,7 +229,7 @@ export default {
       this.prizeName = '祝你中獎';
       this.$refs.LuckyWheel.play();
       setTimeout(() => {
-        this.$refs.LuckyWheel.stop((Math.random() * 8) > 0);
+        this.$refs.LuckyWheel.stop(Math.random() * 8 > 0);
       }, 3000);
     },
     endCallBack(prize) {

@@ -183,7 +183,9 @@
                     <tbody>
                       <tr v-for="(item, i) in cartList.carts" :key="'car' + i">
                         <th class="col-1" scope="row">{{ i + 1 }}</th>
-                        <td class="col-4 text-start">{{ item.product.title }}</td>
+                        <td class="col-4 text-start">
+                          {{ item.product.title }}
+                        </td>
                         <td class="col-3">{{ item.qty }}</td>
                         <td class="col-4 text-end">
                           {{ `NT$ ${$toComma(item.product.price)}` }}
@@ -689,11 +691,11 @@ export default {
   &:focus,
   &:hover {
     color: #000000 !important;
-    text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
   }
   &.router-link-exact-active {
     color: #000000 !important;
-    text-shadow: 0px 0px 6px rgba(255,255,255,0.7);
+    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
   }
   @include pc {
     font-size: 1.5rem;

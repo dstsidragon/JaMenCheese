@@ -52,10 +52,14 @@
     </div>
 
     <div class="sidebar-footer d-flex justify-content-center">
-      <img class="sidebar-footer-img" src="../assets/images/admin.png" alt="user"/>
+      <img
+        class="sidebar-footer-img"
+        src="../assets/images/admin.png"
+        alt="user"
+      />
       <ul class="ms-2 mb-0 text-start fz-0">
         <li>{{ userName }}</li>
-        <li >{{ userEmail }}</li>
+        <li>{{ userEmail }}</li>
       </ul>
     </div>
   </div>
@@ -98,7 +102,11 @@
         </div>
       </div>
       <div class="d-flex justify-content-center align-items-center">
-        <img class="sidebar-footer-img" src="../assets/images/admin.png" alt="user"/>
+        <img
+          class="sidebar-footer-img"
+          src="../assets/images/admin.png"
+          alt="user"
+        />
         <ul class="ms-2 mb-0 text-start fz-0">
           <li>{{ userName }}</li>
           <li class="">{{ userEmail }}</li>

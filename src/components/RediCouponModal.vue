@@ -18,7 +18,11 @@
           />
         </div>
         <div class="modal-body fs-2">
-          <Form ref="addOrderForm" v-slot="{ errors }" @submit.prevent="reditOneData">
+          <Form
+            ref="addOrderForm"
+            v-slot="{ errors }"
+            @submit.prevent="reditOneData"
+          >
             <div class="card card-body">
               <div class="d-flex flex-wrap justify-content-around mb-2">
                 <div class="form-group">
@@ -34,10 +38,7 @@
                     required
                     v-model="rediData.title"
                   />
-                  <error-message
-                    name="標題"
-                    class="invalid-feedback"
-                  />
+                  <error-message name="標題" class="invalid-feedback" />
                 </div>
 
                 <div class="form-group">
@@ -56,10 +57,7 @@
                     class="form-control"
                     v-model="rediData.percent"
                   />
-                  <error-message
-                    name="折扣"
-                    class="invalid-feedback"
-                  />
+                  <error-message name="折扣" class="invalid-feedback" />
                 </div>
               </div>
               <div class="d-flex flex-wrap justify-content-around mb-2">
@@ -77,10 +75,7 @@
                     :value="due_date"
                     v-model="due_date"
                   />
-                  <error-message
-                    name="到期日"
-                    class="invalid-feedback"
-                  />
+                  <error-message name="到期日" class="invalid-feedback" />
                 </div>
 
                 <div class="form-group col-md-5" style="width: 202px">
@@ -95,10 +90,7 @@
                     class="form-control"
                     v-model="rediData.code"
                   />
-                  <error-message
-                    name="折扣碼"
-                    class="invalid-feedback"
-                  />
+                  <error-message name="折扣碼" class="invalid-feedback" />
                 </div>
               </div>
               <hr class="mt-5" />

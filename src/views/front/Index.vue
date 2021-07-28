@@ -233,7 +233,11 @@
           >超級優惠價格外，<br />
           還有幸運大轉盤，有機會讓你得到全館半價的機會!!
         </p>
-        <router-link class="btn btn-primary-lighten" href="#" to="/lotteryturntable">
+        <router-link
+          class="btn btn-primary-lighten"
+          href="#"
+          to="/lotteryturntable"
+        >
           <div class="d-flex justify-content-center align-items-center">
             <i class="material-icons fz-md-2 me-2"> casino </i>
             <p class="m-0 fz-md-2">立即前往!!</p>
@@ -260,7 +264,12 @@
         />
         <button class="btn btn-secondary" disabled type="button">已訂閱</button>
       </div>
-      <Form v-else v-slot="{ errors }" class="input-group" @submit.prevent="sendMail">
+      <Form
+        v-else
+        v-slot="{ errors }"
+        class="input-group"
+        @submit.prevent="sendMail"
+      >
         <Field
           name="信箱"
           type="email"
@@ -274,10 +283,7 @@
         <button class="btn btn-primary" type="submit" id="button-subscribe">
           訂閱
         </button>
-        <error-message
-          name="信箱"
-          class="invalid-feedback fz-2"
-        />
+        <error-message name="信箱" class="invalid-feedback fz-2" />
       </Form>
     </div>
   </div>
@@ -320,10 +326,10 @@ export default {
   },
   mounted() {
     // 讀取畫面
-    this.isLoading = true;
-    setTimeout(() => {
-      this.isLoading = false;
-    }, 1500);
+    // this.isLoading = true;
+    // setTimeout(() => {
+    //   this.isLoading = false;
+    // }, 1500);
     // ScrollDown 監聽
     $('.hero__scroll').on('click', () => {
       $('html, body').animate(

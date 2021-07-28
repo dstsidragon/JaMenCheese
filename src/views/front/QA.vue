@@ -275,7 +275,8 @@
 <style lang="scss" scoped>
 .banner {
   height: 340px;
-  background: center center no-repeat url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627379818233.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=FLuvfXUlCFVT410mNc%2Bl8zWpYMelJ2VtqkhZqhdEjcKihJFH%2BFOxfwlLY8UqRYWcgNp2%2FblxFeBo7ST%2FvQ%2FynENdTnkBl%2FahshkA6oUy%2B99y9JmHGmFX8Tk2OBB08rk7hHJIZ0gdJgwCf2TW786BWVNzvZAG6RbiX4q%2Fs%2BfJzBS9kES2OVEhk%2F%2Fb57fczenRtk3nabExNgOEQQ4R3yk3KX8go5odovFdEXGNBYtKSEVLhi8UgDQUEIAy1DC0dMsamSGTnK4AidhZ7e95y%2F7Z9AAxotWWcAdzWn0KDhSYskFuTWJ3rvFOt4OAUNpIilLwdi3RdZ21JbtPTH%2FXXeBbDA%3D%3D');
+  background: center center no-repeat
+    url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627379818233.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=FLuvfXUlCFVT410mNc%2Bl8zWpYMelJ2VtqkhZqhdEjcKihJFH%2BFOxfwlLY8UqRYWcgNp2%2FblxFeBo7ST%2FvQ%2FynENdTnkBl%2FahshkA6oUy%2B99y9JmHGmFX8Tk2OBB08rk7hHJIZ0gdJgwCf2TW786BWVNzvZAG6RbiX4q%2Fs%2BfJzBS9kES2OVEhk%2F%2Fb57fczenRtk3nabExNgOEQQ4R3yk3KX8go5odovFdEXGNBYtKSEVLhi8UgDQUEIAy1DC0dMsamSGTnK4AidhZ7e95y%2F7Z9AAxotWWcAdzWn0KDhSYskFuTWJ3rvFOt4OAUNpIilLwdi3RdZ21JbtPTH%2FXXeBbDA%3D%3D');
   background-size: cover;
   //   background-attachment: fixed;
 }
