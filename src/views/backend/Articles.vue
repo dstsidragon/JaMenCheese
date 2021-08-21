@@ -21,17 +21,14 @@
 </template>
 
 <script>
-// Alert元件
 import Alert from '@/components/Alert.vue';
 
 export default {
   components: {
-    // Alert元件
     Alert,
   },
   data() {
     return {
-      // alert元件參數
       alertMessage: '',
       alertStatus: false,
     };

@@ -1,5 +1,4 @@
 <template>
-  <!-- scrollToTop start-->
   <div
     v-if="scrollToTop"
     class="
@@ -15,7 +14,6 @@
   >
     arrow_upward
   </div>
-  <!-- scrollToTop end-->
 </template>
 
 <script>
@@ -54,8 +52,6 @@ export default {
     },
   },
 };
-// 顯示scrollToTop
-//   this.scrollToTop = false;
 </script>
 <style lang="scss" scoped>
 .scrollToTop {

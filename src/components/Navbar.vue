@@ -5,7 +5,7 @@
   >
     <div class="container-fluid position-relative text-secondary">
       <!-- LOGO start-->
-      <router-link
+      <RouterLink
         class="
           navbar-brand
           position-absolute
@@ -16,7 +16,7 @@
         to="/"
       >
         <img class="nav-logo-img" :src="scrollLogo" alt="logo"
-      /></router-link>
+      /></RouterLink>
 
       <div class="d-flex w-100 justify-content-between align-items-center">
         <!-- 漢堡選單 start-->
@@ -54,42 +54,42 @@
         <!-- 選單內容 -->
         <ul class="navbar-nav mb-lg-0 d-none d-lg-flex ps-lg-3">
           <li>
-            <router-link
+            <RouterLink
               class="nav-link fw-bold nav-drown"
               href="#"
               aria-current="page"
               :class="navBarColor"
               to="/"
               @click.prevent="closeHamburger"
-              >首頁</router-link
+              >首頁</RouterLink
             >
           </li>
           <li>
-            <router-link
+            <RouterLink
               class="nav-link fw-bold nav-drown"
               href="#"
               to="/products"
               :class="navBarColor"
               @click.prevent="closeHamburger"
-              >商品列表</router-link
+              >商品列表</RouterLink
             >
           </li>
           <li>
-            <router-link
+            <RouterLink
               class="nav-link fw-bold nav-drown"
               to="/q&a"
               :class="navBarColor"
               @click.prevent="closeHamburger"
-              >常見問題</router-link
+              >常見問題</RouterLink
             >
           </li>
           <li>
-            <router-link
+            <RouterLink
               class="nav-link fw-bold nav-drown"
               to="/lotteryturntable"
               :class="navBarColor"
               @click.prevent="closeHamburger"
-              >活動</router-link
+              >活動</RouterLink
             >
           </li>
         </ul>
@@ -181,7 +181,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <tr v-for="(item, i) in cartList.carts" :key="'car' + i">
+                      <tr v-for="(item, i) in cartList.carts" :key="`car_${i}`">
                         <th class="col-1" scope="row">{{ i + 1 }}</th>
                         <td class="col-4 text-start">
                           {{ item.product.title }}
@@ -280,9 +280,9 @@
                   justify-content-between
                 "
               >
-                <ul class="">
+                <ul >
                   <li @click.prevent="closeOffcanvas">
-                    <router-link
+                    <RouterLink
                       class="
                         dropdown-item
                         nav-offcanvas
@@ -290,11 +290,11 @@
                       "
                       to="/orders"
                       @click.prevent="closeHamburger"
-                      >訂單搜尋</router-link
+                      >訂單搜尋</RouterLink
                     >
                   </li>
                   <li @click.prevent="closeOffcanvas">
-                    <router-link
+                    <RouterLink
                       class="
                         dropdown-item
                         text-center
@@ -303,11 +303,11 @@
                       "
                       to="/carts"
                       @click.prevent="closeHamburger"
-                      >購物車</router-link
+                      >購物車</RouterLink
                     >
                   </li>
                   <li @click.prevent="closeOffcanvas">
-                    <router-link
+                    <RouterLink
                       class="
                         dropdown-item
                         text-center
@@ -316,7 +316,7 @@
                       "
                       to="/favorites"
                       @click.prevent="closeHamburger"
-                      >我的收藏</router-link
+                      >我的收藏</RouterLink
                     >
                   </li>
                   <li @click.prevent="closeOffcanvas">
@@ -331,7 +331,7 @@
                       @click.prevent="openiSgnOutUserModal"
                       >登出</a
                     >
-                    <router-link
+                    <RouterLink
                       class="
                         dropdown-item
                         nav-offcanvas
@@ -341,7 +341,7 @@
                       v-else
                       to="/Login"
                     >
-                      登入</router-link
+                      登入</RouterLink
                     >
                   </li>
                 </ul>
@@ -374,42 +374,42 @@
       >
         <ul class="navbar-nav mb-lg-0 d-lg-none">
           <li>
-            <router-link
+            <RouterLink
               class="nav-link fw-bold nav-drown"
               href="#"
               aria-current="page"
               :class="navBarColor"
               to="/"
               @click.prevent="closeHamburger"
-              >首頁</router-link
+              >首頁</RouterLink
             >
           </li>
           <li>
-            <router-link
+            <RouterLink
               class="nav-link fw-bold nav-drown"
               href="#"
               to="/products"
               :class="navBarColor"
               @click.prevent="closeHamburger"
-              >商品列表</router-link
+              >商品列表</RouterLink
             >
           </li>
           <li>
-            <router-link
+            <RouterLink
               class="nav-link fw-bold nav-drown"
               to="/q&a"
               :class="navBarColor"
               @click.prevent="closeHamburger"
-              >常見問題</router-link
+              >常見問題</RouterLink
             >
           </li>
           <li>
-            <router-link
+            <RouterLink
               class="nav-link fw-bold nav-drown"
               to="/lotteryturntable"
               :class="navBarColor"
               @click.prevent="closeHamburger"
-              >活動</router-link
+              >活動</RouterLink
             >
           </li>
         </ul>
@@ -428,26 +428,19 @@
   <Loading />
   <!-- 登出Modal -->
   <LoginOut ref="signOutUserModal" @sign-out-admin="signOutAdmin" />
-
-  <!-- <router-view/> -->
 </template>
 <script>
-// Alert元件
 import Alert from '@/components/Alert.vue';
 import LoginOut from '@/components/LoginOut.vue';
 import Loading from '@/components/Loading.vue';
 import $ from 'jquery';
-// emitte
 import emitter from '@/assets/js/emitter';
-// bs5 元件
 import 'bootstrap/js/dist/collapse';
 import 'bootstrap/js/dist/offcanvas';
 
 export default {
   components: {
-    // Alert元件
     Alert,
-    // modal-登出
     LoginOut,
     Loading,
   },
@@ -467,8 +460,8 @@ export default {
         // 加到購物車鈕
         addCart: '',
       },
-      // NAVBAR 被景色
-      navBarClass: 'bg-transparent',
+      // NAVBAR 背景色
+      navBarClass: 'bg-lightenPrimary',
       // NAVBAR 顏色
       navBarColor: 'text-primary',
       // 漢堡選單狀態
@@ -483,24 +476,18 @@ export default {
     };
   },
   methods: {
-    // openHamBtn
     openHamBtn() {
       this.navBarClass = 'bg-primary';
-      // NAVBAR 顏色
       this.navBarColor = 'text-white';
       this.btnHamStatus = !this.btnHamStatus;
-      // 切換logo
       this.scrollLogo = 'https://raw.githubusercontent.com/dstsidragon/JaMenCheese/0779b76a828a44aab8ebd1518da2d8dc8c2926d7/src/assets/images/logo-white.svg';
     },
-    // closeHamBtn
     closeHamBtn() {
       this.btnHamStatus = !this.btnHamStatus;
       const bodyh = document.documentElement.scrollTop || document.body.scrollTop;
       if (bodyh < 5) {
-        this.navBarClass = 'bg-transparent';
-        // NAVBAR 顏色
+        this.navBarClass = 'bg-lightenPrimary';
         this.navBarColor = 'text-primary';
-        // 切換logo
         this.scrollLogo = 'img/logo4.d43d1d54.svg';
       }
     },
@@ -509,9 +496,7 @@ export default {
       this.$http
         .post(`${process.env.VUE_APP_API}/logout`)
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
-            // alert 元件顯示
             this.alertMessage = res.data.message;
             this.alertStatus = true;
             setTimeout(() => {
@@ -519,13 +504,9 @@ export default {
               this.alertStatus = false;
             }, 2000);
 
-            // 刪除cookie
             this.deleteAllCookies();
-            // 跳轉頁面
             this.$router.push('/Login');
           } else {
-            // alert('未知的錯誤!');
-            // alert 元件顯示
             this.alertMessage = '未知的錯誤!';
             this.alertStatus = false;
             setTimeout(() => {
@@ -533,12 +514,10 @@ export default {
               this.alertStatus = false;
             }, 2000);
 
-            // 跳轉頁面
             this.$router.push('/Login');
           }
         })
         .catch((err) => {
-          // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {
@@ -564,7 +543,6 @@ export default {
     },
     // 判斷使用者值
     chkUserName() {
-      // 如果有取到值 ，代表已登入
       if (
         document.cookie.replace(
           /(?:(?:^|.*;\s*)username\s*=\s*([^;]*).*$)|^.*$/,
@@ -575,11 +553,9 @@ export default {
           /(?:(?:^|.*;\s*)username\s*=\s*([^;]*).*$)|^.*$/,
           '$1',
         );
-        // 登入狀態
         this.loginStatus = true;
       } else {
         this.userName = '訪客';
-        // 登入狀態
         this.loginStatus = false;
       }
     },
@@ -588,18 +564,12 @@ export default {
       window.onscroll = () => {
         const bodyh = document.documentElement.scrollTop || document.body.scrollTop;
         if (bodyh > 5) {
-          // navbar 變背景顏色
           this.navBarClass = 'bg-primary';
-          // NAVBAR 顏色
           this.navBarColor = 'text-white';
-          // 切換logo
           this.scrollLogo = 'https://raw.githubusercontent.com/dstsidragon/JaMenCheese/0779b76a828a44aab8ebd1518da2d8dc8c2926d7/src/assets/images/logo-white.svg';
         } else if (bodyh < 5 && this.btnHamStatus) {
-          // navbar 變背景顏色
-          this.navBarClass = 'bg-transparent';
-          // NAVBAR 顏色
+          this.navBarClass = 'bg-lightenPrimary';
           this.navBarColor = 'text-primary';
-          // 切換logo
           this.scrollLogo = 'img/logo4.d43d1d54.svg';
         }
       };
@@ -623,7 +593,6 @@ export default {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 關掉讀取畫面
             this.isLoading = false;
           }
         })
@@ -657,26 +626,33 @@ export default {
     },
   },
   created() {
-    // 判斷使用者值
     this.chkUserName();
-    // 取得購物車資料
     this.getCartList();
   },
   mounted() {
-    // 取得收藏資料
     this.getLoCalStorage();
-    // NavBar滾動
     this.ScrollNavbar();
-    // 監聽一個事件(刷新購物車)
+    // 監聽(刷新購物車)
     emitter.on('refresh-carts', () => {
       this.getCartList();
     });
-    // 監聽一個事件(刷新購物車)
+    // 監聽(刷新最愛)
     emitter.on('refresh-favorites', () => {
       this.getLoCalStorage();
     });
-    // 監聽一個事件(刷新使用者))
+    // 監聽(刷新使用者))
     emitter.on('login-out', () => {
+      this.chkUserName();
+    });
+  },
+  unmounted() {
+    emitter.off('refresh-carts', () => {
+      this.getCartList();
+    });
+    emitter.off('refresh-favorites', () => {
+      this.getLoCalStorage();
+    });
+    emitter.off('login-out', () => {
       this.chkUserName();
     });
   },
@@ -690,18 +666,16 @@ export default {
 .nav-drown {
   &:focus,
   &:hover {
-    color: #000000 !important;
-    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+    color: #000000  !important;
   }
   &.router-link-exact-active {
-    color: #000000 !important;
-    text-shadow: 0px 0px 6px rgba(255, 255, 255, 0.7);
+    color: #000000  !important;
   }
   @include pc {
     font-size: 1.5rem;
     padding-top: 10px;
     padding-bottom: 10px;
-    border-top: #000000 1px dashed;
+    border-top: #554431 1px dashed;
     &:hover {
       border-bottom: 0;
     }

@@ -33,7 +33,7 @@
                       <div class="row g-0">
                         <div class="col-md-2">
                           <img
-                            class="prd_img_100"
+                            class="prd-img-100"
                             :src="prd.product.imageUrl"
                             :alt="prd.product.imageUrl"
                           />
@@ -153,14 +153,10 @@ export default {
       };
       this.$emit('emit-redit-new-nata', reditNewData);
     },
-    // 開啟modal
     openModal() {
-      // 開啟modal
       this.Modal.show();
     },
-    // 隱藏modal
     closeModal() {
-      // 隱藏modal
       this.Modal.hide();
     },
   },

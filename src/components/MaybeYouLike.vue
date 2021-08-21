@@ -16,34 +16,27 @@
       :key="i"
       @click.prevent="$emit('view-one-product', item)"
     >
-      <div class="overflow-hidden">
+      <div class="overflow-hidden cursor-pointer">
         <img
           :src="item.imageUrl"
           class="object-fit swiper-img img--scale"
           :alt="item.imageUrl"
         />
       </div>
-      <span>
+      <span class=" cursor-pointer">
         <p class="bg-primary text-white p-1 fs-2 m-0">{{ item.title }}</p>
-        <p class="bg-lightPrimary text-white p-1 m-0">詳細內容</p>
+        <p class="text-primary border border-primary p-1 m-0">詳細內容</p>
       </span>
-      <div class="bg-info text-white p-1 hotProduct-icon">{{ category }}</div>
+      <div class="bg-primary text-white p-1 hotProduct-icon cursor-pointer">{{ category }}</div>
     </SwiperSlide>
   </Swiper>
 </template>
 <script>
-// Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
-
-// Import Swiper styles
 import 'swiper/swiper.scss';
-
 import 'swiper/components/effect-coverflow/effect-coverflow.min.css';
-
-// import Swiper core and required modules
 import SwiperCore, { Autoplay } from 'swiper/core';
 
-// install Swiper modules
 SwiperCore.use([Autoplay]);
 
 export default {
@@ -62,7 +55,6 @@ export default {
   },
   watch: {
     category() {
-      // 隨機抓出4筆資料
       setTimeout(() => {
         this.getSameCategoryProduct(4);
       }, 500);
@@ -79,7 +71,6 @@ export default {
           `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`,
         )
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
             this.productsData = res.data.products;
           }
@@ -97,14 +88,11 @@ export default {
         const productNum = this.filterSameCategory.length < num
           ? this.filterSameCategory.length
           : num;
-        // 宣告 set 陣列
         const prdSet = new Set([]);
-        // 取出指定 不重複的陣列數量
         for (let i = 0; prdSet.size < productNum; i += 1) {
           const prd = this.getRandomNumber(productNum);
           prdSet.add(prd);
         }
-        // 將取出的數字 帶入資料內  push到陣列
         prdSet.forEach((i) => {
           this.filterProducts.push(this.filterSameCategory[i]);
         });

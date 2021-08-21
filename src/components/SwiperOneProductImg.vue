@@ -1,5 +1,5 @@
 <template>
-  <swiper
+  <Swiper
     :style="{
       '--swiper-navigation-color': '#fff',
       '--swiper-pagination-color': '#fff',
@@ -8,20 +8,20 @@
     :spaceBetween="10"
     :navigation="true"
     :thumbs="{ swiper: thumbsSwiper }"
-    class="mySwiper2 img_big"
+    class="mySwiper2 img-big"
   >
-    <swiper-slide
+    <SwiperSlide
       ><img class="object-fit" :src="product.imageUrl" :alt="product.imageUrl"
-    /></swiper-slide>
-    <swiper-slide
+    /></SwiperSlide>
+    <SwiperSlide
       class="object-fit"
       v-for="(item, i) in filterProductImg"
       :key="i"
     >
       <img :src="item" :alt="item"
-    /></swiper-slide>
-  </swiper>
-  <swiper
+    /></SwiperSlide>
+  </Swiper>
+  <Swiper
     @swiper="setThumbsSwiper"
     :loop="true"
     :spaceBetween="10"
@@ -32,31 +32,24 @@
     class="mySwiper my-2"
     style="height: 100px"
   >
-    <swiper-slide><img :src="product.imageUrl" /></swiper-slide>
+    <SwiperSlide><img :src="product.imageUrl" /></SwiperSlide>
 
-    <swiper-slide
+    <SwiperSlide
       style="width: 100px"
       v-for="(item, i) in filterProductImg"
       :key="i"
     >
       <img :src="item" :alt="item" />
-    </swiper-slide>
-  </swiper>
+    </SwiperSlide>
+  </Swiper>
 </template>
 <script>
-// Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
-
-// Import Swiper styles
 import 'swiper/swiper.scss';
-
 import 'swiper/components/navigation/navigation.min.css';
 import 'swiper/components/thumbs/thumbs.min.css';
-
-// import Swiper core and required modules
 import SwiperCore, { Navigation, Thumbs } from 'swiper/core';
 
-// install Swiper modules
 SwiperCore.use([Navigation, Thumbs]);
 
 export default {
@@ -114,8 +107,6 @@ body {
   text-align: center;
   font-size: 18px;
   background: #fff;
-
-  /* Center slide text vertically */
   display: -webkit-box;
   display: -ms-flexbox;
   display: -webkit-flex;
@@ -141,17 +132,17 @@ body {
   margin-left: auto;
   margin-right: auto;
 }
-.img_big {
+.img-big {
   height: 600px;
 }
 @media (max-width: 767px) {
-  .img_big {
+  .img-big {
     height: 400px;
   }
 }
 
 @media (max-width: 413px) {
-  .img_big {
+  .img-big {
     height: 300px;
   }
 }

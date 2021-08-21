@@ -1,5 +1,5 @@
 <template>
-  <div class="mt_navbar">
+  <div class="mt-navbar">
     <!-- 商品CARD start -->
     <div class="mb-3 py-4">
       <div class="container">
@@ -62,10 +62,10 @@
                   v-if="product"
                   class="row text-center align-items-center mb-2"
                 >
-                  <span class="text-decoration-line-through col-5">
+                  <span class="text-decoration-line-through col-5 text-start">
                     {{ `原價 ${$toComma(product.origin_price)} 元` }}
                   </span>
-                  <span class="text-danger col-7 fs-2">
+                  <span class="text-danger col-7 fs-2 text-end">
                     {{ `特價 ${$toComma(product.price)} 元` }}
                   </span>
                 </span>
@@ -84,14 +84,14 @@
                     <span>
                       <button
                         type="button"
-                        class="btn text-danger fz-1 btn_input--top"
+                        class="btn text-dark fz-1 btn-input--top"
                         @click="num++"
                       >
                         +
                       </button>
                       <button
                         type="button"
-                        class="btn text-danger fz-1 btn_input--bottom"
+                        class="btn text-dark fz-1 btn-input--bottom"
                         @click="num--"
                       >
                         -
@@ -223,26 +223,17 @@
 </template>
 
 <script>
-// Alert元件
 import Alert from '@/components/Alert.vue';
-// 讀取畫面
 import Loading from '@/components/Loading.vue';
-// 產品圖片輪播
 import SwiperOneProductImg from '@/components/SwiperOneProductImg.vue';
-// 可能會喜歡的商品
 import MaybeYouLike from '@/components/MaybeYouLike.vue';
-// emitter
 import emitter from '@/assets/js/emitter';
 
 export default {
   components: {
-    // Alert元件
     Alert,
-    // 讀取畫面
     Loading,
-    // 產品圖片輪播
     SwiperOneProductImg,
-    // 可能會喜歡的商品
     MaybeYouLike,
   },
   data() {
@@ -271,11 +262,8 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
-            // 關掉讀取畫面
             this.isLoading = false;
-            // alert 元件顯示
             this.alertMessage = res.data.message;
             this.alertStatus = true;
             setTimeout(() => {
@@ -284,7 +272,6 @@ export default {
             }, 2000);
             this.product = res.data.product;
           } else {
-            // alert 元件顯示
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
@@ -294,7 +281,6 @@ export default {
           }
         })
         .catch((err) => {
-          // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {
@@ -324,11 +310,9 @@ export default {
           product,
         )
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
             this.loadingStatue.addCart = '';
 
-            // alert 元件顯示
             this.alertMessage = `${res.data.message}!`;
             this.alertStatus = true;
             setTimeout(() => {
@@ -337,9 +321,6 @@ export default {
             }, 2000);
             // 發起一個觸發(刷新購物車)
             emitter.emit('refresh-carts');
-
-            // 刷新購物車
-            // this.getCartList();
           } else {
             // alert 元件顯示
             this.alertMessage = `${res.data.message}!`;
@@ -351,7 +332,6 @@ export default {
           }
         })
         .catch((err) => {
-          // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {
@@ -362,22 +342,18 @@ export default {
     },
     // 立即購買
     buyNow() {
-      // 加入購物車
       this.addCart();
       setTimeout(() => {
-        // 前往購物車頁面
         this.$router.push('/carts');
       }, 1000);
     },
     // 加入最愛
     addFavorite() {
-      // 如果已經在最愛 就刪除最愛  如果沒有 就加到最愛
       if (this.myFavorite.includes(this.id)) {
         this.myFavorite.splice(this.myFavorite.indexOf(this.id), 1);
       } else {
         this.myFavorite.push(this.id);
       }
-      // 儲存myFavorite資料到LocalStorage
       this.setLoCalStorage('myFavorite', this.myFavorite);
       // 發起一個觸發(刷新最愛)
       emitter.emit('refresh-favorites');
@@ -432,14 +408,14 @@ input[type='number']::-webkit-outer-spin-button {
   margin: 0;
 }
 
-.btn_input--top {
+.btn-input--top {
   position: absolute;
   top: 0px;
   border-left: 0;
   border-radius: 0 5px 0 0;
   border-color: black;
 }
-.btn_input--bottom {
+.btn-input--bottom {
   position: absolute;
   top: 38px;
   border-left: 0;

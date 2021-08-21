@@ -80,18 +80,13 @@
 </template>
 
 <script>
-// Alert元件
 import Alert from '@/components/Alert.vue';
-// 讀取畫面
 import Loading from '@/components/Loading.vue';
-// emitter
 import emitter from '@/assets/js/emitter';
 
 export default {
   components: {
-    // Alert元件
     Alert,
-    // 讀取畫面
     Loading,
   },
   data() {
@@ -108,14 +103,12 @@ export default {
     };
   },
   methods: {
-    // 改變進度條
     chgCartStep() {
       // 發起一個觸發(可帶參數)
       emitter.emit('chg-cart-step', this.cartStep);
     },
   },
   created() {
-    // 改變進度條
     this.chgCartStep();
   },
 };

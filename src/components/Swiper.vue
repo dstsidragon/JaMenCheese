@@ -1,5 +1,4 @@
 <template>
-  <!-- :effect="'fade'" -->
   <swiper
     :spaceBetween="30"
     :centeredSlides="true"
@@ -9,22 +8,17 @@
     }"
     :loop="true"
   >
-    <swiper-slide class="swiper-banner swiper-banner-img1" />
-    <swiper-slide class="swiper-banner swiper-banner-img2" />
-    <swiper-slide class="swiper-banner swiper-banner-img3" />
+    <SwiperSlide class="swiper-banner swiper-banner-img1" />
+    <SwiperSlide class="swiper-banner swiper-banner-img2" />
+    <SwiperSlide class="swiper-banner swiper-banner-img3" />
   </swiper>
 </template>
 <script>
-// Import Swiper Vue.js components
 import { Swiper, SwiperSlide } from 'swiper/vue';
-
-// Import Swiper styles
 import 'swiper/swiper.scss';
-
 import 'swiper/components/effect-fade/effect-fade.min.css';
-// import Swiper core and required modules
 import SwiperCore, { EffectFade, Autoplay } from 'swiper/core';
-// install Swiper modules
+
 SwiperCore.use([EffectFade, Autoplay]);
 
 export default {
@@ -38,7 +32,6 @@ export default {
 @import '@/assets/scss/mixin/_mixin';
 .swiper-banner {
   min-height: 100vh;
-  // background-attachment: fixed;
   &-img1 {
     background: center center no-repeat
       url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627385259783.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=CR8%2Bibg8t44nvQOmhEhLRN4orKm4il2E3BWZKQyj7XTwqUoIDAd4Vxvf280dX%2FQG0PI8NZVGwgbjEa7Jm6kyI2a%2FAoelhNREwBfs2f%2FsoZ3alhBcP2b3XsIKO6Onwdf4XgYMRjUH8kRGLACvb2XGb7FoHSJYrhewNObAqu1Naww8W8EQK1LZD2EvJUfKqnV6h7grdiuDuhdPfAY6uEKznqCX84k5Q0wBkQRIwRvzzi%2BkWYJfc5f%2BJVoxGu8%2FeHiWrDwZcCkbXdY26z3BSNFM0Df7XKqE9%2Ff%2BrtjZGp8wWVhahjrHaRaLnMJBbymEAiOkdepszgDfYlArp2fGvztoHQ%3D%3D');

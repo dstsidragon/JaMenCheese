@@ -193,7 +193,6 @@ a:hover {
   position: absolute;
   content: '';
   z-index: -2;
-  // background-color: #ffeba7;
   width: 100%;
   height: 100%;
   display: block;
@@ -205,7 +204,8 @@ a:hover {
   position: absolute;
   content: '';
   z-index: -1;
-  background-color: #dda62e;
+  background-color: #7f5625;
+  opacity: .5;
   width: 128px;
   height: 40px;
   display: block;

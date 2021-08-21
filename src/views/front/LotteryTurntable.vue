@@ -1,16 +1,14 @@
 <template>
-  <div class="mt_navbar">
-    <!-- 跑馬燈元件  start-->
+  <div class="mt-navbar">
     <Marquee />
-    <!-- 跑馬燈元件  end-->
   </div>
-  <div class="banner d-flex justify-content-center align-items-center">
+  <header class="banner d-flex justify-content-center align-items-center">
     <div class="text-white bg-img-transparent rounded p-2">
       <h2 class="text-center fz-2 fz-md-4">限時活動</h2>
       <p class="fz-0 fz-md-1">少許的主動就可以使你生活中的運氣大增</p>
     </div>
-  </div>
-  <div class="">
+  </header>
+  <div >
     <div class="g-0 g-md-2 container-md py-5">
       <div
         class="
@@ -58,12 +56,10 @@
 </template>
 
 <script>
-// 跑馬燈元件
 import Marquee from '@/components/Marquee.vue';
 
 export default {
   components: {
-    // 跑馬燈元件
     Marquee,
   },
   data() {
@@ -234,7 +230,6 @@ export default {
     },
     endCallBack(prize) {
       this.prizeName = prize.name;
-      // 刷新獎項紀錄
       this.refushPrizeName();
     },
     refushPrizeName() {

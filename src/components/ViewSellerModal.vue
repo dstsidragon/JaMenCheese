@@ -3,7 +3,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-danger">
-          <h5 class="modal-title css_wordInput_4 text-white fs-3">
+          <h5 class="modal-title css-wordInput-4 text-white fs-3">
             {{ title }}
           </h5>
           <button

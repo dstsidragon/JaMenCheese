@@ -93,9 +93,9 @@
                   <div class="row g-0">
                     <div class="col-md-2">
                       <img
-                        class="object-fit prd_img_100"
+                        class="object-fit prd-img-100"
                         :src="prd.product.imageUrl"
-                        alt="prd_img"
+                        alt="prd-img"
                       />
                     </div>
                     <div class="col-md-10">
@@ -125,8 +125,6 @@
                 fw-bold
               "
             >
-              <!-- <li><p>目前有{{ cartsNum }}項產品</p></li> -->
-              <!-- <li>總共 {{ item.product }} 項商品</li> -->
               <li class="fs-3 text-danger">
                 <p>{{ `總計: ${$toComma(Math.floor(item.total))} 元` }}</p>
               </li>
@@ -184,24 +182,16 @@
 </template>
 
 <script>
-// 分頁元件
 import Pagination from '@/components/Pagination.vue';
-// 查看賣家
 import ViewSellerModal from '@/components/ViewSellerModal.vue';
-// Alert元件
 import Alert from '@/components/Alert.vue';
-// 讀取畫面
 import Loading from '@/components/Loading.vue';
 
 export default {
   components: {
-    // Alert元件
     Alert,
-    // 分頁元件
     Pagination,
-    // 查看賣家
     ViewSellerModal,
-    // 讀取畫面
     Loading,
   },
   data() {
@@ -236,7 +226,6 @@ export default {
           if (res.data.success) {
             this.orderList = res.data;
             this.orderPagination = res.data.pagination;
-            // 關閉讀取畫面
             this.isLoading = false;
           } else {
             this.alertMessage = res.data.message;
@@ -245,7 +234,6 @@ export default {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 關閉讀取畫面
             this.isLoading = false;
           }
         })
@@ -256,18 +244,15 @@ export default {
             this.alertMessage = '';
             this.alertStatus = false;
           }, 2000);
-          // 關閉讀取畫面
           this.isLoading = false;
         });
     },
     // 查看賣家
     viewSeller() {
-      // this.$refs.viewSeller.openModal();
       this.$refs.viewSeller.openModal();
     },
     // 付款
     checkOut() {
-      // alert('要付款嗎? 先看看賣家是誰好了~');
       this.alertMessage = '要付款嗎? 先看看賣家是誰好了~';
       this.alertStatus = true;
       setTimeout(() => {
@@ -287,7 +272,6 @@ export default {
         )
         .then((res) => {
           if (res.data.success) {
-            // 關閉讀取畫面
             this.isLoading = false;
             this.loadingStatue.searchOrder = '';
             this.$router.push(`/order/${this.order.trim()}`);
@@ -298,7 +282,6 @@ export default {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 關閉讀取畫面
             this.isLoading = false;
             this.loadingStatue.searchOrder = '';
           }
@@ -310,14 +293,12 @@ export default {
             this.alertMessage = '';
             this.alertStatus = false;
           }, 2000);
-          // 關閉讀取畫面
           this.isLoading = false;
           this.loadingStatue.searchOrder = '';
         });
     },
   },
   mounted() {
-    // 取得訂單資料
     this.getOrderList();
   },
 };
@@ -330,12 +311,12 @@ export default {
     width: 190px;
   }
 }
-.prd_img_100 {
+.prd-img-100 {
   height: 130px;
   width: 100%;
 }
 @media (max-width: 767px) {
-  .prd_img_100 {
+  .prd-img-100 {
     height: 250px;
   }
 }

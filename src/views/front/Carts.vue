@@ -1,13 +1,13 @@
 <template>
   <div
-    class="banner mt_navbar d-flex justify-content-center align-items-center"
+    class="banner mt-navbar d-flex justify-content-center align-items-center"
   >
-    <div class="text-white bg-img-transparent rounded p-2">
+    <header class="text-white bg-img-transparent rounded p-2">
       <h2 class="text-center fz-2 fz-md-4">購買商品</h2>
       <p class="fz-0 fz-md-1">
         猶豫不決固然可以免去一些作錯事的機會，但也失去了成功的機遇!
       </p>
-    </div>
+    </header>
   </div>
   <div class="container">
     <div>
@@ -16,10 +16,9 @@
       <!-- 進度條元件 end -->
     </div>
   </div>
-  <!-- 購物車列表 end -->
   <hr />
 
-  <router-view />
+  <RouterView />
 </template>
 <script>
 // 進度條
@@ -29,7 +28,6 @@ import emitter from '@/assets/js/emitter';
 
 export default {
   components: {
-    // 進度條
     Progress,
   },
   data() {
@@ -39,8 +37,12 @@ export default {
     };
   },
   mounted() {
-    //  監聽一個事件
     emitter.on('chg-cart-step', (e) => {
+      this.cartStep = e;
+    });
+  },
+  unmounted() {
+    emitter.off('chg-cart-step', (e) => {
       this.cartStep = e;
     });
   },

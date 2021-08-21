@@ -43,7 +43,6 @@
 </template>
 <script>
 import Modal from 'bootstrap/js/dist/modal';
-// emitter
 import emitter from '@/assets/js/emitter';
 
 export default {
@@ -57,9 +56,7 @@ export default {
       this.$emit('sign-out-admin');
       emitter.emit('login-out');
     },
-    // 開啟modal
     openModal() {
-      // 開啟modal
       this.Modal.show();
     },
   },

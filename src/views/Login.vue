@@ -1,12 +1,12 @@
 <template>
-  <div
-    class="banner mt_navbar d-flex justify-content-center align-items-center"
+  <header
+    class="banner mt-navbar d-flex justify-content-center align-items-center"
   >
     <div class="text-white bg-img-transparent rounded p-2">
       <h2 class="text-center fz-2 fz-md-4">會員登入</h2>
       <p class="fz-0 fz-md-1">人生須知負責任的苦處，才能知道盡責任的樂趣。</p>
     </div>
-  </div>
+  </header>
 
   <div class="mt-5">
     <div class="container rounded bg-light">
@@ -29,7 +29,6 @@
           />
         </div>
       </div>
-      <p class="mt-5 pb-3 text-muted text-center">{{ `&copy;${footer}` }}</p>
     </div>
   </div>
 </template>
@@ -42,7 +41,6 @@ export default {
   },
   data() {
     return {
-      footer: '2021~∞ - 呷面起士',
       // 信箱
       username: '',
       // 密碼
@@ -83,58 +81,44 @@ export default {
         this.$http
           .post(`${process.env.VUE_APP_API}/admin/signin`, adminInfo)
           .then((res) => {
-            // 如果成功就執行
             if (res.data.success) {
               const [token, expired] = [res.data.token, res.data.expired];
-              // res塞到data
               this.statusPromptLogin = `${res.data.message}!!`;
               this.statuBoolLogin = true;
               // 存到cookies
-              document.cookie = `hexToken=${token}; expires=${new Date(
-                expired,
-              )};username=${this.username}`;
-              document.cookie = `username=${
-                this.username.split('@')[0]
-              }; expires=${new Date(expired)};`;
-              document.cookie = `email=${
-                res.config.data.split('"')[3]
-              }; expires=${new Date(expired)};`;
-              // 跳轉頁面
+              document.cookie = `hexToken=${token};
+                expires=${new Date(expired * 1000)};
+                username=${this.username}`;
+              document.cookie = `username=${this.username.split('@')[0]};
+                expires=${new Date(expired * 1000)};`;
+              document.cookie = `email=${res.config.data.split('"')[3]};
+                expires=${new Date(expired * 1000)};`;
+
               this.$router.push('/admin');
               // 傳入變化的時間 讓元件的watch監聽
               this.loginInFallOrSuccess = new Date();
             } else {
-              // 密碼錯誤 清空密碼
               this.password = '';
-
-              // res塞到data
               this.statusPromptLogin = `${res.data.message}!!請檢查帳號密碼!`;
               this.statuBoolLogin = false;
-              // 傳入變化的時間 讓元件的watch監聽
               this.loginInFallOrSuccess = new Date();
             }
           })
           .catch((err) => {
             this.statusPromptLogin = `${err.data.message}!!請檢查帳號密碼!`;
             this.statuBoolLogin = false;
-            // 傳入變化的時間 讓元件的watch監聽
             this.loginInFallOrSuccess = new Date();
           });
       } else {
-        // 帳號密碼錯誤 清空帳號密碼錯誤
         this.username = '';
         this.password = '';
-
-        // res塞到data
         this.statusPromptLogin = '帳號密碼錯誤!';
         this.statuBoolLogin = false;
-        // 傳入變化的時間 讓元件的watch監聽
         this.loginInFallOrSuccess = new Date();
       }
     },
     // 取得loginEmit
     getLoginEmitData(e) {
-      // 將取得的資料賦予到data
       this.username = e.username;
       this.password = e.password;
 
@@ -158,14 +142,11 @@ export default {
         && this.password !== ''
         && this.passwordRepit !== ''
       ) {
-        // 送出註冊帳號資料做驗證
         const url = `${process.env.VUE_APP_API}/signup`;
         this.$http
           .post(url, adminInfo)
           .then((res) => {
-            // 如果成功就執行
             if (res.data.success) {
-              // res塞到data
               this.statusPromptSignup = `${res.data.message}!!`;
               // 改變狀態顏色
               this.statuBoolSignup = true;
@@ -173,9 +154,7 @@ export default {
               // 傳入變化的時間 讓元件的watch監聽
               this.signUpFallOrSuccess = new Date();
             } else {
-              // 密碼錯誤 清空密碼
               this.password = '';
-              // res塞到data
               this.statusPromptSignup = `${res.data.message}!!請檢查帳號密碼!`;
               this.statuBoolSignup = false;
               // 傳入變化的時間 讓元件的watch監聽
@@ -184,22 +163,17 @@ export default {
           })
           .catch((err) => {
             if (err.response.data.code === 'auth/weak-password') {
-              // 帳號密碼錯誤 清空帳號密碼錯誤
               this.username = '';
               this.password = '';
               this.passwordRepit = '';
-              // 把err塞到data
               this.statusPromptSignup = '密碼強度太弱!! 請填入6~20位英數字';
               this.statuBoolSignup = false;
               // 傳入變化的時間 讓元件的watch監聽
               this.signUpFallOrSuccess = new Date();
             } else if (err.response.data.code === 'auth/email-already-in-use') {
-              // alert("帳號已經被使用!!")
-              // 帳號密碼錯誤 清空帳號密碼錯誤
               this.username = '';
               this.password = '';
               this.passwordRepit = '';
-              // 把err塞到data
               this.statusPromptSignup = '帳號已經被使用!!';
               this.statuBoolSignup = false;
               // 傳入變化的時間 讓元件的watch監聽
@@ -207,12 +181,9 @@ export default {
             }
           });
       } else {
-        // alert("帳號格式錯誤!");
-        // 帳號密碼錯誤 清空帳號密碼錯誤
         this.username = '';
         this.password = '';
         this.passwordRepit = '';
-        // 把err塞到data
         this.statusPromptSignup = '輸入格式錯誤!!';
         this.statuBoolSignup = false;
         // 傳入變化的時間 讓元件的watch監聽
@@ -221,7 +192,6 @@ export default {
     },
     // 取得signupEmit
     getSignupEmitData(e) {
-      // 將取得的資料賦予到data
       this.username = e.username;
       this.password = e.password;
       this.passwordRepit = e.passwordRepit;

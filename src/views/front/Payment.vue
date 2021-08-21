@@ -68,7 +68,7 @@
               @submit="payment"
             >
               <!-- 付款方式 -->
-              <div class="">
+              <div >
                 <label for="pay" class="form-label">付款方式:</label>
                 <Field
                   id="pay"
@@ -80,14 +80,14 @@
                   rules="required"
                   v-model="payment_method"
                 >
-                  <option value="" disabled>選擇付款方式</option>
+                  <option  disabled>選擇付款方式</option>
                   <option>WebATM</option>
                   <option>ATM</option>
                   <option>Credit</option>
                   <option>ApplePay</option>
                   <option>GooglePay</option>
                 </Field>
-                <error-message name="付款方式" class="invalid-feedback" />
+                <ErrorMessage name="付款方式" class="invalid-feedback" />
               </div>
               <div
                 class="
@@ -177,18 +177,13 @@
 </template>
 
 <script>
-// Alert元件
 import Alert from '@/components/Alert.vue';
-// 讀取畫面
 import Loading from '@/components/Loading.vue';
-// emitter
 import emitter from '@/assets/js/emitter';
 
 export default {
   components: {
-    // Alert元件
     Alert,
-    // 讀取畫面
     Loading,
   },
   data() {
@@ -228,9 +223,7 @@ export default {
             this.orderData = res.data;
             this.products = res.data.order.products;
             this.messageValue = res.data.order.message;
-            // 改變進度條
             this.chgCartStep();
-            // 關掉讀取畫面
             this.isLoading = false;
           } else {
             this.alertMessage = res.data.message;
@@ -239,7 +232,6 @@ export default {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 關掉讀取畫面
             this.isLoading = false;
           }
         })
@@ -250,7 +242,6 @@ export default {
             this.alertMessage = '';
             this.alertStatus = false;
           }, 2000);
-          // 關掉讀取畫面
           this.isLoading = false;
         });
     },
@@ -268,7 +259,6 @@ export default {
         )
         .then((res) => {
           if (res.data.success) {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = true;
             setTimeout(() => {
@@ -277,10 +267,8 @@ export default {
             }, 2000);
             this.loadingStatue.sendOrder = '';
             this.orderId = res.data.orderId;
-            // 前往付款完成頁面
             this.$router.push('/finishpay');
           } else {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {

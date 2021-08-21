@@ -51,7 +51,6 @@ export default {
     };
   },
   methods: {
-    // 開啟modal
     openModal() {
       this.modal.show();
     },

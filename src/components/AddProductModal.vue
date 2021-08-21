@@ -22,7 +22,7 @@
           class="form"
           ref="addPrdForm"
           v-slot="{ errors }"
-          @submit.prevent="addPrductData"
+          @submit="addPrductData"
         >
           <div class="modal-body fs-2">
             <div class="card card-body row">
@@ -38,7 +38,7 @@
                   rules="required"
                   v-model="addProducts.bg_add_title"
                 />
-                <error-message name="標題" class="invalid-feedback" />
+                <ErrorMessage name="標題" class="invalid-feedback" />
               </div>
 
               <div class="form-group mb-2">
@@ -54,7 +54,7 @@
                   rules="required"
                   v-model="addProducts.bg_add_description"
                 />
-                <error-message name="描述" class="invalid-feedback" />
+                <ErrorMessage name="描述" class="invalid-feedback" />
               </div>
               <div class="form-group mb-2">
                 <label for="bg_add_content">介紹</label>
@@ -69,7 +69,7 @@
                   class="form-control"
                   v-model="addProducts.bg_add_content"
                 />
-                <error-message name="介紹" class="invalid-feedback" />
+                <ErrorMessage name="介紹" class="invalid-feedback" />
               </div>
               <div
                 class="
@@ -92,14 +92,14 @@
                     class="form-control"
                     v-model="addProducts.bg_add_category"
                   >
-                    <option value="" disabled>點擊選取分類</option>
+                    <option disabled>點擊選取分類</option>
                     <option>經典麵包</option>
                     <option>西式甜點</option>
                     <option>特調飲品</option>
                     <option>手作餅乾</option>
                     <option>典藏蛋糕</option>
                   </Field>
-                  <error-message name="分類" class="invalid-feedback" />
+                  <ErrorMessage name="分類" class="invalid-feedback" />
                 </div>
 
                 <div class="form-group col-12 col-md-5">
@@ -114,7 +114,7 @@
                     class="form-control"
                     v-model="addProducts.bg_add_unit"
                   />
-                  <error-message name="單位" class="invalid-feedback" />
+                  <ErrorMessage name="單位" class="invalid-feedback" />
                 </div>
               </div>
               <div
@@ -140,7 +140,7 @@
                     class="form-control"
                     v-model="addProducts.bg_add_origin_price"
                   />
-                  <error-message name="原價" class="invalid-feedback" />
+                  <ErrorMessage name="原價" class="invalid-feedback" />
                 </div>
 
                 <div class="form-group col-12 col-md-5">
@@ -157,7 +157,7 @@
                     oninput="value=value.replace('-', '')"
                     v-model="addProducts.bg_add_price"
                   />
-                  <error-message name="售價" class="invalid-feedback" />
+                  <ErrorMessage name="售價" class="invalid-feedback" />
                 </div>
               </div>
               <hr class="mt-5" />
@@ -322,14 +322,12 @@
 </template>
 <script>
 import Modal from 'bootstrap/js/dist/modal';
-// Alert元件
 import Alert from '@/components/Alert.vue';
 
 export default {
   emits: ['emit-product-data'],
   props: ['addProduct'],
   components: {
-    // Alert元件
     Alert,
   },
   data() {
@@ -360,7 +358,6 @@ export default {
   },
   methods: {
     addPrductData() {
-      // 新增的產品資料
       const product = {
         data: {
           title: this.addProducts.bg_add_title,
@@ -383,14 +380,10 @@ export default {
       };
       this.$emit('emit-product-data', product);
     },
-    // 開啟modal
     openModal() {
-      // 開啟modal
       this.modal.show();
     },
-    // 隱藏modal
     closeModal() {
-      // 隱藏modal
       this.modal.hide();
     },
     // 圖片上傳
@@ -408,9 +401,6 @@ export default {
           }
         })
         .catch((err) => {
-          // alert(err.data);
-
-          // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {

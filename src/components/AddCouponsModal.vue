@@ -22,7 +22,7 @@
           <Form
             ref="addOrderForm"
             v-slot="{ errors }"
-            @submit.prevent="addCouponData"
+            @submit="addCouponData"
           >
             <div class="card card-body">
               <div class="d-flex flex-wrap justify-content-around mb-2">
@@ -39,7 +39,7 @@
                     required
                     v-model="addCoupon.title"
                   />
-                  <error-message name="標題" class="invalid-feedback" />
+                  <ErrorMessage name="標題" class="invalid-feedback" />
                 </div>
 
                 <div class="form-group">
@@ -58,7 +58,7 @@
                     class="form-control"
                     v-model="addCoupon.percent"
                   />
-                  <error-message name="折扣" class="invalid-feedback" />
+                  <ErrorMessage name="折扣" class="invalid-feedback" />
                 </div>
               </div>
               <div class="d-flex flex-wrap justify-content-around mb-2">
@@ -74,7 +74,7 @@
                     class="form-control"
                     v-model="addCoupon.due_date"
                   />
-                  <error-message name="到期日" class="invalid-feedback" />
+                  <ErrorMessage name="到期日" class="invalid-feedback" />
                 </div>
 
                 <div class="form-group col-md-5" style="width: 202px">
@@ -89,7 +89,7 @@
                     class="form-control"
                     v-model="addCoupon.code"
                   />
-                  <error-message name="折扣碼" class="invalid-feedback" />
+                  <ErrorMessage name="折扣碼" class="invalid-feedback" />
                 </div>
               </div>
               <hr class="mt-5" />
@@ -143,7 +143,6 @@ export default {
   },
   methods: {
     addCouponData() {
-      // 新增的產品資料
       const product = {
         title: this.addCoupon.title,
         is_enabled: parseInt(this.addCoupon.is_enabled, 10),
@@ -153,19 +152,14 @@ export default {
       };
       this.$emit('send', product);
     },
-    // 開啟modal
     openModal() {
-      // 開啟modal
       this.modal.show();
     },
-    // 隱藏modal
     closeModal() {
-      // 隱藏modal
       this.modal.hide();
     },
     // 驗證折扣碼格式
     isCode(value) {
-      // const dcode = /^[a-zA-Z0-9]{8,10}$/;
       const dcode = /^([a-zA-Z0-9]{4,8})$/;
       return dcode.test(value) ? true : '需要輸入4~8碼英數組合';
     },

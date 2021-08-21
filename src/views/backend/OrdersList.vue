@@ -41,7 +41,7 @@
           </td>
           <td class="col-2">{{ item.user.name }}</td>
           <td class="col-3 position-relative d-none d-ssm-table-cell">
-            <div class="btn__enable--center">
+            <div class="btn-enable--center">
               <div class="onoffswitch">
                 <input
                   type="checkbox"
@@ -72,7 +72,7 @@
             </div>
           </td>
           <td class="col-3 position-relative">
-            <div class="btn__del--center">
+            <div >
               <button
                 type="button"
                 :id="'getOne_' + i"
@@ -143,32 +143,20 @@
 </template>
 
 <script>
-// Alert元件
 import Alert from '@/components/Alert.vue';
-// 分頁
 import Pagination from '@/components/Pagination.vue';
-// 編輯訂單Modal
 import ReditOrderModal from '@/components/ReditOrderModal.vue';
-// 刪除全部 Modal
 import DeleteAll from '@/components/DeleteAll.vue';
-// 讀取畫面
 import Loading from '@/components/Loading.vue';
-// 刪除單一Modal
 import Delete from '@/components/Delete.vue';
 
 export default {
   components: {
-    // 刪除單一Modal
     Delete,
-    // Alert元件
     Alert,
-    // 分頁
     Pagination,
-    // 編輯訂單Modal
     ReditOrderModal,
-    // 刪除全部 Modal
     DeleteAll,
-    // 讀取畫面
     Loading,
   },
   data() {
@@ -244,7 +232,6 @@ export default {
             }, 2000);
             this.getOrdersData();
           } else {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
@@ -276,7 +263,6 @@ export default {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 刷新畫面
             this.getOrdersData();
           } else {
             this.alertMessage = res.data.message;
@@ -359,7 +345,6 @@ export default {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 刷新畫面
             this.getOrdersData();
           } else {
             this.alertMessage = res.data.message;

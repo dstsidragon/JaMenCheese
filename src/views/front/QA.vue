@@ -1,5 +1,5 @@
 <template>
-  <div class="mt_navbar">
+  <header class="mt-navbar">
     <div class="banner position-relative">
       <div class="d-flex align-items-center banner-title">
         <h2 class="text-white mb-0 me-2 fz-2 fz-md-4">常見問題</h2>
@@ -9,7 +9,7 @@
         />
       </div>
     </div>
-  </div>
+  </header>
   <!-- 商品CARD end -->
   <div class="accordion container mt-5" id="accordionExample">
     <!-- 1 -->
@@ -278,7 +278,6 @@
   background: center center no-repeat
     url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627379818233.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=FLuvfXUlCFVT410mNc%2Bl8zWpYMelJ2VtqkhZqhdEjcKihJFH%2BFOxfwlLY8UqRYWcgNp2%2FblxFeBo7ST%2FvQ%2FynENdTnkBl%2FahshkA6oUy%2B99y9JmHGmFX8Tk2OBB08rk7hHJIZ0gdJgwCf2TW786BWVNzvZAG6RbiX4q%2Fs%2BfJzBS9kES2OVEhk%2F%2Fb57fczenRtk3nabExNgOEQQ4R3yk3KX8go5odovFdEXGNBYtKSEVLhi8UgDQUEIAy1DC0dMsamSGTnK4AidhZ7e95y%2F7Z9AAxotWWcAdzWn0KDhSYskFuTWJ3rvFOt4OAUNpIilLwdi3RdZ21JbtPTH%2FXXeBbDA%3D%3D');
   background-size: cover;
-  //   background-attachment: fixed;
 }
 @media (max-width: 776px) {
   .banner {

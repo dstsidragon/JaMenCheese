@@ -1,14 +1,14 @@
 <template>
   <!-- 產品列表 start-->
-  <div class="mt_navbar">
-    <div class="prd-banner d-flex justify-content-center align-items-center">
+  <div class="mt-navbar">
+    <header class="prd-banner d-flex justify-content-center align-items-center">
       <div class="text-white bg-img-transparent rounded p-2">
         <h2 class="text-center fz-2 fz-md-4">精選商品</h2>
         <p class="fz-0 fz-md-1">
           不能決定？瀏覽我們的完整菜單，並嘗試...一切！
         </p>
       </div>
-    </div>
+    </header>
     <div class="container mt-3">
       <div class="row">
         <div class="d-none d-lg-flex list-group col-lg-3 fz-2">
@@ -25,7 +25,7 @@
             href="#"
             class="list-group-item list-group-item-action"
             v-for="(item, i) in productCategory"
-            :key="'category' + i"
+            :key="`category_${i}`"
             aria-current="false"
             @click.prevent="nowCategory = item"
             data-bs-toggle="tab"
@@ -39,11 +39,11 @@
           aria-label=".form-select-lg example"
           @change.prevent="nowCategory = $refs.select.value"
         >
-          <option selected value="">全部商品</option>
+          <option selected >全部商品</option>
           <option
             :value="item"
             v-for="(item, i) in productCategory"
-            :key="'category' + i"
+            :key="`category_${i}`"
           >
             {{ item }}
           </option>
@@ -54,7 +54,7 @@
             <div
               class="col cursor-pointer"
               v-for="(item, i) in productData"
-              :key="'prd' + i"
+              :key="`prd_${i}`"
             >
               <div class="card h-100">
                 <div
@@ -93,12 +93,12 @@
                     {{ item.title }}
                   </h5>
                   <span
-                    class="d-flex justify-content-around align-items-center"
+                    class="d-flex justify-content-between align-items-center"
                   >
-                    <p class="card-text border-right">
+                    <p class="card-text border-right mb-0">
                       <del>{{ `$ ${$toComma(item.origin_price)} 元` }}</del>
                     </p>
-                    <p class="card-text text-danger fz-2">
+                    <p class="card-text text-danger fz-2 mb-0">
                       {{ `$ ${$toComma(item.price)} 元` }}
                     </p>
                   </span>
@@ -108,7 +108,7 @@
                     href="#"
                     class="
                       product-link
-                      btn btn-outline-primary-lighten
+                      btn btn-outline-primary
                       rounded-0
                     "
                     :class="{
@@ -118,7 +118,6 @@
                     data-id="item.id"
                     @click.prevent="viewOneProduct(item)"
                   >
-                    <!-- class="btn  btn-success btn_white " -->
                     <span
                       :class="{
                         'd-none': item.id !== loadingStatue.viewContentStatus,
@@ -145,7 +144,6 @@
                     data-action="remove"
                     data-id="item.id"
                   >
-                    <!-- class="btn  btn-info btn_white " -->
                     <span
                       :class="{ 'd-none': item.id !== loadingStatue.addCart }"
                       class="spinner-grow spinner-grow-sm"
@@ -176,7 +174,7 @@
             <div
               class="col cursor-pointer"
               v-for="(item, i) in filterProductCategory"
-              :key="'prd' + i"
+              :key="`prd_${i}`"
             >
               <div class="card h-100">
                 <div
@@ -240,7 +238,6 @@
                     data-id="item.id"
                     @click.prevent="viewOneProduct(item)"
                   >
-                    <!-- class="btn  btn-success btn_white " -->
                     <span
                       :class="{
                         'd-none': item.id !== loadingStatue.viewContentStatus,
@@ -267,7 +264,6 @@
                     data-action="remove"
                     data-id="item.id"
                   >
-                    <!-- class="btn  btn-info btn_white " -->
                     <span
                       :class="{ 'd-none': item.id !== loadingStatue.addCart }"
                       class="spinner-grow spinner-grow-sm"
@@ -290,12 +286,6 @@
         </div>
       </div>
       <hr />
-      <!-- 熱賣商品 -->
-      <h3 class="titleEffect pt-5"><span>熱賣商品</span></h3>
-      <HotProductSwiper
-        :products="allProductsData"
-        @view-one-product="viewOneProduct"
-      />
     </div>
 
     <!-- Alert元件 start -->
@@ -315,29 +305,17 @@
 </template>
 
 <script>
-// Alert元件
 import Alert from '@/components/Alert.vue';
-// 分頁
 import Pagination from '@/components/Pagination.vue';
-// 讀取畫面
 import Loading from '@/components/Loading.vue';
-// 熱賣商品
-import HotProductSwiper from '@/components/HotProductSwiper.vue';
-// emitter
 import emitter from '@/assets/js/emitter';
-// bs5 元件
 import 'bootstrap/js/dist/tab';
 
 export default {
   components: {
-    // Alert元件
     Alert,
-    // 分頁
     Pagination,
-    // 讀取畫面
     Loading,
-    // 熱賣商品
-    HotProductSwiper,
   },
   data() {
     return {
@@ -376,14 +354,12 @@ export default {
   methods: {
     // 取得商品列表
     getProduct(page = 1) {
-      // 取得全部商品
       this.getAllProducts();
       this.$http
         .get(
           `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products?page=${page}`,
         )
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
             this.productData = res.data.products;
             this.pagination = res.data.pagination;
@@ -393,12 +369,9 @@ export default {
               category.add(item.category);
             });
             this.productCategory = [...category];
-            // 將資料筆數更新
             this.dataLength = this.productData.length;
-            // 關掉讀取畫面
             this.isLoading = false;
           } else {
-            // alert 元件顯示
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
@@ -406,19 +379,16 @@ export default {
               this.alertStatus = false;
             }, 2000);
 
-            // 跳轉頁面
             this.$router.push('/Login');
           }
         })
         .catch((err) => {
-          // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {
             this.alertMessage = '';
             this.alertStatus = false;
           }, 2000);
-          // 關掉讀取畫面
           this.isLoading = false;
         });
     },
@@ -429,12 +399,9 @@ export default {
           `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`,
         )
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
             this.allProductsData = res.data.products;
           } else {
-            // alert('驗證錯誤，請重新登入!');
-            // alert 元件顯示
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
@@ -444,7 +411,6 @@ export default {
           }
         })
         .catch((err) => {
-          // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {
@@ -468,10 +434,8 @@ export default {
           product,
         )
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
             this.loadingStatue.addCart = '';
-            // alert 元件顯示
             this.alertMessage = `${res.data.message}!`;
             this.alertStatus = true;
             setTimeout(() => {
@@ -481,7 +445,6 @@ export default {
             // 發起一個觸發(刷新購物車)
             emitter.emit('refresh-carts');
           } else {
-            // alert 元件顯示
             this.alertMessage = `${res.data.message}!`;
             this.alertStatus = false;
             setTimeout(() => {
@@ -491,7 +454,6 @@ export default {
           }
         })
         .catch((err) => {
-          // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {
@@ -512,9 +474,7 @@ export default {
       this.$http
         .post(url, product)
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
-            // alert 元件顯示
             this.alertMessage = `${res.data.message}!`;
             this.alertStatus = true;
             setTimeout(() => {
@@ -524,7 +484,6 @@ export default {
             // 發起一個觸發(刷新購物車)
             emitter.emit('refreshCarts');
           } else {
-            // alert 元件顯示
             this.alertMessage = `${res.data.message}!`;
             this.alertStatus = false;
             setTimeout(() => {
@@ -534,7 +493,6 @@ export default {
           }
         })
         .catch((err) => {
-          // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {
@@ -545,19 +503,16 @@ export default {
     },
     // 單一商品詳細內容
     viewOneProduct(item) {
-      // 跳轉頁面
       this.$router.push(`/product/${item.id}`);
     },
     // 加入最愛
     addFavorite(id) {
-      // 如果已經在最愛 就刪除最愛  如果沒有 就加到最愛
       if (this.myFavorite.includes(id)) {
         this.myFavorite.splice(this.myFavorite.indexOf(id), 1);
       } else {
         this.myFavorite.push(id);
       }
 
-      // 儲存myFavorite資料到LocalStorage
       this.setLoCalStorage('myFavorite', this.myFavorite);
       // 發起一個觸發(刷新最愛)
       emitter.emit('refresh-favorites');
@@ -578,7 +533,6 @@ export default {
   },
   mounted() {
     this.isLoading = true;
-    // 取得商品資料
     this.getProduct();
   },
 };
@@ -598,7 +552,6 @@ export default {
     background: center center no-repeat
       url('https://storage.googleapis.com/vue-course-api.appspot.com/sim322on/1627379982059.jpg?GoogleAccessId=firebase-adminsdk-zzty7%40vue-course-api.iam.gserviceaccount.com&Expires=1742169600&Signature=V322tazhWOJkaK1f%2FQ%2FjFHJ1i3Zh4kwPT6qjY3YD3vZdfDRBooDEb2Je5BzTyJnaq7kh1hKXiC%2FkW%2Fq8MVqWlK1pCakPFxduNoc9uElkH%2BKYsDmGHkka3boWWYHveZpNsVH47Gmisp3gYUtELvo59jXI2ml5Oxby%2BYIvkEyntDwCAzWikRvpJJW%2F%2BZxI28BApYpwImaOpWVi%2B99HU5%2FYG6HkXLxX0nFHL8xS0UTi4cNbgLB5yYNZSMQb4CJEGK6hO%2BotZOySRkVkTuj6RAVvu%2Fp2pKnq6nYXXZ9Ib2X3ZAd6pLWU2%2BBFzVXVgXn4vCVASXHzu1n9p00gv4CvgbUx%2FQ%3D%3D');
     background-size: cover;
-    // background-attachment: fixed;
   }
 }
 .favorite {

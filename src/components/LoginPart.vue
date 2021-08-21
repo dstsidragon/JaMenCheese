@@ -26,7 +26,7 @@
         :rules="isEmail"
         v-model="username"
       />
-      <error-message name="信箱" class="invalid-feedback" />
+      <ErrorMessage name="信箱" class="invalid-feedback" />
       <label for="login-username">Email address</label>
     </div>
     <div class="form-floating">
@@ -40,11 +40,11 @@
         rules="required"
         v-model="password"
       />
-      <error-message name="密碼" class="invalid-feedback" />
+      <ErrorMessage name="密碼" class="invalid-feedback" />
       <label for="login-password">Password</label>
     </div>
     <button
-      class="btn btn-lg btn-success w-100 mt_90"
+      class="btn btn-lg btn-success w-100 mt-90"
       id="btn-form"
       type="submit"
     >

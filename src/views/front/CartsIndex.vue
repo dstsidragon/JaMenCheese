@@ -10,6 +10,24 @@
       />
       <!-- Alert元件 end -->
     </div>
+    <div
+      class="d-flex justify-content-end mt-4"
+      v-if="cartList.carts?.length > 0"
+    >
+      <button
+        class="btn btn-outline-danger"
+        type="button"
+        @click.prevent="clearCart"
+      >
+        <span
+          :class="{ 'd-none': loadingStatue.clearCart !== 1 }"
+          class="spinner-border spinner-border-sm"
+          role="status"
+          aria-hidden="true"
+        />
+        清空購物車
+      </button>
+    </div>
 
     <!-- 購物車列表 start-->
     <table class="table mt-4 row gx-0">
@@ -17,17 +35,17 @@
         <tr class="row">
           <th class="col-3 d-none d-md-table-cell">商品圖片</th>
           <th class="col-4 col-md-2">商品名稱</th>
-          <th class="d-none d-md-table-cell col-md-2" width="120">原價</th>
-          <th class="col-2 col-md-1">售價</th>
           <th class="col-3 col-md-2">數量</th>
           <th class="col-3 col-md-2">刪除</th>
+          <th class="d-none d-md-table-cell col-md-2" width="120">原價</th>
+          <th class="col-2 col-md-1">售價</th>
         </tr>
       </thead>
       <tbody>
         <tr
           v-for="(item, i) in cartList.carts"
           class="row"
-          :key="'delCar_' + i"
+          :key="`delCar_${i}`"
         >
           <td class="col-3 d-none d-md-table-cell d-flex align-items-center">
             <img
@@ -48,26 +66,6 @@
           </td>
           <td
             class="
-              d-none d-md-flex
-              col-md-2
-              align-items-center
-              justify-content-center
-            "
-          >
-            {{ $toComma(item.product.origin_price) }}
-          </td>
-          <td
-            class="
-              col-2 col-md-1
-              d-flex
-              align-items-center
-              justify-content-center
-            "
-          >
-            {{ $toComma(item.product.price) }}
-          </td>
-          <td
-            class="
               col-3 col-md-2
               d-flex
               align-items-center
@@ -76,7 +74,7 @@
           >
             <button
               type="button"
-              class="btn text-danger px-1 fz-2"
+              class="btn text-dark px-1 fz-2"
               @click="rediCartItemsNum(item, -1)"
             >
               -
@@ -91,7 +89,7 @@
             />
             <button
               type="button"
-              class="btn text-danger px-1 fz-2"
+              class="btn text-dark px-1 fz-2"
               @click="rediCartItemsNum(item, 1)"
             >
               +
@@ -139,33 +137,34 @@
               </svg>
             </button>
           </td>
+          <td
+            class="
+              d-none d-md-flex
+              col-md-2
+              align-items-center
+              justify-content-center
+            "
+          >
+            {{ $toComma(item.product.origin_price) }}
+          </td>
+          <td
+            class="
+              col-2 col-md-1
+              d-flex
+              align-items-center
+              justify-content-center
+            "
+          >
+            {{ $toComma(item.product.price) }}
+          </td>
         </tr>
       </tbody>
     </table>
     <div
-      class="d-flex justify-content-end mt-4"
+      class="d-none d-md-flex justify-content-end mt-4 row"
       v-if="cartList.carts?.length > 0"
     >
-      <button
-        class="btn btn-outline-danger"
-        type="button"
-        @click.prevent="clearCart"
-      >
-        <span
-          :class="{ 'd-none': loadingStatue.clearCart !== 1 }"
-          class="spinner-border spinner-border-sm"
-          role="status"
-          aria-hidden="true"
-        />
-        清空購物車
-      </button>
-    </div>
-    <div
-      class="d-none d-md-flex justify-content-between mt-4 row"
-      v-if="cartList.carts?.length > 0"
-    >
-      <hr />
-      <span class="col-7 fz-0 d-flex justify-content-around align-items-center">
+    <span class="col-5 fz-0 d-flex justify-content-between align-items-center">
         <p class="mb-0">商品總計:</p>
         <p class="fz-2 mb-0 text-danger fw-bold">
           {{
@@ -175,6 +174,7 @@
           }}
         </p>
       </span>
+      <hr />
       <button
         type="button"
         class="btn btn-primary fz-2 py-2 col-5"
@@ -243,6 +243,12 @@
     </div>
   </div>
   <!-- 購物車列表 end -->
+      <!-- 熱賣商品 -->
+      <h3 class="titleEffect pt-5"><span>熱賣商品</span></h3>
+      <HotProductSwiper
+        :products="allProductsData"
+        @view-one-product="viewOneProduct"
+      />
 
   <!-- 購物車沒商品時，呈現此區塊  star-->
   <div v-if="cartList.carts?.length === 0">
@@ -265,19 +271,16 @@
   <!-- 讀取畫面 end -->
 </template>
 <script>
-// Alert元件
 import Alert from '@/components/Alert.vue';
-// 讀取畫面
 import Loading from '@/components/Loading.vue';
-// emitter
 import emitter from '@/assets/js/emitter';
+import HotProductSwiper from '@/components/HotProductSwiper.vue';
 
 export default {
   components: {
-    // Alert元件
     Alert,
-    // 讀取畫面
     Loading,
+    HotProductSwiper,
   },
   data() {
     return {
@@ -286,6 +289,8 @@ export default {
       alertStatus: false,
       // 讀取畫面
       isLoading: false,
+      // 全部產品資料
+      allProductsData: [],
       // 購物車資料
       cartList: {},
       // 購物車數量
@@ -315,24 +320,20 @@ export default {
     getCartList() {
       // 發起一個觸發(刷新購物車)
       emitter.emit('refresh-carts');
-      // 開啟讀取畫面
       this.isLoading = true;
       this.$http
         .get(`${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/cart`)
         .then((res) => {
           if (res.data.success) {
             this.cartList = res.data.data;
-            // 關掉讀取畫面
             this.isLoading = false;
           } else {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 關掉讀取畫面
             this.isLoading = false;
           }
         })
@@ -343,8 +344,34 @@ export default {
             this.alertMessage = '';
             this.alertStatus = false;
           }, 2000);
-          // 關掉讀取畫面
           this.isLoading = false;
+        });
+    },
+    // 取得全部商品列表
+    getAllProducts() {
+      this.$http
+        .get(
+          `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`,
+        )
+        .then((res) => {
+          if (res.data.success) {
+            this.allProductsData = res.data.products;
+          } else {
+            this.alertMessage = res.data.message;
+            this.alertStatus = false;
+            setTimeout(() => {
+              this.alertMessage = '';
+              this.alertStatus = false;
+            }, 2000);
+          }
+        })
+        .catch((err) => {
+          this.alertMessage = err.data.message;
+          this.alertStatus = false;
+          setTimeout(() => {
+            this.alertMessage = '';
+            this.alertStatus = false;
+          }, 2000);
         });
     },
     // 刪除購物車商品
@@ -356,9 +383,7 @@ export default {
         )
         .then((res) => {
           if (res.data.success) {
-            // 刷新購物車
             this.getCartList();
-            // 清空讀取狀態
             this.loadingStatue.delCart = '';
             this.alertMessage = res.data.message;
             this.alertStatus = true;
@@ -393,10 +418,7 @@ export default {
         )
         .then((res) => {
           if (res.data.success) {
-            // 刷新購物車
             this.getCartList();
-
-            // alert 元件顯示
             this.alertMessage = res.data.message;
             this.alertStatus = true;
             setTimeout(() => {
@@ -405,8 +427,6 @@ export default {
             }, 2000);
             this.loadingStatue.clearCart = '';
           } else {
-            // alert(res.data.message);
-            // alert 元件顯示
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
@@ -416,7 +436,6 @@ export default {
           }
         })
         .catch((err) => {
-          // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {
@@ -427,7 +446,6 @@ export default {
     },
     // 改動購物車商品數量
     rediCartItemsNum(item, i) {
-      // 開啟讀取畫面
       this.isLoading = true;
       let num = 0;
       if (parseInt(item.qty + i, 10) < 1) {
@@ -451,18 +469,14 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.getCartList();
-            // 關掉讀取畫面
             this.isLoading = false;
           } else {
-            // alert(res.data.message);
-            // alert 元件顯示
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 關掉讀取畫面
             this.isLoading = false;
           }
         })
@@ -473,7 +487,6 @@ export default {
             this.alertMessage = '';
             this.alertStatus = false;
           }, 2000);
-          // 關掉讀取畫面
           this.isLoading = false;
         });
     },
@@ -483,7 +496,6 @@ export default {
       setTimeout(() => {
         this.loadingStatue.sendCart = '';
       }, 1000);
-      // 前往購物車頁面
       this.$router.push('/order');
     },
     // 套用優惠券
@@ -499,7 +511,6 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.couponPrice = res.data.data.final_total;
-            // 清空優惠碼
             this.couponCode = '';
             this.alertMessage = res.data.message;
             this.alertStatus = true;
@@ -507,19 +518,15 @@ export default {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 關閉 按鈕loading
             this.loadingStatue.coupon = '';
           } else {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 關閉 按鈕loading
             this.loadingStatue.coupon = '';
-            // 清空優惠碼
             this.couponCode = '';
           }
         })
@@ -530,11 +537,13 @@ export default {
             this.alertMessage = '';
             this.alertStatus = false;
           }, 2000);
-          // 關閉 按鈕loading
           this.loadingStatue.coupon = '';
-          // 清空優惠碼
           this.couponCode = '';
         });
+    },
+    // 單一商品詳細內容
+    viewOneProduct(item) {
+      this.$router.push(`/product/${item.id}`);
     },
     // 改變進度條
     chgCartStep() {
@@ -549,14 +558,12 @@ export default {
     },
   },
   created() {
-    // 改變進度條
     this.chgCartStep();
   },
   mounted() {
-    // 開啟讀取畫面
     this.isLoading = true;
-    // 刷新購物車列表
     this.getCartList();
+    this.getAllProducts();
   },
 };
 </script>

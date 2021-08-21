@@ -67,9 +67,7 @@
 <script>
 export default {
   props: [
-    // 傳入訊息
     'message',
-    // 傳入 成功/失敗 狀態
     'status',
   ],
   data() {

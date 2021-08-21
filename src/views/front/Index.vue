@@ -1,15 +1,15 @@
 <template>
   <div class="position-relative bg-white">
     <Swiper />
-    <kinesis-container
-      class="banner__font rounded text-primary ff-HachiMaruPop p-sm-4"
+    <KinesisContainer
+      class="banner-font rounded text-primary ff-HachiMaruPop p-sm-4"
     >
-      <kinesis-element :strength="15" class="banner__subtitle">
+      <KinesisElement :strength="15" class="banner-subtitle">
         創意演繹極致口感
-      </kinesis-element>
-      <kinesis-element :strength="30"> -勾起你心中的餓 </kinesis-element>
+      </KinesisElement>
+      <KinesisElement :strength="30" class="ff-cwTeXYen"> -勾起你心中的餓 </KinesisElement>
       <div class="d-flex justify-content-center mt-5">
-        <router-link
+        <RouterLink
           class="
             btn btn-primary
             px-2
@@ -22,14 +22,14 @@
         >
           <i class="material-icons"> store </i>
           前往購物
-        </router-link>
+        </RouterLink>
       </div>
-    </kinesis-container>
+    </KinesisContainer>
 
     <div
       class="
         ScrollDown
-        hero__scroll
+        hero-scroll
         position-absolute
         start-50
         translate-middle
@@ -233,8 +233,8 @@
           >超級優惠價格外，<br />
           還有幸運大轉盤，有機會讓你得到全館半價的機會!!
         </p>
-        <router-link
-          class="btn btn-primary-lighten"
+        <RouterLink
+          class="btn btn-primary"
           href="#"
           to="/lotteryturntable"
         >
@@ -242,7 +242,7 @@
             <i class="material-icons fz-md-2 me-2"> casino </i>
             <p class="m-0 fz-md-2">立即前往!!</p>
           </div>
-        </router-link>
+        </RouterLink>
       </div>
     </div>
   </div>
@@ -268,7 +268,7 @@
         v-else
         v-slot="{ errors }"
         class="input-group"
-        @submit.prevent="sendMail"
+        @submit="sendMail"
       >
         <Field
           name="信箱"
@@ -283,7 +283,7 @@
         <button class="btn btn-primary" type="submit" id="button-subscribe">
           訂閱
         </button>
-        <error-message name="信箱" class="invalid-feedback fz-2" />
+        <ErrorMessage name="信箱" class="invalid-feedback fz-2" />
       </Form>
     </div>
   </div>
@@ -325,13 +325,7 @@ export default {
     },
   },
   mounted() {
-    // 讀取畫面
-    // this.isLoading = true;
-    // setTimeout(() => {
-    //   this.isLoading = false;
-    // }, 1500);
-    // ScrollDown 監聽
-    $('.hero__scroll').on('click', () => {
+    $('.hero-scroll').on('click', () => {
       $('html, body').animate(
         {
           scrollTop: $(window).height(),
@@ -348,7 +342,7 @@ export default {
 @import '@/assets/scss/mixin/_mixin';
 // 滿版swiper
 .banner {
-  &__font {
+  &-font {
     z-index: 1000;
     position: absolute;
     top: 20%;
@@ -358,16 +352,16 @@ export default {
     font-weight: bold;
     text-align: left;
   }
-  &__subtitle {
+  &-subtitle {
     font-size: 3rem;
   }
   @include mobile {
     height: 500px;
-    &__font {
+    &-font {
       top: 30%;
       font-size: 1.5rem;
     }
-    &__subtitle {
+    &-subtitle {
       font-size: 2rem;
       @include miniMobile {
         font-size: 1.75rem;

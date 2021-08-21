@@ -2,35 +2,34 @@
   <div class="navbar pt-4 pb-4 d-none bg-yellow-lighten">
     <div class="navbar-content">
       <h1 class="mb-4 pl-4">
-        <router-link class="d-block" to="/admin">
+        <RouterLink class="d-block" to="/admin">
           <img
             src="../assets/images/logo4.svg"
             alt="logo"
             width="100"
             height="100"
-            srcset=""
-        /></router-link>
+        /></RouterLink>
       </h1>
       <ul class="list-group nav-link flex-row justify-content-between">
         <li class="mb-2">
-          <router-link class="nav-link active" to="/admin">
+          <RouterLink class="nav-link active" to="/admin">
             <span class="material-icons"> assessment </span>
-          </router-link>
+          </RouterLink>
         </li>
         <li class="mb-2">
-          <router-link class="nav-link active" to="/productsControl">
+          <RouterLink class="nav-link active" to="/productsControl">
             <span class="material-icons"> store </span>
-          </router-link>
+          </RouterLink>
         </li>
         <li class="mb-2">
-          <router-link class="nav-link active" to="/coupons">
+          <RouterLink class="nav-link active" to="/coupons">
             <span class="material-icons"> receipt </span>
-          </router-link>
+          </RouterLink>
         </li>
         <li class="mb-2">
-          <router-link class="nav-link active" to="/ordersList">
+          <RouterLink class="nav-link active" to="/ordersList">
             <span class="material-icons"> payment </span>
-          </router-link>
+          </RouterLink>
         </li>
         <li class="mb-2">
           <a
@@ -44,9 +43,9 @@
           </a>
         </li>
         <li class="mb-2">
-          <router-link class="nav-link active" to="/">
+          <RouterLink class="nav-link active" to="/">
             <span class="material-icons"> home </span>
-          </router-link>
+          </RouterLink>
         </li>
       </ul>
     </div>
@@ -75,20 +74,17 @@
     >
       <div>
         <h1 class="mb-4 pl-4">
-          <router-link class="logo d-block" to="/admin">logo</router-link>
+          <RouterLink class="logo d-block" to="/admin">logo</RouterLink>
         </h1>
         <div class="nav flex-column nav-link">
-          <router-link class="nav-link active" to="/admin"
-            >後台首頁</router-link
+          <RouterLink class="nav-link active" to="/admin"
+            >後台首頁</RouterLink
           >
-          <router-link class="nav-link" to="/productsControl"
-            >商品管理</router-link
+          <RouterLink class="nav-link" to="/productsControl"
+            >商品管理</RouterLink
           >
-          <router-link class="nav-link" to="/coupons">優惠券管理</router-link>
-          <router-link class="nav-link" to="/ordersList">訂單管理</router-link>
-          <!-- 貼文 -->
-          <!-- <router-link class="nav-link"
-             to="/articles">貼文管理</router-link> -->
+          <RouterLink class="nav-link" to="/coupons">優惠券管理</RouterLink>
+          <RouterLink class="nav-link" to="/ordersList">訂單管理</RouterLink>
           <a
             class="nav-link"
             type="button"
@@ -97,8 +93,8 @@
             @click.prevent="openiSgnOutUserModal"
             >登出</a
           >
-          <router-link class="nav-link" v-else to="/Login">登入</router-link>
-          <router-link class="nav-link" to="/">返回前台</router-link>
+          <RouterLink class="nav-link" v-else to="/Login">登入</RouterLink>
+          <RouterLink class="nav-link" to="/">返回前台</RouterLink>
         </div>
       </div>
       <div class="d-flex justify-content-center align-items-center">
@@ -109,12 +105,12 @@
         />
         <ul class="ms-2 mb-0 text-start fz-0">
           <li>{{ userName }}</li>
-          <li class="">{{ userEmail }}</li>
+          <li >{{ userEmail }}</li>
         </ul>
       </div>
     </div>
     <div class="container Main">
-      <router-view />
+      <RouterView  v-if="checkSuccess" />
     </div>
   </div>
   <!-- Alert元件 start -->
@@ -130,15 +126,12 @@
   <LoginOut ref="signOutUserModal" @sign-out-admin="signOutAdmin" />
 </template>
 <script>
-// Alert元件
 import Alert from '@/components/Alert.vue';
 import LoginOut from '@/components/LoginOut.vue';
 
 export default {
   components: {
-    // Alert元件
     Alert,
-    // modal-登出
     LoginOut,
   },
   data() {
@@ -162,7 +155,7 @@ export default {
         '$1',
       ),
       // 登入狀態
-      checkSuccess: '',
+      checkSuccess: false,
     };
   },
   methods: {
@@ -172,9 +165,7 @@ export default {
       this.$http
         .post(url)
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
-            // alert 元件顯示
             this.alertMessage = res.data.message;
             this.alertStatus = true;
             setTimeout(() => {
@@ -184,10 +175,8 @@ export default {
 
             // 刪除cookie
             this.deleteAllCookies();
-            // 跳轉頁面
             this.$router.push('/Login');
           } else {
-            // alert 元件顯示
             this.alertMessage = '未知的錯誤!';
             this.alertStatus = false;
             setTimeout(() => {
@@ -195,12 +184,10 @@ export default {
               this.alertStatus = false;
             }, 2000);
 
-            // 跳轉頁面
             this.$router.push('/Login');
           }
         })
         .catch((err) => {
-          // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {
@@ -226,7 +213,6 @@ export default {
     },
     // 判斷使用者值
     chkUserName() {
-      // 如果有取到值 ，代表已登入
       if (
         document.cookie.replace(
           /(?:(?:^|.*;\s*)username\s*=\s*([^;]*).*$)|^.*$/,
@@ -237,11 +223,9 @@ export default {
           /(?:(?:^|.*;\s*)username\s*=\s*([^;]*).*$)|^.*$/,
           '$1',
         );
-        // 登入狀態
         this.loginStatus = true;
       } else {
         this.userName = '訪客';
-        // 登入狀態
         this.loginStatus = false;
       }
     },
@@ -254,7 +238,6 @@ export default {
           if (res.data.success === true) {
             this.checkSuccess = true;
           } else {
-            // alert 元件顯示
             this.alertMessage = '您尚未登入!';
             this.alertStatus = false;
             setTimeout(() => {
@@ -264,7 +247,6 @@ export default {
           }
         })
         .catch((err) => {
-          // alert 元件顯示
           this.alertMessage = err.data.message;
           this.alertStatus = false;
           setTimeout(() => {

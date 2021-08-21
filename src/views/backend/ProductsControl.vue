@@ -52,7 +52,7 @@
   <!-- 刪除單一Modal end-->
 
   <!-- 產品列表 -->
-  <div class="container mt_5p">
+  <div class="container">
     <div class="container">
       <table class="table mt-4 row">
         <thead class="co1-12">
@@ -68,9 +68,9 @@
           </tr>
         </thead>
         <tbody id="productList">
-          <tr v-for="(item, i) in productData" class="row" :key="'bg_prd' + i">
+          <tr v-for="(item, i) in productData" class="row" :key="`bg_prd_${i}`">
             <td class="col-3 d-none d-md-table-cell d-flex align-items-center">
-              <img class="prd_img" :src="item.imageUrl" :alt="item.imageUrl" />
+              <img :src="item.imageUrl" :alt="item.imageUrl" />
             </td>
             <td class="col-3 d-flex justify-content-center align-items-center">
               {{ item.title }}
@@ -202,36 +202,22 @@
   </div>
 </template>
 <script>
-// 刪除單一Modal
 import Delete from '@/components/Delete.vue';
-// 分頁
 import Pagination from '@/components/Pagination.vue';
-// 新增商品 Modal
 import AddProductModal from '@/components/AddProductModal.vue';
-// 編輯商品 Modal
 import ReditProductModal from '@/components/ReditProductModal.vue';
-// 讀取畫面
 import Loading from '@/components/Loading.vue';
-// Alert元件
 import Alert from '@/components/Alert.vue';
-// 刪除全部 Modal
 import DeleteAll from '@/components/DeleteAll.vue';
 
 export default {
   components: {
-    // 刪除全部 Modal
     DeleteAll,
-    // 刪除單一Modal
     Delete,
-    // Alert元件
     Alert,
-    // 分頁
     Pagination,
-    // 新增商品 Modal
     AddProductModal,
-    // 編輯商品 Modal
     ReditProductModal,
-    // 讀取畫面
     Loading,
   },
   data() {
@@ -292,17 +278,13 @@ export default {
       this.$http
         .get(url)
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
             this.productData = res.data.products;
             this.pagination = res.data.pagination;
-            // 更新筆數
             this.dataLength = this.productData.length;
 
-            // 取得全部商品
             this.getAllProduct();
 
-            // 關掉讀取畫面
             this.isLoading = false;
           } else {
             this.alertMessage = res.data.message;
@@ -311,7 +293,6 @@ export default {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 跳轉頁面
             this.$router.push('/login');
           }
         })
@@ -332,7 +313,6 @@ export default {
       this.$http
         .delete(url)
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
             this.alertMessage = res.data.message;
             this.alertStatus = true;
@@ -375,7 +355,6 @@ export default {
           },
         })
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
             this.alertMessage = res.data.message;
             this.alertStatus = true;
@@ -398,7 +377,6 @@ export default {
 
     // 建立產品
     addPrductData(emitproductData) {
-      // 判斷是否都不為空值
       if (
         emitproductData.bg_add_title !== ''
         && emitproductData.bg_add_category !== ''
@@ -408,11 +386,9 @@ export default {
       ) {
         const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product`;
 
-        // 送至伺服器
         this.$http
           .post(url, emitproductData)
           .then((res) => {
-            // 如果成功就執行
             if (res.data.success) {
               this.alertMessage = res.data.message;
               this.alertStatus = true;
@@ -420,12 +396,9 @@ export default {
                 this.alertMessage = '';
                 this.alertStatus = false;
               }, 2000);
-              // 刷新
               this.getProduct();
 
-              // 關掉新增產品選單
               this.$refs.UpLoadImg.closeModal();
-              // 清空新增產品的資料
               this.clearProductData();
             }
           })
@@ -449,11 +422,9 @@ export default {
     // 取得全部商品
     getAllProduct() {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/products/all`;
-      // 取得全部商品
       this.$http
         .get(url)
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
             this.productDataAll = res.data.products;
           } else {
@@ -481,7 +452,6 @@ export default {
         this.$http
           .delete(url)
           .then((res) => {
-            // 如果成功就執行
             if (res.data.success) {
               if (i === this.allProductAry.length - 1) {
                 this.alertMessage = res.data.message;
@@ -513,18 +483,14 @@ export default {
     },
     // 清空新增產品的資料
     clearProductData() {
-      // 清空新增產品的資料
       this.$refs.UpLoadImg.$refs.addPrdForm.resetForm();
-      // 打開新增產品視窗
       this.$refs.UpLoadImg.openModal();
     },
     // 取得編輯商品
     getReditOneData(e) {
-      // 取得待編輯商品索引
       const index = e.target.id.split('_')[1];
-      // 將索引傳至data
       this.rediData.redi_index = index;
-      // 將資料傳至data
+
       const rediItem = this.productData[this.rediData.redi_index];
       this.rediData.title = rediItem.title;
       this.rediData.description = rediItem.description;
@@ -548,11 +514,9 @@ export default {
     // 編輯商品
     reditOneData(reditNewData) {
       const url = `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/admin/product/${this.rediData.id}`;
-      // 編輯資料
       this.$http
         .put(url, reditNewData)
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
             this.alertMessage = res.data.message;
             this.alertStatus = true;
@@ -560,9 +524,7 @@ export default {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 刷新
             this.getProduct();
-            // 關閉編輯視窗
             this.$refs.ReditProductModal.closeModal();
           }
         })
@@ -578,7 +540,6 @@ export default {
   },
   watch: {
     productDataAll() {
-      // 如果productDataAll的資料不為空就取出ID
       if (this.productDataAll !== undefined && this.productDataAll !== null) {
         // 將取得全部商品物件轉陣列取出ID
         this.allProductAry = Object.keys(this.productDataAll);
@@ -586,12 +547,10 @@ export default {
     },
   },
   created() {
-    // 使用token驗證
     this.$http.defaults.headers.common.Authorization = this.token;
   },
   mounted() {
     this.isLoading = true;
-    // 取得商品資料
     this.getProduct();
   },
 };

@@ -47,7 +47,7 @@
           <td class="col-4 col-md-2">{{ item.title }}</td>
           <td class="d-none d-lg-table-cell col-1">{{ `${item.percent}%` }}</td>
           <td class="col-3 position-relative d-none d-ssm-table-cell">
-            <div class="btn__enable--center">
+            <div class="btn-enable--center">
               <div class="onoffswitch">
                 <input
                   type="checkbox"
@@ -78,7 +78,7 @@
             </div>
           </td>
           <td class="col-5 position-relative">
-            <div class="btn__del--center">
+            <div >
               <button
                 type="button"
                 :id="'getOne_' + i"
@@ -140,32 +140,20 @@
 </template>
 
 <script>
-// 分頁
 import Pagination from '@/components/Pagination.vue';
-// 編輯訂單Modal
 import RediCouponModal from '@/components/RediCouponModal.vue';
-// 刪除全部 Modal
 import AddCouponsModal from '@/components/AddCouponsModal.vue';
-// 讀取畫面
 import Loading from '@/components/Loading.vue';
-// 刪除單一Modal
 import Delete from '@/components/Delete.vue';
-// Alert元件
 import Alert from '@/components/Alert.vue';
 
 export default {
   components: {
-    // Alert元件
     Alert,
-    // 分頁
     Pagination,
-    // 編輯優惠券Modal
     RediCouponModal,
-    // 新增優惠券 Modal
     AddCouponsModal,
-    // 讀取畫面
     Loading,
-    // 刪除單一Modal
     Delete,
   },
   data() {
@@ -229,7 +217,6 @@ export default {
         })
         .then((res) => {
           if (res.data.success) {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = true;
             setTimeout(() => {
@@ -238,7 +225,6 @@ export default {
             }, 2000);
             this.getCouponsData();
           } else {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
@@ -270,7 +256,6 @@ export default {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 刷新畫面
             this.getCouponsData();
           } else {
             this.alertMessage = res.data.message;
@@ -365,7 +350,6 @@ export default {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 刷新畫面
             this.getCouponsData();
           } else {
             this.alertMessage = res.data.message;

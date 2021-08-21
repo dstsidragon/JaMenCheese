@@ -6,11 +6,6 @@
   </div>
   <div class="bg-primary w-100 py-2">
     <div class="container d-flex justify-content-center align-items-center">
-      <!-- <img
-        class="logo d-none d-sm-block"
-        src="@/assets/images/logo-white.svg"
-        alt="logo"
-      /> -->
       <div>
         <ul class="text-white fz-smm-2">
           <li>
@@ -24,7 +19,7 @@
           </li>
         </ul>
         <p class="text-white fz-smm-2">- - 個人練習使用 - -</p>
-        <router-link
+        <RouterLink
           class="
             text-center text-white
             hover-red
@@ -36,7 +31,7 @@
         >
           <span class="material-icons"> home </span>
           <span>前往後台</span>
-        </router-link>
+        </RouterLink>
         <ul class="d-flex justify-content-around align-items-center">
           <li>
             <!-- 貼FACEBOOK 網址會跳警告 -->
@@ -83,24 +78,12 @@
   height: 200px;
   -webkit-clip-path: ellipse(69% 77% at 50% 80%);
   clip-path: ellipse(69% 77% at 50% 80%);
-  // 992px
-  @include pc {
-  }
-  // 768px
   @include pad {
     height: 200px;
   }
-  // 630px
-  @include mobile {
-  }
-  // 512px
   @include smallmobile {
     height: 150px;
   }
-  // 414px
-  @include plusMobile {
-  }
-  // 320px
   @include miniMobile {
     height: 120px;
   }
@@ -111,52 +94,28 @@
   background-color: #fff8f0;
   -webkit-clip-path: polygon(50% 0%, 82% 99%, 66% 0);
   clip-path: polygon(50% 0%, 82% 99%, 66% 0);
-  // 992px
-  @include pc {
-  }
-  // 768px
   @include pad {
     height: 150px;
     width: 150px;
-  }
-  // 630px
-  @include mobile {
-  }
-  // 512px
-  @include smallmobile {
-  }
-  // 414px
-  @include plusMobile {
-  }
-  // 320px
-  @include miniMobile {
   }
 }
 .stripe-one {
   position: absolute;
   top: -8px;
   left: 15%;
-  // 992px
-  @include pc {
-  }
-  // 768px
   @include pad {
     top: -8px;
   }
-  // 630px
   @include mobile {
     left: 8%;
   }
-  // 512px
   @include smallmobile {
     left: 4%;
   }
-  // 414px
   @include plusMobile {
     left: 1%;
     top: -22px;
   }
-  // 320px
   @include miniMobile {
     left: -15%;
     top: -50px;
@@ -166,28 +125,20 @@
   position: absolute;
   top: -32px;
   left: 40%;
-  // 992px
-  @include pc {
-  }
-  // 768px
   @include pad {
     top: -15px;
     left: 36%;
   }
-  // 630px
   @include mobile {
     left: 37%;
   }
-  // 512px
   @include smallmobile {
     left: 33%;
   }
-  // 414px
   @include plusMobile {
     top: -28px;
     left: 28%;
   }
-  // 320px
   @include miniMobile {
     top: -52px;
     left: 16%;
@@ -197,27 +148,19 @@
   position: absolute;
   top: -24px;
   left: 65%;
-  // 992px
-  @include pc {
-  }
-  // 768px
   @include pad {
     top: -19px;
     left: 58%;
   }
-  // 630px
   @include mobile {
     top: -33px;
   }
-  // 512px
   @include smallmobile {
     left: 60%;
   }
-  // 414px
   @include plusMobile {
     left: 55%;
   }
-  // 320px
   @include miniMobile {
     top: -52px;
     left: 47%;

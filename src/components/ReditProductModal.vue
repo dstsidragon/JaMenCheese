@@ -315,14 +315,10 @@ export default {
       };
       this.$emit('emit-redit-new-nata', reditNewData);
     },
-    // 開啟modal
     openModal() {
-      // 開啟modal
       this.Modal.show();
     },
-    // 隱藏modal
     closeModal() {
-      // 隱藏modal
       this.Modal.hide();
     },
   },

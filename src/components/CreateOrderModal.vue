@@ -9,7 +9,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header bg-primary text-white">
-          <h5 class="modal-title css_wordInput_13 fz-2 fz-sm-3">
+          <h5 class="modal-title css-wordInput-13 fz-2 fz-sm-3">
             請輸入詳細資訊~ ~ (・ω・)
           </h5>
           <button
@@ -35,13 +35,11 @@
 
 <script>
 import Modal from 'bootstrap/js/dist/modal';
-// Alert元件
 import Alert from '@/components/Alert.vue';
 
 export default {
   emits: ['re-get-cart-list'],
   components: {
-    // Alert元件
     Alert,
   },
   data() {
@@ -63,21 +61,16 @@ export default {
     };
   },
   methods: {
-    // 開啟modal
     openModal() {
-      // 開啟modal
       this.Modal.show();
     },
-    // 隱藏modal
     closeModal() {
-      // 隱藏modal
       this.Modal.hide();
 
       const data = {
         data: this.userData,
       };
 
-      // 送出訂單
       this.$http
         .post(
           `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/order`,

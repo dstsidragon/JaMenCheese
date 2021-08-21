@@ -56,9 +56,7 @@ export default {
     send() {
       this.$emit('send');
     },
-    // 開啟modal
     openModal() {
-      // 開啟modal
       this.Modal.show();
     },
   },

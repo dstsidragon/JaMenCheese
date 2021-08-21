@@ -1,21 +1,21 @@
 <template>
-  <div
-    class="banner mt_navbar d-flex justify-content-center align-items-center"
+  <header
+    class="banner mt-navbar d-flex justify-content-center align-items-center"
   >
     <div class="text-white bg-img-transparent rounded p-2">
       <h2 class="text-center fz-2 fz-md-4">我的收藏</h2>
       <p class="fz-0 fz-md-1">別人貪婪的時侯我恐懼，別人恐懼的時候我貪婪!</p>
     </div>
-  </div>
+  </header>
   <div class="container mt-5">
-    <div v-if="myFavoriteProducts.length === 0" class="">
+    <div v-if="myFavoriteProducts.length === 0" >
       <p class="text-center text-primary fz-2">目前沒有商品加入收藏!</p>
     </div>
     <div class="row row-cols-1 row-cols-smm-2 row-cols-md-3 g-4">
       <div
         class="col cursor-pointer"
         v-for="(item, i) in myFavoriteProducts"
-        :key="'prd' + i"
+        :key="`prd_${i}`"
       >
         <div class="card h-100">
           <div
@@ -85,19 +85,16 @@ export default {
   methods: {
     // 加入最愛
     addFavorite(id) {
-      // 如果已經在最愛 就刪除最愛  如果沒有 就加到最愛
       if (this.myFavorite.includes(id)) {
         this.myFavorite.splice(this.myFavorite.indexOf(id), 1);
       } else {
         this.myFavorite.push(id);
       }
-      // 儲存myFavorite資料到LocalStorage
       this.setLoCalStorage('myFavorite', this.myFavorite);
       // 發起一個觸發(刷新最愛)
       emitter.emit('refresh-favorites');
       this.getProducts();
     },
-    // 將資料存到loCalStorage
     setLoCalStorage(name, item) {
       localStorage.setItem(name, JSON.stringify(item));
     },
@@ -112,7 +109,6 @@ export default {
           `${process.env.VUE_APP_API}/api/${process.env.VUE_APP_PATH}/products/all`,
         )
         .then((res) => {
-          // 如果成功就執行
           if (res.data.success) {
             this.products = res.data.products;
             this.myFavoriteProduct();

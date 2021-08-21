@@ -1,6 +1,6 @@
 <template>
-  <div
-    class="banner mt_navbar d-flex justify-content-center align-items-center"
+  <header
+    class="banner mt-navbar d-flex justify-content-center align-items-center"
   >
     <div class="text-white bg-img-transparent rounded p-2">
       <h2 class="text-center fz-2 fz-md-4">訂單搜尋</h2>
@@ -8,9 +8,9 @@
         美食家把錢包放進肚子裏，而吝嗇鬼把肚子放在錢包裏
       </p>
     </div>
-  </div>
+  </header>
 
-  <router-view />
+  <RouterView />
 </template>
 <style lang="scss" scoped>
 @import '@/assets/scss/mixin/_mixin';

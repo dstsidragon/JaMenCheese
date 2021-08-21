@@ -33,7 +33,7 @@
               rules="required"
               v-model="userData.user.name"
             />
-            <error-message name="姓名" class="invalid-feedback d-flex" />
+            <ErrorMessage name="姓名" class="invalid-feedback d-flex" />
           </div>
 
           <!-- 電話 -->
@@ -50,7 +50,7 @@
               :rules="isPhone"
               v-model="userData.user.tel"
             />
-            <error-message name="電話" class="invalid-feedback d-flex" />
+            <ErrorMessage name="電話" class="invalid-feedback d-flex" />
           </div>
 
           <!-- 信箱 -->
@@ -67,7 +67,7 @@
               :rules="isEmail"
               v-model="userData.user.email"
             />
-            <error-message name="信箱" class="invalid-feedback d-flex" />
+            <ErrorMessage name="信箱" class="invalid-feedback d-flex" />
           </div>
           <!-- 本島/離島 -->
           <div class="col-md-6">
@@ -104,7 +104,7 @@
                 <label class="form-check-label" for="inlineRadio2">離島</label>
               </div>
             </Field>
-            <error-message name="本島/離島" class="invalid-feedback d-flex" />
+            <ErrorMessage name="本島/離島" class="invalid-feedback d-flex" />
           </div>
           <!-- 地址 -->
           <div class="col-12">
@@ -120,7 +120,7 @@
               rules="required"
               v-model="userData.user.address"
             />
-            <error-message name="地址" class="invalid-feedback d-flex" />
+            <ErrorMessage name="地址" class="invalid-feedback d-flex" />
           </div>
           <div class="col-12">
             <label for="text" class="form-label d-flex">留言:</label>
@@ -177,6 +177,55 @@
               <span>送出訂單</span>
             </button>
           </div>
+          <!-- 送出按鈕 start-->
+          <div class="w-100 mobile-fixed d-md-none bg-white">
+            <div class="d-flex justify-content-between row">
+              <span
+                class="
+                  col-7
+                  fz-0
+                  d-flex
+                  justify-content-around
+                  align-items-center
+                  border-top
+                "
+              >
+                <p class="mb-0">總計:</p>
+                <p class="fz-2 mb-0 text-danger fw-bold">
+                  {{
+                    cartList.final_total == null
+                      ? 'NT$ 0'
+                      : `NT $ ${$toComma(
+                          Math.floor(cartList.final_total) + shipping
+                        )}`
+                  }}
+                </p>
+              </span>
+              <button
+                type="submit"
+                :disabled="loadingStatue.sendOrder == 1"
+                class="
+                  btn btn-primary
+                  py-2
+                  fz-2 fz-ssm-3
+                  col-5
+                  btn-right btn-primary-mobile
+                  d-flex
+                  justify-content-center
+                  align-items-center
+                "
+              >
+                <span
+                  :class="{ 'd-none': loadingStatue.sendOrder !== 1 }"
+                  class="spinner-border spinner-border-sm"
+                  role="status"
+                  aria-hidden="true"
+                />
+                <span>送出訂單</span>
+              </button>
+            </div>
+          </div>
+          <!-- 送出按鈕 end -->
         </Form>
         <!-- 表單 end -->
       </div>
@@ -184,7 +233,7 @@
         <!-- 購物車列表 start-->
         <ul class="p-3 border border-primary">
           <li>訂單明細</li>
-          <li v-for="(item, i) in cartList.carts" :key="'Car_' + i">
+          <li v-for="(item, i) in cartList.carts" :key="`Car_${i}`">
             <div
               class="card border-0 mb-3 text-dark bg-white"
               style="max-width: 540px"
@@ -294,54 +343,6 @@
       <!-- 購物車列表 end -->
     </div>
   </div>
-  <!-- 送出按鈕 start-->
-  <div class="w-100 mobile-fixed d-md-none bg-white">
-    <div class="d-flex justify-content-between row">
-      <span
-        class="
-          col-7
-          fz-0
-          d-flex
-          justify-content-around
-          align-items-center
-          border-top
-        "
-      >
-        <p class="mb-0">總計:</p>
-        <p class="fz-2 mb-0 text-danger fw-bold">
-          {{
-            cartList.final_total == null
-              ? 'NT$ 0'
-              : `NT $ ${$toComma(Math.floor(cartList.final_total) + shipping)}`
-          }}
-        </p>
-      </span>
-      <button
-        @click="$refs.formBtn.click()"
-        type="submit"
-        :disabled="loadingStatue.sendOrder == 1"
-        class="
-          btn btn-primary
-          py-2
-          fz-2 fz-ssm-3
-          col-5
-          btn-right btn-primary-mobile
-          d-flex
-          justify-content-center
-          align-items-center
-        "
-      >
-        <span
-          :class="{ 'd-none': loadingStatue.sendOrder !== 1 }"
-          class="spinner-border spinner-border-sm"
-          role="status"
-          aria-hidden="true"
-        />
-        <span>送出訂單</span>
-      </button>
-    </div>
-  </div>
-  <!-- 送出按鈕 end -->
   <hr />
 
   <!-- 讀取畫面 start-->
@@ -349,18 +350,13 @@
   <!-- 讀取畫面 end -->
 </template>
 <script>
-// Alert元件
 import Alert from '@/components/Alert.vue';
-// 讀取畫面
 import Loading from '@/components/Loading.vue';
-// emitter
 import emitter from '@/assets/js/emitter';
 
 export default {
   components: {
-    // Alert元件
     Alert,
-    // 讀取畫面
     Loading,
   },
   data() {
@@ -414,19 +410,15 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.cartList = res.data.data;
-            // 改變進度條
             this.chgCartStep();
-            // 關掉讀取畫面
             this.isLoading = false;
           } else {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 關掉讀取畫面
             this.isLoading = false;
           }
         })
@@ -437,7 +429,6 @@ export default {
             this.alertMessage = '';
             this.alertStatus = false;
           }, 2000);
-          // 關掉讀取畫面
           this.isLoading = false;
         });
     },
@@ -454,7 +445,6 @@ export default {
         .then((res) => {
           if (res.data.success) {
             this.couponPrice = res.data.data.final_total;
-            // 清空優惠碼
             this.couponCode = '';
             this.alertMessage = res.data.message;
             this.alertStatus = true;
@@ -462,23 +452,17 @@ export default {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 刷新購物車
             this.getCartList();
-            // 關閉 按鈕loading
             this.loadingStatue.coupon = '';
-            // 關掉讀取畫面
             this.isLoading = false;
           } else {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
               this.alertMessage = '';
               this.alertStatus = false;
             }, 2000);
-            // 關閉 按鈕loading
             this.loadingStatue.coupon = '';
-            // 清空優惠碼
             this.couponCode = '';
           }
         })
@@ -489,9 +473,7 @@ export default {
             this.alertMessage = '';
             this.alertStatus = false;
           }, 2000);
-          // 關閉 按鈕loading
           this.loadingStatue.coupon = '';
-          // 清空優惠碼
           this.couponCode = '';
         });
     },
@@ -528,7 +510,6 @@ export default {
         )
         .then((res) => {
           if (res.data.success) {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = true;
             setTimeout(() => {
@@ -539,10 +520,8 @@ export default {
             this.orderId = res.data.orderId;
             // 發起一個觸發(刷新購物車)
             emitter.emit('refresh-carts');
-            // 前往付款頁面
             this.$router.push(`/payment/${this.orderId}`);
           } else {
-            // alert(res.data.message);
             this.alertMessage = res.data.message;
             this.alertStatus = false;
             setTimeout(() => {
@@ -578,8 +557,7 @@ export default {
         if (Math.floor(this.cartList.total) < 2500) {
           this.shipping = 180;
         } else if (
-          Math.floor(this.cartList.total) >= 2500
-          && Math.floor(this.cartList.total) < 3500
+          Math.floor(this.cartList.total) >= 2500 && Math.floor(this.cartList.total) < 3500
         ) {
           this.shipping = 150;
         } else {
@@ -589,8 +567,7 @@ export default {
         if (Math.floor(this.cartList.total) < 2500) {
           this.shipping = 280;
         } else if (
-          Math.floor(this.cartList.total) < 3500
-          && Math.floor(this.cartList.total) >= 2500
+          Math.floor(this.cartList.total) < 3500 && Math.floor(this.cartList.total) >= 2500
         ) {
           this.shipping = 250;
         } else {
@@ -599,7 +576,6 @@ export default {
       } else {
         this.shipping = 123;
       }
-      // 關掉讀取畫面
       this.isLoading = false;
     },
     // 改變進度條
@@ -611,14 +587,11 @@ export default {
   watch: {
     // 刷新購物車數量
     island() {
-      // 刷新運費
       this.calculateshipping();
     },
   },
   created() {
-    // 改變進度條
     this.chgCartStep();
-    // 刷新購物車列表
     this.getCartList();
   },
   mounted() {
