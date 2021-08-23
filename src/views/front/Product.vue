@@ -149,19 +149,19 @@
     </div>
     <!-- 商品CARD end -->
     <div class="container">
-      <h3 class="titleEffect--border-bottom-bold">
+      <h3 class="titleEffect--border-bottom-bold fz-3">
         <span>購物小叮嚀</span>
       </h3>
       <div class="row text-start">
         <ul class="mt-3 col-smm-4 d-flex flex-column align-items-center">
-          <li class="titleEffect">
+          <li class="titleEffect fz-2">
             <span> 取件方式 </span>
           </li>
           <li class="mt-1 text-primary">門市取件</li>
           <li class="mt-1 text-primary">低溫宅配</li>
         </ul>
         <ul class="mt-3 col-smm-4 d-flex flex-column align-items-center">
-          <li class="titleEffect">
+          <li class="titleEffect fz-2">
             <span> 付款方式 </span>
           </li>
           <li class="mt-1 text-primary">門市付款</li>
@@ -169,7 +169,7 @@
           <li class="mt-1 text-primary">轉帳或匯款</li>
         </ul>
         <ul class="mt-3 col-smm-4 d-flex flex-column align-items-center">
-          <li class="titleEffect">
+          <li class="titleEffect fz-2">
             <span> 運送方式 </span>
           </li>
           <li class="mt-1 text-primary">黑貓宅急便（低溫配送）</li>
@@ -177,7 +177,7 @@
         </ul>
         <div class="d-flex flex-column align-items-center">
           <ul class="mt-3">
-            <li class="titleEffect">
+            <li class="titleEffect fz-2">
               <span> 退換貨方式 </span>
             </li>
             <li class="mt-1 text-primary">
