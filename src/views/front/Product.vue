@@ -54,7 +54,7 @@
                 </p>
                 <br />
                 <!-- 商品內容 -->
-                <p class="card-text text-start fz-0">
+                <p class="card-text text-start">
                   <span v-html="product.content" />
                 </p>
                 <!-- 金額 -->
@@ -157,42 +157,42 @@
           <li class="titleEffect">
             <span> 取件方式 </span>
           </li>
-          <li class="mt-1 fz-0 text-primary">門市取件</li>
-          <li class="mt-1 fz-0 text-primary">低溫宅配</li>
+          <li class="mt-1 text-primary">門市取件</li>
+          <li class="mt-1 text-primary">低溫宅配</li>
         </ul>
         <ul class="mt-3 col-smm-4 d-flex flex-column align-items-center">
           <li class="titleEffect">
             <span> 付款方式 </span>
           </li>
-          <li class="mt-1 fz-0 text-primary">門市付款</li>
-          <li class="mt-1 fz-0 text-primary">線上刷卡</li>
-          <li class="mt-1 fz-0 text-primary">轉帳或匯款</li>
+          <li class="mt-1 text-primary">門市付款</li>
+          <li class="mt-1 text-primary">線上刷卡</li>
+          <li class="mt-1 text-primary">轉帳或匯款</li>
         </ul>
         <ul class="mt-3 col-smm-4 d-flex flex-column align-items-center">
           <li class="titleEffect">
             <span> 運送方式 </span>
           </li>
-          <li class="mt-1 fz-0 text-primary">黑貓宅急便（低溫配送）</li>
-          <li class="mt-1 fz-0 text-primary">白貓宅急便（低溫配送）</li>
+          <li class="mt-1 text-primary">黑貓宅急便（低溫配送）</li>
+          <li class="mt-1 text-primary">白貓宅急便（低溫配送）</li>
         </ul>
         <div class="d-flex flex-column align-items-center">
           <ul class="mt-3">
             <li class="titleEffect">
               <span> 退換貨方式 </span>
             </li>
-            <li class="mt-1 fz-0 text-primary">
+            <li class="mt-1 text-primary">
                門市現場訂購商品者不適用於7天鑑賞期，不接受退換貨機制
             </li>
-            <li class="mt-1 fz-0 text-primary">
+            <li class="mt-1 text-primary">
                宅配運送過程如若碰撞造成損毀請當日撥打電話連繫客服，逾期恕不受理
             </li>
-            <li class="mt-1 fz-0 text-primary">
+            <li class="mt-1 text-primary">
                如若遇到不可抗力之因素造成的延遲到貨，恕無法接受退貨
             </li>
-            <li class="mt-1 fz-0 text-primary">
+            <li class="mt-1 text-primary">
                恕不接受因訂錯商品或商品已拆封之退換貨
             </li>
-            <li class="mt-1 fz-0 text-primary">
+            <li class="mt-1 text-primary">
                如超過13:00下訂，則於隔日製作
             </li>
           </ul>
