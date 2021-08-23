@@ -33,8 +33,6 @@
 /* 區塊陰影 */
 .div-shadow {
   box-shadow: -8px -5px 25px #333333;
-  -webkit-box-shadow: -8px -5px 25px #333333;
-  -moz-box-shadow: -8px -5px 25px #333333;
 }
 .text-shadow-multipleLight {
   text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4), 0px 8px 13px rgba(0, 0, 0, 0.1), 0px 18px 23px rgba(0, 0, 0, 0.1);
@@ -129,7 +127,8 @@
   background-color: rgb(245, 164, 65);
 }
 .bg-lightenPrimary {
-  background-color: #ffc3792a;
+  // background-color: #ffc3792a;
+  background-color: #fff8f0;
   //9e7d582a
 }
 .bg-lightYellow {
@@ -187,7 +186,7 @@
   }
 }
 .titleEffect--border-bottom-bold {
-  padding: 0.6em;
+  padding: 0.75em;
   background: linear-gradient(transparent 70%, #dc3545  70%);
 }
 .titleEffect--border-bottom-x {

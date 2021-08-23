@@ -55,7 +55,7 @@
         <ul class="navbar-nav mb-lg-0 d-none d-lg-flex ps-lg-3">
           <li>
             <RouterLink
-              class="nav-link fw-bold nav-drown"
+              class="nav-link nav-drown"
               href="#"
               aria-current="page"
               :class="navBarColor"
@@ -66,7 +66,7 @@
           </li>
           <li>
             <RouterLink
-              class="nav-link fw-bold nav-drown"
+              class="nav-link nav-drown"
               href="#"
               to="/products"
               :class="navBarColor"
@@ -76,7 +76,7 @@
           </li>
           <li>
             <RouterLink
-              class="nav-link fw-bold nav-drown"
+              class="nav-link nav-drown"
               to="/q&a"
               :class="navBarColor"
               @click.prevent="closeHamburger"
@@ -85,7 +85,7 @@
           </li>
           <li>
             <RouterLink
-              class="nav-link fw-bold nav-drown"
+              class="nav-link nav-drown"
               to="/lotteryturntable"
               :class="navBarColor"
               @click.prevent="closeHamburger"
@@ -375,7 +375,7 @@
         <ul class="navbar-nav mb-lg-0 d-lg-none">
           <li>
             <RouterLink
-              class="nav-link fw-bold nav-drown"
+              class="nav-link nav-drown"
               href="#"
               aria-current="page"
               :class="navBarColor"
@@ -386,7 +386,7 @@
           </li>
           <li>
             <RouterLink
-              class="nav-link fw-bold nav-drown"
+              class="nav-link nav-drown"
               href="#"
               to="/products"
               :class="navBarColor"
@@ -396,7 +396,7 @@
           </li>
           <li>
             <RouterLink
-              class="nav-link fw-bold nav-drown"
+              class="nav-link nav-drown"
               to="/q&a"
               :class="navBarColor"
               @click.prevent="closeHamburger"
@@ -405,7 +405,7 @@
           </li>
           <li>
             <RouterLink
-              class="nav-link fw-bold nav-drown"
+              class="nav-link nav-drown"
               to="/lotteryturntable"
               :class="navBarColor"
               @click.prevent="closeHamburger"
@@ -666,10 +666,10 @@ export default {
 .nav-drown {
   &:focus,
   &:hover {
-    color: #000000  !important;
+    font-weight: bold !important;
   }
   &.router-link-exact-active {
-    color: #000000  !important;
+    font-weight: bold !important;
   }
   @include pc {
     font-size: 1.5rem;

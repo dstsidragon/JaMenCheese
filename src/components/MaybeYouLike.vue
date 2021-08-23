@@ -40,6 +40,7 @@ import SwiperCore, { Autoplay } from 'swiper/core';
 SwiperCore.use([Autoplay]);
 
 export default {
+  emits: ['view-one-product'],
   components: {
     Swiper,
     SwiperSlide,

@@ -382,8 +382,6 @@ export default {
 
   &.bottom:before {
     top: 0;
-    -webkit-transform: rotate(135deg);
-    -ms-transform: rotate(135deg);
     transform: rotate(135deg);
   }
   &::before {
@@ -393,8 +391,6 @@ export default {
     display: inline-block;
     height: 20px;
     position: relative;
-    -webkit-transform: rotate(-45deg);
-    -ms-transform: rotate(-45deg);
     transform: rotate(-45deg);
     vertical-align: top;
     width: 20px;
@@ -403,15 +399,12 @@ export default {
 
 @keyframes pulse {
   0% {
-    -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
   }
   50% {
-    -webkit-transform: translate(0, 10px);
     transform: translate(0, 10px);
   }
   100% {
-    -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
   }
 }

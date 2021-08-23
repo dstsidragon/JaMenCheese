@@ -155,8 +155,6 @@ export default {
   right: 5px;
 }
 .product-link {
-  -webkit-box-flex: 1;
-  -ms-flex: 1;
   flex: 1;
   padding: 0.5rem 0;
 }

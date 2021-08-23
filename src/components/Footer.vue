@@ -76,7 +76,6 @@
 .clip-path {
   width: 100%;
   height: 200px;
-  -webkit-clip-path: ellipse(69% 77% at 50% 80%);
   clip-path: ellipse(69% 77% at 50% 80%);
   @include pad {
     height: 200px;
@@ -92,7 +91,6 @@
   height: 200px;
   width: 200px;
   background-color: #fff8f0;
-  -webkit-clip-path: polygon(50% 0%, 82% 99%, 66% 0);
   clip-path: polygon(50% 0%, 82% 99%, 66% 0);
   @include pad {
     height: 150px;

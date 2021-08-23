@@ -218,7 +218,7 @@ export default {
             message: obj.message,
             payment_method: obj.payment_method,
             products: obj.products,
-            total: parseInt(obj.total, 10),
+            total: Number(obj.total),
             user: obj.user,
           },
         })
@@ -301,7 +301,7 @@ export default {
             message: item.message,
             payment_method: item.payment_method,
             products: item.products,
-            total: parseInt(item.total, 10),
+            total: Number(item.total),
             user: item.user,
           },
         })

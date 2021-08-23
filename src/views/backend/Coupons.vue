@@ -337,7 +337,7 @@ export default {
           data: {
             title: item.title,
             is_enabled: item.is_enabled,
-            percent: parseInt(item.percent, 10),
+            percent: Number(item.percent),
             due_date: item.due_date,
             code: item.code,
           },

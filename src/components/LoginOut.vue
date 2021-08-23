@@ -46,6 +46,7 @@ import Modal from 'bootstrap/js/dist/modal';
 import emitter from '@/assets/js/emitter';
 
 export default {
+  emits: ['sign-out-admin'],
   data() {
     return {
       Modal: '',

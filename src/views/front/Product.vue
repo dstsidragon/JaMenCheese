@@ -84,14 +84,14 @@
                     <span>
                       <button
                         type="button"
-                        class="btn text-dark fz-1 btn-input--top"
+                        class="btn text-dark fz-1 btn-input--top w-1"
                         @click="num++"
                       >
                         +
                       </button>
                       <button
                         type="button"
-                        class="btn text-dark fz-1 btn-input--bottom"
+                        class="btn text-dark fz-1 btn-input--bottom w-1"
                         @click="num--"
                       >
                         -
@@ -301,7 +301,7 @@ export default {
       const product = {
         data: {
           product_id: this.id,
-          qty: parseInt(this.num, 10),
+          qty: Number(this.num),
         },
       };
       this.$http
@@ -400,11 +400,11 @@ export default {
 //input
 // 消除number預設樣式
 input[type='number'] {
-  -moz-appearance: textfield;
+  appearance: textfield;
 }
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+  appearance: none;
   margin: 0;
 }
 
@@ -435,5 +435,8 @@ input[type='number']::-webkit-outer-spin-button {
   position: absolute;
   top: 10px;
   right: 20px;
+}
+.w-1{
+  width: 40px!important;
 }
 </style>

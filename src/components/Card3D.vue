@@ -107,15 +107,12 @@
 
 @keyframes pulse {
   0% {
-    -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
   }
   50% {
-    -webkit-transform: translate(0, 10px);
     transform: translate(0, 10px);
   }
   100% {
-    -webkit-transform: translate(0, 0);
     transform: translate(0, 0);
   }
 }
@@ -227,7 +224,6 @@ a:hover {
   width: 340px;
   max-width: calc(100% - 20px);
   height: 510px;
-  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   perspective: 1000px;
   margin-top: 90px;
@@ -238,7 +234,6 @@ a:hover {
   position: absolute;
   top: 0;
   left: 0;
-  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
   transition: transform 700ms 400ms ease-out;
 }
@@ -251,11 +246,7 @@ a:hover {
   border-radius: 6px;
   left: 0;
   top: 0;
-  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
   backface-visibility: hidden;
   box-shadow: 0 12px 35px 0 rgba(16, 39, 112, 0.07);
 }
@@ -272,11 +263,7 @@ a:hover {
   width: 100%;
   display: block;
   z-index: 1;
-  -webkit-transform-style: preserve-3d;
   transform-style: preserve-3d;
-  -webkit-backface-visibility: hidden;
-  -moz-backface-visibility: hidden;
-  -o-backface-visibility: hidden;
   backface-visibility: hidden;
 }
 .pricing-wrap h4 {

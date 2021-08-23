@@ -262,6 +262,7 @@ import Modal from 'bootstrap/js/dist/modal';
 
 export default {
   props: ['rediDatas'],
+  emits: ['emit-redit-new-nata'],
   data() {
     return {
       Modal: '',
@@ -297,9 +298,9 @@ export default {
           content: this.rediData.content,
           description: this.rediData.description,
           id: this.rediData.id,
-          is_enabled: parseInt(this.rediData.is_enabled, 10),
-          origin_price: parseInt(this.rediData.origin_price, 10),
-          price: parseInt(this.rediData.price, 10),
+          is_enabled: Number(this.rediData.is_enabled),
+          origin_price: Number(this.rediData.origin_price),
+          price: Number(this.rediData.price),
           title: this.rediData.title,
           unit: this.rediData.unit,
           num: 1,

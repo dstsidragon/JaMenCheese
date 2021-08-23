@@ -1,5 +1,5 @@
 <template>
-  <div class="row position-relative pt-5 bg-blueGray">
+  <div class="row position-relative pt-5">
     <ul
       class="
         offset-1

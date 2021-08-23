@@ -47,6 +47,7 @@
 import Modal from 'bootstrap/js/dist/modal';
 
 export default {
+  emits: ['send'],
   data() {
     return {
       Modal: '',

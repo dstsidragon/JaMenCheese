@@ -93,7 +93,7 @@
                     {{ item.title }}
                   </h5>
                   <span
-                    class="d-flex justify-content-between align-items-center"
+                    class="d-flex justify-content-around align-items-center"
                   >
                     <p class="card-text border-right mb-0">
                       <del>{{ `$ ${$toComma(item.origin_price)} 元` }}</del>
@@ -115,7 +115,7 @@
                       disabled: item.id === loadingStatue.viewContentStatus,
                     }"
                     :id="'content_' + item.id"
-                    data-id="item.id"
+                    :data-id="item.id"
                     @click.prevent="viewOneProduct(item)"
                   >
                     <span
@@ -142,7 +142,7 @@
                     :id="'car_' + item.id"
                     @click.prevent="addCart(item.id, item.qty)"
                     data-action="remove"
-                    data-id="item.id"
+                    :data-id="item.id"
                   >
                     <span
                       :class="{ 'd-none': item.id !== loadingStatue.addCart }"
@@ -235,7 +235,7 @@
                       disabled: item.id === loadingStatue.viewContentStatus,
                     }"
                     :id="'content_' + item.id"
-                    data-id="item.id"
+                    :data-id="item.id"
                     @click.prevent="viewOneProduct(item)"
                   >
                     <span
@@ -262,7 +262,7 @@
                     :id="'car_' + item.id"
                     @click.prevent="addCart(item.id, item.qty)"
                     data-action="remove"
-                    data-id="item.id"
+                    :data-id="item.id"
                   >
                     <span
                       :class="{ 'd-none': item.id !== loadingStatue.addCart }"
@@ -425,7 +425,7 @@ export default {
       const product = {
         data: {
           product_id: id,
-          qty: parseInt(qty, 10),
+          qty: Number(qty),
         },
       };
       this.$http

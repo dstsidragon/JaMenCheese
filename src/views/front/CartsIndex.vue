@@ -31,7 +31,7 @@
 
     <!-- 購物車列表 start-->
     <table class="table mt-4 row gx-0">
-      <thead class="co1-12">
+      <thead class="co1-12" v-if="cartList.carts?.length > 0">
         <tr class="row">
           <th class="col-3 d-none d-md-table-cell">商品圖片</th>
           <th class="col-4 col-md-2">商品名稱</th>
@@ -74,7 +74,7 @@
           >
             <button
               type="button"
-              class="btn text-dark px-1 fz-2"
+              class="btn text-dark px-1 fz-2 w-3"
               @click="rediCartItemsNum(item, -1)"
             >
               -
@@ -89,7 +89,7 @@
             />
             <button
               type="button"
-              class="btn text-dark px-1 fz-2"
+              class="btn text-dark px-1 fz-2 w-3"
               @click="rediCartItemsNum(item, 1)"
             >
               +
@@ -242,14 +242,6 @@
       </button>
     </div>
   </div>
-  <!-- 購物車列表 end -->
-      <!-- 熱賣商品 -->
-      <h3 class="titleEffect pt-5"><span>熱賣商品</span></h3>
-      <HotProductSwiper
-        :products="allProductsData"
-        @view-one-product="viewOneProduct"
-      />
-
   <!-- 購物車沒商品時，呈現此區塊  star-->
   <div v-if="cartList.carts?.length === 0">
     <span class="material-icons fz-4"> production_quantity_limits </span>
@@ -265,7 +257,13 @@
   </div>
   <!-- 購物車沒商品時，呈現此區塊  end-->
   <hr />
-
+  <!-- 購物車列表 end -->
+      <!-- 熱賣商品 -->
+      <h3 class="titleEffect pt-5"><span>熱賣商品</span></h3>
+      <HotProductSwiper
+        :products="allProductsData"
+        @view-one-product="viewOneProduct"
+      />
   <!-- 讀取畫面 start-->
   <Loading :isVueLoading="isLoading" />
   <!-- 讀取畫面 end -->
@@ -448,12 +446,12 @@ export default {
     rediCartItemsNum(item, i) {
       this.isLoading = true;
       let num = 0;
-      if (parseInt(item.qty + i, 10) < 1) {
+      if (Number(item.qty + i) < 1) {
         num = 1;
-      } else if (parseInt(item.qty + i, 10) > 999) {
+      } else if (Number(item.qty + i) > 999) {
         num = 999;
       } else {
-        num = parseInt(item.qty + i, 10);
+        num = Number(item.qty + i);
       }
       const cartItem = {
         data: {
@@ -585,11 +583,14 @@ export default {
 //input
 // 消除number預設樣式
 input[type='number'] {
-  -moz-appearance: textfield;
+  appearance: textfield;
 }
 input[type='number']::-webkit-inner-spin-button,
 input[type='number']::-webkit-outer-spin-button {
-  -webkit-appearance: none;
+  appearance: none;
   margin: 0;
+}
+.w-3{
+  width: 24px!important;
 }
 </style>

@@ -55,6 +55,7 @@
 
 <script>
 export default {
+  emits: ['login-emit'],
   props: ['statusprompt', 'statuBool', 'loginInFallOrSuccess'],
   data() {
     return {

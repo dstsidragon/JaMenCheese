@@ -132,6 +132,7 @@ import Modal from 'bootstrap/js/dist/modal';
 
 export default {
   props: ['rediDatas'],
+  emits: ['emit-redit-new-nata'],
   data() {
     return {
       Modal: '',
@@ -148,7 +149,7 @@ export default {
         message: this.rediData.message,
         payment_method: this.rediData.payment_method,
         products: this.rediData.products,
-        total: parseInt(this.rediData.total, 10),
+        total: Number(this.rediData.total),
         user: this.rediData.user,
       };
       this.$emit('emit-redit-new-nata', reditNewData);

@@ -131,6 +131,7 @@
 import Modal from 'bootstrap/js/dist/modal';
 
 export default {
+  emits: ['send'],
   data() {
     return {
       user: {},
@@ -145,7 +146,7 @@ export default {
     addCouponData() {
       const product = {
         title: this.addCoupon.title,
-        is_enabled: parseInt(this.addCoupon.is_enabled, 10),
+        is_enabled: Number(this.addCoupon.is_enabled),
         percent: this.addCoupon.percent,
         due_date: this.$toTimestamp(this.addCoupon.due_date),
         code: this.addCoupon.code,

@@ -133,6 +133,7 @@ import Modal from 'bootstrap/js/dist/modal';
 
 export default {
   props: ['rediDatas'],
+  emits: ['emit-redit-new-nata'],
   data() {
     return {
       user: {},
@@ -146,7 +147,7 @@ export default {
     reditOneData() {
       const reditNewData = {
         title: this.rediData.title,
-        is_enabled: parseInt(this.rediData.is_enabled, 10),
+        is_enabled: Number(this.rediData.is_enabled),
         percent: this.rediData.percent,
         due_date: this.$toTimestamp(this.due_date),
         code: this.rediData.code,

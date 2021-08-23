@@ -348,8 +348,8 @@ export default {
           data: {
             category: `${e.target.dataset.category}`,
             is_enabled: e.target.dataset.is_enabled === '1' ? 0 : 1,
-            origin_price: parseInt(e.target.dataset.origin_price, 10),
-            price: parseInt(e.target.dataset.price, 10),
+            origin_price: Number(e.target.dataset.origin_price),
+            price: Number(e.target.dataset.price),
             title: `${e.target.dataset.title}`,
             unit: `${e.target.dataset.unit}`,
           },
@@ -500,7 +500,7 @@ export default {
       this.rediData.unit = rediItem.unit;
       this.rediData.origin_price = rediItem.origin_price;
       this.rediData.price = rediItem.price;
-      this.rediData.is_enabled = parseInt(rediItem.is_enabled, 10);
+      this.rediData.is_enabled = Number(rediItem.is_enabled);
       this.rediData.imageUrl = rediItem.imageUrl;
       this.rediData.imagesUrl = {
         url1: rediItem.imagesUrl[0],

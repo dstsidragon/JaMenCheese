@@ -41,6 +41,7 @@ import SwiperCore, { EffectCoverflow } from 'swiper/core';
 SwiperCore.use([EffectCoverflow]);
 
 export default {
+  emits: ['view-one-product'],
   components: {
     Swiper,
     SwiperSlide,

@@ -45,6 +45,7 @@
 </template>
 <script>
 export default {
+  emits: ['emitchkPath'],
   data() {
     return {
       apipath: 'sim322on',

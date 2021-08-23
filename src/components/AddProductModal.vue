@@ -362,8 +362,8 @@ export default {
         data: {
           title: this.addProducts.bg_add_title,
           category: this.addProducts.bg_add_category,
-          origin_price: parseInt(this.addProducts.bg_add_origin_price, 10),
-          price: parseInt(this.addProducts.bg_add_price, 10),
+          origin_price: Number(this.addProducts.bg_add_origin_price),
+          price: Number(this.addProducts.bg_add_price),
           unit: this.addProducts.bg_add_unit,
           description: this.addProducts.bg_add_description,
           content: this.addProducts.bg_add_content,
