@@ -1,0 +1,2 @@
+(window["webpackJsonp"]=window["webpackJsonp"]||[]).push([["chunk-2d0de760"],{"866b":function(n,e,t){"use strict";t.r(e);var c=t("7a23"),o={class:"\n      shadow-sm\n      p-3\n      mt-1\n      mb-5\n      bg-yellow-lighten\n      rounded\n      text-primary\n      fz-3 fz-sm-4\n    "};function r(n,e){return Object(c["openBlock"])(),Object(c["createBlock"])("h2",o," 歡迎來到後台! ")}const s={};s.render=r;e["default"]=s}}]);
+//# sourceMappingURL=chunk-2d0de760.03761bbc.js.map
