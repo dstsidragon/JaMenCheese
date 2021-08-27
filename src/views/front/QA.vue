@@ -1,5 +1,6 @@
 <template>
-  <header class="mt-navbar">
+  <div>
+    <header class="mt-navbar">
     <div class="banner position-relative">
       <div class="d-flex align-items-center banner-title">
         <h2 class="text-white mb-0 me-2 fz-2 fz-md-4">常見問題</h2>
@@ -269,6 +270,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 
